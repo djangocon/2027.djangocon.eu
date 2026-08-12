@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="runserver" type="Python.DjangoServer" factoryName="Django server" singleton="true">
-    <module name="djangocon_2025" />
+    <module name="djangocon" />
     <option name="INTERPRETER_OPTIONS" value="" />
     <option name="PARENT_ENVS" value="true" />
     <envs>

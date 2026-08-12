@@ -5,7 +5,7 @@
       <entry url="file://$PROJECT_DIR$">
         <entryData>
           <resourceRoots>
-            <path value="file://$PROJECT_DIR$/djangocon_2025/static" />
+            <path value="file://$PROJECT_DIR$/djangocon/static" />
           </resourceRoots>
         </entryData>
       </entry>

@@ -1,4 +1,4 @@
-<img src="djangocon_2025/static/images/logo/2025_logo.png" height=100 />
+<img src="djangocon/static/images/logo/logo.png" height=100 />
 
 🌍 [2025.djangocon.eu](https://2025.djangocon.eu/) \
 📍 Dublin, Ireland \

@@ -3,7 +3,7 @@ from django.conf.urls.static import static
 from django.urls import include, path
 from django.views import defaults as default_views
 
-from djangocon_2025.site.views import default_view
+from djangocon.site.views import default_view
 
 urlpatterns = [
     path("", default_view),
