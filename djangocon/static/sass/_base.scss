@@ -6,17 +6,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Manrope:wght@200..800&family=Modak&display=swap');
 
 @font-face {
-  font-family: 'Lansdowne Demo';
-  src: url('../fonts/Lansdowne.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
+    font-family: 'Lansdowne Demo';
+    src: url('../fonts/Lansdowne.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
 
 @font-face {
-  font-family: 'Landowne Demo1';
-  src: url('../fonts/Lansdowne.otf') format('truetype');
-  font-weight: bold;
-  font-style: normal;
+    font-family: 'Landowne Demo1';
+    src: url('../fonts/Lansdowne.otf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
 }
 
 ////////////////////////////////
@@ -31,40 +31,40 @@ $dark-pink: #eed3d7;
 $alert-red: #b94a48;
 
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+    width: 8px;
+    height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--paper);
+    background: var(--paper);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--ink);
-  border-radius: var(--radius-md);
+    background: var(--ink);
+    border-radius: var(--radius-md);
 }
 
 @media (max-width: 1040px) {
-  ::-webkit-scrollbar {
-    width: 5px;
-    height: 5px;
-  }
+    ::-webkit-scrollbar {
+        width: 5px;
+        height: 5px;
+    }
 }
 
 @media (max-width: $bp-md) {
-  ::-webkit-scrollbar {
-    width: 3px;
-    height: 3px;
-  }
+    ::-webkit-scrollbar {
+        width: 3px;
+        height: 3px;
+    }
 }
 
 body {
-  font-family: var(--font-main);
-  font-weight: var(--weight-normal);
-  background: var(--paper);
-  color: var(--ink);
-  margin: 0;
-  padding: 0;
+    font-family: var(--font-main);
+    font-weight: var(--weight-normal);
+    background: var(--paper);
+    color: var(--ink);
+    margin: 0;
+    padding: 0;
 }
 
 ////////////////////////////////
@@ -75,13 +75,57 @@ body {
 // debug, info, success, warning, error
 
 .alert-debug {
-  background-color: var(--paper);
-  border-color: $mint-green;
-  color: var(--ink);
+    background-color: var(--paper);
+    border-color: $mint-green;
+    color: var(--ink);
 }
 
 .alert-error {
-  background-color: $pink;
-  border-color: $dark-pink;
-  color: $alert-red;
+    background-color: $pink;
+    border-color: $dark-pink;
+    color: $alert-red;
+}
+
+
+.status-btn {
+    min-width: 0;
+    flex: 0 0 auto;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 250px;
+    padding: 0.7em 1.4em;
+    color: var(--paper);
+    background: var(--Gradient, var(--ink));
+    border: none;
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    font-family: var(--font-alt), serif;
+    font-size: 17px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    margin-top: 0;
+
+    &:hover {
+        box-shadow: 0 0.5em 1.5em -0.5em var(--overlay-heavy);
+        transform: translateY(-2px);
+        text-decoration: none;
+        color: var(--paper);
+    }
+
+    &:active {
+        box-shadow: 0 0.3em 1em -0.5em var(--overlay-heavy);
+        transform: translateY(0);
+    }
+
+    &::after {
+        content: '→';
+        margin-left: 0.5rem;
+    }
+    &::after {
+        content: none;
+    }
 }

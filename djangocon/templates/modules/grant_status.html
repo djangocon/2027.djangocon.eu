@@ -1,128 +1,130 @@
 <style>
-  input,
-  button {
-    padding: 10px;
-    margin-top: 10px;
-  }
+    input,
+    button {
+        padding: 10px;
+        margin-top: 10px;
+    }
 
-  #result {
-    margin-top: 20px;
-    padding: 20px;
-    background-color: black;
-    border-radius: 5px;
-    border: 1px solid white;
-  }
+    #result {
+        margin-top: 20px;
+        padding: 20px;
+    {#background-color: black;#} border-radius: 5px;
+        border: 1px solid white;
+    }
 </style>
 
 <body>
-  <div class="container">
-    <h1><strong>Check Your Grant Application Status💰✍</strong></h1>
-    <small
-      >Type your email and your unique code and wait for a response, Good Luck
-      😊</small
-    ><br />
-    <div class="row">
-      <div class="col-md-4">
-        <div class="form-group">
-          <input
-            type="email"
-            class="form-control"
-            id="emailInput"
-            placeholder="Enter your email"
-            required
+<div class="container">
+  <h1><strong>Check Your Grant Application Status💰✍</strong></h1>
+  <small
+  >Type your email and your unique code and wait for a response, Good Luck
+    😊</small
+  ><br/>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="d-flex align-items-center w-100 h-100">
+        <div class="form-group w-100">
+          <input type="email"
+                  class="form-control mt-0"
+                  id="emailInput"
+                  placeholder="Enter your email"
+                  required
           />
         </div>
       </div>
-      <div class="col-md-3">
-        <div class="form-group">
-          <input
-            type="text"
-            class="form-control"
-            id="codeInput"
-            placeholder="Enter your code"
-            size="10"
-            required
+    </div>
+    <div class="col-md-3">
+      <div class="d-flex align-items-center w-100 h-100">
+
+        <div class="form-group w-100">
+          <input type="text"
+                  class="form-control mt-0"
+                  id="codeInput"
+                  placeholder="Enter your code"
+                  size="10"
+                  required
           />
         </div>
       </div>
-      <div class="col-md-2">
-        <button
-          id="statusButton"
-          onclick="checkStatus()"
-          class="hero-btn"
-          style="text-decoration: none; color: white"
-        >
-          Check Status
-        </button>
-{% comment %} 
+    </div>
+    <div class="col">
+      <button
+              id="statusButton"
+              onclick="checkStatus()"
+              class="status-btn"
+              style="text-decoration: none; color: white"
+      >
+        Check Status
+      </button>
+      {% comment %}
         <a
           href="https://pretix.evolutio.pt/evolutio/djceu2025/"
           class="hero-btn"
           style="text-decoration: none; color: white"
           >Apply for Grant</a
         > {% endcomment %}
-      </div>
     </div>
-
-    <div id="loadingMessage" style="display: none">Loading...</div>
-    <div id="result"></div>
   </div>
-  <script>
+
+  <div id="loadingMessage" style="display: none">Loading...</div>
+  <div id="result"></div>
+</div>
+<script>
     function checkStatus() {
-      var email = document.getElementById('emailInput').value;
-      var code = document.getElementById('codeInput').value;
-      if (!email || !code) {
-        alert('Please enter an email address and a code.');
-        return;
-      }
-      var url =
-        'https://script.google.com/macros/s/AKfycbyOjmsg9naumW-iS-ScfDV69b4GKriiBIp5Z6yEOAzodFFD_13iVxKg52pAclPedmmb/exec';
-      document.getElementById('statusButton').disabled = true;
-      document.getElementById('loadingMessage').style.display = 'block';
-      fetch(
-        url +
-          '?email=' +
-          encodeURIComponent(email) +
-          '&code=' +
-          encodeURIComponent(code),
-      )
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error('Network response was not ok');
-          }
-          return response.json();
-        })
-        .then((data) => {
-          document.getElementById('loadingMessage').style.display = 'none';
-          if (data.status === 'Not Found') {
-            document.getElementById('result').innerHTML =
-              '<p>Email not in our database. Please check and enter the correct email address.</p>';
-          } else {
-            document.getElementById('result').innerHTML =
-              '<p>Hi👋 <strong>' +
-              data.fullName +
-              ',</strong></p>' +
-              '<p>Your application status: <strong style="color:' +
-              (data.status === 'Accepted' ? 'green' : 'red') +
-              ';"> ' +
-              data.status +
-              '</strong></p>' +
-              '<p>' +
-              data.remarks +
-              '</p>' +
-              '<p>Voucher Code Redeem 🎟️: <strong>' +
-              data.vouchers +
-              '</strong></p>';
-          }
-        })
-        .catch((error) => {
-          console.error('Error:', error);
-          document.getElementById('loadingMessage').style.display = 'none';
-          document.getElementById('result').innerHTML =
-            '<p>An error occurred while trying to retrieve the status. Error message: ' +
-            error.message +
-            '</p>';
-        });
+        var email = document.getElementById('emailInput').value;
+        var code = document.getElementById('codeInput').value;
+        if (!email || !code) {
+            alert('Please enter an email address and a code.');
+            return;
+        }
+        var url =
+            'https://script.google.com/macros/s/AKfycbyOjmsg9naumW-iS-ScfDV69b4GKriiBIp5Z6yEOAzodFFD_13iVxKg52pAclPedmmb/exec';
+        document.getElementById('statusButton').disabled = true;
+        document.getElementById('loadingMessage').style.display = 'block';
+        fetch(
+            url +
+            '?email=' +
+            encodeURIComponent(email) +
+            '&code=' +
+            encodeURIComponent(code),
+        )
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then((data) => {
+                document.getElementById('loadingMessage').style.display = 'none';
+                if (data.status === 'Not Found') {
+                    document.getElementById('result').innerHTML =
+                        '<p>Email not in our database. Please check and enter the correct email address.</p>';
+                } else {
+                    document.getElementById('result').innerHTML =
+                        '<p>Hi👋 <strong>' +
+                        data.fullName +
+                        ',</strong></p>' +
+                        '<p>Your application status: <strong style="color:' +
+                        (data.status === 'Accepted' ? 'green' : 'red') +
+                        ';"> ' +
+                        data.status +
+                        '</strong></p>' +
+                        '<p>' +
+                        data.remarks +
+                        '</p>' +
+                        '<p>Voucher Code Redeem 🎟️: <strong>' +
+                        data.vouchers +
+                        '</strong></p>';
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                document.getElementById('loadingMessage').style.display = 'none';
+                document.getElementById('result').innerHTML =
+                    '<p>An error occurred while trying to retrieve the status. Error message: ' +
+                    error.message +
+                    '</p>';
+            });
     }
-  </script> 
+</script>
 </body>

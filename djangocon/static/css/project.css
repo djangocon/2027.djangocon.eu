@@ -142,6 +142,59 @@ body {
   color: #b94a48;
 }
 
+.status-btn {
+  min-width: 0;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 250px;
+  padding: 0.7em 1.4em;
+  color: var(--paper);
+  background: var(--Gradient, var(--ink));
+  border: none;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  font-family: var(--font-alt), serif;
+  font-size: 17px;
+  font-weight: 500;
+  text-decoration: none;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  margin-top: 0;
+}
+.status-btn:hover {
+  -webkit-box-shadow: 0 0.5em 1.5em -0.5em var(--overlay-heavy);
+          box-shadow: 0 0.5em 1.5em -0.5em var(--overlay-heavy);
+  -webkit-transform: translateY(-2px);
+          transform: translateY(-2px);
+  text-decoration: none;
+  color: var(--paper);
+}
+.status-btn:active {
+  -webkit-box-shadow: 0 0.3em 1em -0.5em var(--overlay-heavy);
+          box-shadow: 0 0.3em 1em -0.5em var(--overlay-heavy);
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+.status-btn::after {
+  content: "→";
+  margin-left: 0.5rem;
+}
+.status-btn::after {
+  content: none;
+}
+
 .header .nav-link {
   color: var(--accent);
   font: normal normal bold 16px/19px var(--font-main);
@@ -2526,14 +2579,6 @@ h2 {
             box-shadow: 0 0 10px var(--overlay-subtle);
   }
 }
-[id]::before {
-  content: "";
-  display: block;
-  height: 114px;
-  margin-top: -114px;
-  visibility: hidden;
-}
-
 .home-text,
 .important-dates .dates blockquote blockquote p {
   font: normal normal normal 1.125rem/1.5rem var(--font-main);
@@ -2827,12 +2872,8 @@ h2 {
   font-weight: 300;
 }
 
-.home_dates-content {
-  background-color: var(--accent);
-}
 .home_dates-content h1 {
   margin-top: 3rem;
-  color: var(--paper);
 }
 
 .home-sponsors {
