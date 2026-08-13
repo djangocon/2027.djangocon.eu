@@ -10,6 +10,17 @@
 
 ## Local Development
 
+### Using Docker
+
+```bash
+python setup_env.py
+docker compose build
+docker compose up
+```
+
+To access the running Django container, use `docker compose exec django /bin/bash`.
+But please note that currently, `manage.py migrate` doesn't work, you need to use the provided `sqlite3.db`.
+
 ### Using venv
 
 _optional_ - Create a virtual environment
@@ -25,16 +36,7 @@ install requirements:
 > pip install -r requirements/[ local | production ].txt
 ```
 
-### Using Docker
 
-```bash
-python setup_env.py
-docker compose build
-docker compose up
-```
-
-To access the running Django container, use `docker compose exec django /bin/bash`.
-But please note that currently, `manage.py migrate` doesn't work, you need to use the provided `sqlite3.db`.
 
 ### Database seed (`sqlite3.db`)
 

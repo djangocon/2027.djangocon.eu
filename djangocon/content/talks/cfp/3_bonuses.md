@@ -1,6 +1,7 @@
 title: bonuses
 layout: simple
 class: bg-grey
+order: 3
 
 As a speaker, you will not need to buy a ticket since you will gain free entrance to the conference. Of course, if you bought a ticket in advance before being accepted, we will refund it. If you are not selected as a speaker, don't worry; you are still eligible for an early bird ticket.
 

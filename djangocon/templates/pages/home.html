@@ -3,6 +3,7 @@
 {% load static %}
 {% block content %}
 
+  {% comment %}
   <!-- Main Section -->
 <div class="hero-section">
     <div style="position: absolute;z-index: -99;width: 50%;height: 100%">
@@ -32,72 +33,36 @@
     <img src="{% static 'images/other/building_dublin.png' %}"
          alt="Dublin city skyline">
   </div>
+  {% endcomment %}
 
 
-  <div class="overlay" id="overlay"></div>
-
-  <div class="popup" id="popup">
-    <button class="close-btn" onclick="closePopup()">&times;</button>
-    <h2 style="color:#EFEDD0; font-weight:bold">Want a free ticket?</h2>
-
-    {% comment %} <p>Join as a Volunteer:</p>
-    <a href="https://forms.gle/xmwxssiheMa1oCvPA" class="apply-btn"
-       style="text-decoration:none;">
-      <button>Help Us</button>
-    </a> {% endcomment %}
-
-    <p>Submit a talk or workshop:</p>
-    <a href="https://2025.djangocon.eu/talks/cfp/" class="apply-btn"
-       style="text-decoration:none;">
-      <button>Contribute</button>
-    </a>
-
-    <p>Apply for an Opportunity Grant:</p>
-    <a href="https://2025.djangocon.eu/information/grants/" class="apply-btn"
-       style="text-decoration:none;">
-      <button>Apply for Grant</button>
-    </a>
-
-    <p>Or get discounted ticket:</p>
-    <a href="https://pretix.evolutio.pt/evolutio/djceu2025/" class="apply-btn"
-       style="text-decoration:none;">
-      <button>tickets</button>
-    </a>
+  {# HOME-INTRO (2027 placeholder design) #}
+  <div class="intro-section">
+    <div class="intro-illustration" id="intro-illustration">
+      {# Placeholder for the Innsbruck mountain outline illustration #}
+    </div>
+    <div class="intro-content">
+      <h1 class="intro-title">lorem ipsum dolor sit amet.</h1>
+      <p class="intro-text">
+        consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+        Aenean massa. Cum sociis natoque penatibus et magnis dis parturient
+        montes, nascetur ridiculus mus.
+      </p>
+    </div>
   </div>
-
-
-
-  {% comment %} <div class="homepage-container">
-  <!-- Animated Title -->
-  <div class="countdown-container text-center">
-    <h1 id="dates_title" class="animated-title"></h1>
-  </div>
-
-
-
-
-
-</div> {% endcomment %}
-
-
-
 
 
   {# HOME-ABOUT #}
   {% include 'modules/default.html' with content=files.about|markdown %}
 
 
-
-
-
-
   {# HOME-SPEAKERS #}
- {% include 'modules/default.html' with content=files.speakers|markdown %}
-
+  {% include 'modules/default.html' with content=files.speakers|markdown %}
 
 
   {# TICKETS #}
   {% include 'modules/default.html' with content=files.tickets|markdown %}
+
 
   {# IMPORTANT DATES #}
   {% include 'modules/default.html' with content=files.dates|markdown %}
@@ -111,26 +76,7 @@
   {% include 'modules/default.html' with content=files.sponsors|markdown %}
 
 
-{# LATEST NEWS #}
-{% include 'modules/default.html' with content=files.latest_news|markdown %}
-
-{# ABOUT#}
-{# {% include 'templates/default.html' with content=files.0 %}#}
-
-
-{# LATEST-NEWS#}
-{# {% include 'modules/home/news.html' %}#}
-
-
-{# PORTO-INFO#}
-{% comment %} {% include 'modules/default.html' with content=files.1 %} {% endcomment %}
-
-  {# SPONSORS#}
-  {# {% include 'modules/default.html' with content=files.2 %}#}
-
-  {# MAILING-LIST#}
-  {# {% include 'modules/home/mailing.html' %}#}
-
-
+  {# LATEST NEWS #}
+  {% include 'modules/default.html' with content=files.latest_news|markdown %}
 
 {% endblock content %}

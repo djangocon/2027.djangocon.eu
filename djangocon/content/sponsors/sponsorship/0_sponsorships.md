@@ -1,5 +1,6 @@
 title: Sponsorships
 layout: simple
+order: 0
 
 This is the 17th edition of DjangoCon Europe and it will be taking place from Dublin and will be accessible worldwide.
 DjangoCon Europe is a conference run by the Django community for the Django community and we believe this is the best conference for partners and sponsors to connect with the Django community and to be part of it.

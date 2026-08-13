@@ -1,11 +1,12 @@
 layout: simple
+order: 0
 
 <h1 class="cfp-title">Talk Schedule</h1>
 <!-- All sessions are in Central European Summer Time (GMT+2). -->
 
-<h4 style="color: #97eb61">Checkout our Scheduled Talk</h4>
+<h4>Checkout our Scheduled Talk</h4>
 
-[Check Featured Talks here](https://pretalx.evolutio.pt/djangocon-europe-2025/schedule/){: style="color: #efedd0;"}
+[Check Featured Talks here](https://pretalx.evolutio.pt/djangocon-europe-2025/schedule/)
 
 
 <div id="pretalx-widget-container" style="margin-top: 20px;">

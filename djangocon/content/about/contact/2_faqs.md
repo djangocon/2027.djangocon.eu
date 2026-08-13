@@ -1,5 +1,6 @@
 title: FAQs
 layout: simple
+order: 2
 
 These are some frequently asked questions, kindly contact us for further assistance if you can't find the answers to your questions here.
 

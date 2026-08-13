@@ -1,4 +1,5 @@
 layout: simple
+order: 0
 
 <h1 class="cfp-title">code of conduct</h1>
 

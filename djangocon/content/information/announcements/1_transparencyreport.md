@@ -1,6 +1,7 @@
 type: dark-background
 layout: composed
 section: 2025 Code of Conduct transparency report
+order: 1
 
 The [code of conduct team](/conduct/code_of_conduct/) is happy to share that we received no reports of potential code of conduct issues at this year’s DjangoCon Europe!
 

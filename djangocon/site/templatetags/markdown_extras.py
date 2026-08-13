@@ -1,16 +1,23 @@
+import os
+
 import markdown as md
 from django import template
+from django.core.cache import cache
 from django.template.defaultfilters import stringfilter
 
 register = template.Library()
 
 
-@register.filter()
-@stringfilter
-def markdown(value):
-    r = {}
-    f = open(value)
-    f = f.read()
+def render_markdown_file(path):
+    """Parse a content .md file into {"html", "meta"}, cached until the file changes."""
+    mtime = os.path.getmtime(path)
+    cache_key = f"markdown_extras:{path}:{mtime}"
+    cached = cache.get(cache_key)
+    if cached is not None:
+        return cached
+
+    with open(path) as f:
+        source = f.read()
     m = md.Markdown(
         extensions=[
             "extra",
@@ -20,9 +27,15 @@ def markdown(value):
             "toc",
         ]
     )
-    r["html"] = m.convert(f)
-    r["meta"] = m.Meta
-    return r
+    result = {"html": m.convert(source), "meta": m.Meta}
+    cache.set(cache_key, result, timeout=None)
+    return result
+
+
+@register.filter()
+@stringfilter
+def markdown(value):
+    return render_markdown_file(value)
 
 
 @register.filter

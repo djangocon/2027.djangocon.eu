@@ -1,5 +1,6 @@
 title: Getting around
 layout: simple
+order: 2
 
 Dublin's city centre is relatively small in size and you could stroll from the GPO to Stephens Green in under an hour, taking in the sights on the way.
 A handy hint if you are trying to locate an address, postal codes are always odd numbers on the Northside and even numbers on the Southside. As a rule of thumb, the higher the number, the further away the location will be from the city centre.

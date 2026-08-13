@@ -1,5 +1,6 @@
 title: guidelines
 layout: simple
+order: 4
 
 - Submit your talk on time; no excuses.
 - All talks will be **in English**.

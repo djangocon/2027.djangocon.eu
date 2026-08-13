@@ -1,5 +1,6 @@
 title: topics
 layout: simple
+order: 2
 
 - Django internals and challenges in modern web development.
 - Wild ideas, clever hacks, surprising or cool use cases.
@@ -12,4 +13,4 @@ layout: simple
 
 You may think that your idea is not suited to DjangoCon Europe, that you couldn't possibly present it well, or that others will do it better. **We want to prove you wrong**.
 
-If you would like to ask a question, you are always welcome to write the content committee: <a href="mailto:content@djangocon.eu" style="color:#97EB61;">content@djangocon.eu</a>
+If you would like to ask a question, you are always welcome to write the content committee: <a href="mailto:content@djangocon.eu">content@djangocon.eu</a>

@@ -1,5 +1,6 @@
 title: Django Girls Vigo
 layout: simple
+order: 0
 
 ### Coming soon...
 

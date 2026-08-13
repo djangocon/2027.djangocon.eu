@@ -1,0 +1,272 @@
+// =============================================================================
+// DESIGN TOKENS — the single place to change the site's look.
+// =============================================================================
+//
+// Everything here is exposed twice, on purpose:
+//
+//   $sass-variable   compile-time. Use in `@media` queries, in maps, and
+//                    anywhere a value must be known while Sass runs (colour
+//                    maths like `lighten()`, arithmetic, interpolation).
+//   --css-variable   run-time. Use in ordinary declarations. These can be
+//                    overridden per-scope in the browser (a dark section, a
+//                    single component) without recompiling.
+//
+// Rule of thumb: reach for `var(--token)` in rule bodies, `$token` in media
+// queries. The custom properties below are generated from the Sass values, so
+// changing the value in ONE place here updates both.
+//
+// Sections: 1 Colour · 2 Typography · 3 Spacing · 4 Radius · 5 Shadow
+//           6 Motion · 7 Layout · 8 Breakpoints
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// 1. COLOUR
+// -----------------------------------------------------------------------------
+// The site runs a flat black-on-white theme. `$ink` and `$paper` are the two
+// anchors; everything else is an accent or a grey step between them.
+
+$ink: #000; // primary text, dark surfaces
+$paper: #fff; // page background, text on dark surfaces
+
+// Greys, dark -> light. Named by role, not by shade, so a re-theme does not
+// leave you with a "grey-800" that is actually beige.
+$surface-raised: #1a1a1a; // a panel that must sit just above pure black
+$surface-hover: #333; // hover ground on dark surfaces
+$text-muted: #4a4a4a; // de-emphasised body text
+$text-subtle: #666; // captions, metadata
+$border-subtle: #ccc; // hairlines, dividers
+$surface-sunken: #f2f2f2; // a panel that must sit just below pure white
+
+// Accents. These carry the brand and are the values most likely to change.
+$accent: #863b35; // primary brand accent (dark brown/red)
+$accent-dark: #66322e; // its pressed/hover state
+$accent-light: #af6b66; // its tint, for large fills
+$golden: #fa0; // highlight / call-to-action
+$danger: #f00; // errors, required-field markers
+
+// Link accent. Deliberately not the browser default blue — a deeper,
+// desaturated slate-teal. `$link-on-dark` is the variant for dark bands, where
+// the base tone is too dark to hold contrast.
+$link: #1f5f78;
+$link-hover: #17485b;
+$link-on-dark: #7fc4dd;
+
+// Translucent overlays. Kept as tokens so shadow/scrim opacity stays uniform.
+$overlay-subtle: rgba(0, 0, 0, 0.1);
+$overlay-medium: rgba(0, 0, 0, 0.2);
+$overlay-strong: rgba(0, 0, 0, 0.3);
+$overlay-heavy: rgba(0, 0, 0, 0.6);
+
+// -----------------------------------------------------------------------------
+// 2. TYPOGRAPHY
+// -----------------------------------------------------------------------------
+
+$font-main: 'Lato', sans-serif; // body and UI
+$font-display: 'Lansdowne Demo', sans-serif; // headline/display face
+$font-alt: 'Manrope', sans-serif; // secondary accent face
+
+// Type scale. Chosen to cover the sizes already in use rather than imposing a
+// new ratio, so adopting these does not reflow the site.
+$text-xs: 0.75rem; // 12px
+$text-sm: 0.875rem; // 14px
+$text-base: 1rem; // 16px
+$text-md: 1.125rem; // 18px
+$text-lg: 1.25rem; // 20px
+$text-xl: 1.5rem; // 24px
+$text-2xl: 2rem; // 32px
+$text-3xl: 2.5rem; // 40px
+$text-4xl: 3.5rem; // 56px
+$text-5xl: 5rem; // 80px
+
+$weight-normal: 400;
+$weight-bold: 700;
+$weight-black: 900;
+
+$leading-tight: 1.2;
+$leading-normal: 1.5;
+$leading-loose: 1.8;
+
+// -----------------------------------------------------------------------------
+// 3. SPACING
+// -----------------------------------------------------------------------------
+// A 4px-based scale. Use for margin, padding and gap so vertical rhythm stays
+// consistent instead of drifting between 13px, 15px and 17px.
+
+$space-3xs: 0.25rem; // 4px
+$space-2xs: 0.5rem; // 8px
+$space-xs: 0.75rem; // 12px
+$space-sm: 1rem; // 16px
+$space-md: 1.5rem; // 24px
+$space-lg: 2rem; // 32px
+$space-xl: 3rem; // 48px
+$space-2xl: 4rem; // 64px
+$space-3xl: 6rem; // 96px
+
+// -----------------------------------------------------------------------------
+// 4. BORDER RADIUS
+// -----------------------------------------------------------------------------
+
+$radius-xs: 4px;
+$radius-sm: 8px;
+$radius-md: 10px;
+$radius-lg: 16px;
+$radius-xl: 24px;
+$radius-pill: 50px; // fully rounded buttons/chips
+$radius-circle: 50%; // avatars, icon badges
+
+// -----------------------------------------------------------------------------
+// 5. SHADOW
+// -----------------------------------------------------------------------------
+
+$shadow-sm: 0 0 10px #{$overlay-subtle};
+$shadow-md: 0 4px 8px #{$overlay-medium};
+$shadow-lg: 0 6px 20px #{$overlay-strong};
+
+// -----------------------------------------------------------------------------
+// 6. MOTION
+// -----------------------------------------------------------------------------
+
+$duration-fast: 0.1s;
+$duration-base: 0.3s;
+$duration-slow: 1s;
+$ease-base: ease;
+$ease-in-out: ease-in-out;
+
+// -----------------------------------------------------------------------------
+// 7. LAYOUT
+// -----------------------------------------------------------------------------
+
+$content-width: 71.5rem; // max width of the main content column
+
+// -----------------------------------------------------------------------------
+// 8. BREAKPOINTS
+// -----------------------------------------------------------------------------
+// Sass-only: `@media` is resolved at compile time and cannot read a custom
+// property, so these are deliberately NOT mirrored into :root below.
+// Use as: `@media (max-width: $bp-md) { ... }`
+
+$bp-xs: 480px;
+$bp-sm: 600px;
+$bp-md: 768px;
+$bp-lg: 992px;
+$bp-xl: 1200px;
+
+// =============================================================================
+// CUSTOM PROPERTY MIRROR
+// =============================================================================
+// Generated from the Sass values above — do not hardcode literals here, or the
+// two layers drift apart and changing a token stops working.
+
+:root {
+  // Colour
+  --ink: #{$ink};
+  --paper: #{$paper};
+  --surface-raised: #{$surface-raised};
+  --surface-hover: #{$surface-hover};
+  --surface-sunken: #{$surface-sunken};
+  --text-muted: #{$text-muted};
+  --text-subtle: #{$text-subtle};
+  --border-subtle: #{$border-subtle};
+
+  --accent: #{$accent};
+  --accent-dark: #{$accent-dark};
+  --accent-light: #{$accent-light};
+  --golden: #{$golden};
+  --danger: #{$danger};
+
+  --link: #{$link};
+  --link-hover: #{$link-hover};
+  --link-on-dark: #{$link-on-dark};
+
+  --overlay-subtle: #{$overlay-subtle};
+  --overlay-medium: #{$overlay-medium};
+  --overlay-strong: #{$overlay-strong};
+  --overlay-heavy: #{$overlay-heavy};
+
+  // Typography
+  --font-main: #{$font-main};
+  --font-display: #{$font-display};
+  --font-alt: #{$font-alt};
+
+  --text-xs: #{$text-xs};
+  --text-sm: #{$text-sm};
+  --text-base: #{$text-base};
+  --text-md: #{$text-md};
+  --text-lg: #{$text-lg};
+  --text-xl: #{$text-xl};
+  --text-2xl: #{$text-2xl};
+  --text-3xl: #{$text-3xl};
+  --text-4xl: #{$text-4xl};
+  --text-5xl: #{$text-5xl};
+
+  --weight-normal: #{$weight-normal};
+  --weight-bold: #{$weight-bold};
+  --weight-black: #{$weight-black};
+
+  --leading-tight: #{$leading-tight};
+  --leading-normal: #{$leading-normal};
+  --leading-loose: #{$leading-loose};
+
+  // Spacing
+  --space-3xs: #{$space-3xs};
+  --space-2xs: #{$space-2xs};
+  --space-xs: #{$space-xs};
+  --space-sm: #{$space-sm};
+  --space-md: #{$space-md};
+  --space-lg: #{$space-lg};
+  --space-xl: #{$space-xl};
+  --space-2xl: #{$space-2xl};
+  --space-3xl: #{$space-3xl};
+
+  // Radius
+  --radius-xs: #{$radius-xs};
+  --radius-sm: #{$radius-sm};
+  --radius-md: #{$radius-md};
+  --radius-lg: #{$radius-lg};
+  --radius-xl: #{$radius-xl};
+  --radius-pill: #{$radius-pill};
+  --radius-circle: #{$radius-circle};
+
+  // Shadow
+  --shadow-sm: #{$shadow-sm};
+  --shadow-md: #{$shadow-md};
+  --shadow-lg: #{$shadow-lg};
+
+  // Motion
+  --duration-fast: #{$duration-fast};
+  --duration-base: #{$duration-base};
+  --duration-slow: #{$duration-slow};
+  --ease-base: #{$ease-base};
+  --ease-in-out: #{$ease-in-out};
+
+  // Layout
+  --content-width: #{$content-width};
+
+  // ---------------------------------------------------------------------------
+  // COMPATIBILITY ALIASES
+  // ---------------------------------------------------------------------------
+  // Legacy names still referenced across the partials. Five of these
+  // (--bg-color, --dark-brown, --golden, --primary-dark, --light-brown) were
+  // used but never defined anywhere, so they resolved to nothing and silently
+  // dropped the declarations that used them. Defining them here fixes those
+  // rules. Prefer the role-named tokens above in new code.
+  --bg-color: #{$paper};
+  --dark-brown: #{$accent};
+  --primary-dark: #{$ink};
+  --light-brown: #{$accent-light};
+
+  // Names kept from the earlier green theme; values follow the current
+  // black-and-white palette.
+  --dark-green: #{$paper};
+  --light-cream: #{$ink};
+  --light-green: #{$ink};
+  --vibrant-green: #{$ink};
+  --gradient-start: #{$ink};
+  --gradient-end: #{$ink};
+  --accent-black: #{$ink};
+  --hover-grey: #{$surface-hover};
+  --main-font: #{$font-main};
+  --link-blue: #{$link};
+  --link-blue-hover: #{$link-hover};
+  --link-blue-light: #{$link-on-dark};
+}

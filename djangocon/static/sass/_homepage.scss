@@ -1,222 +1,2174 @@
+@use 'variables' as *;
+
 // homepage
 
-@use 'base';
-
-%HOME-TEXT {
-  font:
-    normal normal normal 1.125rem/1.5rem Ubuntu,
-    sans-serif;
+// 2027 placeholder intro section (mountain-outline illustration is TBD;
+// .intro-illustration is left empty until that asset is ready)
+.intro-section {
+  max-width: 1800px;
+  margin: 0 auto;
+  padding: 4rem 2rem 6rem;
 }
 
-%HOME-TITLE {
-  font:
-    normal normal normal 1.5rem/1.75rem Ubuntu,
-    sans-serif;
+// Reserves the space the mountain illustration will occupy once the asset
+// lands; the copy below sits in the right-hand half of the section.
+.intro-illustration {
+  min-height: 22rem;
 }
 
-.home-text {
-  @extend %HOME-TEXT;
+.intro-content {
+  max-width: 50%;
+  margin-left: auto;
 }
 
-.home-title {
-  @extend %HOME-TITLE;
+.intro-title {
+  font-family: var(--font-main);
+  font-size: 2.75rem;
+  font-weight: 700;
+  color: #b0b0b0;
+  margin-bottom: 1rem;
 }
 
-@media (max-width: 991.98px) {
-  .home-header {
-    background-position: 0 !important;
+.intro-text {
+  font-family: var(--font-main);
+  font-size: 1.375rem;
+  line-height: 1.9;
+  color: var(--ink);
+  margin-bottom: 0;
+}
 
-    .home-title {
-      h3 {
-        margin-top: 2rem;
-        text-align: end;
-      }
-    }
+@media (max-width: 991px) {
+  .intro-section {
+    padding: 2rem 1rem 3rem;
+  }
+
+  .intro-illustration {
+    min-height: 10rem;
+  }
+
+  .intro-content {
+    max-width: 100%;
+    margin-left: 0;
+  }
+
+  .intro-title {
+    font-size: 2rem;
+  }
+
+  .intro-text {
+    font-size: 1.125rem;
+    line-height: 1.7;
   }
 }
 
-.home-header {
-  height: 80vh;
-  min-height: 20rem;
-  background-position: center bottom;
-  background-size: auto 100%;
-  background-color: base.$BgBlue;
-  background-image: url('/static/images/background/homepage.png');
-  background-repeat: no-repeat;
+.w-300 {
+  width: 300px !important;
+}
+
+.text-decoration-none {
+  text-decoration: none;
+}
+
+.pages-links {
+  color: var(--link) !important;
+
+  &:hover {
+    color: var(--link-hover) !important;
+  }
+}
+
+.homepage-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.countdown-container {
+  padding: 50px 20px;
+}
+
+.animated-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: 1.5px;
+}
+
+// Middle Section: Run by the Community
+.runby-section {
+  background-color: var(--ink);
+  padding: 30px 20px;
+  border-radius: 15px;
+  margin: 30px 0;
+  box-shadow: 0 4px 8px var(--overlay-medium);
+  text-align: center;
+}
+
+.runby-text {
+  color: var(--ink);
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.runby-description {
+  color: var(--ink);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+// Speakers Section
+// .speakers-section {
+//     margin-top: 50px;
+// }
+//
+// .speakers-title {
+//     font-size: 2rem;
+//     font-weight: 700;
+//     color: var(--light-cream);
+//     margin-bottom: 20px;
+// }
+//
+// .speaker-card {
+//     background-color: var(--dark-green);
+//     border: 1px solid var(--light-green);
+//     border-radius: 10px;
+//     padding: 15px;
+//     text-align: center;
+//     color: var(--light-cream);
+//     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+// }
+//
+// .speaker-card img {
+//     border-radius: 50%;
+//     margin-bottom: 15px;
+//     max-width: 100px;
+//     height: auto;
+// }
+
+// Pricing Section (first definition; a second, current-design definition
+// for the same selectors follows further down and wins by cascade order)
+.pricing-section {
+  margin: 50px 0;
+  text-align: center;
+}
+
+.pricing-card {
+  background-color: var(--paper);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  color: var(--ink);
+  margin: 10px;
+  box-shadow: 0 4px 8px var(--overlay-strong);
 
   h3 {
-    color: #5900ff;
+    color: var(--ink);
   }
-  .home-title {
-    padding: 5rem 2vw;
-  }
-  img {
-    max-width: 750px;
-    width: 100%;
-    min-width: 520px;
-    padding-top: 1.875rem;
+
+  &:hover {
+    background-color: var(--ink);
+    color: var(--paper);
   }
 }
 
-.home-subheader {
-  background: base.$BgBlue;
+// Optional: Helper classes for different font styles
+.font-bold {
+  font-weight: bold;
+}
+
+.font-italic {
+  font-style: italic;
+}
+
+.btn-link {
+  text-decoration: none;
+}
+
+// .home-btn is defined three times across the original stylesheet with
+// increasingly specific overrides (later wins by source order); kept here
+// as separate rules in original order rather than force-merged.
+.home-btn {
+  background-color: var(--ink);
+  color: var(--ink);
+  font-size: 1.2rem;
+  padding: 12px 25px;
+  border-radius: 5px;
+  transition: background 0.3s ease;
   border: none;
-  padding-top: 3rem;
-  color: white;
-  padding-bottom: 4rem;
+  box-shadow: 0 4px 8px var(--overlay-medium);
+}
 
-  .btn-tickets {
-    height: auto;
-    background: white;
-    color: base.$BgBlue;
-    border-radius: 23px;
-    max-width: 331px;
-    padding: 0.625rem 2.875rem;
-    margin-top: 1.125rem;
-    margin-bottom: 4rem;
-    @extend %HOME-TEXT;
+.home-btn:hover {
+  background-color: var(--ink);
+}
+
+.home-btn {
+  background-color: var(--ink) !important;
+  color: var(--paper);
+  border: none;
+  border-radius: var(--radius-pill) !important;
+  padding: 15px 30px !important;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 15px var(--overlay-medium);
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px var(--overlay-strong);
+    background-color: var(--surface-hover) !important;
   }
 
-  h4 {
-    @extend %HOME-TEXT;
+  &:active {
+    transform: translateY(1px);
   }
-  .home-about {
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-circle);
+    transform: translate(-50%, -50%);
+    transition:
+      width 0.6s,
+      height 0.6s;
+  }
+
+  &:hover::after {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.4);
+  }
+
+  70% {
+    box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+}
+
+.home-btn {
+  animation: pulse 2s infinite;
+}
+
+.ms-2 {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.home-btn:hover .ms-2 {
+  transform: scale(1.2);
+}
+
+// home page styleing images
+.countdown-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+// #dates_title is defined three times across the original stylesheet
+// (later wins by source order); kept as separate rules in original order.
+#dates_title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  min-height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink);
+  opacity: 0.9;
+}
+
+#countdown {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ink);
+  opacity: 0.8;
+  background: rgba(0, 0, 0, 0.05);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  box-shadow: 0 2px 8px var(--overlay-subtle);
+  transition: all 0.3s ease;
+}
+
+.logo-container {
+  position: relative;
+  padding: 2rem 0;
+}
+
+.typed-cursor {
+  font-size: 2.5rem;
+  opacity: 0.7 !important;
+}
+
+.main-logo-animation {
+  animation: logoPopIn 1.5s ease-out;
+}
+
+@keyframes logoPopIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+
+  50% {
+    transform: scale(1.05);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.logo-glow {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: var(--radius-md);
+    animation: glowPulse 3s infinite;
+  }
+}
+
+@keyframes glowPulse {
+  0% {
+    box-shadow: 0 0 10px var(--overlay-subtle);
+  }
+
+  50% {
+    box-shadow: 0 0 30px var(--overlay-medium);
+  }
+
+  100% {
+    box-shadow: 0 0 10px var(--overlay-subtle);
+  }
+}
+
+// hack to fix anchors
+[id]::before {
+  content: '';
+  display: block;
+  height: 114px;
+  margin-top: -114px;
+  visibility: hidden;
+}
+
+.home-text,
+.important-dates .dates blockquote blockquote p {
+  font: normal normal normal 1.125rem/1.5rem var(--font-main);
+}
+
+.home-sponsors .sponsors-content h5,
+.home-title,
+.important-dates .dates h4 {
+  font: normal normal normal 1.5rem/1.75rem var(--font-main);
+}
+
+// @media (max-width: 992px) {
+//     .home-header {
+//         background-position: 0 !important
+//     }
+//
+//     .home-header .home-title h3 {
+//         margin-top: 2rem;
+//         text-align: end
+//     }
+// }
+//
+// .home-header {
+//     background-color: var(--bg-color);
+//     background-position: bottom;
+//     background-repeat: no-repeat;
+//     background-size: auto 100%;
+//     height: 60vh;
+//     min-height: 20rem
+// }
+//
+// .home-header h3 {
+//     color: #96f300
+// }
+//
+// .home-header .home-title {
+//     padding: 5rem 2vw
+// }
+//
+// .home-header img {
+//     max-width: 750px;
+//     min-width: 520px;
+//     padding-top: 1.875rem;
+//     width: 100%;
+// }
+//
+// .home-subheader {
+//
+//     padding-left: 0;
+//     padding-right: 0;
+//     background-color: var(--bg-color);
+//     border: none;
+//     color: black;
+// }
+
+.centered-content-tickets {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.dates_container {
+  margin-top: 100px;
+  text-align: center;
+  position: relative;
+  right: 280px;
+}
+
+#vid {
+  border-radius: 20px;
+  height: 700px;
+}
+
+.custom-image {
+  background-color: var(--paper);
+  width: 100%; // Adjust the width as needed
+  height: auto; // This maintains the image's aspect ratio
+}
+
+.centered-logo {
+  margin-top: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title-container {
+  margin-bottom: 40px;
+
+  img {
+    height: 55px;
+    position: relative;
+    display: inline-block;
+  }
+
+  // .speakers_image {
+  //     left: 50px;
+  //     height: 55px;
+  // }
+}
+
+.title-container .sponsors_image,
+.dates_logo {
+  height: 55px;
+  margin: 70px 0 20px;
+}
+
+.sponsors_content {
+  color: var(--accent);
+
+  .left-side {
+    h2 {
+      color: var(--accent);
+      text-align: left;
+      font-size: 3.5rem;
+      letter-spacing: 0;
+      opacity: 1;
+    }
+
     p {
-      @extend %HOME-TEXT;
-      margin-top: 1rem;
+      color: var(--accent);
+      text-align: left;
+      font-family: var(--font-main);
+      font-weight: 700;
+      font-size: 1.8rem;
+      line-height: 2.5rem;
+      letter-spacing: 0;
+      opacity: 1;
+      padding-right: 90px;
     }
   }
 }
 
-@media (max-width: 767.98px) {
-  .important-dates {
-    .dates {
-      blockquote {
-        display: block !important;
-        width: 100%;
-        max-width: 100%;
-        padding-right: 2%;
+.sponsor-container {
+  display: flex;
+  align-items: end;
+  margin-bottom: 80px;
+  margin-top: 50px;
+}
 
-        h4 {
-          display: block;
-          width: auto;
-          flex: 1 0 0%;
-          padding-bottom: 0rem;
-        }
+.sponsor-category-title {
+  font: normal normal bold 24px/29px Montserrat;
+  color: var(--accent);
+  text-transform: uppercase;
+}
 
-        blockquote {
-          display: block !important;
-          width: auto;
-          padding: 0.875rem 1rem;
+.left-side {
+  flex: 1;
+  padding-right: 20px;
+}
 
-          span {
-            display: none;
-          }
-        }
-      }
+.right-side {
+  flex: 1;
+  padding-left: 20px;
+  padding-top: 100px;
+
+  p {
+    color: var(--accent);
+    text-align: left;
+    font-family: var(--font-main);
+    font-weight: 400;
+    font-size: 1rem;
+    letter-spacing: 0;
+    opacity: 1;
+    padding-right: 95px;
+  }
+
+  .btn {
+    color: white;
+    background-color: var(--accent);
+    border-color: var(--accent);
+    text-decoration: none;
+    font-family: var(--font-main);
+    font-weight: 100;
+    font-size: 1rem;
+
+    &:hover {
+      background-color: var(--accent-light);
     }
   }
 }
+
+.social_media {
+  justify-content: right !important;
+  align-self: center !important;
+  margin-top: 40px;
+}
+
+.got_questions {
+  padding: 20px;
+  position: relative;
+
+  h2 {
+    font-family: var(--font-main);
+    letter-spacing: 0;
+    color: white;
+    opacity: 1;
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 0;
+    text-align: right;
+  }
+
+  p {
+    font-family: var(--font-main);
+    letter-spacing: 0;
+    color: white;
+    opacity: 1;
+    font-size: 1rem;
+    font-weight: 100;
+    text-align: right;
+  }
+}
+
+.follow_us_fotter {
+  margin-top: 60px;
+}
+
+#about_title {
+  font: normal normal normal 46px/58px var(--font-main) !important;
+}
+
+.home-about p {
+  font-size: 24px;
+  font-weight: 300;
+}
+
+#ticket_containers {
+  position: relative;
+
+  .image-wrapper {
+    display: inline-block;
+    position: relative;
+  }
+
+  .button-overlay {
+    position: absolute;
+    z-index: 1;
+  }
+
+  .button {
+    &:hover {
+      background-color: var(--accent-light);
+    }
+  }
+}
+
+.button {
+  text-decoration: none !important;
+}
+
+.home-subheader .home-about p {
+  margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+  .important-dates .dates blockquote {
+    display: block !important;
+    max-width: 100%;
+    padding-right: 2%;
+    width: 100%;
+  }
+
+  .important-dates .dates blockquote h4 {
+    -webkit-box-flex: 1;
+    display: block;
+    -ms-flex: 1 0 0;
+    flex: 1 0 0;
+    padding-bottom: 0;
+    width: auto;
+  }
+
+  .important-dates .dates blockquote blockquote {
+    display: block !important;
+    padding: 0.875rem 1rem;
+    width: auto;
+  }
+
+  .important-dates .dates blockquote blockquote span {
+    display: none;
+  }
+}
+
 .important-dates {
-  background-color: $DarkBrown;
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-
-  .title {
-    padding-bottom: 2rem;
-  }
   .dates {
     text-align: start;
 
     h4 {
-      @extend %HOME-TITLE;
-      font-weight: bold;
-      padding-top: 1.125rem;
-      border-top: 0.125rem solid white;
-      text-align: start;
+      border-top: 0.125rem solid var(--ink);
+      font-weight: 700;
       margin: 0.875rem;
       min-width: 12rem;
+      padding-top: 1.125rem;
+      text-align: start;
     }
+
     blockquote {
+      display: -webkit-box;
+      display: -ms-flexbox;
       display: flex;
       justify-self: center;
       width: 100%;
 
       blockquote {
+        -webkit-box-flex: 1;
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
+        -ms-flex: 1 0 0;
+        flex: 1 0 0;
+        -ms-flex-wrap: wrap;
         flex-wrap: wrap;
-        flex: 1 0 0%;
-        padding: 0.875rem 0rem;
-        margin: 0rem 0.875rem;
+        margin: 0 0.875rem;
+        padding: 0.875rem 0;
+
         p {
-          @extend %HOME-TEXT;
+          display: block;
+          margin-bottom: 0;
           margin-top: 0.875rem;
           text-align: start;
-          display: block;
           width: 100%;
-          margin-bottom: 0px;
         }
       }
-    }
-    p {
-      display: none;
     }
   }
 }
 
+.important-dates-container {
+  font: normal normal bold 24px/32px var(--font-main);
+  color: white;
+
+  .month-container {
+    margin-top: 30px;
+  }
+
+  .important-dates-text li {
+    list-style: none;
+    margin-bottom: 25px;
+    font-weight: 300;
+  }
+}
+
+.home_dates-content {
+  background-color: var(--accent);
+
+  h1 {
+    margin-top: 3rem;
+    color: var(--paper);
+  }
+}
+
 .home-sponsors {
-  background: base.$BgGrey;
-  color: $LightBrown;
-  padding-top: 3rem;
+  color: var(--accent);
   padding-bottom: 3rem;
+  padding-top: 3rem;
 
   .content-title {
     display: none;
-    width: 0%;
+    width: 0;
   }
 
   .title {
+    color: #a54c45;
     padding-bottom: 2rem;
-    color: $DarkBrown;
 
     strong {
-      color: $LightBrown;
+      color: #411e1b;
     }
   }
 
+  .margin-left,
   .margin-right {
-    display: block;
-  }
-  .margin-left {
     display: block;
   }
 
   .sponsors-content {
     h5 {
-      @extend %HOME-TITLE;
-      text-align: start;
-      border-top: 0.125rem solid $LightBrown;
-      max-width: 12rem;
+      border-top: 0.125rem solid var(--accent);
       margin-top: 2rem;
-      padding-top: 0.75rem;
-      margin-right: 0.875rem;
+      max-width: 12rem;
+      text-align: start;
       margin-left: 0.875rem;
+      margin-right: 0.875rem;
+      padding-top: 0.75rem;
     }
+
     p {
-      padding-top: 0.75rem;
-      margin-right: 0.875rem;
       margin-left: 0.875rem;
+      margin-right: 0.875rem;
+      padding-top: 0.75rem;
     }
   }
 }
 
-.container,
-.container-fluid,
-.container-lg,
-.container-md,
-.container-sm,
-.container-xl,
-.container-xxl {
-  padding-right: 0px !important;
-  padding-left: 0px !important;
+#tickets {
+  margin-top: 0;
+  width: 20%;
+  background-color: #acc821;
+}
+
+.button-overlay-container {
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+
+  .button-overlay-header {
+    height: 15%;
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+    font: normal normal bold 24px/29px var(--font-main);
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    color: white;
+
+    &.button0 {
+      background-color: #af0161;
+    }
+
+    &.button1 {
+      background-color: #38b0c9;
+    }
+
+    &.button2 {
+      background-color: #d49702;
+    }
+
+    &.button3 {
+      background-color: #005e83;
+    }
+  }
+
+  .button-overlay-body {
+    height: 85%;
+    background-color: white;
+    color: var(--accent);
+    padding: 30px 0 0;
+    font: normal normal normal 16px/24px var(--font-main);
+    border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+
+    .small-top-text {
+      margin-bottom: 10px;
+    }
+
+    .ticket-description {
+      margin-top: 60px;
+    }
+
+    .price-container,
+    .button,
+    .ticket-description {
+      padding: 0 30px;
+    }
+
+    .price-text {
+      font: normal normal 800 64px/24px Montserrat;
+    }
+
+    .button-container {
+      width: 100%;
+      height: 30%;
+      margin-top: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      padding: 15px 0;
+
+      .ticket-divider {
+        width: 100%;
+        position: absolute;
+        top: -30%;
+      }
+    }
+
+    .button {
+      border-radius: var(--radius-sm);
+      align-self: center;
+      width: 80%;
+      background-color: var(--accent);
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      text-align: center;
+    }
+  }
+}
+
+#talk {
+  width: 20%;
+  margin-top: 250px;
+  background-color: #acc821;
+}
+
+@media (max-width: 1400px) {
+  .sponsors_content .left-side p {
+    font-size: 1.5rem;
+    padding-right: 30px;
+  }
+
+  .right-side p {
+    padding-right: 0;
+  }
+
+  .right-side {
+    padding-top: 60px;
+  }
+
+  .title-container .sponsors_image,
+  .dates_logo,
+  .tickets_image {
+    height: 40px;
+  }
+
+  .right-side .btn {
+    font-size: 0.9rem;
+  }
+
+  .sponsors_content .left-side h2 {
+    font-size: 2.5rem;
+  }
+
+  .tab {
+    width: 200px;
+  }
+}
+
+@media (max-width: 1065px) {
+  .title-container .sponsors_image,
+  .dates_logo,
+  .tickets_image {
+    left: 0 !important;
+    height: 50px;
+  }
+
+  .panels {
+    margin: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .container,
+  .container-md,
+  .container-sm {
+    max-width: 720px;
+  }
+
+  .sponsor-container {
+    display: block;
+    margin-bottom: 80px;
+    margin-top: 50px;
+  }
+
+  .left-side {
+    padding-right: 0;
+  }
+
+  .right-side {
+    padding-left: 0;
+    padding-top: 20px;
+  }
+
+  .sponsors_content .left-side p {
+    font-size: 1.2rem;
+    line-height: 1.5rem;
+    padding-right: 2rem;
+  }
+
+  .right-side .btn {
+    padding-right: 2rem;
+  }
+
+  .sponsors_content {
+    margin-left: 0;
+  }
+
+  .tab {
+    width: 150px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container-button {
+    text-align: left; // Align the buttons to the left
+  }
+
+  .home-btn {
+    display: inline-block; // Make the buttons inline-block
+    width: auto; // Auto width based on content
+    margin: 5px 2%; // Adjust margins on small screens
+    padding: 5px; // Reduce padding on small screens
+    font-size: 0.7em; // Reduce font size on small screens
+  }
+
+  .home-btn span {
+    display: none; // Hide the emojis on small screens
+  }
+}
+
+@media (min-width: 769px) {
+  .home-btn span {
+    display: inline; // Show the emojis on larger screens
+  }
+}
+
+// home button
+.container-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 0 15px; // Add horizontal padding to the container
+}
+
+.home-btn {
+  margin: 10px;
+  padding: 18px 40px; // Increase padding around the text
+  background-color: var(--accent);
+  color: white;
+  border: none;
+  text-align: center;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+  font-size: 1.2em; // Increase font size
+  border-radius: 5px; // Add rounded corners
+
+  &:first-child {
+    margin-right: 20px; // Increase right margin on the first button
+  }
+
+  &:last-child {
+    margin-left: 0px; // Increase left margin on the second button
+  }
+
+  &:hover {
+    background-color: rgba(134, 59, 53, 0.8);
+    color: white;
+  }
+}
+
+@media (max-width: 768px) {
+  .container-button {
+    flex-direction: column;
+  }
+
+  .home-btn {
+    width: 100%; // Make the buttons full width on small screens
+    box-sizing: border-box; // Make sure padding and border are included in the button's total width
+  }
+}
+// end home button
+
+// @media (max-width: 992px) {
+//     .header-logo {
+//         padding-left: 0;
+//         padding-right: 2rem
+//     }
+//
+//     .social_media {
+//         justify-content: center !important;
+//     }
+//
+//     .got_questions h2,
+//     p {
+//         text-align: center !important;
+//     }
+//
+//     .sponsors_content .left-side h2 {
+//         text-align: center;
+//     }
+//
+//     .title-container {
+//         display: flex;
+//         justify-content: center;
+//     }
+//
+// }
+
+#dates_title {
+  font-weight: 400;
+  font-size: 2rem;
+  margin-top: 0.5rem;
+  position: relative;
+  top: 0.6%;
+  margin-left: 25%;
+
+  @media (max-width: 768px) {
+    margin-left: 0 !important;
+  }
+}
+
+@media (max-width: 360px) {
+  // .header-margin {
+  //     display: none !important
+  // }
+  //
+  // .header-logo {
+  //     padding-right: 0
+  // }
+  .follow_us_fotter img {
+    height: 1.5rem !important;
+  }
+}
+
+#dates_title {
+  font-weight: 400;
+  font-size: 2rem;
+  margin-top: 0.5rem;
+  position: relative;
+  top: 0.6%;
+  margin-left: -14%;
+}
+
+.ticket_soon {
+  position: relative;
+  left: 18%;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--accent);
+}
+
+.section-title {
+  margin: 0;
+  font: normal normal bold 2.375rem/2.75rem var(--font-main);
+  color: var(--accent);
+  text-align: start;
+}
+
+.composed-content h1 {
+  color: var(--accent);
+  margin: 50px 0 20px;
+}
+
+// Composed pages alternate via get_bg_type (markdown_extras.py). --bg-color and
+// --bg-color-dark are never defined, so these resolved to no background at all;
+// pinned to the same white/grey pair the .even-pages band now uses.
+.light-background {
+  background-color: var(--paper);
+}
+
+.dark-background {
+  background-color: var(--text-muted);
+  color: var(--paper);
+
+  // .simple-content a would otherwise win on specificity, so the band's link
+  // colour is stated at the same depth.
+  a,
+  .simple-content a {
+    color: var(--link-on-dark);
+    text-decoration: underline;
+
+    &:hover {
+      color: var(--paper);
+    }
+  }
+
+  // .pages-links pins its colour with !important, so it must be matched here.
+  .pages-links {
+    color: var(--link-on-dark) !important;
+
+    &:hover {
+      color: var(--paper) !important;
+    }
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  li,
+  strong,
+  em,
+  td,
+  th,
+  .title,
+  .section-title,
+  .parent-title {
+    color: var(--paper);
+  }
+
+  // .content-title h1 sets an explicit black and outranks the bare tag
+  // selectors above, so it has to be overridden at matching specificity.
+  .content-title h1,
+  .content-title h1.parent-title {
+    color: var(--paper);
+  }
+}
+
+object[type='application/pdf'] {
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.container-button {
+  display: flex;
+  justify-content: center;
+  color: var(--accent);
+}
+
+@media (max-width: 768px) {
+  #dates_title {
+    font-weight: 400;
+    font-size: 1.3em; // Reduce font size on small screens
+    text-align: center;
+  }
+}
+
+@media (max-width: 769px) {
+  #dates_title {
+    text-align: center;
+  }
+}
+
+// Hero section
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  min-height: 100vh;
+}
+
+.hero-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding-left: 50px;
+  position: relative;
+  height: 100%;
+  display: flex;
+}
+
+.hero-content {
+  flex: 0 0 50%;
+
+  h1 {
+    font-family: var(--font-display);
+    font-size: 3.5rem;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    color: var(--ink);
+    font-weight: 400;
+    padding-top: 20%;
+  }
+}
+
+.hero-date {
+  font-family: var(--font-main);
+  font-size: 18px !important;
+  color: var(--ink) !important;
+  margin-bottom: 2rem;
+  display: block;
+}
+
+.hero-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 250px;
+  padding: 0.7em 1.4em;
+  color: var(--paper);
+  background: var(--Gradient, var(--ink));
+  border: none;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  font-family: var(--font-alt);
+  font-size: 17px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 0.5em 1.5em -0.5em var(--overlay-heavy);
+    transform: translateY(-2px);
+    text-decoration: none;
+    color: var(--paper);
+  }
+
+  &:active {
+    box-shadow: 0 0.3em 1em -0.5em var(--overlay-heavy);
+    transform: translateY(0);
+  }
+
+  &::after {
+    content: '→';
+    margin-left: 0.5rem;
+  }
+}
+
+.hero-image {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  width: 50%;
+
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+}
+
+.hero-image-mobile {
+  display: none;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 1200px) {
+  .hero-image {
+    display: none;
+  }
+
+  .hero-content {
+    flex: 0 0 100%;
+    text-align: center;
+  }
+
+  .hero-section {
+    min-height: 70vh;
+  }
+
+  .hero-image-mobile {
+    display: block;
+    width: 100%;
+    text-align: center;
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-container {
+    padding: 20px;
+  }
+
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero-btn {
+    margin: 0 auto;
+  }
+
+  .hero-section {
+    min-height: 50vh;
+  }
+}
+// end of hero csection
+
+// About section styles
+.about-container {
+  display: flex;
+  max-width: 1400px; // Matched with speaker section
+  margin: 0 auto; // Darker, semi-transparent background
+  border-radius: var(--radius-xl);
+  background: rgba(0, 0, 0, 0.03);
+  border: 1px solid var(--ink); // Subtle border like speakers section
+  overflow: hidden;
+}
+
+.left-box {
+  flex: 1;
+  padding: 60px;
+  display: flex;
+  align-items: flex-start; // Align text to top
+  justify-content: flex-start;
+}
+
+.left-text {
+  color: var(--ink);
+  font-family: var(--font-main);
+  font-size: 42px;
+  line-height: 1.2;
+  font-weight: 500;
+  text-align: justify;
+  margin: 0;
+  padding-left: 30px;
+}
+
+.divider {
+  width: 1px;
+  background-color: rgba(0, 0, 0, 0.3); // Matching border color
+  margin: 40px 0;
+}
+
+.right-box {
+  flex: 1;
+  padding: 60px;
+  color: var(--ink);
+  font-family: var(--font-main);
+
+  p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 24px;
+    color: var(--ink);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+// Responsive Design
+@media (max-width: 1200px) {
+  .about-container {
+    margin: 30px 20px;
+  }
+
+  .left-box,
+  .right-box {
+    padding: 40px;
+  }
+
+  .left-text {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-container {
+    flex-direction: column;
+  }
+
+  .divider {
+    width: calc(100% - 80px);
+    height: 1px;
+    margin: 0 40px;
+  }
+
+  .left-box {
+    text-align: left;
+    justify-content: left;
+  }
+
+  .left-text {
+    font-size: 32px;
+    padding-left: 0;
+  }
+
+  .right-box {
+    padding-top: 30px;
+  }
+}
+// end home about css
+
+// home speakers - Main Container with Green Border
+.main-container {
+  padding: 40px;
+  border: 1px solid rgba(0, 0, 0, 0.3); // More subtle border
+  border-radius: var(--radius-xl);
+  background-color: rgba(0, 0, 0, 0.03);
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+// Header Row for Title and Button
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+// .section-title is defined twice across the original stylesheet (this
+// one, the speakers-grid title, comes later in source and wins by
+// cascade order over the earlier definition above).
+.section-title {
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0;
+}
+
+// Speakers Grid
+.speakers-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+// Speaker Card
+.speaker-card {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background-color: var(--paper);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.02);
+  }
+
+  // Gradient Overlay
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      180deg,
+      transparent 0%,
+      transparent 50%,
+      rgba(0, 0, 0, 0.7) 80%,
+      rgba(0, 0, 0, 0.9) 100%
+    );
+  }
+}
+
+// Speaker Image
+.speaker-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%);
+}
+
+// Speaker Name
+.speaker-name {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  margin: 0;
+  color: var(--paper);
+  font-weight: 500;
+  font-size: 18px;
+  z-index: 2; // Above the gradient
+}
+
+// Responsive Design
+@media (max-width: 1200px) {
+  .speakers-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .speakers-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .main-container {
+    padding: 20px;
+  }
+
+  .header-row {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .speakers-grid {
+    grid-template-columns: 1fr;
+  }
+}
+// end of speaker design
+
+// Main section styles (current-design pricing section; the earlier,
+// simpler .pricing-section/.pricing-card definitions above win only for
+// the properties they set that this block does not also set)
+.pricing-section {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  background-color: var(--paper);
+  padding: 40px 0;
+  text-align: center;
+}
+
+.pricing-title {
+  font-family: var(--font-main);
+  color: var(--ink);
+  text-align: left;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 90px;
+}
+
+.pricing-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  padding: 0 20px;
+}
+
+// Ticket card styles
+.ticket-card {
+  width: 300px;
+  height: auto;
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+}
+
+.ticket-header {
+  background: var(--ink);
+  color: var(--paper);
+  text-align: center;
+  padding: 15px;
+  font-size: 18px;
+  font-weight: 600;
+  position: relative;
+  margin-bottom: -1px;
+  border-radius: var(--radius-md);
+}
+
+// Creating the ticket shape
+.ticket-content {
+  background: rgba(0, 0, 0, 0.03);
+  padding: 30px 20px;
+  border: 1px solid var(--overlay-strong);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+  flex-grow: 1;
+  box-shadow: 0 0 10px var(--overlay-subtle);
+  border-radius: var(--radius-md);
+}
+
+// Price section
+.price-section {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.from {
+  color: var(--ink);
+  font-size: 14px;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.price {
+  color: var(--ink);
+  font-size: 48px;
+  font-weight: bold;
+}
+
+// Description
+.description {
+  color: var(--ink);
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.5;
+  flex-grow: 1;
+}
+
+// Button styles
+.ticket-button {
+  background: var(--ink);
+  color: var(--paper);
+  border: none;
+  padding: 12px 24px;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: auto;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: var(--surface-hover);
+  }
+}
+
+.arrow {
+  margin-left: 10px;
+}
+
+// Ticket call-to-action. Rendered as an inert span while 2027 sales are not
+// open yet; swap back to an <a class="ticket-cta"> once the pretix link exists.
+.ticket-cta {
+  display: block;
+  width: 100%;
+  margin-top: auto;
+  padding: 12px 24px;
+  border-radius: 25px;
+  background: var(--ink);
+  color: var(--paper);
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    color: var(--paper);
+    text-decoration: none;
+    background: var(--surface-hover);
+  }
+}
+
+.ticket-cta--disabled {
+  background: rgba(0, 0, 0, 0.35);
+  cursor: default;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.35);
+  }
+}
+
+.speakers-placeholder {
+  font-family: var(--font-main);
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: var(--ink);
+  margin: 0;
+  padding: 1rem 0 2rem;
+}
+
+// Responsive adjustments
+@media (max-width: 1300px) {
+  .pricing-container {
+    gap: 20px;
+  }
+
+  .ticket-card {
+    width: calc(50% - 20px);
+    height: 100%;
+  }
+
+  .ticket-content {
+    height: 320px;
+  }
+}
+
+@media (max-width: 768px) {
+  .ticket-card {
+    width: 100%;
+    height: 100%;
+  }
+
+  .ticket-content {
+    height: 320px;
+  }
+
+  .pricing-title {
+    padding-left: 0;
+    text-align: center;
+  }
+}
+// end of ticket css
+
+// home important dates
+.dates-section {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  // background-color: #002800;
+  padding: 40px 0;
+}
+
+.dates-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 40px 40px 90px;
+  border: 1px solid var(--overlay-strong);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 0 10px var(--overlay-subtle);
+}
+
+.dates-title {
+  font-family: var(--font-main);
+  color: var(--ink);
+  font-weight: 700;
+  margin-bottom: 40px;
+  text-align: left; // Aligned to the left
+}
+
+.dates-grid {
+  display: grid;
+  gap: 30px;
+}
+
+.month {
+  display: grid;
+  grid-template-columns: 150px 1fr; // Fixed width for month names
+  gap: 20px;
+  align-items: start;
+
+  h3 {
+    color: var(--ink);
+    font-size: 20px;
+    font-weight: 700;
+    padding-left: 50px;
+    margin: 0; // Remove default margin
+  }
+}
+
+.date-items {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.date-item {
+  color: var(--ink);
+  font-size: 20px;
+  line-height: 1.5;
+  padding-left: 100px;
+}
+
+.date {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.important-dates-link {
+  text-decoration: underline;
+  text-decoration-color: var(--ink);
+}
+
+@media (max-width: 768px) {
+  .dates-container {
+    padding: 20px;
+    margin: 0 20px;
+  }
+
+  .month {
+    grid-template-columns: 1fr; // Stack on mobile
+    gap: 10px;
+
+    h3 {
+      text-align: center;
+      padding-left: 0;
+    }
+  }
+
+  .dates-title {
+    text-align: center;
+  }
+
+  .date-item {
+    padding-left: 0;
+    text-align: center;
+  }
+}
+// end home important dates
+
+// home past event
+.past-editions {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  // background-color: #002800;
+  padding: 40px 0;
+}
+
+.editions-title {
+  text-align: left;
+  font-family: var(--font-main);
+  color: var(--ink);
+  font-weight: 700;
+  margin-bottom: 40px;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 90px;
+}
+
+@media (max-width: 990px) {
+  .editions-title {
+    text-align: center;
+    padding-left: 0;
+  }
+}
+
+.editions-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.grid-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  &.large {
+    grid-column: span 2;
+    aspect-ratio: 16/7.87;
+  }
+
+  &.medium {
+    grid-column: span 2;
+    aspect-ratio: 16/7;
+  }
+
+  &.small {
+    grid-column: span 1;
+    aspect-ratio: 1/1;
+  }
+
+  &.card {
+    grid-column: span 1;
+    aspect-ratio: 1/1;
+  }
+}
+
+.edition-card {
+  background-color: var(--ink);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+
+  h3 {
+    color: var(--paper);
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  p {
+    color: var(--paper);
+    font-size: 16px;
+  }
+}
+
+.edition-card-pointer {
+  top: 0;
+  right: 0;
+  position: absolute;
+  padding-right: 10px;
+  padding-top: 10px;
+}
+
+@media (max-width: 768px) {
+  .editions-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid-item.large,
+  .grid-item.medium {
+    grid-column: span 2;
+  }
+
+  .grid-item.small,
+  .grid-item.card {
+    grid-column: span 1;
+  }
+}
+
+@media (max-width: 480px) {
+  .editions-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .grid-item.large,
+  .grid-item.medium,
+  .grid-item.small,
+  .grid-item.card {
+    grid-column: span 1;
+  }
+}
+// end of past evnet
+
+// home sponsros new css
+.sponsors-section {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  background-color: var(--paper);
+  padding: 40px 0;
+}
+
+.sponsors-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px;
+  border: 1px solid var(--overlay-strong);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 0 10px var(--overlay-subtle);
+}
+
+.sponsors-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.sponsors-title {
+  font-family: var(--font-main);
+  color: var(--ink);
+  font-weight: 700;
+  padding-left: 50px;
+}
+
+@media (max-width: 990px) {
+  .sponsors-title {
+    padding-left: 0;
+  }
+}
+
+.view-all-btn {
+  background: transparent;
+  border: 1px solid var(--ink);
+  color: var(--ink);
+  padding: 8px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: var(--overlay-subtle);
+  }
+}
+
+.view-all-btn-mobile {
+  background: transparent;
+  border: 1px solid var(--ink);
+  color: var(--ink);
+  padding: 8px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  width: 50%;
+  margin: 50px auto 0;
+  display: none;
+  text-decoration: none;
+}
+
+@media (max-width: 990px) {
+  .view-all-btn-mobile {
+    display: block;
+  }
+
+  .view-all-btn {
+    display: none;
+  }
+}
+
+.sponsors-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 0 90px 0 90px;
+}
+
+.sponsors-grid-1 {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 0 90px 0 90px;
+}
+
+@media (max-width: 990px) {
+  .sponsors-grid {
+    text-align: center;
+    padding-left: 0;
+  }
+
+  .sponsors-grid-1 {
+    text-align: center;
+    padding: 0;
+  }
+}
+
+.sponsor-row {
+  display: flex;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+
+.sponsors-categories {
+  color: var(--ink);
+  font-family: var(--font-main);
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin: 0;
+}
+
+.sponsor-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    max-height: 50px;
+    object-fit: contain;
+  }
+}
+
+@media (max-width: 990px) {
+  .sponsor-row {
+    flex-direction: column;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sponsors-container {
+    padding: 20px;
+    margin: 0 20px;
+  }
+
+  .sponsors-header {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+
+  .sponsor-logo img {
+    max-height: 30px;
+  }
+}
+
+// home news page
+.news-title {
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  line-height: 1.2;
+  color: var(--ink);
+  font-weight: 700;
+  margin-bottom: 40px;
+  text-align: left; // Aligned to the left
+}
+
+.logo-normal {
+  max-width: 2000px;
+  height: auto;
+}
+
+.logo-small {
+  max-width: 150px;
+  height: auto;
+}
+
+.news-description.hover {
+}
+
+// dublin css
+.dublin-tips {
+  background: rgba(0, 0, 0, 0.03);
+  border: 1px solid var(--overlay-medium);
+  border-radius: var(--radius-sm);
+  padding: 1.5rem;
+  margin: 2rem 0;
+
+  h3 {
+    color: var(--ink);
+    margin-bottom: 1rem;
+  }
 }

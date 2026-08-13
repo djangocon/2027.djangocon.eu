@@ -1,4 +1,5 @@
 layout: simple
+order: 0
 
 <h1 class="cfp-title">T-Shirts</h1>
 

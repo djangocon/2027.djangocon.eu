@@ -1,103 +1,433 @@
+@use 'variables' as *;
+
 // header
 
-@use 'base';
+// .header-margin {
+//     padding-left: 0;
+//     width: 0
+// }
+//
+// .header-logo-container {
+//     width: auto
+// }
+//
+// .header-logo,
+// .header-logo-container {
+//     padding-left: 0;
+//     padding-right: 0
+// }
 
-.header-margin {
-  width: 0px;
-  padding-left: 1vw;
+// .header {
+//     background: var(--bg-color);
+//     padding: 1rem 0
+// }
+
+// @media (max-width: 768px) {
+//     .header {
+//         padding: 1rem .5rem
+//     }
+// }
+//
+// .header a:hover {
+//     text-decoration: none
+// }
+//
+// .header .dropdown-item:hover {
+//     background-color: var(--light-brown)
+// }
+
+// .header .nav-sm {
+//     display: block;
+//     padding-left: 0;
+//     padding-right: 0
+// }
+
+.header .nav-link {
+  color: var(--accent);
+  font: normal normal bold 16px/19px var(--font-main);
+  text-transform: uppercase;
 }
 
-.header-logo-container {
-  width: auto;
-  padding-left: 50px;
-  padding-right: 0rem;
+.nav-link:focus,
+.navbar-brand:focus,
+.sub-menu-link:focus {
+  outline-color: var(--ink);
 }
 
-.header-logo {
-  padding-left: 0rem;
-  padding-right: 0rem;
+.header .nav-link-lg {
+  display: inline-block;
+  padding: 0 !important;
 }
 
-@media (max-width: 991.98px) {
-  .header-logo {
-    padding-left: 0rem;
-    padding-right: 2rem;
+.header .btn-primary {
+  background: transparent;
+  border: none;
+}
+
+.header .subnav {
+  background: var(--accent);
+}
+
+.header .container-fluid {
+  padding: 0;
+}
+
+.pl-5 {
+  padding-left: 2rem;
+}
+
+// .header .dropdown-menu {
+//     background: var(--dark-brown)
+// }
+
+// .header .dropdown-item {
+//     color: white
+// }
+
+.top-banner {
+  background-color: var(--golden);
+
+  a {
+    color: #003c80;
   }
 }
 
-@media (max-width: 359.98px) {
-  .header-margin {
-    display: none !important;
-  }
-
-  .header-logo {
-    padding-right: 0px;
-  }
+.navbar-toggler {
+  margin-right: 0;
 }
 
-.header {
-  background: base.$BgBlue; //#003C80;
+.sub-menu-link {
+  color: var(--ink);
+  text-align: center;
 
-  @media (max-width: 767.98px) {
-    padding: 1rem 0.5rem;
-  }
-
-  padding: 1rem 0;
-
-  a:hover {
+  &:hover {
+    color: var(--ink);
     text-decoration: none;
   }
+}
 
-  .dropdown-item:hover {
-    background-color: base.$BgBlue;
+.mobile-menu {
+  border: 1px solid var(--ink);
+  border-radius: var(--radius-md);
+  background: var(--paper);
+}
+
+.sub-menu-toggler {
+  color: var(--ink);
+
+  &:hover {
+    background: var(--overlay-subtle);
+    color: var(--ink);
+  }
+
+  &:focus {
+    background: var(--surface-hover);
+    box-shadow: none;
+  }
+}
+
+.sub-menu-link-ul {
+  border: 1px solid var(--ink);
+  border-radius: var(--radius-md);
+}
+
+.sub-menu-link-toggler {
+  padding: 10px 0 10px 0;
+  cursor: pointer;
+
+  &:hover {
+    background: var(--overlay-subtle);
+    color: var(--ink);
+  }
+}
+
+.sub-menu {
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition:
+    height 1s ease,
+    opacity 1s ease;
+
+  &:not(.collapse) {
+    height: auto;
+    opacity: 1;
+  }
+}
+
+// Navbar ticket button: compact black block, not the wide pill used in the hero.
+#navbar-hero-btn.hero-btn {
+  width: auto;
+  min-width: 0;
+  flex: 0 0 auto;
+  padding: 1.15rem 1.1rem;
+  border-radius: 0;
+  font-family: var(--main-font, var(--font-main));
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+
+  &::after {
+    content: none;
+  }
+}
+
+@media (max-width: 1230px) {
+  #navbar-hero-btn {
+    display: none;
+  }
+}
+
+.mobile-navbar-btn {
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 1px 1px var(--accent);
+  }
+}
+
+#collapseNavigation {
+  .nav-link:focus {
+    outline: none;
+    box-shadow: 0 0 1px 1px var(--accent);
+  }
+}
+
+// --- Green-theme header (current design) ---
+
+.header {
+  background-color: var(--paper);
+  padding: 0.5rem 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.header-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+// Logo Styles
+.logo-container {
+  flex: 0 0 auto;
+
+  img {
+    height: 66px;
+    width: auto;
+  }
+}
+
+// Header logo (2027 wordmark) — the source PNG is 1007px wide, so it must be
+// constrained or it pushes the nav into a multi-row wrap.
+.navbar-brand .logo {
+  height: 66px;
+  width: auto;
+  display: block;
+}
+
+.container-fluid.header {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+// Top row of the header: logo left, nav + ticket right, on a single line.
+.header-bar {
+  max-width: 1800px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  gap: 2rem;
+}
+
+@media (max-width: 991px) {
+  .header-bar {
+    padding: 0.75rem 1rem;
+  }
+}
+
+// Navigation container
+.nav-menu-container {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 2rem;
+}
+
+.main-nav {
+  margin: 0 2rem 0 0;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 2.5rem;
+
+  > ul.nav {
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 1.25rem;
+  }
+
+  .nav-item {
+    white-space: nowrap;
+  }
+}
+
+.nav-link {
+  color: var(--ink) !important;
+  font-size: 1rem;
+  padding: 0.5rem 1rem !important;
+  text-decoration: none;
+  transition:
+    color 0.3s ease,
+    background-color 0.3s ease;
+
+  // Dark hover fill needs light text, otherwise the label disappears.
+  &:hover,
+  &:focus {
+    background-color: var(--ink);
+    color: var(--paper) !important;
+    text-decoration: none;
+  }
+}
+
+// Dropdown menu base styles (merged with the "Dropdown styling" and
+// "Ensure dropdown is above other elements" blocks that redefine this
+// selector further down in the original stylesheet)
+.dropdown-menu {
+  background-color: var(--paper);
+  border: 1px solid var(--overlay-medium);
+  border-radius: var(--radius-sm);
+  box-shadow: 0 4px 12px var(--overlay-medium);
+  margin-top: 8px; // overridden from 0.5rem by later "Dropdown styling" rule
+  min-width: 200px;
+  z-index: 1000;
+  position: absolute;
+  left: 0; // Align with parent
+  transform: translateX(-20%); // Center align with parent
+  padding: 8px 0;
+}
+
+// Dropdown item styles (merged with the later "Dropdown items styling" block)
+.dropdown-item {
+  color: var(--ink) !important;
+  padding: 10px 20px;
+  white-space: nowrap;
+  font-size: 15px;
+  transition: all 0.3s ease;
+
+  &:hover,
+  &:focus {
+    background-color: var(--ink);
+    color: var(--paper) !important;
+    text-decoration: none;
+  }
+}
+
+// Mobile Styles
+@media (max-width: 991px) {
+  .header-container {
+    padding: 0 1rem;
+  }
+
+  .logo-container {
+    margin-left: 0; // Reset margin for mobile
+
+    img {
+      height: 45px; // Smaller logo for mobile
+    }
+  }
+
+  .mobile-navbar-btn {
+    color: var(--ink);
+  }
+
+  .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(0, 0, 0, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  }
+
+  .navbar-toggler:focus {
+    box-shadow: 0 0 0 0.15rem var(--ink);
   }
 
   .nav-sm {
-    padding-right: 0rem;
-    padding-left: 0rem;
-    display: block;
-  }
+    flex-direction: column;
+    padding: 1rem 0;
 
-  .nav-link {
-    font: normal normal bold 16px/19px Montserrat;
-  }
-
-  .nav-item-lg {
-    display: contents;
-    padding-left: 2.5rem;
-  }
-
-  .nav-link-lg {
-    display: inline-block;
-    padding-left: 2rem;
-  }
-
-  .btn-primary {
-    background: transparent;
-    border: none;
-  }
-
-  .subnav {
-    background: $DarkBrown; //#863B35;
-  }
-
-  .container-fluid {
-    padding: 0rem;
+    .nav-link {
+      padding: 0.75rem 1rem;
+      text-align: center;
+    }
   }
 
   .dropdown-menu {
-    background: $DarkBrown; //#863B35;
+    background-color: transparent;
+    text-align: center;
   }
 
-  .dropdown-item {
-    color: white;
+  .nav-menu-container {
+    margin-right: 0; // Reset margin for mobile
   }
 }
 
-.top-banner {
-  background-color: base.$BtnGolden;
+// end of header design
 
-  a {
-    color: base.$BgBlue;
+// Dropdown toggle arrow styling
+.dropdown-toggle::after {
+  transition: transform 0.3s ease;
+}
+
+.dropdown-toggle[aria-expanded='true']::after {
+  transform: rotate(180deg);
+}
+
+@keyframes dropdownFade {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
   }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Mobile dropdown adjustments
+@media (max-width: 991px) {
+  .dropdown-menu {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    padding-left: 20px;
+  }
+
+  .dropdown-item {
+    padding: 8px 16px;
+
+    &:hover {
+      transform: translateX(8px);
+    }
+  }
+}
+
+// Active dropdown item state
+.dropdown-item.active,
+.dropdown-item:active {
+  background-color: var(--ink);
+  color: var(--paper) !important;
+}
+
+.dropdown-item:focus {
+  background-color: var(--ink);
+  color: var(--paper) !important;
+  outline-color: var(--ink);
+}
+
+// Dropdown menu positioning
+.nav-item.dropdown {
+  position: relative;
+  align-items: center;
+  display: flex;
 }

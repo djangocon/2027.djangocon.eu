@@ -1,5 +1,6 @@
 title: personal data
 layout: simple
+order: 2
 
 The processing of personal data by DjangoCon Europe 2025 organizers is intended to provide a service of interest to the personal data subject. **The DjangoCon Europe international conference is the specific purpose of why we treat your data.** The information we collect serves to identify you and manage the services provided correctly.
 

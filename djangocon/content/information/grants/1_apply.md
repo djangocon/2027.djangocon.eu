@@ -1,5 +1,6 @@
 title: How to Apply
 layout: simple
+order: 1
 
 Lastly, we know that some of you reading this will need clarification on whether it's proper for you to apply for a grant. That's why we want to stress:
 

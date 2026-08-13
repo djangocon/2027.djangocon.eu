@@ -1,15 +1,14 @@
 type: dark-background
 layout: simple
 title: Announcements
+order: 0
 
 ---
-> Exciting news! 🎉 The grant application for DjangoCon Europe 2025 
-is now open! Don't miss this opportunity to be part of our 
-community. Apply now and join us in Dublin! 🌟
+> DjangoCon Europe 2027 is coming to Innsbruck! 🎉 Planning is under way, and
+announcements about the call for participation, grants and tickets will be
+posted here as they are confirmed. 🌟
 <br>
-<a target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLScKldrk0umXZUR2z5XB-xKU3cOk4Z4nCIYrutOxPH1Tv590_Q/viewform?usp=dialog" class="hero-btn" style="font-weight:600; color: green;">Apply here</a>
-<br>
-_Published: 4th January 2025_
+_Published: TBA_
 ---
 Stay tuned and follow us on X (formerly known as Twitter): <a href="https://twitter.com/djangoconeurope" class="pages-links">@DjangoConEurope</a>!
 

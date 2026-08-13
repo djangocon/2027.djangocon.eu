@@ -1,5 +1,6 @@
 title: selection process
 layout: simple
+order: 2
 
 Reviewing the talks and tutorials submitted to a conference can be daunting—there is much to consider, and usually, there are more great submissions than slots available in the conference schedule.
 

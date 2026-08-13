@@ -1,5 +1,6 @@
 title: Apply Now
 layout: simple
+order: 1
 
 ### Application will soon be opened...
 

@@ -1,5 +1,6 @@
 title: sponsors
 layout: sponsor_page
+order: 0
 
 **Your logo can be here!**
 

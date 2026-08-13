@@ -1,5 +1,6 @@
 title: conditions
 layout: simple
+order: 6
 
 We retain your Personal Data for as long as necessary to provide you with our Services or for other essential purposes such as complying with legal obligations, resolving disputes, and enforcing our agreements.
 

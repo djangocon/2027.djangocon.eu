@@ -1,6 +1,7 @@
 title: for organisers and volunteers
 layout: simple
 class: bg-grey
+order: 1
 
 DjangoCon Europe has a dedicated Code of Conduct Active Response Ensurers (CARE) team, which will generally handle any reports. However, other organizers and volunteers are sometimes the first point of contact or may observe incidents themselves.
 

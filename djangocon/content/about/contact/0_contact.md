@@ -1,5 +1,6 @@
 title: contact
 layout: simple
+order: 0
 
 You are most welcome to get in touch if you have questions.
 

@@ -1,4 +1,5 @@
 layout: simple
+order: 0
 
 <h1 class="cfp-title">Composition</h1>
 First, a warning: all of the following numbers are approximate and may change – we don't know the future, and we may have to adjust to changed circumstances in several ways.

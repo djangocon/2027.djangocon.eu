@@ -1,6 +1,7 @@
 title: reviewing
 layout: simple
 class: bg-grey
+order: 1
 
 <!-- TODO: complete review team -->
 <!-- Our review team comprises 6 people from the organizer team and one from outside. We are a mix of organizers, some core developers and DSF (Django Software Foundation) members, and some Django Girls members/organizers. -->

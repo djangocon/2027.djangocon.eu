@@ -1,5 +1,6 @@
 layout: simple
 <h1 class="cfp-title" >Venue</h1>
+order: 0
 
 **DjangoCon Europe 2025** will be held in Dublin! The capital of the Republic of Ireland, one of Europe’s biggest tech hubs, is a lively city with extraordinarily rich and diverse food, culture, history and art lovers - the number of museums and restaurants can certainly tickle most tastes.
 <!-- The venue is located at the very heart of Vigo, on the seafront, facing the Cíes Islands and Mar de Vigo.
@@ -13,7 +14,7 @@ As per DjangoCon tradition, we shall walk around, chat, laugh and explore the ci
 Prepare to immerse yourself in cutting-edge Django developments, network with fellow professionals, and draw inspiration from the stunning natural beauty that surrounds this exceptional location. Join us for an unforgettable experience at DjangoCon Europe!
 
 <img src="/static/images/venue/venue.png" alt="Venue 1" style="width: 60%; border-radius: 10px;">
-<p style=" font-family:roboto"><em>Photo credit: <a href="https://www.irelandhotels.com/properties.html/talbot-hotel-stillorgan--" style="color:white">Irelandhotels</a></em></p>
+<p style=" font-family:roboto"><em>Photo credit: <a href="https://www.irelandhotels.com/properties.html/talbot-hotel-stillorgan--">Irelandhotels</a></em></p>
 
 <h1 style="font-size:25px" class="cfp-title"><u>TALBOT HOTEL STILLORGAN</u></h1>
 <!-- location  -->

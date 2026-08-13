@@ -1,5 +1,6 @@
 title: for CoC response team
 layout: simple
+order: 2
 
 The Code of Conduct Active Response Ensurers (CARE) handle reports until their completion. Their task is to ensure that all reports are handled timely and professionally. Our CARE team is still in the making—volunteers are welcome.
 

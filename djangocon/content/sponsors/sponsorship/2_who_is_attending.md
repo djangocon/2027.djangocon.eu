@@ -1,5 +1,6 @@
 title: Who is Attending?
 layout: simple
+order: 2
 
 This is a conference for software developers, DevOps, entrepreneurs, marketeers, sprouting new Djangonauts, recruiters and exciting partners working with Python and Django.
 

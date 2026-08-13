@@ -1,36 +1,71 @@
-@import url('https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700&display=swap');
+@use 'variables' as *;
 
-html,
-body {
-  overflow-x: hidden;
+// Single webfont request. This was previously two @import urls that both
+// pulled Lato + Modak, the second merely adding Manrope — the overlap made the
+// browser fetch the same families twice.
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Manrope:wght@200..800&family=Modak&display=swap');
+
+@font-face {
+  font-family: 'Lansdowne Demo';
+  src: url('../fonts/Lansdowne.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
 
-body {
-  font-family: 'Ubuntu', sans-serif;
+@font-face {
+  font-family: 'Landowne Demo1';
+  src: url('../fonts/Lansdowne.otf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
 }
 
 ////////////////////////////////
-//Variables//
+//Alert palette//
 ////////////////////////////////
+// Bootstrap's alert colours. These are semantic status colours specific to
+// alerts and are intentionally not part of the shared design tokens.
 
-$ContentWidth: 71.5rem;
-
-$BgBlue: #003c80;
-$LightBrown: #ac7870;
-$DarkBrown: #86357f;
-$BgGrey: #ededeb;
-$BgLightGrey: #f2f2f0;
-$TxtLightBlue: #8ebef3;
-$BtnGolden: #ffa300;
-
-// Alert colors
-
-$white: #fff;
 $mint-green: #d6e9c6;
-$black: #000;
 $pink: #f2dede;
 $dark-pink: #eed3d7;
-$red: #b94a48;
+$alert-red: #b94a48;
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--paper);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--ink);
+  border-radius: var(--radius-md);
+}
+
+@media (max-width: 1040px) {
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+}
+
+@media (max-width: $bp-md) {
+  ::-webkit-scrollbar {
+    width: 3px;
+    height: 3px;
+  }
+}
+
+body {
+  font-family: var(--font-main);
+  font-weight: var(--weight-normal);
+  background: var(--paper);
+  color: var(--ink);
+  margin: 0;
+  padding: 0;
+}
 
 ////////////////////////////////
 //Alerts//
@@ -40,13 +75,13 @@ $red: #b94a48;
 // debug, info, success, warning, error
 
 .alert-debug {
-  background-color: $white;
+  background-color: var(--paper);
   border-color: $mint-green;
-  color: $black;
+  color: var(--ink);
 }
 
 .alert-error {
   background-color: $pink;
   border-color: $dark-pink;
-  color: $red;
+  color: $alert-red;
 }

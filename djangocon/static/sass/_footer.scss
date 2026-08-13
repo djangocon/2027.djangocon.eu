@@ -1,15 +1,36 @@
+@use 'variables' as *;
+
 //footer
 
-@use 'base';
+footer {
+  background-color: var(--paper);
+  color: var(--ink);
+  text-align: center;
+  padding: 30px 20px;
+  font-size: 0.9rem;
+  margin-top: 50px;
+}
 
-@media (max-width: 575.98px) {
+.footer-link {
+  color: var(--paper) !important;
+  font-size: 1rem;
+  text-decoration: none;
+}
+
+.footer {
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+// --- Green-theme .custom-footer (current design) ---
+
+@media (max-width: 576px) {
   .custom-footer {
-    .footer-social-media-link {
-      .nav-link {
-        width: available;
-        padding: 0.5rem 2.5%;
-      }
+    .footer-social-media-link .nav-link {
+      padding: 0.5rem 2.5%;
+      width: available;
     }
+
     .footer-site-map {
       margin-left: 1rem;
       margin-right: 1rem;
@@ -20,62 +41,130 @@
     }
   }
 }
-@media (max-width: 991.98px) {
-  .custom-footer {
-    .footer-links {
-      text-align: center;
-      align-self: center;
-      align-content: center;
-      justify-content: center !important;
-    }
+
+@media (max-width: 992px) {
+  .custom-footer .footer-links {
+    -ms-flex-item-align: center;
+    -ms-flex-line-pack: center;
+    -webkit-box-pack: center !important;
+    -ms-flex-pack: center !important;
+    align-content: center;
+    align-self: center;
+    justify-content: center !important;
+    text-align: center;
   }
 }
 
+.custom-footer-h1 {
+  color: var(--paper) !important;
+}
+
 .custom-footer {
-  background-color: base.$BgBlue; //#003C80;
-  color: white;
+  background-color: var(--ink);
+  color: var(--paper);
 
   .footer-title {
-    padding-bottom: 1.25rem;
     padding-top: 1.25rem;
+    color: var(--paper);
+    text-align: center;
+    font-weight: 900;
   }
 
   .footer-social-media-link {
     padding: 0.25rem;
-  }
-
-  .footer-end {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    background: $LightBrown; //#AC7870;
-
-    p {
-      @media (min-width: 768px) {
-        width: auto;
-      }
-      margin: 0.125rem;
-      padding: 0rem;
-    }
-    a {
-      color: white;
-      font-weight: bold;
-    }
-  }
-  .footer-links {
-    padding-top: 3.875rem;
-    padding-bottom: 1.1875rem;
-
-    li .nav-link {
-      padding-top: 0.0652rem;
-      padding-bottom: 0.0652rem;
-    }
-  }
-  .footer-social-media-link {
     display: contents;
     width: auto;
   }
-  .footer-site-map {
-    padding-top: 3.1875rem;
-    padding-bottom: 3rem;
+
+  .footer-end {
+    background: var(--ink);
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+
+    p {
+      margin: 0.125rem;
+      padding: 0;
+
+      @media (min-width: 768px) {
+        width: auto;
+      }
+    }
+
+    a {
+      color: var(--paper);
+      font-weight: 700;
+      text-decoration: underline;
+      text-decoration-color: var(--paper);
+    }
   }
+
+  .djangocon-list {
+    ul {
+      margin: 0;
+      padding: 0;
+    }
+
+    li {
+      list-style: none;
+      text-align: center;
+
+      a {
+        text-decoration: none;
+        color: var(--paper);
+      }
+    }
+  }
+
+  .footer-links {
+    padding-bottom: 1.1875rem;
+
+    li .nav-link {
+      padding-bottom: 0.0652rem;
+      padding-top: 0.0652rem;
+    }
+  }
+
+  .footer-site-map {
+    padding-bottom: 3rem;
+    padding-top: 3.1875rem;
+  }
+}
+
+// The source SVGs draw a filled disc with the brand glyph knocked out as
+// transparency, so the circle's background is what shows through the glyph.
+// The artwork is filled black and the circle is light: the disc reads as the
+// light shape and the glyph reads dark, which is maximum contrast against the
+// black footer. (Inverting the CSS alone would not work — a light disc on a
+// light circle would disappear, so the SVG fills are black to match.)
+//
+// The circle itself is fixed: only the glyph inside it scales on hover, so the
+// badge outline stays put. The circle is sized generously against the 33px
+// artwork to leave clear space between the glyph and the border, which also
+// gives the hover scale somewhere to grow into without touching the edge.
+.footer-social-media-link .footer-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.25rem;
+  height: 4.25rem;
+  border-radius: var(--radius-circle);
+  background-color: var(--paper);
+  transition: background-color var(--duration-base) var(--ease-base);
+
+  // Dim the disc slightly on hover so the badge still reacts, while the glyph
+  // scale carries the main feedback.
+  &:hover {
+    background-color: var(--border-subtle);
+  }
+}
+
+.footer-social-media-link img {
+  display: block;
+  width: 1.9rem;
+  height: 1.9rem;
+  transition: transform var(--duration-base) var(--ease-base);
+}
+
+.footer-social-media-link .footer-link:hover img {
+  transform: scale(1.15);
 }

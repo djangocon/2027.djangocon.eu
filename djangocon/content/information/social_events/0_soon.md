@@ -1,5 +1,6 @@
 title: Let's Go Have some fun
 layout: socialevent_page
+order: 0
 
 <style>
    .glow-text {

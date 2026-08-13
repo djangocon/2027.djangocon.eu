@@ -1,0 +1,76 @@
+@use 'variables' as *;
+
+// credits page css
+
+
+.creditlogo {
+  position: relative;
+  right: 135px; // adjust as needed
+  width: 37px;
+  height: 40px;
+  margin-bottom: 20px;
+}
+
+.headtext {
+  color: var(--ink);
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.mainname {
+  font-size: 40px;
+  font-weight: bold;
+  color: var(--ink);
+}
+
+@media (max-width: 768px) {
+  .col-sm-3 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .creditlogo {
+    position: relative;
+    right: 5px; // adjust as needed
+    width: 37px;
+    height: 40px;
+    margin-bottom: 20px;
+  }
+
+  .mainname {
+    font-size: 40px;
+    font-weight: bold;
+    color: var(--ink);
+    text-align: center;
+  }
+
+  .creditsmain {
+    text-align: center;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .col-sm-3 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+
+  .creditlogo {
+    position: relative;
+    right: 5px; // adjust as needed
+    width: 50px; // increased size
+    height: 50px; // increased size
+    margin-bottom: 20px;
+  }
+
+  .mainname {
+    font-size: 24px; // added font size
+    font-weight: bold;
+    color: var(--ink);
+    text-align: center;
+  }
+
+  .creditsmain {
+    text-align: center;
+  }
+}

@@ -12,3 +12,21 @@ services:
     ports:
       - '8000:8000'
     command: /start
+
+  node:
+    build:
+      context: .
+      dockerfile: compose/node/Dockerfile
+    image: djangocon_local_node
+    container_name: djangocon_local_node
+    depends_on:
+      - django
+    volumes:
+      - .:/app:z
+      # http://jdlm.info/articles/2016/03/06/lessons-building-node-app-docker.html
+      - /app/node_modules
+    command: npm run dev
+    ports:
+      - '3000:3000'
+      # Expose browsersync UI: https://www.browsersync.io/docs/options/#option-ui
+      - '3001:3001'

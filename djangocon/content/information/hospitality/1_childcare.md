@@ -1,5 +1,6 @@
 title: Childcare
 layout: simple
+order: 1
 
 Childcare at DjangoCon Europe and tech conferences are essential factors that help folks who otherwise may not be able to attend. We want to make sure that parents feel welcome bringing their children to DjangoCon Europe and that the availability of childcare is not a barrier to attending.
 

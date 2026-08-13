@@ -3,6 +3,7 @@ from os import walk
 # import markdown
 from django.shortcuts import render
 from config.settings.base import APPS_DIR
+from djangocon.site.templatetags.markdown_extras import render_markdown_file
 
 
 def default_view(request, menu="home", submenu=None):
@@ -160,8 +161,16 @@ def default_view(request, menu="home", submenu=None):
         files.extend(filenames)
         break
 
+    def sort_key(f):
+        content = f"{path}/{f}"
+        order = render_markdown_file(content)["meta"].get("order", [None])[0]
+        try:
+            return (0, float(order))
+        except (TypeError, ValueError):
+            return (1, f)
+
     ctx["files"] = {}
-    for f in sorted(files):
+    for f in sorted(files, key=sort_key):
         content = f"{path}/{f}"
         filename = f.replace(".md", "")
         # ctx["files"].append(content)

@@ -1,4 +1,5 @@
 layout: simple
+order: 0
 
 <h1 class="cfp-title" style="color: tomato">Opportunity grants applications are now closed!</h1>
 
