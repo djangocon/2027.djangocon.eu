@@ -1,6 +1,6 @@
 type: dark-background
 layout: composed
-section: 2025 Code of Conduct transparency report
+section: 2027 Code of Conduct transparency report
 order: 1
 
 The [code of conduct team](/conduct/code_of_conduct/) is happy to share that we received no reports of potential code of conduct issues at this year’s DjangoCon Europe!
@@ -29,7 +29,7 @@ This generally meant doing anything we could ahead of the actual conference so o
 
 The way to report code of conduct issues for our teams was set up on our behalf by other organisers: our team email address.
 
-Compared to past years, we didn’t reach out to the DSF Code of Conduct Committee as part of their [support for event organizers](https://github.com/django/code-of-conduct/blob/main/conferences.md). They advise sharing attendee and speaker details with the committee ahead of the event, but like in all past four djangoCon Europe events we decided against it as it seemed too problematic to do so while complying with personal data protection and privacy laws in Ireland. This long-standing issue is tracked in the Django code of conduct issues: [Compliance with privacy laws when working with conferences](https://github.com/django/code-of-conduct/issues/41). As per last year, we would follow the [conference privacy policy](https://2025.djangocon.eu/conduct/privacy_guide/) on how any personal data would be shared with the Django Software Foundation as part of any incident reports:
+Compared to past years, we didn’t reach out to the DSF Code of Conduct Committee as part of their [support for event organizers](https://github.com/django/code-of-conduct/blob/main/conferences.md). They advise sharing attendee and speaker details with the committee ahead of the event, but like in all past four djangoCon Europe events we decided against it as it seemed too problematic to do so while complying with personal data protection and privacy laws in Ireland. This long-standing issue is tracked in the Django code of conduct issues: [Compliance with privacy laws when working with conferences](https://github.com/django/code-of-conduct/issues/41). As per last year, we would follow the [conference privacy policy](https://2027.djangocon.eu/conduct/privacy_guide/) on how any personal data would be shared with the Django Software Foundation as part of any incident reports:
 
 > For code of conduct incident reports handling, we may collect additional information about individuals mentioned in any reports. We may share this information with the [Django Software Foundation Code of Conduct Committee](https://www.djangoproject.com/foundation/committees/#conduct) as needed. View our [Code of Conduct response guidelines](/conduct/response_guide/) for more information.
 
@@ -44,7 +44,7 @@ Out of 35 talks and 27 lightning talks:
 - We reviewed 32 talks and 27 lightning talks without making comments
 - Two had small questionable references
   - One was a line referring to a controversial historical figure quoted from a published paper in a slide which the speaker amended quite quickly. While this could be compatible with our Code of Conduct, we and the speaker felt it would be simpler and equally suitable to use another reference.
-  - The other was a question about a redacted swear word if that was a CoC problem. The Code of Conduct team will bear this in mind to keep swearing to a minimum. Note: This is not a CoC violation, though per the [code of conduct](https://2025.djangocon.eu/conduct/code_of_conduct/) excessive swearing isn’t acceptable.
+  - The other was a question about a redacted swear word if that was a CoC problem. The Code of Conduct team will bear this in mind to keep swearing to a minimum. Note: This is not a CoC violation, though per the [code of conduct](https://2027.djangocon.eu/conduct/code_of_conduct/) excessive swearing isn’t acceptable.
 - 3 talks and 1 lightning talk were cancelled at various stages and therefore no longer relevant for review.
 
 Our highlights from this process are:
@@ -99,6 +99,6 @@ We welcome any feedback, and we would like to thank the DjangoCon Europe communi
 
 We thank the organisers of DjangoCon Europe 2024 and 2023 for their transparency reports, which we followed as a template for this year’s report.
 
-The DjangoCon Europe 2025 Code of Conduct team,
+The DjangoCon Europe 2027 Code of Conduct team,
 
 Sunday Ajayi, Thibaud Colas, Vicky Twomey-Lee (Lead)

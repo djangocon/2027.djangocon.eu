@@ -4,7 +4,7 @@ order: 0
 
 **Your logo can be here!**
 
-Discover the available sponsorship opportunities [here](https://2025.djangocon.eu/sponsors/sponsorship/).
+Discover the available sponsorship opportunities [here](https://2027.djangocon.eu/sponsors/sponsorship/).
 
 <!--
 ##### Gold

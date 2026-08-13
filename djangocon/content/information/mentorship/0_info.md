@@ -4,7 +4,7 @@ order: 0
 
 
 
-Are you an experienced speaker eager to share your knowledge and guide aspiring speakers? Or are you planning to submit a proposal to DjangoCon Europe 2025 and looking for expert advice to craft a standout submission?
+Are you an experienced speaker eager to share your knowledge and guide aspiring speakers? Or are you planning to submit a proposal to DjangoCon Europe 2027 and looking for expert advice to craft a standout submission?
 
 If you answered "yes" to either question, this mentorship program is perfect for you!
 
@@ -51,7 +51,7 @@ This flexible format ensures accessibility while empowering participants to coll
 - **For Mentees:** Gain insights, feedback, and confidence to craft a compelling proposal.
 - **For Mentors:** Share your expertise, inspire new voices, and contribute to a thriving Django community.
 
-Ready to take part? Join the mentorship program today and help make DjangoCon Europe 2025 an event to remember!
+Ready to take part? Join the mentorship program today and help make DjangoCon Europe 2027 an event to remember!
 
 ---
 

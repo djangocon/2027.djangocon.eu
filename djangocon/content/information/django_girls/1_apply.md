@@ -4,7 +4,7 @@ order: 1
 
 ### Application will soon be opened...
 
-<!-- The workshop is **free** of charge. Don't wait too long: you can apply for the workshop only until **May 12th 2025**!
+<!-- The workshop is **free** of charge. Don't wait too long: you can apply for the workshop only until **May 12th 2027**!
 
 Register [HERE](https://djangogirls.org/en/vigo/apply/).
 

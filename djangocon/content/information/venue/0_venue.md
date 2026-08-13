@@ -2,7 +2,7 @@ layout: simple
 <h1 class="cfp-title" >Venue</h1>
 order: 0
 
-**DjangoCon Europe 2025** will be held in Dublin! The capital of the Republic of Ireland, one of Europe’s biggest tech hubs, is a lively city with extraordinarily rich and diverse food, culture, history and art lovers - the number of museums and restaurants can certainly tickle most tastes.
+**DjangoCon Europe 2027** will be held in Dublin! The capital of the Republic of Ireland, one of Europe’s biggest tech hubs, is a lively city with extraordinarily rich and diverse food, culture, history and art lovers - the number of museums and restaurants can certainly tickle most tastes.
 <!-- The venue is located at the very heart of Vigo, on the seafront, facing the Cíes Islands and Mar de Vigo.
 <!--
 **DjangoCon Europe** is thrilled to announce its latest edition will be held in the vibrant city of Vigo, Spain, at the prestigious **Auditorium Mar de Vigo**.
@@ -19,7 +19,7 @@ Prepare to immerse yourself in cutting-edge Django developments, network with fe
 <h1 style="font-size:25px" class="cfp-title"><u>TALBOT HOTEL STILLORGAN</u></h1>
 <!-- location  -->
 
-Discover the vibrant spirit of DjangoCon Europe 2025 at **Talbot Hotel Stillorgan**. Located in Stillorgan, approximately 7km from Dublin's city center and with good transport links to the Silicon Docks business district, this venue combines modern amenities with Irish hospitality. The Talbot Hotel Stillorgan is well-connected to the city via regular public transport and offers convenient access to both Dublin's business areas and cultural attractions. With excellent conference facilities and comfortable accommodations, it provides an ideal setting for DjangoCon Europe 2025.
+Discover the vibrant spirit of DjangoCon Europe 2027 at **Talbot Hotel Stillorgan**. Located in Stillorgan, approximately 7km from Dublin's city center and with good transport links to the Silicon Docks business district, this venue combines modern amenities with Irish hospitality. The Talbot Hotel Stillorgan is well-connected to the city via regular public transport and offers convenient access to both Dublin's business areas and cultural attractions. With excellent conference facilities and comfortable accommodations, it provides an ideal setting for DjangoCon Europe 2027.
 
 <em>
   Talbot Hotel Stillorgan,
@@ -43,13 +43,13 @@ You can find detailed information on how to get to The Talbot Hotel Stillorgan <
 
 <h1 style="font-size:25px" class="cfp-title">By Plane</h1>
 
-<a href="https://www.dublinairport.com/" class="pages-links">Dublin Airport (DUB)</a>.  is a convenient gateway to DjangoCon Europe 2025 at Talbot Hotel Stillorgan. With easy access by car, taxi, or public transport, the venue is well-connected, ensuring a hassle-free journey for attendees.
+<a href="https://www.dublinairport.com/" class="pages-links">Dublin Airport (DUB)</a>.  is a convenient gateway to DjangoCon Europe 2027 at Talbot Hotel Stillorgan. With easy access by car, taxi, or public transport, the venue is well-connected, ensuring a hassle-free journey for attendees.
 
 <!-- Bus -->
 <h1 style="font-size:25px" class="cfp-title">By Bus</h1>
 
 - From Dublin Airport, the <a href="https://www.aircoach.ie/" class="pages-links">Aircoach</a>. 700 stops directly outside the Talbot Hotel on the N11. The journey typically takes 30-40 minutes, depending on traffic, and tickets cost approximately €10-€15. This is a convenient option for a direct connection.
-- <a href="https://www.dublinairport.com/to-from-the-airport/by-bus/dublin-buses" class="pages-links">Dublin Express</a>.offers a direct service from Dublin Airport to Stillorgan, where the DjangoCon Europe 2025 venue (Talbot Hotel Stillorgan) is located. The hotel is situated approximately 7km from Dublin city center. The Aircoach journey takes around 30-40 minutes and costs between €10 to €15, depending on traffic conditions. The hotel is conveniently located on the N11, one of Dublin's major transport routes, with regular bus services connecting to the city center.
+- <a href="https://www.dublinairport.com/to-from-the-airport/by-bus/dublin-buses" class="pages-links">Dublin Express</a>.offers a direct service from Dublin Airport to Stillorgan, where the DjangoCon Europe 2027 venue (Talbot Hotel Stillorgan) is located. The hotel is situated approximately 7km from Dublin city center. The Aircoach journey takes around 30-40 minutes and costs between €10 to €15, depending on traffic conditions. The hotel is conveniently located on the N11, one of Dublin's major transport routes, with regular bus services connecting to the city center.
 
 
 <!-- Taxi -->
@@ -63,7 +63,7 @@ You can find detailed information on how to get to The Talbot Hotel Stillorgan <
 
 <h1 style="font-size:25px" class="cfp-title">By Sea</h1>
 
-For those arriving by sea, Dublin offers excellent connections to the UK and mainland Europe. <a href="http://www.dublinport.ie/" class="pages-links">Dublin Port</a>, located just a short distance from the city center, is the main entry point for ferries. From there, it’s about a 30-minute drive or taxi ride to Talbot Hotel Stillorgan, where DjangoCon Europe 2025 will be held.
+For those arriving by sea, Dublin offers excellent connections to the UK and mainland Europe. <a href="http://www.dublinport.ie/" class="pages-links">Dublin Port</a>, located just a short distance from the city center, is the main entry point for ferries. From there, it’s about a 30-minute drive or taxi ride to Talbot Hotel Stillorgan, where DjangoCon Europe 2027 will be held.
 
 If you're traveling from further afield, <a href="http://rosslareeuroport.irishrail.ie/home/" class="pages-links">Rosslare Harbour</a> , which services ferries to Wales, France, and Spain, is approximately a two-hour drive from Talbot Hotel Stillorgan. With regular ferry routes and convenient access to Dublin’s transport options, arriving by sea is a viable and scenic choice for attendees traveling from Europe.
 
@@ -118,7 +118,7 @@ For any COVID related information in Dublin, please refer to our dedicate <a hre
 
 #### Accessibility
 
-We're dedicated to making our conference accessible to all. Find details and resources here. Need more info or specific accommodations? Contact us at [2025@djangocon.eu](mailto:2025@djangocon.eu).
+We're dedicated to making our conference accessible to all. Find details and resources here. Need more info or specific accommodations? Contact us at [2027@djangocon.eu](mailto:2027@djangocon.eu).
 
 #### Inclusive Conference
 
@@ -131,7 +131,7 @@ We're dedicated to making our conference accessible to all. Find details and res
 
 #### Low Vision or Hard of Hearing
 
-Preferred seating will be provided for attendees who request it. Please [contact](mailto:2025@djangocon.eu) us about any lighting requirements you may have, and we will do our best to meet them.
+Preferred seating will be provided for attendees who request it. Please [contact](mailto:2027@djangocon.eu) us about any lighting requirements you may have, and we will do our best to meet them.
 Creating an inclusive experience is essential! We offer reserved seating for those with visual impairments. Let us know if you have specific lighting, screen display, or assistive technology needs, and we'll do our best to accommodate them.
 
 #### Speaker Talks & Sponsor Expo

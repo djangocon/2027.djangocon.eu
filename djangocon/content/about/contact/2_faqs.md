@@ -12,13 +12,13 @@ For everything concerning ticket kindly check it here <a href="https://pretix.ev
 
 **Do you provide Invitation to aid visa application?**
 Coming soon...
-<!-- The organizers of DjangoCon offer invitation letters to assist with your travel arrangements. Click [here](https://2025.djangocon.eu/information/hospitality/) to request one -->
+<!-- The organizers of DjangoCon offer invitation letters to assist with your travel arrangements. Click [here](https://2027.djangocon.eu/information/hospitality/) to request one -->
 
-**How do I apply for grant for DjangoCon EU 2025**
+**How do I apply for grant for DjangoCon EU 2027**
 Coming soon.
 
 **What do I do if I am refused a visa but still bought tickets**
-Sorry, hopefully that doesn't happen, but if it does send an email to our email here <a href="mailto:2025@djangocon.eu" class="pages-links">2025@djangocon.eu</a>
+Sorry, hopefully that doesn't happen, but if it does send an email to our email here <a href="mailto:2027@djangocon.eu" class="pages-links">2027@djangocon.eu</a>
 and the team will get back you.
 
 **Are there options for virtual participation?**
@@ -40,7 +40,7 @@ Lunch and Coffee breaks are included. Dinners are not included
 **Would all session be recorded, also the once under the workshop**
 
 **My company doesn't allow traveling by plane anymore**
-Vigo has two railway stations: URZAIZ where departs the AVE (Spain's high-speed train), and GUIXAR, located in Areal St., both of them right in the city centre. [Know More](https://2025.djangocon.eu/information/vigo/)
+Vigo has two railway stations: URZAIZ where departs the AVE (Spain's high-speed train), and GUIXAR, located in Areal St., both of them right in the city centre. [Know More](https://2027.djangocon.eu/information/vigo/)
 **What are the accommodation and travel options near the conference venue?**
 
 **Are there any specific COVID-19 guidelines for attendees?**

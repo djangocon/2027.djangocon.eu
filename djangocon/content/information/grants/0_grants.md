@@ -4,7 +4,7 @@ order: 0
 <h1 class="cfp-title" style="color: tomato">Opportunity grants applications are now closed!</h1>
 
 
-**DjangoCon Europe 2025 offers grants so that those who might otherwise not be able to attend won't hesitate to participate.** Some expenses for the conference attendance (which could include travel, hotel, registration, etc) will be covered for opportunity grant recipients.
+**DjangoCon Europe 2027 offers grants so that those who might otherwise not be able to attend won't hesitate to participate.** Some expenses for the conference attendance (which could include travel, hotel, registration, etc) will be covered for opportunity grant recipients.
 
 <!-- <a href="https://docs.google.com/forms/d/e/1FAIpQLScKldrk0umXZUR2z5XB-xKU3cOk4Z4nCIYrutOxPH1Tv590_Q/viewform?usp=dialog" class="hero-btn" style="text-decoration:none; color: white;">Apply here</a> -->
 

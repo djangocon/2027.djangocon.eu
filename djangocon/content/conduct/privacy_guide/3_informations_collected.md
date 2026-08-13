@@ -5,7 +5,7 @@ order: 3
 
 The data subject will provide their consent by confirming several options appropriate for each case, selecting different technical parameters, and completing various fields, which demonstrate the data subject’s positive act and unmistakable willingness to provide personal data.
 
-The DjangoCon Europe 2025 organizers will endeavor to observe the principles of proportionality and necessity by performing a case-by-case analysis, adjusting the need for processing personal data when providing different services. In some cases, only a name and e-mail will be requested. In other cases, like a proposal speaker, more information needs to be collected. We don’t process sensitive data.
+The DjangoCon Europe 2027 organizers will endeavor to observe the principles of proportionality and necessity by performing a case-by-case analysis, adjusting the need for processing personal data when providing different services. In some cases, only a name and e-mail will be requested. In other cases, like a proposal speaker, more information needs to be collected. We don’t process sensitive data.
 
 <hr/>
 
@@ -23,7 +23,7 @@ For handling code of conduct incident reports, we may collect additional informa
 
 If you are a proposal speaker, we will need to collect additional personal data from you. We will also request other information different from your personal data (e.g., a title, description, abstract, profile photo, etc.) when you submit the proposal. This information is essential to selecting the titles and defining the conference program.
 
-DjangoCon Europe 2025 will publicly share the slides from the presentations.
+DjangoCon Europe 2027 will publicly share the slides from the presentations.
 
 <hr/>
 

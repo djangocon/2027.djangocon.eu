@@ -7,7 +7,7 @@ This page contains all information regarding the proposal process for DjangoCon 
 
 The **Call for Proposals (CFP)** is closed now.
 
-It's a new year. What better way to start it than submitting your talk or workshop for **DjangoCon Europe 2025**, in beautiful **Dublin, Ireland?**
+It's a new year. What better way to start it than submitting your talk or workshop for **DjangoCon Europe 2027**, in beautiful **Dublin, Ireland?**
 
 We're looking for talks on technical and non-technical topics accessible to all skill levels and submissions from new and seasoned speakers.
 

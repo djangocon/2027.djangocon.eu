@@ -16,7 +16,7 @@ Stay tuned and follow us on X (formerly known as Twitter): <a href="https://twit
 section: 7 December 2023
 
 
-So, DjangoCon Europe 2025 is back again and it’s going to be 5 full days of talks, tutorials and sprints - from June 5 to 9:
+So, DjangoCon Europe 2027 is back again and it’s going to be 5 full days of talks, tutorials and sprints - from June 5 to 9:
 
 - **Conference talks**: June 5-7 (Wednesday-Friday)
 - **Sprints**: June 8-9 (Saturday and Sunday)
@@ -52,9 +52,9 @@ Your location before and during the event is not significant, since it will be h
 
 We expect new challenges but pledge our hearts and minds to do the best DjangoCon Europe we can, never giving up under these strenuous conditions. Please consider volunteering and join us, we need you!
 
-We hope we'll see you all at DjangoCon Europe 2025, and don't forget to follow us [@DjangoConEurope](https://twitter.com/djangoconeurope) on X, and also join our dedicated [Slack](https://join.slack.com/t/djangoconeurope/shared_invite/zt-340erqj3r-s5ekP4aYz95jv14GZMPCAg) channel.
+We hope we'll see you all at DjangoCon Europe 2027, and don't forget to follow us [@DjangoConEurope](https://twitter.com/djangoconeurope) on X, and also join our dedicated [Slack](https://join.slack.com/t/djangoconeurope/shared_invite/zt-340erqj3r-s5ekP4aYz95jv14GZMPCAg) channel.
 
 Hoping for the best,
-The DjangoCon Europe 2025 Organisers
+The DjangoCon Europe 2027 Organisers
 
 -->

@@ -5,9 +5,9 @@ order: 0
 
 **The Moment You've All Been Waiting For Has Arrived...**
 
-**Unveiling the Exclusive, Must-Have T-shirt of DjangoCon Europe 2025!** Don't let this opportunity slip through your fingers!
+**Unveiling the Exclusive, Must-Have T-shirt of DjangoCon Europe 2027!** Don't let this opportunity slip through your fingers!
 
-At DjangoCon Europe 2025, we're not just about code – we're about making a statement. And what better way to do so than with our official T-shirt? But wait, it gets even better:
+At DjangoCon Europe 2027, we're not just about code – we're about making a statement. And what better way to do so than with our official T-shirt? But wait, it gets even better:
 
 **Eco-Friendly Fashion Forward**: We're committed to the planet as much as we are to Python. Our T-shirts are crafted from 100% organic materials, ensuring you look good while doing good.
 
