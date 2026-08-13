@@ -1,8 +1,8 @@
-<img src="djangocon/static/images/logo/logo.png" height=100 />
+<img src="djangocon/static/images/logo/logo_djceu27.png" height=100 />
 
-🌍 [2025.djangocon.eu](https://2025.djangocon.eu/) \
-📍 Dublin, Ireland \
-📅 April 23-27
+🌍 [2027.djangocon.eu](https://2027.djangocon.eu/) \
+📍 Innsbruck, Austria \
+📅 Date TBD
 
 [![built-with](https://img.shields.io/badge/built%20with-Cookiecutter%20Django-blue.svg)](https://github.com/pydanny/cookiecutter-django/)
 [![code-style](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
@@ -22,6 +22,7 @@ To access the running Django container, use `docker compose exec django /bin/bas
 But please note that currently, `manage.py migrate` doesn't work, you need to use the provided `sqlite3.db`.
 
 ### Using venv
+! WARNING ! - It is highly recommended to use Docker for local development, as the node container will automatically compile change in SCSS (changes made directly to CSS files WILL be overridden by the SCSS compiler). If you want to use venv, you will need to install node and npm on your machine and run `npm run watch` in the `djangocon/static/scss` directory to compile SCSS to CSS.
 
 _optional_ - Create a virtual environment
 
