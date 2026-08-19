@@ -3,13 +3,11 @@ order: 0
 
 <h1 class="cfp-title">code of conduct</h1>
 
-Everybody who participates in DjangoCon Europe in some way must conform to this Code of Conduct (CoC)—attendees, speakers, sponsors, organizers, volunteers, and event staff.
+DjangoCon Europe is committed to providing a safe, inclusive, and respectful environment for everyone who takes part—in person at Congress Innsbruck and Universität Innsbruck, and online.
 
-The organizers will introduce a Code of Conduct team that will be primarily responsible for handling any incidents. The CoC applies before and throughout the event (including related activities such as social events and social media). We have also published our <a href="/conduct/response_guide/" class="pages-links">response guidelines</a>.
+This Code of Conduct applies to all participants: attendees, speakers, sponsors, organizers, volunteers, and staff, without exception and without regard to role or seniority.
 
-The team can be reached at <a href="mailto:conduct@djangocon.eu" class="pages-links">conduct@djangocon.eu</a>.
-
-We thank the DjangoCon Europe 2019 CoC team for the awesome CoC (which we adapted with minor modifications) and the response guidelines (which we have adopted almost unedited from 2018).
+The CARE team is primarily responsible for handling any incidents. The team can be reached at <a href="mailto:conduct@djangocon.eu" class="pages-links">conduct@djangocon.eu</a>. We have also published our <a href="/conduct/response_guide/" class="pages-links">response guidelines</a>.
 
 <hr/>
 
@@ -17,96 +15,133 @@ We thank the DjangoCon Europe 2019 CoC team for the awesome CoC (which we adapte
 
 Our goals with having this Code of Conduct are:
 
-- Helping everyone feel safe and included. Attendees may have had poor experiences at other events or may have been first-timers. We want to set the expectation that harassment and other unpleasant behavior are unacceptable. This way, people with an unpleasant experience know that it is neither the norm nor acceptable to us as a community.
-- Helping to build trust that if an incident is reported, we will not respond with victim blaming and will proceed with a thorough investigation. This will be true even if the incident involves someone in a position of power, for example.
-- Informing everyone of the expected behavior. We are a diverse community, and having a Code of Conduct makes the expectations of everybody's behavior explicit and transparent.
-- Having a framework for report handling (see the <a href="/conduct/response_guide/" class="pages-links">response guidelines</a>). The Code of Conduct is the basis for dealing with a report, assessing whether the CoC was violated, and what action should be taken.
+- To create the psychological safety that lets people from very different backgrounds, companies, and countries work and socialize together.
+- To build trust that reports are taken seriously, investigated thoroughly, and handled without victim-blaming.
+- To make behavioral expectations explicit for a large, international, multilingual community where norms don't travel automatically.
+- To give organizers and the CARE team (defined in the <a href="/conduct/response_guide/" class="pages-links">response guidelines</a>) a clear framework for acting, rather than improvising under pressure.
 
 <hr/>
 
-#### Our Code of Conduct
+#### Expected behavior
 
-We ask each attendant to keep the community in mind and do their best to foster a positive environment.
+We ask each attendant to keep the community in mind and do their best to foster a positive environment:
 
-Behavior that contributes to a positive environment includes:
+- Be kind and considerate to others.
+- Behave professionally, in sessions, at meals, at sponsor booths, and at evening/social events.
+- Use welcoming and inclusive language, mindful that many attendees are not native English speakers.
+- Respect differing viewpoints and experience levels; accept constructive criticism gracefully.
+- Be supportive of newcomers, first-time speakers, and first-time conference attendees generally.
 
-- Being kind and considerate to others
-- Behaving professionally
-- Using welcoming and inclusive language
-- Being respectful of differing viewpoints and experiences
-- Gracefully accepting constructive criticism
-- Being supportive towards newcomers
+<hr/>
 
-We are dedicated to providing a harassment-free conference experience for everyone, regardless of race, ethnicity, culture, national origin, color, immigration status, social and economic class, educational level, sex, sexual orientation, gender identity and expression, age, size, family status, political belief, religion, and mental and physical ability.
+#### Prohibited conduct
 
-We do not tolerate harassment of conference participants in any form. This includes offensive comments related to the categories above, deliberate intimidation, stalking, following, or harassing photography or recording, sustained disruption of talks or other events, violent threats or language, inappropriate physical contact, and unwelcome sexual attention. Advocating for or encouraging any of the above behavior is also not acceptable.
-- Sexual language and imagery are not appropriate for any venue to which the CoC applies.
-Some people may not wish to be filmed or photographed. Respect their wishes, take extra care when publishing pictures, and provide a way to request that they be taken down.
-- Be careful in the words that you choose. Remember that sexist, racist, and other exclusionary jokes can be offensive and unwelcoming to those around you. Excessive swearing and offensive jokes are not appropriate for DjangoCon Europe.
-- Condescending behavior towards people of different knowledge levels, especially beginners, is unacceptable.
-- No one owes anyone any form of interaction or explanation for why they don't want contact. If someone asks you to leave them alone, accept and respect it without further discussion, even if you think it is unwarranted.
+DjangoCon Europe has zero tolerance for harassment based on race, ethnicity, culture, national origin, colour, immigration status, social and economic class, educational level, sex, sexual orientation, gender identity and expression, age, size, family status, political belief, religion, and mental or physical ability. This list is illustrative, not exhaustive—conduct that harasses or excludes on any comparable basis is covered.
+
+Unacceptable behavior includes, without limitation:
+
+- Offensive comments related to any of the above.
+- Intimidation.
+- Stalking or following.
+- Unwelcome or non-consensual photography or recording.
+- Disruption of talks or events.
+- Violent threats or language.
+- Inappropriate physical contact.
+- Unwelcome sexual attention or imagery.
+- Deliberately excluding or "in-joking" someone out of a conversation.
+- Condescension toward less experienced attendees.
 
 <hr/>
 
 #### Where does the Code of Conduct apply?
 
-This Code of Conduct applies to all conference-related spaces. That includes, but is not limited to:
+This Code of Conduct applies:
 
-- The conference's online platform
-- Any conference-related social activities
-- <a href="https://join.slack.com/t/djangoconeurope/shared_invite/zt-340erqj3r-s5ekP4aYz95jv14GZMPCAg" class="pages-links" target="\_blank">Slack</a> channels, tweets with the conference hashtag, and other online media
-- The Code of Conduct does not exclusively apply to events on the conference agenda. For example, if after a scheduled social event, you go to a bar with a group of fellow participants and someone harasses you there, we would still treat that as a CoC violation.
+- At Congress Innsbruck and Universität Innsbruck for the duration of the conference.
+- At all official DjangoCon Europe social events and sprints, on- or off-site, including anywhere alcohol is served.
+- On official online platforms: <a href="https://join.slack.com/t/djangoconeurope/shared_invite/zt-340erqj3r-s5ekP4aYz95jv14GZMPCAg" class="pages-links" target="\_blank">Slack</a>, mailing lists, and the conference app.
+- To social media posts using official conference hashtags.
+- In one-to-one interactions between participants that arise from the conference, even outside these spaces, where the conduct affects another participant's ability to take part safely.
+
+<hr/>
+
+#### Alcohol and social events
+
+Alcohol is served at some DjangoCon Europe social events. This Code of Conduct applies in full at those events.
+
+Organizers will ensure non-alcoholic options are always available, that social events end at a reasonable hour, and that CARE team contact information is visible at every official evening event.
+
+Being intoxicated is never an excuse for violating this Code of Conduct, and CARE may act on a report from a social event exactly as it would from a session room.
 
 <hr/>
 
 #### What can happen if the CoC is violated?
 
-In case of a Code of Conduct violation, some of the most common actions organizers may take are:
+Organizers may take any action they deem appropriate, including:
 
-- Demanding that a participant stop their behavior.
-- Demanding that a participant prevents further contact with other participants.
-- Not publishing the video of a conference talk.
-- Cancelling a conference talk.
-- Removing a participant from the conference without a refund.
-- The action taken is at the discretion of the Code of Conduct team. Just so you know, participants are expected to comply immediately, and further action may be taken if a participant does not comply. A record of all incidents will be kept.
+- Asking someone to stop a specific behavior.
+- Removing someone from an ongoing conversation or space.
+- Withholding or removing talk recordings.
+- Cancelling a talk.
+- Removing someone from the conference without refund and without further warning for serious violations.
+
+Compliance with a request from an organizer or CARE team member is expected immediately.
 
 <hr/>
 
 #### Where to report incidents
 
-If a Code of Conduct incident happens to you, or you witness it happening to someone else, please get in touch with the CoC team immediately, either in <a href="https://join.slack.com/t/djangoconeurope/shared_invite/zt-340erqj3r-s5ekP4aYz95jv14GZMPCAg" target="\_blank" class="pages-links">Slack</a> or by sending an email to <a href="mailto:conduct@djangocon.eu" class="pages-links">conduct@djangocon.eu</a>.
+If you are being harassed, notice someone else being harassed, or have any other concerns, contact the CARE team immediately:
 
-Your report will be treated confidentially and only be discussed with the CoC team.
-
-The team members will be introduced at the conference. Feel free to message any of them anytime to discuss an incident or concern. You can also ask any other staff member to help you find them.
+- **In person**: look for a CARE badge/lanyard at the registration desk and at all official social events, at both the Congress Innsbruck and Universität Innsbruck venues.
+- **By email**: <a href="mailto:conduct@djangocon.eu" class="pages-links">conduct@djangocon.eu</a>
+- **By Slack**: direct message any member of the <a href="https://join.slack.com/t/djangoconeurope/shared_invite/zt-340erqj3r-s5ekP4aYz95jv14GZMPCAg" target="\_blank" class="pages-links">#care-team</a> channel.
+- **Anonymously**: via the anonymous report form linked from the conference website and app. See the <a href="/conduct/response_guide/" class="pages-links">response guidelines</a> for what this covers and its limits.
 
 <hr/>
 
 #### Guidelines for reporting incidents
 
-Please do not feel like you may be a burden to us by reporting incidents, even if you happen to report multiple incidents during the conference. We consider reports an opportunity for us to act: by knowing about an incident, we can act on it and often prevent it from happening again. But if we don't know, we can't take action.
+When you report, it helps—but is never required—to include:
 
-If you need clarification on whether someone else has already reported an incident, even if many people saw it, please report it. Frequently, several people witness an incident, and no one reports it because everyone thought other people would.
+- Your contact information, if you're comfortable sharing it.
+- The names of those involved, if known.
+- When and where it happened.
+- What happened, in as much detail as you're able to give.
+- Any other context.
+- Whether the situation is ongoing.
 
-If you are still determining whether the situation was a Code of Conduct violation or whether it applied to that particular space, we encourage you to report it. We would much rather have a few extra reports where we decide to take no action than miss a report of an actual violation. Unfortunately, we don't look negatively on you if we find the incident is not a violation. Knowing about incidents that are not violations or happen outside our spaces can also help us to improve the Code of Conduct or the processes surrounding it.
+We would much rather receive a few extra reports where we decide, after review, to take no action, than miss a report that needed one.
 
-If you think you witnessed something but are unsure what you saw or don't have proof, it's still very useful to us if you can report on it. You don't have to build up a case before reporting, and it's okay to report things even if you have doubts.
+Reporting will never be held against you, and this Code of Conduct explicitly prohibits retaliation—see below.
 
-In your report, please include, when possible:
+<hr/>
 
-- Your contact info (so we can get in touch with you)
-- Names (real, nicknames, or pseudonyms) of individuals involved. If there were other witnesses besides you, please also try to include them.
-- When and where the incident occurred. Please be as specific as possible.
-- Your account of what occurred. If there is a written record (e.g., tweets or Slack messages), please include screenshots and, if possible, a link.
-- Any extra context relevant to the incident.
-- If this incident is ongoing.
-- Do you have any other information you would like to give us?
+#### Non-retaliation
 
-If you don't have some of this information or not at this time, please still make the report anyway. You can contact us at any time after your report if you want to add, edit, or take back any information you shared.
+Retaliation against anyone who reports an incident in good faith, or who cooperates with a CARE investigation, is itself a Code of Conduct violation and will be treated at least as seriously as the original report. This applies regardless of whether the original report is ultimately upheld.
 
-If you feel unsafe reporting in person, you may choose someone to represent you. In this case, we'd need their contact information, but we'd ask this person to make it clear that they are not reporting in their own name.
+<hr/>
 
-When handling a report, we follow our <a href="/conduct/response_guide/" class="pages-links">response guidelines</a>.
+#### Appeals
+
+Someone found to have violated this Code of Conduct may request that the CARE team reconsider its decision, once, by writing to <a href="mailto:conduct@djangocon.eu" class="pages-links">conduct@djangocon.eu</a> within 14 days of being notified.
+
+A reconsideration will be handled by at least one CARE member who was not involved in the original decision, where the team's size allows it.
+
+<hr/>
+
+#### Confidentiality and local law
+
+Reports are handled in confidence, per the <a href="/conduct/privacy_guide/" class="pages-links">privacy guide</a>.
+
+In situations involving immediate danger, physical violence, or where Austrian law requires it, organizers or CARE may need to involve local authorities (police: 133, or the EU-wide emergency number 112) even without a participant's consent. This will always be the exception, not the default.
+
+<hr/>
+
+#### Acknowledgement
+
+This Code of Conduct draws on the <a href="https://www.djangoproject.com/conduct/" class="pages-links" target="\_blank">Django Software Foundation Code of Conduct</a>, the <a href="https://www.contributor-covenant.org/" class="pages-links" target="\_blank">Contributor Covenant</a>, and prior DjangoCon Europe editions, and is refined for DjangoCon Europe 2027 in Innsbruck.
 
 <hr/>
 
