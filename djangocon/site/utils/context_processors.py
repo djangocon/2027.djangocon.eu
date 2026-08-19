@@ -14,7 +14,7 @@ def links(request):
             "Information": {
                 "dropdown": "true",
                 "submenu": {
-                    "Dublin": "/information/dublin/",
+                    "Innsbruck": "/information/innsbruck/",
                     "Venue": "/information/venue/",
                     "Visa": "/information/visa_guide/",
                     "Grants": "/information/grants/",
