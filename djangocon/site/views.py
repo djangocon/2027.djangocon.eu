@@ -1,208 +1,55 @@
-from os import walk
+from os import listdir
 
-# import markdown
+from django.http import Http404
 from django.shortcuts import render
+
 from config.settings.base import APPS_DIR
 from djangocon.site.templatetags.markdown_extras import render_markdown_file
+from djangocon.site.utils.content import get_sponsors
+
+CONTENT_DIR = APPS_DIR / "content"
+SPONSORS_PAGE = CONTENT_DIR / "sponsors" / "sponsors" / "sponsors.md"
 
 
-def default_view(request, menu="home", submenu=None):
-    sponsors = {
-        "Platinum": [],
-        # Remove Foxley as per request from Luís
-        # "Gold": [
-        #     {
-        #         "name": "Foxley Talent",
-        #         "url": "https://foxleytalent.com/",
-        #         "logo": "images/sponsors/foxley.png",``
-        #         "filter": True,
-        #     },
-        # ],
-        "Gold": [
-            {
-                "name": "MongoDB",
-                "url": "https://www.mongodb.com/",
-                "logo": "images/sponsors/mongodb.svg",
-                "filter": True,
-                "size_class": "logo-small",
-            },
-        ],
-        "Silver": [
-            {
-                "name": "Ambient Digital",
-                "url": "https://ambient.digital/",
-                "logo": "images/sponsors/ambient.svg",
-                "filter": True,
-                "size_class": "logo-small",
-            },
-            {
-                "name": "Caktus Group",
-                "url": "https://www.caktusgroup.com/",
-                "logo": "images/sponsors/caktus-logo.png",
-                "filter": True,
-                "size_class": "logo-small",
-            },
-            {
-                "name": "Monit ",
-                "url": "https://monitdata.com/?lang=en",
-                "logo": "images/sponsors/monit.png",
-                "filter": True,
-                "size_class": "logo-small",
-            },
-            {
-                "name": "89grad",
-                "url": "https://www.89grad.ch/",
-                "logo": "images/sponsors/89grad.png",
-                "filter": False,
-                "size_class": "logo-small",
-            },
-            {
-                "name": "Maykin ",
-                "url": "https://www.maykinmedia.nl/nl/",
-                "logo": "images/sponsors/maykin_logo.png",
-                "filter": True,
-                "size_class": "logo-small",
-            },
-        ],
-        "Bronze": [
-            {
-                "name": "HackSoft",
-                "url": "https://www.hacksoft.io/",
-                "logo": "images/sponsors/hacksoft-logo.png",
-                "filter": True,
-                "size_class": "logo-small",
-            },
-            {
-                "name": "IT-Schulungen",
-                "url": "https://www.it-schulungen.com/",
-                "logo": "images/sponsors/it-schulungen.png",
-                "filter": False,
-                "size_class": "logo-small",
-            },
-            {
-                "name": "Sentry",
-                "url": "https://sentry.io/",
-                "logo": "images/sponsors/sentry.svg",
-                "filter": True,
-                "size_class": "logo-small",
-            },
-            {
-                "name": "Hamilton Rock",
-                "url": "https://hamiltonrock.com",
-                "logo": "images/sponsors/hamilton.png",
-                "filter": True,
-                "size_class": "logo-small",
-            },
-            {
-                "name": "Divio",
-                "url": "https://www.divio.com/",
-                "logo": "images/sponsors/divio.png",
-                "filter": True,
-                "size_class": "logo-small",
-            },
-            {
-                "name": "Lincoln Loop",
-                "url": "https://lincolnloop.com/",
-                "logo": "images/sponsors/lincoln.png",
-                "filter": True,
-                "size_class": "logo-normal",
-            },
-        ],
-        "Sponsor": [],
-        "Grants": [
-            {
-                "name": "Django Software Foundation",
-                "url": "https://www.djangoproject.com/foundation/",
-                "logo": "images/sponsors/dsf.png",
-                "filter": False,
-                "size_class": "logo-small",
-            },
-            {
-                "name": "Python  Software Foundation",
-                "url": "https://www.python.org/psf-landing/",
-                "logo": "images/sponsors/psf-white.png",
-                "filter": False,
-                "size_class": "logo-normal",
-            },
-            {
-                "name": "EuroPython Society",
-                "url": "https://www.europython-society.org/about/",
-                "logo": "images/sponsors/eps-white.png",
-                "filter": False,
-                "size_class": "logo-normal",
-            },
-            {
-                "name": "University of Porto",
-                "url": "https://www.up.pt/",
-                "logo": "images/sponsors/uporto.png",
-                "filter": False,
-                "size_class": "logo-normal",
-            },
-        ],
-        "Organizer": [
-            {
-                "name": "Ad Evolutio",
-                "url": "https://www.evolutio.pt/",
-                "logo": "images/sponsors/evolutio.png",
-                "filter": True,
-                "size_class": "logo-normal",
-            }
-        ],
-    }
+def _page_files(directory):
+    """Content files in `directory`, ordered by their `order:` metadata then name."""
+    if not directory.is_dir():
+        return {}
 
-    # speakers
-
-    path = APPS_DIR.__str__() + "/content/" + menu + ("/" + submenu if submenu else "")
-    page = ""
-    ctx = dict(menu=(menu if not submenu else submenu).capitalize().replace("_", " "))
-    files = []
-
-    for dirpath, dirname, filenames in walk(path):
-        files.extend(filenames)
-        break
-
-    def sort_key(f):
-        content = f"{path}/{f}"
-        order = render_markdown_file(content)["meta"].get("order", [None])[0]
+    def sort_key(name):
+        order = render_markdown_file(directory / name)["meta"].get("order", [None])[0]
         try:
             return (0, float(order))
         except (TypeError, ValueError):
-            return (1, f)
+            return (1, name)
 
-    ctx["files"] = {}
-    for f in sorted(files, key=sort_key):
-        content = f"{path}/{f}"
-        filename = f.replace(".md", "")
-        # ctx["files"].append(content)
-        ctx["files"][filename] = content
+    names = sorted(
+        (f for f in listdir(directory) if f.endswith(".md")),
+        key=sort_key,
+    )
+    return {name.removesuffix(".md"): directory / name for name in names}
+
+
+def default_view(request, menu="home", submenu=None):
+    directory = CONTENT_DIR / menu / submenu if submenu else CONTENT_DIR / menu
+    files = _page_files(directory)
+
+    ctx = {
+        "menu": (submenu or menu).replace("_", " ").title(),
+        "files": files,
+    }
 
     if menu == "home":
-        page += "pages/" + menu
-        # ctx["files"].append(
-        #     f"{APPS_DIR.__str__()}/content/sponsors/sponsors/sponsors.md"
-        # )
-        ctx["files"][
-            menu] = f"{APPS_DIR.__str__()}/content/sponsors/sponsors/sponsors.md"
-
-        ctx["sponsors"] = {
-            category: sponsors_list
-            for category, sponsors_list in sponsors.items()
-            if sponsors_list
-        }
+        template = "pages/home.html"
+        ctx["files"]["home"] = SPONSORS_PAGE
+        ctx["sponsors"] = get_sponsors()
     elif menu == "sponsors" and submenu == "sponsors":
-        # Sponsors page logic: Load sponsors.md with sponsor_page layout
-        page += "modules/sponsor_page"
-        sponsors_file_path = (
-            f"{APPS_DIR.__str__()}/content/sponsors/sponsors/sponsors.md"
-        )
-        ctx["sponsors"] = {
-            category: sponsors_list
-            for category, sponsors_list in sponsors.items()
-            if sponsors_list
-        }
-    elif len(files) == 0:
-        page += "404"
+        template = "modules/sponsor_page.html"
+        ctx["sponsors"] = get_sponsors()
+        ctx["content"] = render_markdown_file(SPONSORS_PAGE)
+    elif not files:
+        raise Http404(f"No content for /{menu}/")
     else:
-        page += "pages/" + "default"
+        template = "pages/default.html"
 
-    return render(request, page + ".html", ctx)
+    return render(request, template, ctx)

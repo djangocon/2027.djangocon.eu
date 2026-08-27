@@ -1,0 +1,15 @@
+[tool.ruff]
+line-length = 119
+target-version = "py313"
+extend-exclude = ["node_modules", "staticfiles"]
+
+[tool.ruff.lint]
+# E/W pycodestyle, F pyflakes, I isort, UP pyupgrade, B bugbear, DJ django
+select = ["E", "W", "F", "I", "UP", "B", "DJ"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["djangocon", "config"]
+
+[tool.djlint]
+profile = "django"
+indent = 2

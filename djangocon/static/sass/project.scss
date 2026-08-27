@@ -6,6 +6,10 @@
 // block is emitted a single time. (With @import it was duplicated into every
 // partial.)
 
+// Bootstrap is compiled in here rather than pulled from a CDN, so the site
+// ships one version of it and makes no third-party requests.
+@use 'bootstrap';
+
 @use 'base';
 @use 'header';
 @use 'footer';

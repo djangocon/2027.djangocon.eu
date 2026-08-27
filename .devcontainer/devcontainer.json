@@ -1,7 +1,7 @@
 // For format details, see https://containers.dev/implementors/json_reference/
 {
   "name": "cookie_cutter_dev",
-  "dockerComposeFile": ["../local.yml"],
+  "dockerComposeFile": ["../compose.yml"],
   "init": true,
   "mounts": [
     {

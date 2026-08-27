@@ -1,0 +1,4 @@
+// Bootstrap, compiled from node_modules so the site serves a single version
+// of it with no CDN request. Narrow this @forward list to the components the
+// templates actually use if the CSS bundle needs trimming.
+@forward 'bootstrap/scss/bootstrap';

@@ -16,12 +16,12 @@
         <nav class="nav d-none d-lg-flex main-nav">
             <ul class="nav">
                 {% for menu, menu_dict in site_menu.items %}
-                    {% if menu_dict.dropdown == 'false' %}
+                    {% if not menu_dict.dropdown %}
                         <li class="nav-item">
                             <a class="nav-link" href="{{ menu_dict.href }}">{{ menu }}</a>
                         </li>
                     {% endif %}
-                    {% if menu_dict.dropdown == 'true' %}
+                    {% if menu_dict.dropdown %}
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle sub-menu-toggler" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ menu }}</a>
                             <ul class="dropdown-menu">
@@ -34,7 +34,7 @@
                 {% endfor %}
             </ul>
             <!-- Tickets Button -->
-            <a href="https://pretix.evolutio.pt/evolutio/djceu2025/" class="hero-btn" id="navbar-hero-btn">Tickets</a>
+            <a href="https://pretix.evolutio.pt/evolutio/djceu2027/" class="hero-btn" id="navbar-hero-btn">Tickets</a>
         </nav>
     </div>
 
@@ -43,7 +43,7 @@
         <ul class="list-unstyled p-3 mobile-menu">
             {% for menu, menu_dict in site_menu.items %}
                 <li class="mobile-menu-item">
-                    {% if menu_dict.dropdown == 'true' %}
+                    {% if menu_dict.dropdown %}
                         <!-- Dropdown Menu -->
                         <button class="btn w-100 d-flex justify-content-center align-items-center sub-menu-toggler">
                             <span>{{ menu }}</span>

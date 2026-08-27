@@ -5,7 +5,7 @@
     "@popperjs/core": "^2.10.2",
     "alpinejs": "^3.14.9",
     "autoprefixer": "^10.4.0",
-    "bootstrap": "^5.2.3",
+    "bootstrap": "^5.3.8",
     "browser-sync": "^3.0.2",
     "cssnano": "^8.0.1",
     "gulp": "^5.0.0",
@@ -22,7 +22,7 @@
     "svgo": "^4.0.2"
   },
   "engines": {
-    "node": "26.5"
+    "node": ">=22"
   },
   "browserslist": [
     "last 2 versions"

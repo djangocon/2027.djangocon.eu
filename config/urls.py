@@ -1,5 +1,4 @@
 from django.conf import settings
-from django.conf.urls.static import static
 from django.urls import include, path
 from django.views import defaults as default_views
 
@@ -10,7 +9,6 @@ urlpatterns = [
     path("<slug:menu>/", default_view),
     path("<slug:menu>/<slug:submenu>/", default_view),
 ]
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
     # This allows the error pages to be debugged during development, just visit

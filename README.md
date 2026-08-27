@@ -5,7 +5,7 @@
 📅 Date TBD
 
 [![built-with](https://img.shields.io/badge/built%20with-Cookiecutter%20Django-blue.svg)](https://github.com/pydanny/cookiecutter-django/)
-[![code-style](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
+[![code-style](https://img.shields.io/badge/code%20style-ruff-261230.svg)](https://github.com/astral-sh/ruff)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)]()
 
 ## Local Development
@@ -19,43 +19,59 @@ docker compose up
 ```
 
 To access the running Django container, use `docker compose exec django /bin/bash`.
-But please note that currently, `manage.py migrate` doesn't work, you need to use the provided `sqlite3.db`.
+
+The site has no database and no models: every page is rendered from the Markdown
+files in `djangocon/content/`. There is nothing to migrate.
 
 ### Using venv
-! WARNING ! - It is highly recommended to use Docker for local development, as the node container will automatically compile change in SCSS (changes made directly to CSS files WILL be overridden by the SCSS compiler). If you want to use venv, you will need to install node and npm on your machine and run `npm run watch` in the `djangocon/static/scss` directory to compile SCSS to CSS.
+
+! WARNING ! - Docker is recommended for local development, as the node container
+compiles SCSS automatically (edits made directly to the CSS files WILL be
+overwritten by the compiler). Using venv means installing node and npm yourself
+and running `npm run dev` to watch and compile SCSS.
+
+Requires Python 3.10 or newer (Django 5.2 LTS).
 
 _optional_ - Create a virtual environment
 
 ```bash
 python -m venv env
+source env/bin/activate
 ```
 
 install requirements:
 
 ```bash
-
-> pip install -r requirements/[ local | production ].txt
+pip install -r requirements/local.txt   # or production.txt
 ```
 
 
 
-### Database seed (`sqlite3.db`)
+## Editing site content
 
-After setting up the Django project,
-point your local settings to the pre-populated SQLite database by appending the following to `config/settings/local.py`:
+No Python needed for any of this.
 
-```python
-import os
+**Page text** lives in `djangocon/content/<section>/<page>/*.md`. Each file starts
+with a small metadata block:
 
-# Database
-# https://docs.djangoproject.com/en/1.9/ref/settings/#databases
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
-    }
-}
 ```
+title: Grant Status
+layout: simple
+order: 2
+```
+
+`order` sets the position on the page, and `layout` picks a template from
+`djangocon/templates/modules/`. A layout name that doesn't exist falls back to
+`simple` rather than breaking the page. Adding a `.md` file to a folder adds a
+section to that page.
+
+**Sponsors** live in `djangocon/content/sponsors.json`, grouped by tier. Copy an
+existing entry to add one. Empty tiers are hidden automatically. Set `filter` to
+`true` when a dark logo needs inverting to white.
+
+**The menu** lives in `djangocon/content/navigation.json`. Submenu URLs must match
+a folder under `content/` and end with a trailing slash. To hide an item without
+deleting it, move it into the `_disabled` block.
 
 ## Code of Conduct
 

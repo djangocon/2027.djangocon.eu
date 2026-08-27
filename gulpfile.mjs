@@ -32,11 +32,14 @@ function pathsConfig() {
 
   return {
     vendorsJs: [
-      `${vendorsRoot}/@popperjs/core/dist/umd/popper.js`,
+      // bootstrap.bundle already contains Popper, so Popper is not listed
+      // separately — including both would register two instances.
+      `${vendorsRoot}/bootstrap/dist/js/bootstrap.bundle.js`,
       // alpine's cdn.js lacks a trailing semicolon — keep it LAST in the
       // concat or it swallows the next file's IIFE as a call expression
       `${vendorsRoot}/alpinejs/dist/cdn.js`,
     ],
+    vendorsRoot,
     app: appName,
     templates: `${appName}/templates`,
     css: `${appName}/static/css`,
@@ -60,14 +63,16 @@ function styles() {
   ];
 
   const minifyCss = [
-    cssnano({ preset: 'default' }), // minify result
+    // svgo is disabled: it cannot parse Bootstrap's URL-encoded inline SVG
+    // icons and logs a parser error for each one. Everything else still runs.
+    cssnano({ preset: ['default', { svgo: false }] }), // minify result
   ];
 
   return src(`${paths.sass}/project.scss`)
     .pipe(
       sass({
         importer: tildeImporter,
-        includePaths: [paths.sass],
+        includePaths: [paths.sass, paths.vendorsRoot],
       }).on('error', sass.logError),
     )
     .pipe(plumber()) // Checks for errors

@@ -4,8 +4,8 @@ order: 2
 
 These are some frequently asked questions, kindly contact us for further assistance if you can't find the answers to your questions here.
 
-**Do I need a visa to Dublin Ireland?**
-This will depend on the country you will be coming from. Some countries don't need a visa to enter Ireland, but others do. You can find out if you need a visa to enter Ireland using this link. If your country is part of the list provided in the link below, then you need a visa to visit Ireland. If you don't find your country, then you don't need a visa. Check it <a href="https://www.citizensinformation.ie/en/moving-country/visas-for-ireland/visa-requirements-for-entering-ireland/" class="pages-links">here</a>.
+**Do I need a visa to Innsbruck Austria?**
+This will depend on the country you will be coming from. Some countries don't need a visa to enter Austria, but others do. You can find out if you need a visa to enter Austria using this link. If your country is part of the list provided in the link below, then you need a visa to visit Austria. If you don't find your country, then you don't need a visa. Check it <a href="https://www.citizensinformation.ie/en/moving-country/visas-for-ireland/visa-requirements-for-entering-ireland/" class="pages-links">here</a>.
 
 **What are the ticket prices for DjangoCon Europe?**
 For everything concerning ticket kindly check it here <a href="https://pretix.evolutio.pt/evolutio/djceu2025/" class="pages-links">Tickets</a>
@@ -28,8 +28,8 @@ get the virtual ticket here <a href="https://pretix.evolutio.pt/evolutio/djceu20
 **Where is the exact venue for the event**
 The venue is located in the heart of Dublin, at Talbot Hotel Stillorgan, a prime spot with convenient access to the city and surrounding areas. To learn more about reaching the venue, visit this <a href="../../information/venue" class="pages-links">page</a>.
 
-**How do I get to Dublin?**
-Kindly check this <a href="../../../information/dublin" class="pages-links">page</a>, it should answer all your questions.
+**How do I get to Innsbruck?**
+Kindly check this <a href="../../../information/innsbruck" class="pages-links">page</a>, it should answer all your questions.
 
 **Will there be breakfast, lunch and dinner?**
 Lunch and Coffee breaks are included. Dinners are not included

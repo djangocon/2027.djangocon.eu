@@ -5,12 +5,8 @@
   <div class="container-fluid sponsors py-5">
     <div class="container">
       <div class="title-container_sponsor">
-        <!-- sponsor texts -->
-        <h1 class="cfp-title">Sponsors</h1>
-        <p style="font-size: 18px">
-          <span style="font-weight: bold">Your logo can be here!</span> Discover
-          the available sponsorship opportunities here.
-        </p>
+        <h1 class="cfp-title">{{ content.meta.title.0|title }}</h1>
+        {{ content.html|safe }}
       </div>
 
       <div style="padding: 40px 0">
@@ -19,7 +15,7 @@
             <p class="sponsors-categories">{{ category }}</p>
             <div class="sponsor-row">
               {% for sponsor in sponsors_list %}
-                <a href="{{ sponsor.url }}" target="_blank" class="sponsor-logo">
+                <a href="{{ sponsor.url }}" target="_blank" rel="noopener" class="sponsor-logo">
                   <img src="{% static sponsor.logo %}" alt="{{ sponsor.name }}"
                        {% if sponsor.filter %}style="filter: brightness(0) invert(1)" {% endif %}>
                 </a>
