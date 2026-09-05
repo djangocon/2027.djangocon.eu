@@ -43,9 +43,12 @@
 
   {# Sets the theme before first paint so there's no light->dark flash; #}
   {# project.js only needs to handle the toggle click from here on. #}
+  {# Default follows the OS preference; a toggle choice is remembered. #}
+  <meta name="color-scheme" content="light dark"/>
   <script>
     (function () {
-      var stored = localStorage.getItem('theme');
+      var stored = null;
+      try { stored = localStorage.getItem('theme'); } catch (e) {}
       var theme = stored || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
       document.documentElement.setAttribute('data-theme', theme);
     })();

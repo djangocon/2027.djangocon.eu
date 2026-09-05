@@ -1,4 +1,7 @@
-<img src="djangocon/static/images/logo/logo_djceu27.svg" height=100 />
+<picture>
+  <source media="(prefers-color-scheme: light)" srcset="djangocon/static/images/logo/logo_djceu27_light.svg">
+  <img src="djangocon/static/images/logo/logo_djceu27.svg" height="100" alt="DjangoCon Europe 2027 Innsbruck">
+</picture>
 
 🌍 [2027.djangocon.eu](https://2027.djangocon.eu/) \
 📍 Innsbruck, Austria \

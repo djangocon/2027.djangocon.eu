@@ -1124,9 +1124,28 @@ object[type='application/pdf'] {
 }
 
 // Hero section: centered headline over a full-width mountain-silhouette band.
+//
+// Parallax model — two depth layers driven by the page scroll:
+//   * The copy (.hero-container) is the FAR layer. It scrolls at roughly half
+//     the page speed and fades, so it recedes into the distance.
+//   * The mountain (.hero-mountain) is the NEAR layer. It stays in normal flow
+//     (full page speed) and swells slightly from its base, so it overtakes the
+//     copy and slides up over it as you scroll. Keeping it in flow means the
+//     section below it never sees a gap, which a translated mountain would
+//     leave behind.
+// On load the silhouette also slides in from below (hero-mountain-in).
+//
+// The scroll coupling is CSS-only where scroll-driven animations exist
+// (animation-timeline: scroll()); project.js provides the same motion via
+// custom properties for browsers without them. Reduced-motion users get the
+// static layout.
 .hero-section {
   width: 100%;
   padding-top: 3rem;
+  position: relative;
+  // `clip`, not `hidden`: hidden would make the section a scroll container,
+  // which is what an unqualified scroll() timeline would then attach to.
+  overflow: clip; // the mountain scale bleeds a little past the edges
 }
 
 .hero-container {
@@ -1134,32 +1153,70 @@ object[type='application/pdf'] {
   margin: 0 auto;
   padding: 0 2rem;
   text-align: center;
-  // Pinned at its resting position (top matches .hero-section's padding-top)
-  // while the page scrolls through the mountain runway, so mid-scroll never
-  // shows a blank band between departed copy and the pinned mountain. The
-  // mountain div comes later in the DOM, so on release it rides up over the
-  // copy and covers it.
-  position: sticky;
-  top: 3rem;
+  position: relative;
+  z-index: 1;
+  // --hero-p is the scroll progress (0 → 1 across the first ~70vh). It is
+  // set by project.js only in browsers without scroll-driven animations; the
+  // @supports block below overrides the transform/opacity with a timeline.
+  transform: translate3d(0, calc(var(--hero-p, 0) * 45vh), 0);
+  opacity: calc(1 - var(--hero-p, 0));
+  will-change: transform, opacity;
 }
 
-// Progressive enhancement: browsers with scroll-driven animations gently
-// fade and lift the pinned copy over the first 60vh of scroll, so it hands
-// the stage to the mountain instead of sitting frozen. Elsewhere the copy
-// just stays pinned until the mountain slides over it — fine, only less
-// theatrical.
+.hero-mountain {
+  width: 100%;
+  margin-top: 2rem;
+  line-height: 0;
+  position: relative;
+  z-index: 2;
+  transform-origin: 50% 100%;
+  transform: scale(calc(1 + var(--hero-p, 0) * 0.08));
+  will-change: transform;
+}
+
 @supports (animation-timeline: scroll()) {
   .hero-container {
+    transform: none;
+    opacity: 1;
     animation: hero-copy-away linear both;
-    animation-timeline: scroll();
-    animation-range: 0 60vh;
+    animation-timeline: scroll(root);
+    animation-range: 0 70vh;
+  }
+
+  .hero-mountain {
+    transform: none;
+    animation: hero-mountain-near linear both;
+    animation-timeline: scroll(root);
+    animation-range: 0 70vh;
   }
 }
 
+// Far layer: lags the page by ~45vh over the 70vh range (≈0.35× page speed).
 @keyframes hero-copy-away {
   to {
     opacity: 0;
-    transform: translateY(-2rem);
+    transform: translate3d(0, 45vh, 0);
+  }
+}
+
+// Near layer: grows from its base so the ridge line climbs faster than the
+// page and reads as closer to the viewer.
+@keyframes hero-mountain-near {
+  to {
+    transform: scale(1.08);
+  }
+}
+
+// Entrance: the silhouette rises into place on first paint.
+@keyframes hero-mountain-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 14%, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
   }
 }
 
@@ -1185,28 +1242,14 @@ object[type='application/pdf'] {
   display: block;
 }
 
-// The mountain art is two flat silhouette PNGs (black on transparent for
-// light mode, white on transparent for dark) — only one is ever shown.
-// Sticky + the 50vh margin-top is the parallax: the band's flow position is
-// pushed 50vh below the hero copy, so `bottom: 0` keeps it pinned to the
-// viewport bottom while the copy scrolls up behind it. Its flow position is
-// the very end of .hero-section, so it only lets go when the next section
-// ("Run by the community") reaches the viewport bottom and pushes it up.
-// The space has to sit ABOVE the mountain (margin-top), not below it as
-// section padding — space below would move its flow position up and make
-// it release 50vh early, leaving a blank gap before About.
-.hero-mountain {
-  width: 100%;
-  margin-top: 50vh;
-  line-height: 0;
-  position: sticky;
-  bottom: 0;
-}
-
+// The mountain art is two flat silhouette PNGs (one per theme) — only one is
+// ever shown. The entrance animation lives on the <img> rather than the
+// wrapper so it doesn't fight the wrapper's scroll-driven transform.
 .hero-mountain-img {
   width: 100%;
   height: auto;
   display: none;
+  animation: hero-mountain-in 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
 }
 
 .hero-mountain-img--light {
@@ -1220,6 +1263,16 @@ object[type='application/pdf'] {
 
   .hero-mountain-img--dark {
     display: block;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-container,
+  .hero-mountain,
+  .hero-mountain-img {
+    animation: none;
+    transform: none;
+    opacity: 1;
   }
 }
 
@@ -1282,7 +1335,7 @@ object[type='application/pdf'] {
   }
 
   .hero-mountain {
-    margin-top: 20vh;
+    margin-top: 1rem;
   }
 }
 // end of hero section

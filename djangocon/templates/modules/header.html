@@ -4,8 +4,9 @@
     <div class="d-flex justify-content-between align-items-center header-bar">
         <!-- Logo -->
         <a class="navbar-brand" href="{{ home }}">
-            <img src="{% static 'images/logo/logo_djceu27.svg' %}" alt="DjangoCon.eu Innsbruck 2027" class="logo logo--light">
-            <img src="{% static 'images/logo/logo_djceu27_dark.svg' %}" alt="DjangoCon.eu Innsbruck 2027" class="logo logo--dark">
+            {# logo_djceu27.svg is the base (dark-theme) logo; _light is the variant for the light palette. #}
+            <img src="{% static 'images/logo/logo_djceu27.svg' %}" alt="DjangoCon.eu Innsbruck 2027" class="logo logo--dark">
+            <img src="{% static 'images/logo/logo_djceu27_light.svg' %}" alt="DjangoCon.eu Innsbruck 2027" class="logo logo--light">
         </a>
 
         <!-- Hamburger Menu Button -->

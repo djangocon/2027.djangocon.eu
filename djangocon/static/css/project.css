@@ -16649,6 +16649,8 @@ h2 {
 .hero-section {
   width: 100%;
   padding-top: 3rem;
+  position: relative;
+  overflow: clip;
 }
 
 .hero-container {
@@ -16656,30 +16658,94 @@ h2 {
   margin: 0 auto;
   padding: 0 2rem;
   text-align: center;
-  position: sticky;
-  top: 3rem;
+  position: relative;
+  z-index: 1;
+  -webkit-transform: translate3d(0, calc(var(--hero-p, 0) * 45vh), 0);
+          transform: translate3d(0, calc(var(--hero-p, 0) * 45vh), 0);
+  opacity: calc(1 - var(--hero-p, 0));
+  will-change: transform, opacity;
+}
+
+.hero-mountain {
+  width: 100%;
+  margin-top: 2rem;
+  line-height: 0;
+  position: relative;
+  z-index: 2;
+  -webkit-transform-origin: 50% 100%;
+          transform-origin: 50% 100%;
+  -webkit-transform: scale(calc(1 + var(--hero-p, 0) * 0.08));
+          transform: scale(calc(1 + var(--hero-p, 0) * 0.08));
+  will-change: transform;
 }
 
 @supports (animation-timeline: scroll()) {
   .hero-container {
+    -webkit-transform: none;
+            transform: none;
+    opacity: 1;
     -webkit-animation: hero-copy-away linear both;
             animation: hero-copy-away linear both;
-    animation-timeline: scroll();
-    animation-range: 0 60vh;
+    animation-timeline: scroll(root);
+    animation-range: 0 70vh;
+  }
+  .hero-mountain {
+    -webkit-transform: none;
+            transform: none;
+    -webkit-animation: hero-mountain-near linear both;
+            animation: hero-mountain-near linear both;
+    animation-timeline: scroll(root);
+    animation-range: 0 70vh;
   }
 }
 @-webkit-keyframes hero-copy-away {
   to {
     opacity: 0;
-    -webkit-transform: translateY(-2rem);
-            transform: translateY(-2rem);
+    -webkit-transform: translate3d(0, 45vh, 0);
+            transform: translate3d(0, 45vh, 0);
   }
 }
 @keyframes hero-copy-away {
   to {
     opacity: 0;
-    -webkit-transform: translateY(-2rem);
-            transform: translateY(-2rem);
+    -webkit-transform: translate3d(0, 45vh, 0);
+            transform: translate3d(0, 45vh, 0);
+  }
+}
+@-webkit-keyframes hero-mountain-near {
+  to {
+    -webkit-transform: scale(1.08);
+            transform: scale(1.08);
+  }
+}
+@keyframes hero-mountain-near {
+  to {
+    -webkit-transform: scale(1.08);
+            transform: scale(1.08);
+  }
+}
+@-webkit-keyframes hero-mountain-in {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 14%, 0);
+            transform: translate3d(0, 14%, 0);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+@keyframes hero-mountain-in {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 14%, 0);
+            transform: translate3d(0, 14%, 0);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
   }
 }
 .hero-content h1 {
@@ -16700,18 +16766,12 @@ h2 {
   display: block;
 }
 
-.hero-mountain {
-  width: 100%;
-  margin-top: 50vh;
-  line-height: 0;
-  position: sticky;
-  bottom: 0;
-}
-
 .hero-mountain-img {
   width: 100%;
   height: auto;
   display: none;
+  -webkit-animation: hero-mountain-in 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+          animation: hero-mountain-in 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
 }
 
 .hero-mountain-img--light {
@@ -16725,6 +16785,17 @@ h2 {
   display: block;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .hero-container,
+  .hero-mountain,
+  .hero-mountain-img {
+    -webkit-animation: none;
+            animation: none;
+    -webkit-transform: none;
+            transform: none;
+    opacity: 1;
+  }
+}
 .innerBody .hero-btn,
 .hero-btn {
   display: -webkit-inline-box;
@@ -16786,7 +16857,7 @@ h2 {
     font-size: 2.25rem;
   }
   .hero-mountain {
-    margin-top: 20vh;
+    margin-top: 1rem;
   }
 }
 .about-container {
