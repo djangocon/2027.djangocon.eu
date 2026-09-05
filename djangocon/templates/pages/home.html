@@ -14,10 +14,9 @@
       </div>
     </div>
     <div class="hero-mountain">
-      {# One image for both themes: white snow stays white, the translucent rock takes the page colour. #}
-      <img src="{% static 'images/other/mountain_innsbruck.png' %}"
-           alt=""
-           class="hero-mountain-img" />
+      {# Same silhouette twice: the light file is generated from the dark export by scripts/hero_mountain.py. #}
+      <img src="{% static 'images/other/mountain_innsbruck_light.png' %}" alt="" class="hero-mountain-img hero-mountain-img--light" />
+      <img src="{% static 'images/other/mountain_innsbruck.png' %}" alt="" class="hero-mountain-img hero-mountain-img--dark" />
     </div>
   </div>
   {# HOME-ABOUT #}

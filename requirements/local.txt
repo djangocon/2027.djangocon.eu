@@ -19,3 +19,8 @@ pre-commit==4.2.0  # https://github.com/pre-commit/pre-commit
 # ------------------------------------------------------------------------------
 django-debug-toolbar==5.2.0  # https://github.com/jazzband/django-debug-toolbar
 django-extensions==4.1  # https://github.com/django-extensions/django-extensions
+
+# Asset tooling (scripts/hero_mountain.py)
+# ------------------------------------------------------------------------------
+Pillow==12.3.0  # https://github.com/python-pillow/Pillow
+numpy==2.2.6  # https://github.com/numpy/numpy

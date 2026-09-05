@@ -83,6 +83,7 @@ lint.isort.known-first-party = [ "djangocon", "config" ]
 [tool.ruff.lint.per-file-ignores]
 "config/settings/*.py" = [ "F403", "F405" ]  # star imports are the settings-module pattern
 "setup_env.py" = [ "T201" ]  # prints are the point
+"scripts/*.py" = [ "T201" ]  # CLI scripts report what they did
 
 [tool.pytest]
 ini_options.norecursedirs = [ "node_modules" ]
