@@ -2,48 +2,27 @@ title: Getting around
 layout: simple
 order: 2
 
-Dublin's city centre is relatively small in size and you could stroll from the GPO to Stephens Green in under an hour, taking in the sights on the way.
-A handy hint if you are trying to locate an address, postal codes are always odd numbers on the Northside and even numbers on the Southside. As a rule of thumb, the higher the number, the further away the location will be from the city centre.
-If you would like to cover some distance, then Dublin has a good public transport network with a choice of buses, two tram lines (the Luas), a local area train running all the way along Dublin Bay (the Dart) and a large number of taxis.
+Innsbruck's centre is compact — most sights, cafés and venues are within a 20-minute walk of the Golden Roof, and the river, the Old Town and the main station are all close together. When you do need to cover distance (or climb a mountain), the public transport network of buses, trams and cable cars has you covered.
 
-### Guided Tours  
-- **Dublin Bus Tours**:  
-  - Hop-on, hop-off bus tour covering city center sights (€15).  
-  - Separate tours include:  
-    - *South Coast & Gardens*: Sandycove, Dalkey, Powerscourt, Wicklow Mountains.  
-    - *North Coast & Castle*: Howth fishing port, Malahide Castle.  
-- **Viking Splash Tours**:  
-  - Amphibious tour in a WWII Dukw.  
-  - Covers Viking Dublin, famous cathedrals, Trinity College, and Georgian Dublin.  
-  - Water route visits U2's recording studio and Grand Canal Docklands.  
-  - Tickets: €20 (adults), €10 (children).  
-### Making Your Own Way  
-- **By Bus**:  
-  - City-wide network. Fare: ~€1.60 (adults), ~€0.80 (children). Exact change required.  
-  - Rambler Tickets available: €6 (1-day adult), €10 (family).  
-<a href="https://www.dublin.info/bus/" class="pages-links">Check here for more</a>
-- **By Tram (Luas)**:  
-  - Two lines:  
-    - *Red Line*: NE to SW.  
-    - *Green Line*: St. Stephen's Green to Southern suburbs.  
-  - Modern and spacious coaches. Fares similar to buses.  
-<a href="https://www.dublin.info/bus/" class="pages-links">Check here for more</a>
-- **By Train**:  
-  - Local service includes DART (North-South along Dublin Bay).  
-<a href="https://www.dublin.info/train/" class="pages-links">Check here for more</a>
-- **By Taxi**:  
-  - Licensed taxis with yellow roof signs.  
-  - Metered fares: €6-€10 (city center average).  
-- **By Car**:  
-  - Easy outside rush hours (7:00-9:00, 16:00-19:00).  
-  - Major roads follow clockwise traffic along the Liffey. Drive on the left.  
-  - Car rentals available, mainly at Dublin Airport (e.g., Avis, Hertz).  
-<a href="https://www.dublin.info/car-rental/" class="pages-links">Car Rentals</a>
-  
-- **By Bicycle**:  
-  - Flat terrain, dedicated cycle lanes, and bus lane access.  
-  - Beware of unaware pedestrians.  
-  - Bike rentals at Phoenix Park Bike Hire (150 bikes, including mountain and racing bikes).  
+### Guided Tours
+- **The Sightseer Bus**:
+  - Hop-on, hop-off bus linking the main sights: Old Town, Ambras Castle, Bergisel ski jump and the Alpine Zoo.
+  - Included with the <a href="https://www.innsbruck.info/en/experience/innsbruck-card.html" class="pages-links">Innsbruck Card</a>.
+- **Old Town walking tours**:
+  - Daily guided walks from the <a href="https://www.innsbruck.info/en/" class="pages-links">tourist information office</a> covering the Golden Roof, the Hofburg and St. Anne's Column.
 
-<!-- Vigo is a small city and you can walk almost everywhere, although Vigo is well-known for its hills (so be prepared to walk up and down!). Nowadays, there are a lot of escalators to help you with that.
-To get around in Vigo and if you want to go to nearby beaches, the best option is public transportation, bus or taxi. -->
+### Making Your Own Way
+- **By Bus & Tram**:
+  - Dense city network run by <a href="https://www.ivb.at/en" class="pages-links">IVB</a>. Single tickets ~€3; 24-hour and weekly passes available in the IVB app or at machines.
+  - Bus line **F** connects the airport to the centre in 15–20 minutes.
+- **By Cable Car & Funicular**:
+  - The **<a href="https://www.nordkette.com/en/" class="pages-links">Nordkettenbahnen</a>** start right in the city centre (Congress station) and climb to Hungerburg, Seegrube and Hafelekar at 2,269&nbsp;m — city to summit in around 30 minutes.
+  - The **Patscherkofelbahn** on the south side serves Innsbruck's local ski mountain.
+- **By Train**:
+  - Regional trains (S-Bahn Tirol) run along the Inn valley to Hall, Wattens (Swarovski Crystal Worlds) and beyond.
+- **By Taxi**:
+  - Ranks at the main station and Old Town; a city trip typically costs €10–€15. Ride-hailing availability is limited — locals just call a taxi.
+- **By Car**:
+  - You won't need one in the city: the centre is largely pedestrianised and parking is scarce. If you drive in, use the garages around the centre (e.g. Congress/Markthalle).
+- **By Bicycle**:
+  - <a href="https://www.stadtrad.ivb.at/" class="pages-links">Stadtrad</a> city bikes are available at stations across town year-round; riverside paths along the Inn are flat and scenic. In February, watch for ice in the mornings.

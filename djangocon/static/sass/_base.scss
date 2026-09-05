@@ -3,21 +3,7 @@
 // Single webfont request. This was previously two @import urls that both
 // pulled Lato + Modak, the second merely adding Manrope — the overlap made the
 // browser fetch the same families twice.
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Manrope:wght@200..800&family=Modak&display=swap');
-
-@font-face {
-    font-family: 'Lansdowne Demo';
-    src: url('../fonts/Lansdowne.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Landowne Demo1';
-    src: url('../fonts/Lansdowne.otf') format('truetype');
-    font-weight: bold;
-    font-style: normal;
-}
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Anton+SC&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Lexend+Deca:wght@400;700;900&family=Manrope:wght@200..800&family=Modak&display=swap');
 
 ////////////////////////////////
 //Alert palette//

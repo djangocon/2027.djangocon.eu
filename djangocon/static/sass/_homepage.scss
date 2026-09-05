@@ -2,65 +2,6 @@
 
 // homepage
 
-// 2027 placeholder intro section (mountain-outline illustration is TBD;
-// .intro-illustration is left empty until that asset is ready)
-.intro-section {
-  max-width: 1800px;
-  margin: 0 auto;
-  padding: 4rem 2rem 6rem;
-}
-
-// Reserves the space the mountain illustration will occupy once the asset
-// lands; the copy below sits in the right-hand half of the section.
-.intro-illustration {
-  min-height: 22rem;
-}
-
-.intro-content {
-  max-width: 50%;
-  margin-left: auto;
-}
-
-.intro-title {
-  font-family: var(--font-main);
-  font-size: 2.75rem;
-  font-weight: 700;
-  color: #b0b0b0;
-  margin-bottom: 1rem;
-}
-
-.intro-text {
-  font-family: var(--font-main);
-  font-size: 1.375rem;
-  line-height: 1.9;
-  color: var(--ink);
-  margin-bottom: 0;
-}
-
-@media (max-width: 991px) {
-  .intro-section {
-    padding: 2rem 1rem 3rem;
-  }
-
-  .intro-illustration {
-    min-height: 10rem;
-  }
-
-  .intro-content {
-    max-width: 100%;
-    margin-left: 0;
-  }
-
-  .intro-title {
-    font-size: 2rem;
-  }
-
-  .intro-text {
-    font-size: 1.125rem;
-    line-height: 1.7;
-  }
-}
-
 .w-300 {
   width: 300px !important;
 }
@@ -1182,54 +1123,121 @@ object[type='application/pdf'] {
   }
 }
 
-// Hero section
+// Hero section: centered headline over a full-width mountain-silhouette band.
 .hero-section {
-  position: relative;
   width: 100%;
-  height: 100%;
-  overflow: hidden;
-  min-height: 100vh;
+  padding-top: 3rem;
 }
 
 .hero-container {
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding-left: 50px;
-  position: relative;
-  height: 100%;
-  display: flex;
+  padding: 0 2rem;
+  text-align: center;
+  // Pinned at its resting position (top matches .hero-section's padding-top)
+  // while the page scrolls through the mountain runway, so mid-scroll never
+  // shows a blank band between departed copy and the pinned mountain. The
+  // mountain div comes later in the DOM, so on release it rides up over the
+  // copy and covers it.
+  position: sticky;
+  top: 3rem;
 }
 
-.hero-content {
-  flex: 0 0 50%;
-
-  h1 {
-    font-family: var(--font-display);
-    font-size: 3.5rem;
-    line-height: 1.2;
-    margin-bottom: 1.5rem;
-    color: var(--ink);
-    font-weight: 400;
-    padding-top: 20%;
+// Progressive enhancement: browsers with scroll-driven animations gently
+// fade and lift the pinned copy over the first 60vh of scroll, so it hands
+// the stage to the mountain instead of sitting frozen. Elsewhere the copy
+// just stays pinned until the mountain slides over it — fine, only less
+// theatrical.
+@supports (animation-timeline: scroll()) {
+  .hero-container {
+    animation: hero-copy-away linear both;
+    animation-timeline: scroll();
+    animation-range: 0 60vh;
   }
+}
+
+@keyframes hero-copy-away {
+  to {
+    opacity: 0;
+    transform: translateY(-2rem);
+  }
+}
+
+// Anton SC is a small-caps face — mixed-case source text renders as caps on
+// its own, so (unlike the plain-Anton headings below) this deliberately
+// does not force text-transform: uppercase, which would just flatten the
+// font's small-caps glyphs into plain full-height capitals.
+.hero-content h1 {
+  font-family: var(--font-hero);
+  font-size: 5rem;
+  line-height: 1.1;
+  margin: 0 0 1rem;
+  color: var(--ink);
+  font-weight: 400;
 }
 
 .hero-date {
   font-family: var(--font-main);
-  font-size: 18px !important;
-  color: var(--ink) !important;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--accent);
   margin-bottom: 2rem;
   display: block;
 }
 
+// The mountain art is two flat silhouette PNGs (black on transparent for
+// light mode, white on transparent for dark) — only one is ever shown.
+// Sticky + the 50vh margin-top is the parallax: the band's flow position is
+// pushed 50vh below the hero copy, so `bottom: 0` keeps it pinned to the
+// viewport bottom while the copy scrolls up behind it. Its flow position is
+// the very end of .hero-section, so it only lets go when the next section
+// ("Run by the community") reaches the viewport bottom and pushes it up.
+// The space has to sit ABOVE the mountain (margin-top), not below it as
+// section padding — space below would move its flow position up and make
+// it release 50vh early, leaving a blank gap before About.
+.hero-mountain {
+  width: 100%;
+  margin-top: 50vh;
+  line-height: 0;
+  position: sticky;
+  bottom: 0;
+}
+
+.hero-mountain-img {
+  width: 100%;
+  height: auto;
+  display: none;
+}
+
+.hero-mountain-img--light {
+  display: block;
+}
+
+:root[data-theme='dark'] {
+  .hero-mountain-img--light {
+    display: none;
+  }
+
+  .hero-mountain-img--dark {
+    display: block;
+  }
+}
+
+// Red pill CTA (hero "Grab your ticket now" and the header's "Tickets"
+// button). White text is a fixed part of the design, not theme-driven — the
+// button stays accent-red with white text in both light and dark mode.
+// Qualified as .innerBody .hero-btn below (not just .hero-btn) because the
+// base `.innerBody a` link-underline rule outranks a bare single-class
+// selector on specificity.
+.innerBody .hero-btn,
 .hero-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 250px;
   padding: 0.7em 1.4em;
-  color: var(--paper);
-  background: var(--Gradient, var(--ink));
+  color: #fff;
+  background: var(--accent);
   border: none;
   border-radius: var(--radius-pill);
   cursor: pointer;
@@ -1243,7 +1251,8 @@ object[type='application/pdf'] {
     box-shadow: 0 0.5em 1.5em -0.5em var(--overlay-heavy);
     transform: translateY(-2px);
     text-decoration: none;
-    color: var(--paper);
+    color: #fff;
+    background: var(--accent-dark);
   }
 
   &:active {
@@ -1257,79 +1266,34 @@ object[type='application/pdf'] {
   }
 }
 
-.hero-image {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  top: 0;
-  width: 50%;
-
-  img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-}
-
-.hero-image-mobile {
-  display: none;
-  margin-bottom: 20px;
-}
-
-@media (max-width: 1200px) {
-  .hero-image {
-    display: none;
-  }
-
-  .hero-content {
-    flex: 0 0 100%;
-    text-align: center;
-  }
-
-  .hero-section {
-    min-height: 70vh;
-  }
-
-  .hero-image-mobile {
-    display: block;
-    width: 100%;
-    text-align: center;
-
-    img {
-      max-width: 100%;
-      height: auto;
-    }
+@media (max-width: 991px) {
+  .hero-content h1 {
+    font-size: 3rem;
   }
 }
 
 @media (max-width: 768px) {
-  .hero-container {
-    padding: 20px;
+  .hero-section {
+    padding-top: 2rem;
   }
 
   .hero-content h1 {
-    font-size: 2.5rem;
+    font-size: 2.25rem;
   }
 
-  .hero-btn {
-    margin: 0 auto;
-  }
-
-  .hero-section {
-    min-height: 50vh;
+  .hero-mountain {
+    margin-top: 20vh;
   }
 }
-// end of hero csection
+// end of hero section
 
-// About section styles
+// About section styles — flat two-column layout on the page background, no
+// card/border (matches the "RUN BY THE COMMUNITY" design, unlike the boxed
+// sections further down the page).
 .about-container {
   display: flex;
   max-width: 1400px; // Matched with speaker section
-  margin: 0 auto; // Darker, semi-transparent background
-  border-radius: var(--radius-xl);
-  background: rgba(0, 0, 0, 0.03);
-  border: 1px solid var(--ink); // Subtle border like speakers section
-  overflow: hidden;
+  margin: 0 auto;
 }
 
 .left-box {
@@ -1341,19 +1305,19 @@ object[type='application/pdf'] {
 }
 
 .left-text {
-  color: var(--ink);
-  font-family: var(--font-main);
-  font-size: 42px;
+  color: var(--accent);
+  font-family: var(--font-display);
+  font-size: 56px;
   line-height: 1.2;
-  font-weight: 500;
-  text-align: justify;
+  font-weight: 400;
+  text-align: left;
   margin: 0;
   padding-left: 30px;
 }
 
 .divider {
   width: 1px;
-  background-color: rgba(0, 0, 0, 0.3); // Matching border color
+  background-color: var(--border-subtle);
   margin: 40px 0;
 }
 
@@ -1551,15 +1515,12 @@ object[type='application/pdf'] {
 }
 
 .pricing-title {
-  font-family: var(--font-main);
-  color: var(--ink);
-  text-align: left;
-  font-weight: 700;
-  margin-bottom: 2rem;
-  max-width: 1400px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 90px;
+  font-family: var(--font-display);
+  color: var(--accent);
+  text-align: center;
+  font-weight: 400;
+  font-size: 56px;
+  margin-bottom: 2.5rem;
 }
 
 .pricing-container {
@@ -1572,7 +1533,11 @@ object[type='application/pdf'] {
   padding: 0 20px;
 }
 
-// Ticket card styles
+// Ticket card styles. The card body is the exported Figma "ticket" shape
+// (straight sides, punched semicircle notches like a real ticket stub) used
+// as a CSS mask so it can be recoloured/reused instead of shipping a flat
+// image — the source SVG has the identical shape and #b72b35 fill in both
+// the light and dark Figma mockups, so one asset covers both themes.
 .ticket-card {
   width: 300px;
   height: auto;
@@ -1581,30 +1546,45 @@ object[type='application/pdf'] {
   flex-direction: column;
 }
 
+// Full-width dark band on top of the card, naming the tier. Deliberately
+// not var(--ink) — it stays dark in both themes, like the footer band.
+// Its bottom corners are punched out with the same ~20px radius as the
+// body mask's seam notches, so band + body read as one ticket with a
+// circular notch straddling the seam (per the Figma card).
 .ticket-header {
-  background: var(--ink);
-  color: var(--paper);
+  background: #191919;
+  color: #fff;
   text-align: center;
-  padding: 15px;
-  font-size: 18px;
-  font-weight: 600;
-  position: relative;
-  margin-bottom: -1px;
-  border-radius: var(--radius-md);
+  padding: 12px;
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 400;
+  text-transform: uppercase;
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  -webkit-mask:
+    radial-gradient(circle 20px at 0 100%, transparent 20px, #000 0),
+    radial-gradient(circle 20px at 100% 100%, transparent 20px, #000 0);
+  -webkit-mask-composite: source-in;
+  mask:
+    radial-gradient(circle 20px at 0 100%, transparent 20px, #000 0),
+    radial-gradient(circle 20px at 100% 100%, transparent 20px, #000 0);
+  mask-composite: intersect;
 }
 
-// Creating the ticket shape
 .ticket-content {
-  background: rgba(0, 0, 0, 0.03);
+  background-color: var(--accent);
+  mask-image: url('../images/home/ticket_card_mask.svg');
+  mask-repeat: no-repeat;
+  mask-size: 100% 100%;
+  -webkit-mask-image: url('../images/home/ticket_card_mask.svg');
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
   padding: 30px 20px;
-  border: 1px solid var(--overlay-strong);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: 20px;
   flex-grow: 1;
-  box-shadow: 0 0 10px var(--overlay-subtle);
-  border-radius: var(--radius-md);
 }
 
 // Price section
@@ -1614,80 +1594,69 @@ object[type='application/pdf'] {
 }
 
 .from {
-  color: var(--ink);
+  color: #fff;
   font-size: 14px;
   display: block;
   margin-bottom: 5px;
 }
 
 .price {
-  color: var(--ink);
+  color: #fff;
+  font-family: var(--font-numeric);
   font-size: 48px;
-  font-weight: bold;
+  font-weight: 900;
 }
 
 // Description
+// Confirmed against Figma node 1:10 — the description text is bound to the
+// same "Color" variable as the page background, not plain white. Kept as a
+// literal (not var(--paper)) because the ticket card stays red in both
+// themes and --paper flips to black in dark mode, which would make this
+// text disappear.
 .description {
-  color: var(--ink);
+  color: #e6e5e7;
   text-align: center;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.5;
   flex-grow: 1;
 }
 
-// Button styles
-.ticket-button {
-  background: var(--ink);
-  color: var(--paper);
-  border: none;
-  padding: 12px 24px;
-  border-radius: 25px;
-  font-weight: bold;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  margin-top: auto;
-  transition: all 0.3s ease;
-
-  &:hover {
-    background: var(--surface-hover);
-  }
-}
-
-.arrow {
-  margin-left: 10px;
-}
-
-// Ticket call-to-action. Rendered as an inert span while 2027 sales are not
-// open yet; swap back to an <a class="ticket-cta"> once the pretix link exists.
+// White outline pill CTA on the red card, per the design. Qualified with
+// .innerBody for the same specificity reason as .hero-btn above.
+.innerBody .ticket-cta,
 .ticket-cta {
   display: block;
   width: 100%;
   margin-top: auto;
   padding: 12px 24px;
-  border-radius: 25px;
-  background: var(--ink);
-  color: var(--paper);
+  border-radius: var(--radius-pill);
+  border: 2px solid #fff;
+  background: transparent;
+  color: #fff;
   font-weight: 700;
   text-align: center;
   text-decoration: none;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+
+  &::after {
+    content: '→';
+    margin-left: 0.5rem;
+  }
 
   &:hover {
-    color: var(--paper);
+    color: var(--accent);
     text-decoration: none;
-    background: var(--surface-hover);
+    background: #fff;
   }
 }
 
-.ticket-cta--disabled {
-  background: rgba(0, 0, 0, 0.35);
-  cursor: default;
-
-  &:hover {
-    background: rgba(0, 0, 0, 0.35);
+// The 56px display titles don't fit a phone viewport — shrink them together.
+@media (max-width: 768px) {
+  .pricing-title,
+  .dates-title,
+  .editions-title,
+  .sponsors-title {
+    font-size: 2.25rem;
   }
 }
 
@@ -1725,11 +1694,6 @@ object[type='application/pdf'] {
   .ticket-content {
     height: 320px;
   }
-
-  .pricing-title {
-    padding-left: 0;
-    text-align: center;
-  }
 }
 // end of ticket css
 
@@ -1746,20 +1710,17 @@ object[type='application/pdf'] {
 }
 
 .dates-container {
-  max-width: 1400px;
+  max-width: 1000px;
   margin: 0 auto;
-  padding: 40px 40px 40px 90px;
-  border: 1px solid var(--overlay-strong);
-  border-radius: var(--radius-lg);
-  box-shadow: 0 0 10px var(--overlay-subtle);
 }
 
 .dates-title {
-  font-family: var(--font-main);
-  color: var(--ink);
-  font-weight: 700;
-  margin-bottom: 40px;
-  text-align: left; // Aligned to the left
+  font-family: var(--font-display);
+  color: var(--accent);
+  font-weight: 400;
+  font-size: 56px;
+  margin-bottom: 2.5rem;
+  text-align: center;
 }
 
 .dates-grid {
@@ -1774,30 +1735,34 @@ object[type='application/pdf'] {
   align-items: start;
 
   h3 {
-    color: var(--ink);
-    font-size: 20px;
-    font-weight: 700;
-    padding-left: 50px;
-    margin: 0; // Remove default margin
+    color: var(--accent);
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 400;
+    text-transform: uppercase;
+    margin: 0;
   }
 }
 
 .date-items {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 6px;
 }
 
 .date-item {
   color: var(--ink);
-  font-size: 20px;
+  font-size: 15px;
   line-height: 1.5;
-  padding-left: 100px;
 }
 
 .date {
   color: var(--ink);
-  font-weight: 600;
+  font-weight: 700;
+
+  &::after {
+    content: ' – ';
+  }
 }
 
 .important-dates-link {
@@ -1845,29 +1810,24 @@ object[type='application/pdf'] {
 }
 
 .editions-title {
-  text-align: left;
-  font-family: var(--font-main);
-  color: var(--ink);
-  font-weight: 700;
-  margin-bottom: 40px;
+  text-align: center;
+  font-family: var(--font-display);
+  color: var(--accent);
+  font-weight: 400;
+  font-size: 56px;
+  margin-bottom: 2.5rem;
   max-width: 1400px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 90px;
 }
 
-@media (max-width: 990px) {
-  .editions-title {
-    text-align: center;
-    padding-left: 0;
-  }
-}
-
+// Single row of 4 equal photos, straight from the Figma frame: 345×380
+// tiles, 20px gaps, 1440px row, square corners, no cards or overlays.
 .editions-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-  max-width: 1400px;
+  gap: 20px;
+  max-width: 1440px;
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -1875,7 +1835,7 @@ object[type='application/pdf'] {
 .grid-item {
   position: relative;
   overflow: hidden;
-  border-radius: var(--radius-sm);
+  aspect-ratio: 345 / 380;
 
   img {
     width: 100%;
@@ -1883,72 +1843,11 @@ object[type='application/pdf'] {
     object-fit: cover;
     display: block;
   }
-
-  &.large {
-    grid-column: span 2;
-    aspect-ratio: 16/7.87;
-  }
-
-  &.medium {
-    grid-column: span 2;
-    aspect-ratio: 16/7;
-  }
-
-  &.small {
-    grid-column: span 1;
-    aspect-ratio: 1/1;
-  }
-
-  &.card {
-    grid-column: span 1;
-    aspect-ratio: 1/1;
-  }
-}
-
-.edition-card {
-  background-color: var(--ink);
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 20px;
-
-  h3 {
-    color: var(--paper);
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-
-  p {
-    color: var(--paper);
-    font-size: 16px;
-  }
-}
-
-.edition-card-pointer {
-  top: 0;
-  right: 0;
-  position: absolute;
-  padding-right: 10px;
-  padding-top: 10px;
 }
 
 @media (max-width: 768px) {
   .editions-grid {
     grid-template-columns: repeat(2, 1fr);
-  }
-
-  .grid-item.large,
-  .grid-item.medium {
-    grid-column: span 2;
-  }
-
-  .grid-item.small,
-  .grid-item.card {
-    grid-column: span 1;
   }
 }
 
@@ -1956,15 +1855,8 @@ object[type='application/pdf'] {
   .editions-grid {
     grid-template-columns: 1fr;
   }
-
-  .grid-item.large,
-  .grid-item.medium,
-  .grid-item.small,
-  .grid-item.card {
-    grid-column: span 1;
-  }
 }
-// end of past evnet
+// end of past editions
 
 // home sponsros new css
 .sponsors-section {
@@ -1981,110 +1873,47 @@ object[type='application/pdf'] {
 .sponsors-container {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 40px;
-  border: 1px solid var(--overlay-strong);
-  border-radius: var(--radius-lg);
-  box-shadow: 0 0 10px var(--overlay-subtle);
+  padding: 0 40px;
 }
 
 .sponsors-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  position: relative;
   margin-bottom: 40px;
 }
 
 .sponsors-title {
-  font-family: var(--font-main);
-  color: var(--ink);
-  font-weight: 700;
-  padding-left: 50px;
+  font-family: var(--font-display);
+  color: var(--accent);
+  font-weight: 400;
+  font-size: 56px;
 }
 
-@media (max-width: 990px) {
-  .sponsors-title {
-    padding-left: 0;
-  }
-}
-
-.view-all-btn {
-  background: transparent;
-  border: 1px solid var(--ink);
-  color: var(--ink);
-  padding: 8px 20px;
-  border-radius: 20px;
-  cursor: pointer;
-  font-size: 14px;
-  transition: all 0.3s ease;
-
-  &:hover {
-    background: var(--overlay-subtle);
-  }
-}
-
-.view-all-btn-mobile {
-  background: transparent;
-  border: 1px solid var(--ink);
-  color: var(--ink);
-  padding: 8px 20px;
-  border-radius: 20px;
-  cursor: pointer;
-  font-size: 14px;
-  transition: all 0.3s ease;
-  width: 50%;
-  margin: 50px auto 0;
-  display: none;
-  text-decoration: none;
-}
-
-@media (max-width: 990px) {
-  .view-all-btn-mobile {
-    display: block;
-  }
-
-  .view-all-btn {
-    display: none;
-  }
-}
-
-.sponsors-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-  padding: 0 90px 0 90px;
-}
-
+.sponsors-grid,
 .sponsors-grid-1 {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 40px;
-  padding: 0 90px 0 90px;
-}
-
-@media (max-width: 990px) {
-  .sponsors-grid {
-    text-align: center;
-    padding-left: 0;
-  }
-
-  .sponsors-grid-1 {
-    text-align: center;
-    padding: 0;
-  }
+  text-align: center;
 }
 
 .sponsor-row {
   display: flex;
+  justify-content: center;
   gap: 60px;
   flex-wrap: wrap;
 }
 
 .sponsors-categories {
-  color: var(--ink);
-  font-family: var(--font-main);
+  color: var(--accent);
+  font-family: var(--font-display);
   font-size: 24px;
   font-style: normal;
-  font-weight: 700;
+  font-weight: 400;
+  text-transform: uppercase;
   line-height: normal;
   margin: 0;
 }
@@ -2148,8 +1977,8 @@ object[type='application/pdf'] {
 .news-description.hover {
 }
 
-// dublin css
-.dublin-tips {
+// city tips box (Innsbruck pages)
+.city-tips {
   background: rgba(0, 0, 0, 0.03);
   border: 1px solid var(--overlay-medium);
   border-radius: var(--radius-sm);

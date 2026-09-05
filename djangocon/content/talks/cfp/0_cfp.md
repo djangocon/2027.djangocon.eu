@@ -1,11 +1,9 @@
 layout: simple
 order: 0
 
-<h1 class="cfp-title">Call for Proposals - closed</h1>
+<h1 class="cfp-title">Call for Proposals</h1>
 
 This page contains all information regarding the proposal process for DjangoCon Europe – we will update it regularly as new information becomes available.
-
-The **Call for Proposals (CFP)** is closed now.
 
 It's a new year. What better way to start it than submitting your talk or workshop for **DjangoCon Europe 2027**, in beautiful **Innsbruck, Austria?**
 
@@ -17,7 +15,7 @@ If you've got half an idea or are still deciding in any way and want to chat, yo
 
 Please don't be shy; we want to hear from you!
 
-We'll see you in Dublin!
+We'll see you in Innsbruck!
 
 If you have any questions, please do not hesitate to contact us at <a href="mailto:content@djangocon.eu" class="pages-links">content@djangocon.eu</a> Don't forget to follow us on X <a href="https://twitter.com/djangoconeurope" class="pages-links">@DjangoCon Europe</a> for the latest up to date information!
 

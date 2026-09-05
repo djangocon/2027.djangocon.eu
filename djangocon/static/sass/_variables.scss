@@ -25,8 +25,8 @@
 // The site runs a flat black-on-white theme. `$ink` and `$paper` are the two
 // anchors; everything else is an accent or a grey step between them.
 
-$ink: #000; // primary text, dark surfaces
-$paper: #fff; // page background, text on dark surfaces
+$ink: #191919; // primary text, dark surfaces
+$paper: #e6e5e7; // page background, text on dark surfaces
 
 // Greys, dark -> light. Named by role, not by shade, so a re-theme does not
 // leave you with a "grey-800" that is actually beige.
@@ -38,9 +38,11 @@ $border-subtle: #ccc; // hairlines, dividers
 $surface-sunken: #f2f2f2; // a panel that must sit just below pure white
 
 // Accents. These carry the brand and are the values most likely to change.
-$accent: #863b35; // primary brand accent (dark brown/red)
-$accent-dark: #66322e; // its pressed/hover state
-$accent-light: #af6b66; // its tint, for large fills
+// Confirmed against the Figma ticket-card fill (#B72B35) — identical in both
+// the light and dark mockups, so unlike ink/paper this does not flip below.
+$accent: #b72b35; // primary brand accent (red)
+$accent-dark: #8c2129; // its pressed/hover state
+$accent-light: #d05b62; // its tint, for large fills
 $golden: #fa0; // highlight / call-to-action
 $danger: #f00; // errors, required-field markers
 
@@ -62,7 +64,11 @@ $overlay-heavy: rgba(0, 0, 0, 0.6);
 // -----------------------------------------------------------------------------
 
 $font-main: 'Lato', sans-serif; // body and UI
-$font-display: 'Lansdowne Demo', sans-serif; // headline/display face
+$font-display: 'Anton', sans-serif; // section headings, ticket tier labels
+$font-hero: 'Anton SC', sans-serif; // hero headline + nav links only — confirmed
+// against Figma nodes 5:11 (hero) and 5:50 (nav "Talks"); every other heading
+// (GRAB YOUR TICKET, SPONSORS, RUN BY THE COMMUNITY...) came back plain Anton.
+$font-numeric: 'Lexend Deca', sans-serif; // ticket price numbers only
 $font-alt: 'Manrope', sans-serif; // secondary accent face
 
 // Type scale. Chosen to cover the sizes already in use rather than imposing a
@@ -186,6 +192,8 @@ $bp-xl: 1200px;
   // Typography
   --font-main: #{$font-main};
   --font-display: #{$font-display};
+  --font-hero: #{$font-hero};
+  --font-numeric: #{$font-numeric};
   --font-alt: #{$font-alt};
 
   --text-xs: #{$text-xs};
@@ -269,4 +277,27 @@ $bp-xl: 1200px;
   --link-blue: #{$link};
   --link-blue-hover: #{$link-hover};
   --link-blue-light: #{$link-on-dark};
+}
+
+// =============================================================================
+// DARK THEME
+// =============================================================================
+// Toggled by `data-theme="dark"` on <html> (see project.js). Only the tokens
+// that actually change are redefined — everything else (accent, radius,
+// spacing, motion...) cascades from :root above unchanged. ink/paper and the
+// overlay/border/surface greys are confirmed against the Figma dark mockup
+// (page bg #000, hero text #fff); accent stays #b72b35 in both, confirmed
+// identical on the dark mockup's ticket-card fill.
+:root[data-theme='dark'] {
+  --ink: #fff;
+  --paper: #000;
+  --surface-sunken: #141414;
+  --text-muted: #b0b0b0;
+  --text-subtle: #999;
+  --border-subtle: #333;
+
+  --overlay-subtle: rgba(255, 255, 255, 0.1);
+  --overlay-medium: rgba(255, 255, 255, 0.2);
+  --overlay-strong: rgba(255, 255, 255, 0.3);
+  --overlay-heavy: rgba(255, 255, 255, 0.6);
 }

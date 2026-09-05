@@ -3,61 +3,24 @@
 {% load static %}
 {% block content %}
 
-  {% comment %}
-  <!-- Main Section -->
-<div class="hero-section">
-    <div style="position: absolute;z-index: -99;width: 50%;height: 100%">
-  <iframe frameborder="0" height="100%" width="100%" allow="autoplay" src="https://www.youtube.com/embed/77pJnXemL8k?autoplay=1&amp;mute=1&amp;controls=0&amp;loop=1&amp;playlist=77pJnXemL8k" style="
-    padding-block: 254px;
-    margin-top: 12px;
-">
-  </iframe>
-</div>
+  {# HOME-INTRO #}
+  <div class="hero-section">
     <div class="hero-container">
-      <div class="hero-content" style="
-">
-        <h1 style="padding-top:0">Five days of talks,<br>sprints, and tutorials<br>in Dublin</h1>
-        <span class="hero-date" style="
-    float: left;
-    margin-right: 20px;
-">23rd-27th April 2025</span>
-        <a href="https://pretix.evolutio.pt/evolutio/djceu2025/" class="hero-btn" style="text-decoration:none;margin-top: -30px;">Grab your t-shirt</a>
+      <div class="hero-content">
+        <h1>Five days of talks, sprints, and tutorials in Innsbruck</h1>
+        <span class="hero-date">February 17&ndash;21, 2027</span>
+        <a href="https://pretix.evolutio.pt/evolutio/djceu27/" class="hero-btn">Grab your ticket now</a>
       </div>
     </div>
-    <div class="hero-image" style="margin-top: 20px;">
-      <img src="{% static 'images/other/building_dublin.png' %}"
-           alt="Dublin city skyline">
-    </div>
-  </div>
-  <div class="hero-image-mobile w-100" style="margin-top: 20px;">
-    <img src="{% static 'images/other/building_dublin.png' %}"
-         alt="Dublin city skyline">
-  </div>
-  {% endcomment %}
-
-
-  {# HOME-INTRO (2027 placeholder design) #}
-  <div class="intro-section">
-    <div class="intro-illustration" id="intro-illustration">
-      {# Placeholder for the Innsbruck mountain outline illustration #}
-    </div>
-    <div class="intro-content">
-      <h1 class="intro-title">lorem ipsum dolor sit amet.</h1>
-      <p class="intro-text">
-        consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-        Aenean massa. Cum sociis natoque penatibus et magnis dis parturient
-        montes, nascetur ridiculus mus.
-      </p>
+    <div class="hero-mountain">
+      <img src="{% static 'images/other/mountain_innsbruck_light.png' %}" alt="" class="hero-mountain-img hero-mountain-img--light">
+      <img src="{% static 'images/other/mountain_innsbruck_dark.png' %}" alt="" class="hero-mountain-img hero-mountain-img--dark">
     </div>
   </div>
 
 
   {# HOME-ABOUT #}
   {% include 'modules/default.html' with content=files.about|markdown %}
-
-
-  {# HOME-SPEAKERS #}
-  {% include 'modules/default.html' with content=files.speakers|markdown %}
 
 
   {# TICKETS #}
@@ -74,9 +37,5 @@
 
   {# HOME-SPONSORS #}
   {% include 'modules/default.html' with content=files.sponsors|markdown %}
-
-
-  {# LATEST NEWS #}
-  {% include 'modules/default.html' with content=files.latest_news|markdown %}
 
 {% endblock content %}

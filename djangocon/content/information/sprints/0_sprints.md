@@ -15,7 +15,7 @@ On Saturday and Sunday, you have the opportunity to do exactly that. This is you
 
 #### Main Venue - Hosting our Sprints
 
-<a href="https://www.talbothotelstillorgan.com/index.html" class="pages-links" target="blank">Talbot Hotel Stillorgan</a>
+The sprints venue in Innsbruck will be announced soon.
 #### Time
 
 - **Saturday** - 9AM to 6PM
@@ -23,19 +23,4 @@ On Saturday and Sunday, you have the opportunity to do exactly that. This is you
 
 The Sprints are free for all conference participants. However, as the Sprints venue does not have unlimited capacity, and we would like to prepare a precise amount of food and drinks, please keep your participation status updated on the ticketing website (after buying your ticket).
 
-We will be hosting our sprints at **Talbot Hotel Stillorgan**. Get ready for an amazing conference experience in beautiful Dublin!
-
-#### Check the map to the venue
-
-<div class="row">
-    <div class="col-md-6">
-        <div style="overflow:hidden;resize:none;max-width:100%;width:500px;height:500px;">
-            <div id="canvas-for-googlemap" style="height:100%; width:100%;max-width:100%;">
-            <h5><strong>Talbot Hotel Stillorgan</strong></h5>
-                <iframe style="height:100%;width:100%;border:0;" frameborder="0" src="https://www.google.com/maps/embed/v1/place?q=Talbot+Hotel+Stillorgan&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"></iframe>
-            </div>
-            <a class="googlemaps-made" href="https://www.bootstrapskins.com/themes" id="grab-map-data">premium bootstrap themes</a>
-            <style>#canvas-for-googlemap .text-marker{}.map-generator{max-width: 100%; max-height: 100%; background: none;</style>
-        </div>
-    </div>
-</div>
+Get ready for an amazing conference experience in beautiful Innsbruck!

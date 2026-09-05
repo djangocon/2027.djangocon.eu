@@ -56,16 +56,22 @@ footer {
 }
 
 .custom-footer-h1 {
-  color: var(--paper) !important;
+  color: var(--accent) !important;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 32px;
 }
 
+// Always black-on-white, in both themes — confirmed against both Figma
+// mockups, so this deliberately uses literal colours instead of
+// --ink/--paper (which flip with the theme toggle).
 .custom-footer {
-  background-color: var(--ink);
-  color: var(--paper);
+  background-color: #000;
+  color: #fff;
 
   .footer-title {
     padding-top: 1.25rem;
-    color: var(--paper);
+    color: #fff;
     text-align: center;
     font-weight: 900;
   }
@@ -77,7 +83,7 @@ footer {
   }
 
   .footer-end {
-    background: var(--ink);
+    background: #000;
     padding-bottom: 1rem;
     padding-top: 1rem;
 
@@ -91,10 +97,10 @@ footer {
     }
 
     a {
-      color: var(--paper);
+      color: #fff;
       font-weight: 700;
       text-decoration: underline;
-      text-decoration-color: var(--paper);
+      text-decoration-color: #fff;
     }
   }
 
@@ -110,7 +116,7 @@ footer {
 
       a {
         text-decoration: none;
-        color: var(--paper);
+        color: #fff;
       }
     }
   }
@@ -148,13 +154,13 @@ footer {
   width: 4.25rem;
   height: 4.25rem;
   border-radius: var(--radius-circle);
-  background-color: var(--paper);
+  background-color: #fff;
   transition: background-color var(--duration-base) var(--ease-base);
 
   // Dim the disc slightly on hover so the badge still reacts, while the glyph
   // scale carries the main feedback.
   &:hover {
-    background-color: var(--border-subtle);
+    background-color: #ccc;
   }
 }
 

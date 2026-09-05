@@ -4,7 +4,8 @@
     <div class="d-flex justify-content-between align-items-center header-bar">
         <!-- Logo -->
         <a class="navbar-brand" href="{{ home }}">
-            <img src="{% static 'images/logo/logo_djceu27.png' %}" alt="DjangoCon.eu Innsbruck 2027" class="logo">
+            <img src="{% static 'images/logo/logo_djceu27.svg' %}" alt="DjangoCon.eu Innsbruck 2027" class="logo logo--light">
+            <img src="{% static 'images/logo/logo_djceu27_dark.svg' %}" alt="DjangoCon.eu Innsbruck 2027" class="logo logo--dark">
         </a>
 
         <!-- Hamburger Menu Button -->
@@ -33,13 +34,34 @@
                     {% endif %}
                 {% endfor %}
             </ul>
+            <!-- Theme Toggle -->
+            <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">
+                <svg class="theme-toggle-icon theme-toggle-icon--sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="4"/>
+                    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+                </svg>
+                <svg class="theme-toggle-icon theme-toggle-icon--moon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/>
+                </svg>
+            </button>
+
             <!-- Tickets Button -->
-            <a href="https://pretix.evolutio.pt/evolutio/djceu2027/" class="hero-btn" id="navbar-hero-btn">Tickets</a>
+            <a href="https://pretix.evolutio.pt/evolutio/djceu27/" class="hero-btn" id="navbar-hero-btn">Tickets</a>
         </nav>
     </div>
 
     <!-- Mobile Navigation -->
     <div class="collapse" id="mobileNav">
+        <button type="button" id="theme-toggle-mobile" class="theme-toggle theme-toggle--mobile" aria-label="Toggle dark mode" aria-pressed="false">
+            <svg class="theme-toggle-icon theme-toggle-icon--sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="4"/>
+                <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+            </svg>
+            <svg class="theme-toggle-icon theme-toggle-icon--moon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/>
+            </svg>
+            <span>Dark mode</span>
+        </button>
         <ul class="list-unstyled p-3 mobile-menu">
             {% for menu, menu_dict in site_menu.items %}
                 <li class="mobile-menu-item">

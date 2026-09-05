@@ -1,4 +1,4 @@
-<img src="djangocon/static/images/logo/logo_djceu27.png" height=100 />
+<img src="djangocon/static/images/logo/logo_djceu27.svg" height=100 />
 
 🌍 [2027.djangocon.eu](https://2027.djangocon.eu/) \
 📍 Innsbruck, Austria \

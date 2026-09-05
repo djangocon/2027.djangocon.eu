@@ -5,7 +5,7 @@ order: 2
 These are some frequently asked questions, kindly contact us for further assistance if you can't find the answers to your questions here.
 
 **Do I need a visa to Innsbruck Austria?**
-This will depend on the country you will be coming from. Some countries don't need a visa to enter Austria, but others do. You can find out if you need a visa to enter Austria using this link. If your country is part of the list provided in the link below, then you need a visa to visit Austria. If you don't find your country, then you don't need a visa. Check it <a href="https://www.citizensinformation.ie/en/moving-country/visas-for-ireland/visa-requirements-for-entering-ireland/" class="pages-links">here</a>.
+This will depend on the country you will be coming from. Some countries don't need a visa to enter Austria, but others do. You can find out if you need a visa to enter Austria using this link. If your country is part of the list provided in the link below, then you need a visa to visit Austria. If you don't find your country, then you don't need a visa. Check it <a href="https://www.bmeia.gv.at/en/travel-stay/entry-and-residence-in-austria/entry-and-visa/" class="pages-links">here</a>.
 
 **What are the ticket prices for DjangoCon Europe?**
 For everything concerning ticket kindly check it here <a href="https://pretix.evolutio.pt/evolutio/djceu2025/" class="pages-links">Tickets</a>
@@ -15,7 +15,7 @@ Coming soon...
 <!-- The organizers of DjangoCon offer invitation letters to assist with your travel arrangements. Click [here](https://2027.djangocon.eu/information/hospitality/) to request one -->
 
 **How do I apply for grant for DjangoCon EU 2027**
-Coming soon.
+Coming soon...
 
 **What do I do if I am refused a visa but still bought tickets**
 Sorry, hopefully that doesn't happen, but if it does send an email to our email here <a href="mailto:2027@djangocon.eu" class="pages-links">2027@djangocon.eu</a>
@@ -26,7 +26,7 @@ Yes there are, but you would need to purchase a ticket before getting access to 
 get the virtual ticket here <a href="https://pretix.evolutio.pt/evolutio/djceu2025/" class="pages-links">Virtual Tickets</a>
 
 **Where is the exact venue for the event**
-The venue is located in the heart of Dublin, at Talbot Hotel Stillorgan, a prime spot with convenient access to the city and surrounding areas. To learn more about reaching the venue, visit this <a href="../../information/venue" class="pages-links">page</a>.
+The conference takes place in Innsbruck, Austria. The exact venue will be announced soon — to learn more, visit this <a href="../../information/venue" class="pages-links">page</a>.
 
 **How do I get to Innsbruck?**
 Kindly check this <a href="../../../information/innsbruck" class="pages-links">page</a>, it should answer all your questions.

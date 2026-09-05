@@ -69,3 +69,7 @@ INSTALLED_APPS += ["django_extensions"]  # noqa F405
 
 # Your stuff...
 # ------------------------------------------------------------------------------
+
+# Allow same-origin framing in dev so the site can be previewed inside a
+# mobile-sized iframe (e.g. responsive checks); production stays DENY.
+X_FRAME_OPTIONS = "SAMEORIGIN"

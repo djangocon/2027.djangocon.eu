@@ -89,9 +89,16 @@ h6.title {
   // max-width: 50rem !important
 }
 
-body,
+// html keeps height: 100% so body's min-height percentage resolves; body
+// must be min-height (not height) — a fixed height pins body to the
+// viewport while its flex children overflow, which clamps/breaks page
+// scrolling (seen on mobile) and misreports the page height.
 html {
   height: 100%;
+}
+
+body {
+  min-height: 100%;
 }
 
 .innerBody,
@@ -183,9 +190,14 @@ body {
   }
 }
 
+// clip, not hidden: hidden forces the browser to compute overflow-y as
+// auto (since only one axis is non-visible), which turns body into its own
+// scroll container and breaks position: sticky for everything inside it
+// (e.g. .hero-mountain). clip suppresses the horizontal overflow from the
+// full-bleed 100vw sections without creating that scroll container.
 body,
 html {
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 body {

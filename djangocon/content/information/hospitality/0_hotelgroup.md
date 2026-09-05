@@ -3,20 +3,12 @@ layout: simple
 order: 0
 
 
-When booking your bedroom at the Talbot Hotel Stillorgan please email <a href="mailto:reservations@talbotstillorgan.com" class="pages-links">reservations@talbotstillorgan.com</a> or call 01 2001800 and quote Res: 215219 DjangoCon Europe 2027 to avail the discounted group rate. Each guest will be asked for their contact details along with a card for guarantee.
+We are working with hotels in Innsbruck to secure a discounted group rate for DjangoCon Europe 2027 attendees. Details will be published here as soon as they are confirmed.
 
-
-<div class="dublin-tips">
-<h3>Bed and Breakfast</h3>
+<div class="city-tips">
+<h3>In the meantime</h3>
     <ul>
-        <li>22nd April – €150 Single & €170 Double</li>
-        <li>23rd April – €150 Single & €170 Double</li>
-        <li>24th April –  €150 Single & €170 Double</li> 
-        <li>25th April – €185 Single & €205 Double</li> 
-        <li>26th April - €175 Single & €195 Double</li> 
-        <li>27th April - €150 Single & €170 Double</li> 
-        <li>28th April - €150 Single & €170 Double</li> 
+        <li>February is peak ski season in Tyrol — book your accommodation early.</li>
+        <li>Look for hotels near the Old Town or the main station; both are a short walk or tram ride from anywhere in the centre.</li>
     </ul>
-
 </div>
-

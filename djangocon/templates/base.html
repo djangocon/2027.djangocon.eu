@@ -41,6 +41,16 @@
     <link href="{% static 'css/project.css' %}" rel="stylesheet"/>
   {% endblock %}
 
+  {# Sets the theme before first paint so there's no light->dark flash; #}
+  {# project.js only needs to handle the toggle click from here on. #}
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var theme = stored || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+
   {% block javascript %}
     {# vendors.js bundles Bootstrap (with Popper) and Alpine. #}
     <script defer src="{% static 'js/vendors.js' %}"></script>
