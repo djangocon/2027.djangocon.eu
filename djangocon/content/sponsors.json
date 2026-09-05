@@ -1,10 +1,6 @@
 {
-  "_comment": "Sponsor logos by tier. Add a sponsor by copying an entry into the right tier. 'logo' is a path under djangocon/static/. Set 'filter' to true when the logo is dark and needs inverting to white on the dark band. 'size_class' is logo-small or logo-normal. Empty tiers are hidden automatically.",
+  "_comment": "Sponsor logos by tier, in the order the Figma template shows them. Add a sponsor by copying an entry into the right tier. 'logo' is a path under djangocon/static/. Set 'filter' to true when the logo is dark and needs inverting to white on the dark band. 'size_class' is logo-small or logo-normal. Empty tiers are hidden automatically.",
   "Platinum": [],
   "Gold": [],
-  "Silver": [],
-  "Bronze": [],
-  "Sponsor": [],
-  "Grants": [],
-  "Organizer": []
+  "Grants": []
 }
