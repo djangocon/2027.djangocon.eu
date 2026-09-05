@@ -14,12 +14,10 @@
       </div>
     </div>
     <div class="hero-mountain">
-      <img src="{% static 'images/other/mountain_innsbruck_light.png' %}"
+      {# One silhouette for both themes: white-on-transparent as drawn, inverted by CSS in light mode. #}
+      <img src="{% static 'images/other/mountain_innsbruck.png' %}"
            alt=""
-           class="hero-mountain-img hero-mountain-img--light" />
-      <img src="{% static 'images/other/mountain_innsbruck_dark.png' %}"
-           alt=""
-           class="hero-mountain-img hero-mountain-img--dark" />
+           class="hero-mountain-img" />
     </div>
   </div>
   {# HOME-ABOUT #}

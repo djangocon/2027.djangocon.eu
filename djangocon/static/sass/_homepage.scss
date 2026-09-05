@@ -1241,28 +1241,25 @@ object[type='application/pdf'] {
   display: block;
 }
 
-// The mountain art is two flat silhouette PNGs (one per theme) — only one is
-// ever shown. The entrance animation lives on the <img> rather than the
-// wrapper so it doesn't fight the wrapper's scroll-driven transform.
+// The mountain art is a single silhouette PNG drawn for the dark theme
+// (white ridges on transparent). Light mode shows the same file inverted, so
+// both themes get an identical shape and height — two separate exports
+// drifted apart in size before. The entrance animation lives on the <img>
+// rather than the wrapper so it doesn't fight the wrapper's scroll-driven
+// transform.
 .hero-mountain-img {
   width: 100%;
   height: auto;
-  display: none;
+  display: block;
+  // invert: white ridges -> black. brightness(0.9): the inverted background
+  // (255) lands on ~#e6, i.e. the light --paper, so the translucent fill is
+  // as invisible on the light page as it is on the black one.
+  filter: invert(1) brightness(0.9);
   animation: hero-mountain-in 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
 }
 
-.hero-mountain-img--light {
-  display: block;
-}
-
-:root[data-theme='dark'] {
-  .hero-mountain-img--light {
-    display: none;
-  }
-
-  .hero-mountain-img--dark {
-    display: block;
-  }
+:root[data-theme='dark'] .hero-mountain-img {
+  filter: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
