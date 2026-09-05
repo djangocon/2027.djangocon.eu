@@ -16492,15 +16492,8 @@ h2 {
   width: 100%;
   height: auto;
   display: block;
-  -webkit-filter: invert(1) brightness(0.9);
-          filter: invert(1) brightness(0.9);
   -webkit-animation: hero-mountain-in 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
           animation: hero-mountain-in 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
-}
-
-:root[data-theme=dark] .hero-mountain-img {
-  -webkit-filter: none;
-          filter: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
