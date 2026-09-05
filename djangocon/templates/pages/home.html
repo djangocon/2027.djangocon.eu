@@ -14,9 +14,10 @@
       </div>
     </div>
     <div class="hero-mountain">
-      {# Same silhouette twice: the light file is generated from the dark export by scripts/hero_mountain.py. #}
-      <img src="{% static 'images/other/mountain_innsbruck_light.png' %}" alt="" class="hero-mountain-img hero-mountain-img--light" />
-      <img src="{% static 'images/other/mountain_innsbruck.png' %}" alt="" class="hero-mountain-img hero-mountain-img--dark" />
+      {# Same image in both themes; built from assets/ by scripts/hero_mountain.py. #}
+      <img src="{% static 'images/other/mountain_innsbruck.png' %}"
+           alt=""
+           class="hero-mountain-img" />
     </div>
   </div>
   {# HOME-ABOUT #}

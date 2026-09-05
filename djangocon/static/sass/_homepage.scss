@@ -1241,30 +1241,16 @@ object[type='application/pdf'] {
   display: block;
 }
 
-// Two renderings of the same silhouette (scripts/hero_mountain.py derives
-// the light one from the dark export, so shape and height are identical and
-// the snow sits in the same places). Only one is ever shown. The entrance
-// animation lives on the <img> rather than the wrapper so it doesn't fight
-// the wrapper's scroll-driven transform.
+// One image for both themes: white snow, dark rock, a dark ridge contour
+// and a base that fades to transparent, so it dissolves into either page
+// colour. Generated from the designer's export by scripts/hero_mountain.py.
+// The entrance animation lives on the <img> rather than the wrapper so it
+// doesn't fight the wrapper's scroll-driven transform.
 .hero-mountain-img {
   width: 100%;
   height: auto;
-  display: none;
-  animation: hero-mountain-in 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
-}
-
-.hero-mountain-img--light {
   display: block;
-}
-
-:root[data-theme='dark'] {
-  .hero-mountain-img--light {
-    display: none;
-  }
-
-  .hero-mountain-img--dark {
-    display: block;
-  }
+  animation: hero-mountain-in 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
 }
 
 @media (prefers-reduced-motion: reduce) {
