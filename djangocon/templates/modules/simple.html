@@ -1,17 +1,17 @@
-<div class="container" id="pages">
-  <div class="row {{ content.meta.title.0 | safe |add:'-row' }}">
-    <div class="content-title pb-4">
-      <a id="{{ content.meta.title.0 | escape }}">
-        <h1 class="parent-title title title-lg">
-          {{ content.meta.parent.0 | safe }}
-        </h1>
-        <h1 class="title title-lg">{{ content.meta.title.0 | safe }}</h1>
-      </a>
+{% load markdown_extras %}
+
+{% with title=content|meta:"title" parent=content|meta:"parent" %}
+  <div class="container" id="pages">
+    <div class="row {{ title|slugify }}-row">
+      {% if title or parent %}
+        <div class="content-title pb-4" id="{{ title|slugify }}">
+          {% if parent %}<h2 class="parent-title title title-lg">{{ parent }}</h2>{% endif %}
+          {% if title %}<h2 class="title title-lg">{{ title }}</h2>{% endif %}
+        </div>
+      {% endif %}
+      <div class="col margin-right"></div>
+      <div class="{{ title|slugify }}-content simple-content">{{ content.html|safe }}</div>
+      <div class="col margin-left"></div>
     </div>
-    <div class="col margin-right"></div>
-    <div class="{{ content.meta.title.0|add:'-content' }} simple-content">
-      {{ content.html | safe }}
-    </div>
-    <div class="col margin-left"></div>
   </div>
-</div>
+{% endwith %}

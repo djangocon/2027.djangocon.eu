@@ -1,6 +1,6 @@
 {
   "_comment": "Site navigation and social links. Each key under 'site_menu' is a top-level menu label. Give it either a 'submenu' (a dropdown) or an 'href' (a direct link). Submenu URLs must match a folder under djangocon/content/ and end with a trailing slash. To hide an item without deleting it, move it into '_disabled'.",
-  "home": "/home/",
+  "home": "/",
   "site_menu": {
     "Talks": {
       "dropdown": true,

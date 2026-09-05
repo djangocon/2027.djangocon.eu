@@ -1,55 +1,35 @@
-from os import listdir
-
 from django.http import Http404
 from django.shortcuts import render
+from django.views.decorators.http import require_safe
 
-from config.settings.base import APPS_DIR
-from djangocon.site.templatetags.markdown_extras import render_markdown_file
+from djangocon.site.utils.content import content_dir
 from djangocon.site.utils.content import get_sponsors
-
-CONTENT_DIR = APPS_DIR / "content"
-SPONSORS_PAGE = CONTENT_DIR / "sponsors" / "sponsors" / "sponsors.md"
-
-
-def _page_files(directory):
-    """Content files in `directory`, ordered by their `order:` metadata then name."""
-    if not directory.is_dir():
-        return {}
-
-    def sort_key(name):
-        order = render_markdown_file(directory / name)["meta"].get("order", [None])[0]
-        try:
-            return (0, float(order))
-        except (TypeError, ValueError):
-            return (1, name)
-
-    names = sorted(
-        (f for f in listdir(directory) if f.endswith(".md")),
-        key=sort_key,
-    )
-    return {name.removesuffix(".md"): directory / name for name in names}
+from djangocon.site.utils.content import page_files
+from djangocon.site.utils.content import render_markdown_file
 
 
-def default_view(request, menu="home", submenu=None):
-    directory = CONTENT_DIR / menu / submenu if submenu else CONTENT_DIR / menu
-    files = _page_files(directory)
+def _title(slug: str) -> str:
+    return slug.replace("_", " ").title()
 
-    ctx = {
-        "menu": (submenu or menu).replace("_", " ").title(),
-        "files": files,
-    }
 
-    if menu == "home":
-        template = "pages/home.html"
-        ctx["files"]["home"] = SPONSORS_PAGE
-        ctx["sponsors"] = get_sponsors()
-    elif menu == "sponsors" and submenu == "sponsors":
-        template = "modules/sponsor_page.html"
-        ctx["sponsors"] = get_sponsors()
-        ctx["content"] = render_markdown_file(SPONSORS_PAGE)
-    elif not files:
-        raise Http404(f"No content for /{menu}/")
-    else:
-        template = "pages/default.html"
+@require_safe
+def home(request):
+    files = page_files(content_dir() / "home")
+    return render(request, "pages/home.html", {"menu": "Home", "files": files, "sponsors": get_sponsors()})
 
-    return render(request, template, ctx)
+
+@require_safe
+def sponsors(request):
+    sponsors_page = content_dir() / "sponsors" / "sponsors" / "sponsors.md"
+    ctx = {"menu": "Sponsors", "content": render_markdown_file(sponsors_page), "sponsors": get_sponsors()}
+    return render(request, "modules/sponsor_page.html", ctx)
+
+
+@require_safe
+def page(request, menu, submenu=None):
+    """A content page: every ``.md`` under ``content/<menu>/[<submenu>/]`` becomes a section."""
+    directory = content_dir() / menu / submenu if submenu else content_dir() / menu
+    files = page_files(directory)
+    if not files:
+        raise Http404
+    return render(request, "pages/default.html", {"menu": _title(submenu or menu), "files": files})

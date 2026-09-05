@@ -142,18 +142,10 @@
   }
 }
 
+// Open/close is Bootstrap's collapse (.collapse / .collapsing / .show);
+// nothing to animate by hand here.
 .sub-menu {
-  height: 0;
-  opacity: 0;
-  overflow: hidden;
-  transition:
-    height 1s ease,
-    opacity 1s ease;
-
-  &:not(.collapse) {
-    height: auto;
-    opacity: 1;
-  }
+  margin-top: 0.25rem;
 }
 
 // Theme toggle: shows the sun in light mode (click to go dark) and the moon

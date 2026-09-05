@@ -16,6 +16,7 @@ On Saturday and Sunday, you have the opportunity to do exactly that. This is you
 #### Main Venue - Hosting our Sprints
 
 The sprints venue in Innsbruck will be announced soon.
+
 #### Time
 
 - **Saturday** - 9AM to 6PM

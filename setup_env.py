@@ -1,17 +1,15 @@
-import os
+"""Create the local env file the compose services read (idempotent)."""
+
 from pathlib import Path
 
-env_file = ".envs/.django"
-
-if not Path(env_file).is_file():
-    print(f"Creating {env_file}, please wait...")
-    os.makedirs(os.path.dirname(env_file), exist_ok=True)
-    with open(env_file, "w") as file:
-        file.write(
-            """USE_DOCKER=yes
+ENV_FILE = Path(".envs/.django")
+DEFAULTS = """USE_DOCKER=yes
 IPYTHONDIR=/app/.ipython
 """
-        )
-    print(f"{env_file} created!")
+
+if ENV_FILE.is_file():
+    print(f"{ENV_FILE} already exists.")
 else:
-    print(f"{env_file} already exists.")
+    ENV_FILE.parent.mkdir(parents=True, exist_ok=True)
+    ENV_FILE.write_text(DEFAULTS)
+    print(f"{ENV_FILE} created.")

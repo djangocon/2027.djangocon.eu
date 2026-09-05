@@ -1,6 +1,7 @@
-import markdown as md
 from django import template
 from django.template.loader import select_template
+
+from djangocon.site.utils.content import render_markdown_file
 
 register = template.Library()
 
@@ -8,38 +9,26 @@ register = template.Library()
 # so a typo in a .md file degrades to a plain page instead of a 500.
 FALLBACK_LAYOUT = "simple"
 
-_EXTENSIONS = ["extra", "nl2br", "sane_lists", "meta", "toc"]
-
-# path -> (mtime, {"html", "meta"}). Bounded by the number of content files, and
-# re-parsed when a file changes so the dev server picks up edits without a restart.
-_cache = {}
-
-
-def render_markdown_file(path):
-    """Parse a content .md file into {"html", "meta"}, re-parsing only when it changes."""
-    mtime = path.stat().st_mtime
-    cached = _cache.get(path)
-    if cached is not None and cached[0] == mtime:
-        return cached[1]
-
-    parser = md.Markdown(extensions=_EXTENSIONS)
-    result = {"html": parser.convert(path.read_text()), "meta": parser.Meta}
-    _cache[path] = (mtime, result)
-    return result
-
 
 @register.filter
-def markdown(value):
-    return render_markdown_file(value)
+def markdown(path):
+    """Render a content file path to ``{"html", "meta"}``."""
+    return render_markdown_file(path)
 
 
 @register.filter
 def layout_template(content):
-    """Template path for a parsed file's `layout:`, falling back when it's missing."""
+    """Template path for a parsed file's ``layout:``, falling back when it's missing."""
     layout = content["meta"].get("layout", [None])[0]
     candidates = [f"modules/{layout}.html"] if layout else []
     candidates.append(f"modules/{FALLBACK_LAYOUT}.html")
     return select_template(candidates).template.name
+
+
+@register.filter
+def meta(content, key):
+    """First value of a metadata key, or an empty string (``content|meta:"title"``)."""
+    return content["meta"].get(key, [""])[0]
 
 
 @register.filter

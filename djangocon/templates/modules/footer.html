@@ -2,15 +2,14 @@
 
 <div class="container-fluid footer custom-footer">
   <div class="container-footer">
-    <div
-      class="d-flex flex-column flex-lg-row gap-4 justify-content-evenly align-items-center py-5">
-      <h1 class="custom-footer-h1">STAY IN THE LOOP</h1>
+    <div class="d-flex flex-column flex-lg-row gap-4 justify-content-evenly align-items-center py-5">
+      <p class="custom-footer-h1">STAY IN THE LOOP</p>
       <div class="d-flex gap-5 flex-wrap justify-content-center">
         {% for smedia, smedia_href in social_media.items %}
-          {% with smedia_logo='images/external_logo/logo_'|add:smedia|add:'.svg' %}
+          {% with smedia_logo="images/external_logo/logo_"|add:smedia|add:".svg" %}
             <div class="text-center footer-social-media-link">
               <a class="footer-link" href="{{ smedia_href }}" target="_blank" rel="me">
-                <img src="{% static smedia_logo %}" alt="{{ smedia }}">
+                <img src="{% static smedia_logo %}" alt="{{ smedia }}" />
               </a>
             </div>
           {% endwith %}
@@ -20,16 +19,13 @@
   </div>
   <div class="row justify-content-center footer-end">
     <div class="col row text-center align-self-center justify-content-center ">
-      <p class="col-12">© 2027 DjangoCon Europe </p>
-      <p class="col-12"><span class="d-none d-md-inline">·</span> developed in <a
-        href="https://djangoproject.com">django</a> with <span
-        style="color: red">♥</span> by <a
-        href="https://evolutio.pt/">evolutio</a> <span
-        class="d-none d-md-inline">·</span>
+      <p class="col-12">© 2027 DjangoCon Europe</p>
+      <p class="col-12">
+        <span class="d-none d-md-inline">·</span> developed in <a href="https://djangoproject.com">django</a> with <span class="footer-heart">♥</span> by <a href="https://evolutio.pt/">evolutio</a> <span class="d-none d-md-inline">·</span>
       </p>
-      <p class="col-12"> help us improve on <a
-        href="{{ social_media.github }}">GitHub</a></p>
+      <p class="col-12">
+        help us improve on <a href="{{ social_media.github }}">GitHub</a>
+      </p>
     </div>
   </div>
 </div>
-

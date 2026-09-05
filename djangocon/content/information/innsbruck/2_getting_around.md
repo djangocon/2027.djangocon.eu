@@ -5,6 +5,7 @@ order: 2
 Innsbruck's centre is compact — most sights, cafés and venues are within a 20-minute walk of the Golden Roof, and the river, the Old Town and the main station are all close together. When you do need to cover distance (or climb a mountain), the public transport network of buses, trams and cable cars has you covered.
 
 ### Guided Tours
+
 - **The Sightseer Bus**:
   - Hop-on, hop-off bus linking the main sights: Old Town, Ambras Castle, Bergisel ski jump and the Alpine Zoo.
   - Included with the <a href="https://www.innsbruck.info/en/experience/innsbruck-card.html" class="pages-links">Innsbruck Card</a>.
@@ -12,6 +13,7 @@ Innsbruck's centre is compact — most sights, cafés and venues are within a 20
   - Daily guided walks from the <a href="https://www.innsbruck.info/en/" class="pages-links">tourist information office</a> covering the Golden Roof, the Hofburg and St. Anne's Column.
 
 ### Making Your Own Way
+
 - **By Bus & Tram**:
   - Dense city network run by <a href="https://www.ivb.at/en" class="pages-links">IVB</a>. Single tickets ~€3; 24-hour and weekly passes available in the IVB app or at machines.
   - Bus line **F** connects the airport to the centre in 15–20 minutes.

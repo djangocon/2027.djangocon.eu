@@ -19,7 +19,7 @@
   padding-bottom: 2.5rem;
   padding-top: 1.5rem;
 
-  .content-title h1 {
+  .content-title .title {
     color: var(--ink);
     font-family: var(--font-main);
     font-size: 2.5rem;
@@ -52,14 +52,6 @@
       }
     }
 
-    // The page title is wrapped in a bare anchor (see modules/simple.html)
-    // used only as a scroll target, so it must not read as a link.
-    .content-title a,
-    .content-title a:hover {
-      color: inherit;
-      text-decoration: none;
-    }
-
     .btn {
       background-color: var(--golden);
       border: 0.0625rem solid #030507;
@@ -76,12 +68,7 @@
   }
 }
 
-h1.title,
-h2.title,
-h3.title,
-h4.title,
-h5.title,
-h6.title {
+.title {
   font-weight: 700;
 }
 
@@ -182,10 +169,10 @@ body {
     color: var(--paper);
   }
 
-  // .content-title h1 sets an explicit black and outranks the bare tag
+  // .content-title .title sets an explicit black and outranks the bare tag
   // selectors above, so it has to be overridden at matching specificity.
-  .content-title h1,
-  .content-title h1.parent-title {
+  .content-title .title,
+  .content-title .title.parent-title {
     color: var(--paper);
   }
 }

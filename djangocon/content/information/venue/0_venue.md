@@ -3,17 +3,17 @@ layout: simple
 order: 0
 ---
 
-<h1 class="cfp-title" >Venue</h1>
+<h2 class="cfp-title" >Venue</h2>
 
 **DjangoCon Europe 2027** will be held in Innsbruck! The capital of Tyrol sits in the heart of the Austrian Alps, framed by the Nordkette mountain range and split by the River Inn. Its compact medieval Old Town, imperial history and lively student scene make it a city where you can walk from a conference talk to a cable car in minutes.
 
 As per DjangoCon tradition, we shall walk around, chat, laugh and explore the city together. If you are not the "walking-type", let the convenient public transportation network work its magic for you!
 
-<h1 style="font-size:25px" class="cfp-title"><u>CONFERENCE VENUE</u></h1>
+<h2 style="font-size:25px" class="cfp-title"><u>CONFERENCE VENUE</u></h2>
 
 The exact venue for DjangoCon Europe 2027 will be announced soon — keep an eye on this page and on our <a href="/information/announcements/" class="pages-links">announcements</a>.
 
-<h1 class="cfp-title" style="font-size:30px">Getting to Innsbruck</h1>
+<h2 class="cfp-title" style="font-size:30px">Getting to Innsbruck</h2>
 
 #### By air
 
@@ -33,7 +33,7 @@ Innsbruck lies on the A12 Inntal motorway, connected to the A13 Brenner route to
 
 Long-distance coaches (e.g. <a href="https://www.flixbus.com/" class="pages-links">FlixBus</a>) connect Innsbruck with Munich, Vienna, Zurich and many other European cities at budget-friendly prices.
 
-<h1 class="cfp-title" style="font-size:30px">Tourist Tips: Around Innsbruck</h1>
+<h2 class="cfp-title" style="font-size:30px">Tourist Tips: Around Innsbruck</h2>
 
 - The <a href="https://www.innsbruck.info/en/experience/innsbruck-card.html" class="pages-links">Innsbruck Card</a> (24/48/72 hours) covers public transport, the Sightseer bus, major museums and one round trip on the Nordkette cable cars.
 - Don't miss the **Golden Roof** and the medieval Old Town, **Ambras Castle**, the **Bergisel ski jump**, and the **Nordkettenbahnen** — a funicular and cable-car ride from the city centre to over 2,200&nbsp;m.

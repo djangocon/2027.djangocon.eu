@@ -11,6 +11,16 @@ Reviewed on 2026-09-05 against `main` (ae127b4). Everything under `config/`, `dj
 
 ---
 
+## Status after the code pass (2026-09-05, second commit)
+
+Every item under **Code** below has been addressed except where noted; the **Content** section is untouched and still needs the organising team.
+
+Done: hero parallax; logo naming; theme bootstrap hardening; mountain images unchanged (needs a designer export — see below); Swiper/home*speakers, home_news, about.html, `djangocon/wsgi.py`, `utils/storages.py`, popup JS and `_carousel.scss` removed; Alpine, `sharp`, `svgo`, `node-sass-tilde-importer` and the no-op `imgCompression` dropped from the build (vendors.js is now just Bootstrap's bundle); ~36 MB of Porto/Vigo/Dublin assets and the unlicensed fonts deleted; Anymail/Mailgun, `EMAIL*\*`, `ADMINS`, `django.forms`, `contenttypes`, `LocaleMiddleware`/i18n removed and Sentry made optional; `CONTENT_DIR`is a setting and the loaders live in`site/utils/content.py`; `default_view`split into`home`/`sponsors`/`page`with explicit URLs and a 301 from`/home/`; one `<h1>`per page (section titles are`<h2>`, ids/classes are slugified, footer heading is a `<p>`); `404.html`uses`{% static %}`; grant checker rebuilt without `innerHTML`/`alert()`and reads its endpoint from`status_url:`in the`.md`; manifest/favicon links fixed; Open Graph/Twitter/canonical tags added; Google Fonts import trimmed to the five families in use; mobile sub-menus use Bootstrap collapse (accordion) instead of the inline script; `justfile`, cookiecutter-style `pyproject.toml`(ruff rule set, djLint, pytest), pre-commit with djLint + pyproject-fmt, README rewritten.`ruff`, `ruff format`, `djlint --lint/--check`, `prettier --check`, `pyproject-fmt --check`, `django-upgrade`and the pre-commit-hooks checks all pass;`manage.py check --deploy` is clean.
+
+Still open (needs a decision or a designer, not code): the two mountain PNGs (dark is the reference; the light one should be re-exported at the same frame/size), self-hosting the Google Fonts, raising `DJANGO_SECURE_HSTS_SECONDS` in the deployment env, adding the three smoke tests / CI / a production Dockerfile (declined for now), the `.devcontainer` `~/.ssh` mount, and the hardcoded 2025 roster in `credits.html`.
+
+---
+
 ## Code
 
 ### Bugs / things that will actually bite
@@ -26,10 +36,10 @@ Reviewed on 2026-09-05 against `main` (ae127b4). Everything under `config/`, `dj
 
 ### Dead / unnecessary code
 
-- `djangocon/wsgi.py` (second WSGI module, points at *local* settings), `djangocon/utils/storages.py` (empty), `djangocon/templates/pages/about.html` (only `{% extends %}`), `home_news.html` + `latest_news.md` and `speakers.md` (never included), `credits.md` body (template hardcodes names), `openPopup/closePopup` in `project.js` (no `#popup` in any template).
+- `djangocon/wsgi.py` (second WSGI module, points at _local_ settings), `djangocon/utils/storages.py` (empty), `djangocon/templates/pages/about.html` (only `{% extends %}`), `home_news.html` + `latest_news.md` and `speakers.md` (never included), `credits.md` body (template hardcodes names), `openPopup/closePopup` in `project.js` (no `#popup` in any template).
 - **Alpine.js** is bundled (~45 KB min) but no template uses `x-data`. Drop it from `vendorsJs`.
 - `LocaleMiddleware` + `USE_I18N` with no translations; `django.forms` + `FORM_RENDERER` with no forms; `django.contrib.contenttypes` with no models. Harmless, but the settings read as if this were an app with a database.
-- **Anymail/Mailgun** in production settings is *required* (`env("MAILGUN_API_KEY")` raises if unset) but the site sends no email. Either drop `django-anymail`, `EMAIL_*`, `ADMINS`, or make them optional. Same for `SENTRY_DSN` (fine to require, but document it).
+- **Anymail/Mailgun** in production settings is _required_ (`env("MAILGUN_API_KEY")` raises if unset) but the site sends no email. Either drop `django-anymail`, `EMAIL_*`, `ADMINS`, or make them optional. Same for `SENTRY_DSN` (fine to require, but document it).
 - `gulpfile.mjs` `imgCompression` re‑encodes only the top level of `static/images` (all images live in subfolders), with `sharp(input).toBuffer()` and no options — it is a no‑op that rewrites files on every `gulp build`. Remove or make it recursive with actual compression settings.
 - `static/fonts/` contains Product Sans (Google's proprietary UI font — not licensed for redistribution) and Florent, neither referenced by any `@font-face`, plus three stray images (`photo.jpg`, `google-product-sans.jpg`, `opengraph_color_1200dp.png`). Delete the fonts; move the OG image to `images/`.
 - ~60 MB of legacy static assets from Porto/Vigo/Dublin: `images/hotels/*` (Porto hotels), `images/past/vigo_venue.png`, `arena.png`, `super_bock_arena_logo.png`, `docs/porto-card.pdf`, `docs/tap.pdf`, `home_carousel/*` (12 MB, unused), `speakers/current/*`, `venue/` (4.8 MB). Whitenoise gzips/brotlis all of it at `collectstatic`.
@@ -55,18 +65,18 @@ Reviewed on 2026-09-05 against `main` (ae127b4). Everything under `config/`, `dj
 
 ### Stale 2024/2025 material that is live right now
 
-| Page | Problem |
-|---|---|
-| `information/tshirts` | Links to pretix **`djceu2025`**, shows the 2025 shirt, and announces a shirt that doesn't exist yet ("has arrived"). |
-| `about/contact/2_faqs.md` | Two ticket links to **`djceu2025`**; a commented FAQ still describes Vigo train stations. "Invitation letters: coming soon" contradicts the visa guide, which offers them via `diversity@djangocon.eu`. |
+| Page                                                | Problem                                                                                                                                                                                                                                                   |
+| --------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `information/tshirts`                               | Links to pretix **`djceu2025`**, shows the 2025 shirt, and announces a shirt that doesn't exist yet ("has arrived").                                                                                                                                      |
+| `about/contact/2_faqs.md`                           | Two ticket links to **`djceu2025`**; a commented FAQ still describes Vigo train stations. "Invitation letters: coming soon" contradicts the visa guide, which offers them via `diversity@djangocon.eu`.                                                   |
 | `information/announcements/1_transparencyreport.md` | This is the **2025 Dublin CoC transparency report** relabelled "2027" — "this year's conference", Irish privacy law, 35 talks, named team. Publishing it as 2027 is misleading. Re‑title it "2025 transparency report" (or remove until after the event). |
-| `information/social_events/0_soon.md` | "Mar de Vigo Auditorium Rooftop, June 7" (2024), DALL‑E image. The `socialevent_page` template ignores the `.md` body anyway and prints its own TBA text — so the file is both stale and unused. |
-| `information/django_girls/*` | Title "Django Girls **Vigo**". Hidden from nav but reachable at `/information/django_girls/`. |
-| `information/grants/*` | "Opportunity grants applications are **now closed**" — for 2027 they haven't opened (home says they open 30 Nov). The status checker calls the 2025 Apps Script. |
-| `information/hospitality/1_childcare.md` | "Applications open March 1, close March 31" — that is *after* a February conference; home says childcare opens 7 Jan. Form link is 2025's. |
-| `about/credits` | Hardcoded 2025 Dublin team. |
-| `sponsors/sponsorship/1_visibility_options.md` | `djc-sponsorship-brochure.pdf` is the previous edition's brochure (check prices/venue inside). |
-| `talks/cfp/0_cfp.md` | "It's a new year…" framing; `1_schedule.md` links to a schedule page that says "Coming soon". |
+| `information/social_events/0_soon.md`               | "Mar de Vigo Auditorium Rooftop, June 7" (2024), DALL‑E image. The `socialevent_page` template ignores the `.md` body anyway and prints its own TBA text — so the file is both stale and unused.                                                          |
+| `information/django_girls/*`                        | Title "Django Girls **Vigo**". Hidden from nav but reachable at `/information/django_girls/`.                                                                                                                                                             |
+| `information/grants/*`                              | "Opportunity grants applications are **now closed**" — for 2027 they haven't opened (home says they open 30 Nov). The status checker calls the 2025 Apps Script.                                                                                          |
+| `information/hospitality/1_childcare.md`            | "Applications open March 1, close March 31" — that is _after_ a February conference; home says childcare opens 7 Jan. Form link is 2025's.                                                                                                                |
+| `about/credits`                                     | Hardcoded 2025 Dublin team.                                                                                                                                                                                                                               |
+| `sponsors/sponsorship/1_visibility_options.md`      | `djc-sponsorship-brochure.pdf` is the previous edition's brochure (check prices/venue inside).                                                                                                                                                            |
+| `talks/cfp/0_cfp.md`                                | "It's a new year…" framing; `1_schedule.md` links to a schedule page that says "Coming soon".                                                                                                                                                             |
 
 ### Internal contradictions
 

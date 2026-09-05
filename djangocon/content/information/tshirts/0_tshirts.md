@@ -1,7 +1,7 @@
 layout: simple
 order: 0
 
-<h1 class="cfp-title">T-Shirts</h1>
+<h2 class="cfp-title">T-Shirts</h2>
 
 **The Moment You've All Been Waiting For Has Arrived...**
 
@@ -20,4 +20,3 @@ Whether you're a Django aficionado or a newcomer eager to dive in, these T-shirt
 <img src="/static/images/tshirts/djceu25_tshirt.png" alt="djangocon_shirt" style="width: 60%; border-radius: 10px;">
 
 <a href="https://pretix.evolutio.pt/evolutio/djceu2025/"><button class="hero-btn text-uppercase">Grab your t-shirt</button></a>
-

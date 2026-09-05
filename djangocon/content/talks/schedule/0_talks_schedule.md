@@ -3,6 +3,6 @@ layout: simple
 order: 0
 ---
 
-<h1 class="cfp-title">Talks Schedule</h1>
+<h2 class="cfp-title">Talks Schedule</h2>
 
 Coming soon...

@@ -12,6 +12,7 @@ For everything concerning ticket kindly check it here <a href="https://pretix.ev
 
 **Do you provide Invitation to aid visa application?**
 Coming soon...
+
 <!-- The organizers of DjangoCon offer invitation letters to assist with your travel arrangements. Click [here](https://2027.djangocon.eu/information/hospitality/) to request one -->
 
 **How do I apply for grant for DjangoCon EU 2027**
@@ -33,8 +34,6 @@ Kindly check this <a href="../../../information/innsbruck" class="pages-links">p
 
 **Will there be breakfast, lunch and dinner?**
 Lunch and Coffee breaks are included. Dinners are not included
-
-
 
 <!-- **Can the organizers assist with visa applications for international attendees?**
 **Would all session be recorded, also the once under the workshop**

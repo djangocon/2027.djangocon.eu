@@ -1,41 +1,35 @@
 {% extends "base.html" %}
+
 {% load markdown_extras %}
 {% load static %}
-{% block content %}
 
+{% block content %}
   {# HOME-INTRO #}
   <div class="hero-section">
     <div class="hero-container">
       <div class="hero-content">
         <h1>Five days of talks, sprints, and tutorials in Innsbruck</h1>
-        <span class="hero-date">February 17&ndash;21, 2027</span>
+        <span class="hero-date">February 17–21, 2027</span>
         <a href="https://pretix.evolutio.pt/evolutio/djceu27/" class="hero-btn">Grab your ticket now</a>
       </div>
     </div>
     <div class="hero-mountain">
-      <img src="{% static 'images/other/mountain_innsbruck_light.png' %}" alt="" class="hero-mountain-img hero-mountain-img--light">
-      <img src="{% static 'images/other/mountain_innsbruck_dark.png' %}" alt="" class="hero-mountain-img hero-mountain-img--dark">
+      <img src="{% static 'images/other/mountain_innsbruck_light.png' %}"
+           alt=""
+           class="hero-mountain-img hero-mountain-img--light" />
+      <img src="{% static 'images/other/mountain_innsbruck_dark.png' %}"
+           alt=""
+           class="hero-mountain-img hero-mountain-img--dark" />
     </div>
   </div>
-
-
   {# HOME-ABOUT #}
-  {% include 'modules/default.html' with content=files.about|markdown %}
-
-
+  {% include "modules/default.html" with content=files.about|markdown %}
   {# TICKETS #}
-  {% include 'modules/default.html' with content=files.tickets|markdown %}
-
-
+  {% include "modules/default.html" with content=files.tickets|markdown %}
   {# IMPORTANT DATES #}
-  {% include 'modules/default.html' with content=files.dates|markdown %}
-
-
+  {% include "modules/default.html" with content=files.dates|markdown %}
   {# Past Edition #}
-  {% include 'modules/default.html' with content=files.past_edition|markdown %}
-
-
+  {% include "modules/default.html" with content=files.past_edition|markdown %}
   {# HOME-SPONSORS #}
-  {% include 'modules/default.html' with content=files.sponsors|markdown %}
-
+  {% include "modules/default.html" with content=files.sponsors|markdown %}
 {% endblock content %}

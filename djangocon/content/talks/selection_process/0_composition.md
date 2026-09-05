@@ -1,7 +1,7 @@
 layout: simple
 order: 0
 
-<h1 class="cfp-title">Composition</h1>
+<h2 class="cfp-title">Composition</h2>
 First, a warning: all of the following numbers are approximate and may change – we don't know the future, and we may have to adjust to changed circumstances in several ways.
 
 DjangoCon Europe has three conference days reserved for talks (followed by two days of sprints with tutorials on the side). Experience shows that more than 10 talks per day (plus room for lightning talks) is a bit much, so we're looking at about 27 talk slots we can distribute among submissions. Of these 27:

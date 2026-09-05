@@ -651,7 +651,6 @@
 }
 
 .home_dates-content {
-
   h1 {
     margin-top: 3rem;
   }
@@ -1034,7 +1033,7 @@
   text-align: start;
 }
 
-.composed-content h1 {
+.composed-content h2 {
   color: var(--accent);
   margin: 50px 0 20px;
 }
@@ -1089,10 +1088,10 @@
     color: var(--paper);
   }
 
-  // .content-title h1 sets an explicit black and outranks the bare tag
+  // .content-title .title sets an explicit black and outranks the bare tag
   // selectors above, so it has to be overridden at matching specificity.
-  .content-title h1,
-  .content-title h1.parent-title {
+  .content-title .title,
+  .content-title .title.parent-title {
     color: var(--paper);
   }
 }
@@ -1614,12 +1613,10 @@ object[type='application/pdf'] {
   font-weight: 400;
   text-transform: uppercase;
   border-radius: var(--radius-sm) var(--radius-sm) 0 0;
-  -webkit-mask:
-    radial-gradient(circle 20px at 0 100%, transparent 20px, #000 0),
+  -webkit-mask: radial-gradient(circle 20px at 0 100%, transparent 20px, #000 0),
     radial-gradient(circle 20px at 100% 100%, transparent 20px, #000 0);
   -webkit-mask-composite: source-in;
-  mask:
-    radial-gradient(circle 20px at 0 100%, transparent 20px, #000 0),
+  mask: radial-gradient(circle 20px at 0 100%, transparent 20px, #000 0),
     radial-gradient(circle 20px at 100% 100%, transparent 20px, #000 0);
   mask-composite: intersect;
 

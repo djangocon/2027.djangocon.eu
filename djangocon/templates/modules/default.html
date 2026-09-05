@@ -1,5 +1,3 @@
 {% load markdown_extras %}
 
-<div class="{{ content.meta.layout.0|add:'-content' }} my-4">
-  {% include content|layout_template %}
-</div>
+<div class="{{ content|meta:"layout" }}-content my-4">{% include content|layout_template %}</div>

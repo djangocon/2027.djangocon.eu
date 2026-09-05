@@ -1,78 +1,87 @@
-{% load static i18n %}<!doctype html>
-{% get_current_language as LANGUAGE_CODE %}
-<html lang="{{ LANGUAGE_CODE }}">
-<head>
-  <meta charset="utf-8"/>
-  <meta http-equiv="x-ua-compatible" content="ie=edge"/>
-  <title>
-    {% block title %} {% if menu != "Home" %} {{ menu }} - {% endif %}
-      DjangoCon Europe 2027 {% endblock title %}
-  </title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta
-          name="description"
-          content="The official Django conference in Europe - run by the community for the community. Innsbruck, Austria. Grab your ticket!"
-  />
+{% load static %}
 
-  <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="{% static 'images/favicons/favicon.png' %}"
-  />
-  <link
-          rel="icon"
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      {% block title %}
+        {% if menu != "Home" %}{{ menu }} -{% endif %}
+        DjangoCon Europe 2027
+      {% endblock title %}
+    </title>
+    <meta name="description"
+          content="The official Django conference in Europe - run by the community for the community. Innsbruck, Austria, 17-21 February 2027." />
+    <link rel="canonical" href="https://2027.djangocon.eu{{ request.path }}" />
+    {# Social cards #}
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="DjangoCon Europe 2027" />
+    <meta property="og:title"
+          content="{% if menu != "Home" %}{{ menu }} - {% endif %}DjangoCon Europe 2027" />
+    <meta property="og:description"
+          content="The official Django conference in Europe - run by the community for the community. Innsbruck, Austria, 17-21 February 2027." />
+    <meta property="og:url"
+          content="https://2027.djangocon.eu{{ request.path }}" />
+    <meta property="og:image"
+          content="https://2027.djangocon.eu{% static 'images/other/opengraph.png' %}" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@DjangoConEurope" />
+    <link rel="icon"
+          href="{% static 'images/favicons/favicon.ico' %}"
+          sizes="32x32" />
+    <link rel="icon"
+          type="image/svg+xml"
+          href="{% static 'images/favicons/djclogo-square.svg' %}" />
+    <link rel="icon"
           type="image/png"
           sizes="32x32"
-          href="{% static 'images/favicons/favicon.png' %}"
-  />
-  <link
-          rel="icon"
+          href="{% static 'images/favicons/favicon-32x32.png' %}" />
+    <link rel="icon"
           type="image/png"
           sizes="16x16"
-          href="{% static 'images/favicons/favicon.png' %}"
-  />
-  <link
-          rel="manifest"
-          href="{% static 'images/favicons/site.webmanifest' %}"
-  />
-
-  {% block css %}
-    {# Bootstrap is compiled into project.css — no CDN, one version. #}
-    <link href="{% static 'css/project.css' %}" rel="stylesheet"/>
-  {% endblock %}
-
-  {# Sets the theme before first paint so there's no light->dark flash; #}
-  {# project.js only needs to handle the toggle click from here on. #}
-  {# Default follows the OS preference; a toggle choice is remembered. #}
-  <meta name="color-scheme" content="light dark"/>
-  <script>
-    (function () {
-      var stored = null;
-      try { stored = localStorage.getItem('theme'); } catch (e) {}
-      var theme = stored || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-      document.documentElement.setAttribute('data-theme', theme);
-    })();
-  </script>
-
-  {% block javascript %}
-    {# vendors.js bundles Bootstrap (with Popper) and Alpine. #}
-    <script defer src="{% static 'js/vendors.js' %}"></script>
-    <script defer src="{% static 'js/project.js' %}"></script>
-  {% endblock javascript %}
-</head>
-
-<body>
-<h1 style="display: none; margin: 0px; padding: 0px">{{ menu }}</h1>
-
-{% include "modules/header.html" %}
-
-<div class="innerBody">{% block content %} {% endblock content %}</div>
-
-{% block modal %}
-{% endblock modal %}
-{% block inline_javascript %}
-{% endblock inline_javascript %}
-
-{% include "modules/footer.html" %}
-</body>
+          href="{% static 'images/favicons/favicon-16x16.png' %}" />
+    <link rel="apple-touch-icon"
+          sizes="180x180"
+          href="{% static 'images/favicons/apple-touch-icon.png' %}" />
+    <link rel="manifest" href="{% static 'images/favicons/site.webmanifest' %}" />
+    {% block css %}
+      {# Bootstrap is compiled into project.css — no CDN, one version. #}
+      <link href="{% static 'css/project.css' %}" rel="stylesheet" />
+    {% endblock css %}
+    {# Sets the theme before first paint so there's no light->dark flash; #}
+    {# project.js only needs to handle the toggle click from here on. #}
+    {# Default follows the OS preference; a toggle choice is remembered. #}
+    <meta name="color-scheme" content="light dark" />
+    <script>
+      (function() {
+        var stored = null;
+        try {
+          stored = localStorage.getItem('theme');
+        } catch (e) {}
+        var theme = stored || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+      })();
+    </script>
+    {% block javascript %}
+      {# vendors.js is Bootstrap's bundle (includes Popper). #}
+      <script defer src="{% static 'js/vendors.js' %}"></script>
+      <script defer src="{% static 'js/project.js' %}"></script>
+    {% endblock javascript %}
+  </head>
+  <body>
+    {# Every page gets exactly one h1; section titles are h2s. The home page's #}
+    {# hero carries a visible one, so only the other pages need this. #}
+    {% if menu != "Home" %}<h1 class="visually-hidden">{{ menu }}</h1>{% endif %}
+    {% include "modules/header.html" %}
+    <div class="innerBody">
+      {% block content %}
+      {% endblock content %}
+    </div>
+    {% block modal %}
+    {% endblock modal %}
+    {% block inline_javascript %}
+    {% endblock inline_javascript %}
+    {% include "modules/footer.html" %}
+  </body>
 </html>

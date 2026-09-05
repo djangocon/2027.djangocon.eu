@@ -1,8 +1,7 @@
 layout: simple
 order: 0
 
-<h1 class="cfp-title" style="color: tomato">Opportunity grants applications are now closed!</h1>
-
+<h2 class="cfp-title" style="color: tomato">Opportunity grants applications are now closed!</h2>
 
 **DjangoCon Europe 2027 offers grants so that those who might otherwise not be able to attend won't hesitate to participate.** Some expenses for the conference attendance (which could include travel, hotel, registration, etc) will be covered for opportunity grant recipients.
 

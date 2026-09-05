@@ -4,12 +4,14 @@ title: Announcements
 order: 0
 
 ---
+
 > DjangoCon Europe 2027 is coming to Innsbruck! 🎉 Planning is under way, and
-announcements about the call for participation, grants and tickets will be
-posted here as they are confirmed. 🌟
-<br>
-_Published: TBA_
----
+> announcements about the call for participation, grants and tickets will be
+> posted here as they are confirmed. 🌟
+> <br>
+
+## _Published: TBA_
+
 Stay tuned and follow us on X (formerly known as Twitter): <a href="https://twitter.com/djangoconeurope" class="pages-links">@DjangoConEurope</a>!
 
 <!--

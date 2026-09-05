@@ -23,17 +23,6 @@ document.addEventListener('DOMContentLoaded', function () {
   sync();
 });
 
-// popup js
-function openPopup() {
-  document.getElementById('popup').style.display = 'block';
-  document.getElementById('overlay').style.display = 'block';
-}
-
-function closePopup() {
-  document.getElementById('popup').style.display = 'none';
-  document.getElementById('overlay').style.display = 'none';
-}
-
 // Hero parallax fallback. The motion itself is defined in _homepage.scss as
 // scroll-driven animations; browsers without `animation-timeline: scroll()`
 // (Firefox at the time of writing) get the same curves here through the

@@ -5,50 +5,56 @@
 
 🌍 [2027.djangocon.eu](https://2027.djangocon.eu/) \
 📍 Innsbruck, Austria \
-📅 Date TBD
+📅 17–21 February 2027
 
 [![built-with](https://img.shields.io/badge/built%20with-Cookiecutter%20Django-blue.svg)](https://github.com/pydanny/cookiecutter-django/)
 [![code-style](https://img.shields.io/badge/code%20style-ruff-261230.svg)](https://github.com/astral-sh/ruff)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)]()
 
-## Local Development
+## Local development
 
-### Using Docker
-
-```bash
-python setup_env.py
-docker compose build
-docker compose up
-```
-
-To access the running Django container, use `docker compose exec django /bin/bash`.
-
-The site has no database and no models: every page is rendered from the Markdown
-files in `djangocon/content/`. There is nothing to migrate.
-
-### Using venv
-
-! WARNING ! - Docker is recommended for local development, as the node container
-compiles SCSS automatically (edits made directly to the CSS files WILL be
-overwritten by the compiler). Using venv means installing node and npm yourself
-and running `npm run dev` to watch and compile SCSS.
-
-Requires Python 3.10 or newer (Django 5.2 LTS).
-
-_optional_ - Create a virtual environment
+Requirements: Docker and [just](https://just.systems) (`brew install just`).
 
 ```bash
-python -m venv env
-source env/bin/activate
+just build   # creates .envs/.django if missing and builds the images
+just up      # django on http://localhost:8000, browser-sync on http://localhost:3000
+just logs    # follow the logs (or `just logs node`)
+just down
 ```
 
-install requirements:
+`just` on its own lists every recipe. The node container watches `djangocon/static/sass`
+and recompiles `project.css` on change — edit the SCSS, never the CSS. Other useful
+recipes: `just manage <cmd>`, `just shell`, `just lint` (all pre-commit hooks),
+`just pytest`, `just assets` (one-off SCSS/JS build), `just collectstatic`.
+
+The site has no database and no models: every page is rendered from the files in
+`djangocon/content/`. There is nothing to migrate.
+
+### Without Docker
+
+Python 3.13 and Node 22 are required (see `pyproject.toml` / `package.json`).
 
 ```bash
-pip install -r requirements/local.txt   # or production.txt
+python -m venv .venv && source .venv/bin/activate
+pip install -r requirements/local.txt
+npm ci && npm run build          # or `npm run dev` to watch SCSS/JS
+python manage.py runserver
 ```
 
+### Code quality
 
+Python is linted and formatted by [ruff](https://docs.astral.sh/ruff/), templates by
+[djLint](https://djlint.com/), everything else by prettier — all wired through
+pre-commit (`pre-commit install` once, or `just lint` to run everything).
+
+## Deploying
+
+Production settings live in `config/settings/production.py` and are driven by
+environment variables: `DJANGO_SECRET_KEY` (required), `DJANGO_ALLOWED_HOSTS`
+(default `2027.djangocon.eu`), `SENTRY_DSN` (optional), `DJANGO_SECURE_HSTS_SECONDS`
+(default 60 — raise once HTTPS is proven). Static files are served by WhiteNoise
+from `staticfiles/` after `manage.py collectstatic`; run the app with gunicorn
+(`gunicorn config.wsgi`).
 
 ## Editing site content
 
@@ -66,7 +72,12 @@ order: 2
 `order` sets the position on the page, and `layout` picks a template from
 `djangocon/templates/modules/`. A layout name that doesn't exist falls back to
 `simple` rather than breaking the page. Adding a `.md` file to a folder adds a
-section to that page.
+section to that page. Use `##`/`###` headings inside the body — the page title is
+the only `<h1>`.
+
+Some layouts carry their own copy in the template rather than in the `.md`
+(`home_about`, `home_tickets`, `home_dates`, `past_edition`, `credits`); edit
+those under `djangocon/templates/modules/`.
 
 **Sponsors** live in `djangocon/content/sponsors.json`, grouped by tier. Copy an
 existing entry to add one. Empty tiers are hidden automatically. Set `filter` to

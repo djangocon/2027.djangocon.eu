@@ -1,8 +1,6 @@
-title: Mentorship Program 
+title: Mentorship Program
 layout: simple
 order: 0
-
-
 
 Are you an experienced speaker eager to share your knowledge and guide aspiring speakers? Or are you planning to submit a proposal to DjangoCon Europe 2027 and looking for expert advice to craft a standout submission?
 
@@ -10,15 +8,11 @@ If you answered "yes" to either question, this mentorship program is perfect for
 
 ---
 
-
-
 ### **For Mentees**
 
 This program connects experienced proposal submitters with individuals seeking support in crafting high-quality submissions. Whether you’re preparing a Talk, Charla, Tutorial, or Poster proposal, this program is designed to assist you at any stage of the proposal-writing process.
 
 ---
-
-
 
 ### **For Mentors**
 

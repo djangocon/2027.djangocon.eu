@@ -55,7 +55,12 @@ footer {
   }
 }
 
+.footer-heart {
+  color: var(--accent);
+}
+
 .custom-footer-h1 {
+  margin: 0;
   color: var(--accent) !important;
   font-family: var(--font-display);
   font-weight: 400;

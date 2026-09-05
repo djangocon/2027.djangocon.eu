@@ -1,7 +1,7 @@
 layout: simple
 order: 0
 
-<h1 class="cfp-title">Call for Proposals</h1>
+<h2 class="cfp-title">Call for Proposals</h2>
 
 This page contains all information regarding the proposal process for DjangoCon Europe – we will update it regularly as new information becomes available.
 

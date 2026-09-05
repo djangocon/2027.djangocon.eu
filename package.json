@@ -1,9 +1,20 @@
 {
   "name": "djangocon",
   "version": "0.1.0",
+  "description": "DjangoCon Europe 2027 website",
+  "private": true,
+  "engines": {
+    "node": ">=22"
+  },
+  "browserslist": [
+    "last 2 versions"
+  ],
+  "scripts": {
+    "dev": "gulp",
+    "build": "gulp build"
+  },
   "devDependencies": {
     "@popperjs/core": "^2.10.2",
-    "alpinejs": "^3.14.9",
     "autoprefixer": "^10.4.0",
     "bootstrap": "^5.3.8",
     "browser-sync": "^3.0.2",
@@ -15,20 +26,7 @@
     "gulp-rename": "^2.0.0",
     "gulp-sass": "^5.0.0",
     "gulp-uglify-es": "^3.0.0",
-    "node-sass-tilde-importer": "^1.0.2",
     "postcss": "^8.3.11",
-    "sass": "^1.93.1",
-    "sharp": "^0.35.3",
-    "svgo": "^4.0.2"
-  },
-  "engines": {
-    "node": ">=22"
-  },
-  "browserslist": [
-    "last 2 versions"
-  ],
-  "scripts": {
-    "dev": "gulp",
-    "build": "gulp build"
+    "sass": "^1.93.1"
   }
 }
