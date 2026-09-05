@@ -1546,11 +1546,11 @@ object[type='application/pdf'] {
   flex-direction: column;
 }
 
-// Full-width dark band on top of the card, naming the tier. Deliberately
-// not var(--ink) — it stays dark in both themes, like the footer band.
-// Its bottom corners are punched out with the same ~20px radius as the
-// body mask's seam notches, so band + body read as one ticket with a
-// circular notch straddling the seam (per the Figma card).
+// Full-width dark band on top of the card, naming the tier. Its bottom
+// corners are punched out with the same ~20px radius as the body mask's
+// seam notches, so band + body read as one ticket with a circular notch
+// straddling the seam (per the Figma card). Flips to a white band with
+// dark text in dark mode so it doesn't disappear against the black page.
 .ticket-header {
   background: #191919;
   color: #fff;
@@ -1569,6 +1569,11 @@ object[type='application/pdf'] {
     radial-gradient(circle 20px at 0 100%, transparent 20px, #000 0),
     radial-gradient(circle 20px at 100% 100%, transparent 20px, #000 0);
   mask-composite: intersect;
+
+  :root[data-theme='dark'] & {
+    background: #fff;
+    color: #191919;
+  }
 }
 
 .ticket-content {

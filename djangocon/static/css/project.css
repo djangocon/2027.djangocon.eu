@@ -17060,6 +17060,10 @@ h2 {
   -webkit-mask-composite: source-in, xor;
           mask-composite: intersect;
 }
+:root[data-theme=dark] .ticket-header {
+  background: #fff;
+  color: #191919;
+}
 
 .ticket-content {
   background-color: var(--accent);
