@@ -1,91 +1,12 @@
-{% load static %}
-
-<!-- HTML -->
-<div class="past-editions">
-  <h2 class="editions-title">
-    TAKE A LOOK AT PAST EDITIONS
+{% comment %}
+Past editions strip. Cards come from content/home/past_edition.md; `.edition` is
+styled in _homepage.scss.
+{% endcomment %}
+<section class="past-editions section-shell">
+  <h2 class="section-heading">
+    {{ content.meta.heading.0|default:"Take a look at past editions" }}
   </h2>
-
-  <div class="editions-grid">
-    <!-- Social event image -->
-    <div class="grid-item small">
-      <img
-        src="{% static 'images/past/vigo_venue.png' %}"
-        alt="DjangoCon Europe social event"
-      />
-    </div>
-    <!-- Green card Vigo -->
-    <div class="grid-item card">
-      <a
-        href="https://www.flickr.com/photos/djangocon/albums/72177720318008635/with/53799396653"
-        target="_blank"
-        class="edition-card"
-      >
-        <div class="edition-card-pointer">
-          <img src="{% static 'images/past/arrow.png' %}" alt="pointer"/>
-        </div>
-        <h3>DJANGOCON EUROPE</h3>
-        <p>2024 VIGO</p>
-      </a>
-    </div>
-    <!-- Large image span left -->
-    <div class="grid-item large">
-      <img  
-        src="{% static 'images/past/vigo.png' %}"
-        alt="DjangoCon Europe crowd at harbor"
-      />
-    </div>
-
-    <!-- Medium image right top -->
-    <div class="grid-item large">
-      <img
-        src="{% static 'images/past/djc1.png' %}"
-        alt="DjangoCon Europe audience"
-      />
-    </div>
-    <div class="grid-item card">
-      <a
-        href="https://www.flickr.com/photos/djangocon/albums/72177720308904800/with/52959700889"
-        target="_blank"
-        class="edition-card"
-      >
-        <div class="edition-card-pointer">
-          <img src="{% static 'images/past/arrow.png' %}" alt="pointer"/>
-        </div>
-        <h3>DJANGOCON EUROPE</h3>
-        <p>2023 EDINBURGH</p>
-      </a>
-    </div>
-    <!-- Medium image right top -->
-    <div class="grid-item small">
-      <img
-        src="{% static 'images/past/social.png' %}"
-        alt="DjangoCon Europe audience"
-      />
-    </div>
-
-    <div class="grid-item small">
-      <img src="{% static 'images/past/conf.png' %}" alt="Conference room"/>
-    </div>
-    <div class="grid-item card">
-      <a
-        href="https://www.flickr.com/photos/djangocon/albums/72177720303038882/"
-        target="_blank"
-        class="edition-card"
-      >
-        <div class="edition-card-pointer">
-          <img src="{% static 'images/past/arrow.png' %}" alt="pointer"/>
-        </div>
-        <h3>DJANGOCON EUROPE</h3>
-        <p>2022 PORTO</p>
-      </a>
-    </div>
-    <!-- Large image right -->
-    <div class="grid-item large">
-      <img
-        src="{% static 'images/past/arena.png' %}"
-        alt="DjangoCon Europe crowd cheering"
-      />
-    </div>
+  <div class="editions-row">
+    {{ content.html|safe }}
   </div>
-</div>
+</section>

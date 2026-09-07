@@ -1,35 +1,37 @@
 {% load static %}
+{% comment %}
+Footer: the "stay in the loop" social row over a dark band, then the credits
+line. The band stays dark in both themes, as in the design.
+{% endcomment %}
+<footer class="site-footer">
+  <div class="site-footer__top section-shell">
+    <h2 class="site-footer__title">Stay in the loop</h2>
 
-<div class="container-fluid footer custom-footer">
-  <div class="container-footer">
-    <div
-      class="d-flex flex-column flex-lg-row gap-4 justify-content-evenly align-items-center py-5">
-      <h1 class="custom-footer-h1">STAY IN THE LOOP</h1>
-      <div class="d-flex gap-5 flex-wrap justify-content-center">
-        {% for smedia, smedia_href in social_media.items %}
-          {% with smedia_logo='images/external_logo/logo_'|add:smedia|add:'.svg' %}
-            <div class="text-center footer-social-media-link">
-              <a class="footer-link" href="{{ smedia_href }}" target="_blank" rel="me">
-                <img src="{% static smedia_logo %}" alt="{{ smedia }}">
-              </a>
-            </div>
-          {% endwith %}
-        {% endfor %}
-      </div>
-    </div>
+    <ul class="site-footer__social">
+      {% for smedia, smedia_href in social_media.items %}
+        <li>
+          <a href="{{ smedia_href }}" target="_blank" rel="me noopener"
+             class="social-icon" aria-label="{{ smedia|capfirst }}">
+            {# The glyph is painted with the SVG as a mask, so one asset works #}
+            {# on any background without shipping a second colour variant. #}
+            <span class="social-icon__glyph"
+                  style="--icon: url('{% static 'images/external_logo/logo_'|add:smedia|add:'.svg' %}')"
+                  aria-hidden="true"></span>
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
   </div>
-  <div class="row justify-content-center footer-end">
-    <div class="col row text-center align-self-center justify-content-center ">
-      <p class="col-12">© 2027 DjangoCon Europe </p>
-      <p class="col-12"><span class="d-none d-md-inline">·</span> developed in <a
-        href="https://djangoproject.com">django</a> with <span
-        style="color: red">♥</span> by <a
-        href="https://evolutio.pt/">evolutio</a> <span
-        class="d-none d-md-inline">·</span>
-      </p>
-      <p class="col-12"> help us improve on <a
-        href="{{ social_media.github }}">GitHub</a></p>
-    </div>
-  </div>
-</div>
 
+  <div class="site-footer__credits">
+    <p>
+      © 2027 DjangoCon Europe
+      <span aria-hidden="true">·</span>
+      developed in <a href="https://djangoproject.com" target="_blank" rel="noopener">django</a>
+      with <span class="site-footer__heart" aria-label="love">♥</span>
+      by <a href="https://evolutio.pt/" target="_blank" rel="noopener">evolutio</a>
+      <span aria-hidden="true">·</span>
+      help us improve on <a href="{{ social_media.github }}" target="_blank" rel="noopener">GitHub</a>
+    </p>
+  </div>
+</footer>

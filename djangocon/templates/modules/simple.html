@@ -1,17 +1,17 @@
+{% comment %}
+Default layout for a markdown content file: an optional parent breadcrumb, the
+page title, then the rendered body in a single reading column.
+{% endcomment %}
 <div class="container" id="pages">
-  <div class="row {{ content.meta.title.0 | safe |add:'-row' }}">
-    <div class="content-title pb-4">
-      <a id="{{ content.meta.title.0 | escape }}">
-        <h1 class="parent-title title title-lg">
-          {{ content.meta.parent.0 | safe }}
-        </h1>
-        <h1 class="title title-lg">{{ content.meta.title.0 | safe }}</h1>
-      </a>
-    </div>
-    <div class="col margin-right"></div>
-    <div class="{{ content.meta.title.0|add:'-content' }} simple-content">
-      {{ content.html | safe }}
-    </div>
-    <div class="col margin-left"></div>
+  <div class="content-title">
+    <a id="{{ content.meta.title.0|escape }}">
+      {% if content.meta.parent %}
+        <h2 class="parent-title title">{{ content.meta.parent.0|safe }}</h2>
+      {% endif %}
+      <h1 class="title title-lg">{{ content.meta.title.0|safe }}</h1>
+    </a>
+  </div>
+  <div class="simple-content">
+    {{ content.html|safe }}
   </div>
 </div>

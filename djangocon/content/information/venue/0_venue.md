@@ -1,5 +1,5 @@
+title: Venue
 layout: simple
-<h1 class="cfp-title" >Venue</h1>
 order: 0
 
 **DjangoCon Europe 2027** will be held in Dublin! The capital of the Republic of Ireland, one of Europe’s biggest tech hubs, is a lively city with extraordinarily rich and diverse food, culture, history and art lovers - the number of museums and restaurants can certainly tickle most tastes.

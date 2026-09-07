@@ -11,6 +11,15 @@ CONTENT_DIR = APPS_DIR / "content"
 SPONSORS_PAGE = CONTENT_DIR / "sponsors" / "sponsors" / "sponsors.md"
 
 
+def _is_published(path):
+    """False only when a file opts out with `published: false` in its metadata.
+
+    Lets a section be parked without deleting it — see content/home/speakers.md.
+    """
+    value = render_markdown_file(path)["meta"].get("published", [None])[0]
+    return str(value).strip().lower() not in {"false", "no", "0"}
+
+
 def _page_files(directory):
     """Content files in `directory`, ordered by their `order:` metadata then name."""
     if not directory.is_dir():
@@ -24,7 +33,11 @@ def _page_files(directory):
             return (1, name)
 
     names = sorted(
-        (f for f in listdir(directory) if f.endswith(".md")),
+        (
+            f
+            for f in listdir(directory)
+            if f.endswith(".md") and _is_published(directory / f)
+        ),
         key=sort_key,
     )
     return {name.removesuffix(".md"): directory / name for name in names}

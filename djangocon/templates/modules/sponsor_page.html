@@ -15,9 +15,9 @@
             <p class="sponsors-categories">{{ category }}</p>
             <div class="sponsor-row">
               {% for sponsor in sponsors_list %}
-                <a href="{{ sponsor.url }}" target="_blank" rel="noopener" class="sponsor-logo">
-                  <img src="{% static sponsor.logo %}" alt="{{ sponsor.name }}"
-                       {% if sponsor.filter %}style="filter: brightness(0) invert(1)" {% endif %}>
+                <a href="{{ sponsor.url }}" target="_blank" rel="noopener"
+                   class="sponsor-logo sponsor-logo--{{ sponsor.art|default:'colour' }}">
+                  <img src="{% static sponsor.logo %}" alt="{{ sponsor.name }}" loading="lazy">
                 </a>
               {% endfor %}
             </div>

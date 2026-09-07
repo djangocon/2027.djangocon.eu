@@ -1,131 +1,265 @@
 @use 'variables' as *;
 
-// Single webfont request. This was previously two @import urls that both
-// pulled Lato + Modak, the second merely adding Manrope — the overlap made the
-// browser fetch the same families twice.
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Manrope:wght@200..800&family=Modak&display=swap');
+// Single webfont request for the two families the 2027 design uses: Oswald for
+// display type (headings, nav, buttons) and Poppins for body copy.
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
 
-@font-face {
-    font-family: 'Lansdowne Demo';
-    src: url('../fonts/Lansdowne.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
+// -----------------------------------------------------------------------------
+// Reset / document
+// -----------------------------------------------------------------------------
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-@font-face {
-    font-family: 'Landowne Demo1';
-    src: url('../fonts/Lansdowne.otf') format('truetype');
-    font-weight: bold;
-    font-style: normal;
+html {
+  scroll-behavior: smooth;
+  // Belt-and-braces against sideways scrolling. It lives on `html` rather than
+  // `body`: `overflow-x` on `body` makes the element a scroll container, which
+  // silently breaks `position: sticky` on the header in some browsers.
+  overflow-x: hidden;
 }
 
-////////////////////////////////
-//Alert palette//
-////////////////////////////////
-// Bootstrap's alert colours. These are semantic status colours specific to
-// alerts and are intentionally not part of the shared design tokens.
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 
-$mint-green: #d6e9c6;
-$pink: #f2dede;
-$dark-pink: #eed3d7;
-$alert-red: #b94a48;
-
-::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-}
-
-::-webkit-scrollbar-track {
-    background: var(--paper);
-}
-
-::-webkit-scrollbar-thumb {
-    background: var(--ink);
-    border-radius: var(--radius-md);
-}
-
-@media (max-width: 1040px) {
-    ::-webkit-scrollbar {
-        width: 5px;
-        height: 5px;
-    }
-}
-
-@media (max-width: $bp-md) {
-    ::-webkit-scrollbar {
-        width: 3px;
-        height: 3px;
-    }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 body {
-    font-family: var(--font-main);
-    font-weight: var(--weight-normal);
-    background: var(--paper);
-    color: var(--ink);
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-main);
+  font-weight: var(--weight-normal);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  // The theme flips background and text together; without a transition the
+  // switch reads as a flash.
+  transition:
+    background-color var(--duration-base) var(--ease-base),
+    color var(--duration-base) var(--ease-base);
 }
 
-////////////////////////////////
-//Alerts//
-////////////////////////////////
+// -----------------------------------------------------------------------------
+// Typography defaults
+// -----------------------------------------------------------------------------
 
-// bootstrap alert CSS, translated to the django-standard levels of
-// debug, info, success, warning, error
-
-.alert-debug {
-    background-color: var(--paper);
-    border-color: $mint-green;
-    color: var(--ink);
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-tight);
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  margin: 0 0 var(--space-sm);
 }
 
-.alert-error {
-    background-color: $pink;
-    border-color: $dark-pink;
-    color: $alert-red;
+p {
+  margin: 0 0 var(--space-sm);
 }
 
+// Body links are underlined; components that are visually buttons or cards opt
+// out via their own rules (.btn-pill, .site-nav__link, .edition, ...).
+a {
+  color: var(--red);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  transition: color var(--duration-fast) var(--ease-base);
 
-.status-btn {
-    min-width: 0;
-    flex: 0 0 auto;
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 250px;
-    padding: 0.7em 1.4em;
-    color: var(--paper);
-    background: var(--Gradient, var(--ink));
-    border: none;
-    border-radius: var(--radius-pill);
-    cursor: pointer;
-    font-family: var(--font-alt), serif;
-    font-size: 17px;
-    font-weight: 500;
+  &:hover {
+    color: var(--red-bright);
+  }
+}
+
+strong,
+b {
+  font-weight: var(--weight-semibold);
+}
+
+img {
+  max-width: 100%;
+}
+
+// Visible focus ring for keyboard users, on both themes.
+:focus-visible {
+  outline: 2px solid var(--red);
+  outline-offset: 2px;
+}
+
+// -----------------------------------------------------------------------------
+// Shared building blocks
+// -----------------------------------------------------------------------------
+
+// The site's standard centred column.
+.section-shell {
+  width: 100%;
+  max-width: var(--content-width);
+  margin-inline: auto;
+  padding-inline: var(--space-md);
+
+  @media (max-width: $bp-md) {
+    padding-inline: var(--space-sm);
+  }
+}
+
+// Section heading — the big centred red word ("GRAB YOUR TICKET", "SPONSORS").
+.section-heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 4.5vw, var(--text-3xl));
+  font-weight: var(--weight-bold);
+  color: var(--red);
+  text-align: center;
+  text-transform: uppercase;
+  margin: 0 0 var(--space-2xl);
+
+  // "IMPORTANT DATES" is white on the dark design and red on the light one,
+  // unlike every other section heading — see --heading-alt.
+  &--alt {
+    color: var(--heading-alt);
+  }
+
+  @media (max-width: $bp-md) {
+    margin-bottom: var(--space-xl);
+  }
+}
+
+// The pill CTA used in the hero, the header and the ticket cards.
+.btn-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2xs);
+  padding: 0.7em 1.6em;
+  border: none;
+  border-radius: var(--radius-pill);
+  background: var(--red);
+  color: var(--white);
+  font-family: var(--font-display);
+  font-size: var(--text-md);
+  font-weight: var(--weight-medium);
+  text-decoration: none;
+  text-transform: none;
+  cursor: pointer;
+  transition:
+    background-color var(--duration-fast) var(--ease-base),
+    transform var(--duration-fast) var(--ease-base),
+    box-shadow var(--duration-fast) var(--ease-base);
+
+  &::after {
+    content: '→';
+    font-size: 1em;
+    line-height: 1;
+    transition: transform var(--duration-fast) var(--ease-base);
+  }
+
+  &:hover {
+    background: var(--red-bright);
+    color: var(--white);
     text-decoration: none;
-    transition: all 0.3s ease;
-    margin-top: 0;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+
+    &::after {
+      transform: translateX(3px);
+    }
+  }
+
+  &:active {
+    background: var(--red-deep);
+    transform: translateY(0);
+  }
+
+  // White pill on a red ground — the ticket-card CTA.
+  &--inverse {
+    background: var(--white);
+    color: var(--red);
 
     &:hover {
-        box-shadow: 0 0.5em 1.5em -0.5em var(--overlay-heavy);
-        transform: translateY(-2px);
-        text-decoration: none;
-        color: var(--paper);
+      background: var(--white);
+      color: var(--red-deep);
     }
 
     &:active {
-        box-shadow: 0 0.3em 1em -0.5em var(--overlay-heavy);
-        transform: translateY(0);
+      background: var(--off-white);
     }
+  }
+
+  &--disabled,
+  &[aria-disabled='true'] {
+    pointer-events: none;
+    opacity: 0.55;
 
     &::after {
-        content: '→';
-        margin-left: 0.5rem;
+      content: none;
     }
-    &::after {
-        content: none;
-    }
+  }
+}
+
+// Utility for text only screen readers should reach.
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// -----------------------------------------------------------------------------
+// Scrollbar
+// -----------------------------------------------------------------------------
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--red);
+  border-radius: var(--radius-md);
+}
+
+@media (max-width: $bp-md) {
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Alerts — Django's message levels.
+// -----------------------------------------------------------------------------
+
+.alert {
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+}
+
+.alert-error {
+  border-color: var(--danger);
+  color: var(--danger);
 }

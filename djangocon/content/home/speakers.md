@@ -1,5 +1,13 @@
 title: Speakers
 layout: home_speakers
+order: 7
+published: false
+
+<!--
+The speakers section is not part of the 2027 homepage design and is hidden.
+Delete the `published: false` line above to bring it back once the line-up is
+announced.
+-->
 
 <div class="main-container">
     <div class="header-row">

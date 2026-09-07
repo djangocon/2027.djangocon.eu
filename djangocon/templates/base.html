@@ -14,6 +14,22 @@
           content="The official Django conference in Europe - run by the community for the community. Innsbruck, Austria. Grab your ticket!"
   />
 
+  {# Theme has to be set before the first paint, or a light-theme visitor sees #}
+  {# a flash of the dark default. This is why it is inline and not in #}
+  {# project.js, which is deferred. #}
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem('djceu-theme');
+        var theme = stored
+          || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+
   <link
           rel="apple-touch-icon"
           sizes="180x180"
@@ -49,11 +65,11 @@
 </head>
 
 <body>
-<h1 style="display: none; margin: 0px; padding: 0px">{{ menu }}</h1>
+<h1 class="visually-hidden">{{ menu }}</h1>
 
 {% include "modules/header.html" %}
 
-<div class="innerBody">{% block content %} {% endblock content %}</div>
+<main class="innerBody">{% block content %} {% endblock content %}</main>
 
 {% block modal %}
 {% endblock modal %}

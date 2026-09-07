@@ -1,55 +1,12 @@
-<!-- HTML -->
-<div class="dates-section">
-  <div class="dates-container">
-    <h2 class="dates-title">IMPORTANT DATES</h2>
-
-    {# 2027 dates are not fixed yet — placeholder milestones until the #}
-    {# schedule is confirmed. Replace the months and items below as they land. #}
-    <div class="dates-grid">
-      <div class="month">
-        <h3>To be announced</h3>
-        <div class="date-items">
-          <div class="date-item">
-            <span class="date">Call for Participation opens</span>
-          </div>
-          <div class="date-item">
-            <span class="date">Grant applications open</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="month">
-        <h3>To be announced</h3>
-        <div class="date-items">
-          <div class="date-item">
-            <span class="date">Call for Participation closes</span>
-          </div>
-          <div class="date-item">
-            <span class="date">Schedule publication</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="month">
-        <h3>To be announced</h3>
-        <div class="date-items">
-          <div class="date-item">
-            <span class="date">Early bird ticket sales end</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="month">
-        <h3>To be announced</h3>
-        <div class="date-items">
-          <div class="date-item">
-            <span class="date">Main conference</span>
-          </div>
-          <div class="date-item">
-            <span class="date">Sprints</span>
-          </div>
-        </div>
-      </div>
-    </div>
+{% comment %}
+Important dates. Rows come from content/home/dates.md; `.date-row` is styled in
+_homepage.scss into the two-column month / entries layout.
+{% endcomment %}
+<section class="home-dates section-shell">
+  <h2 class="section-heading section-heading--alt">
+    {{ content.meta.heading.0|default:"Important dates" }}
+  </h2>
+  <div class="dates-list">
+    {{ content.html|safe }}
   </div>
-</div>
+</section>

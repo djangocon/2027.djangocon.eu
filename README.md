@@ -63,15 +63,53 @@ order: 2
 `order` sets the position on the page, and `layout` picks a template from
 `djangocon/templates/modules/`. A layout name that doesn't exist falls back to
 `simple` rather than breaking the page. Adding a `.md` file to a folder adds a
-section to that page.
+section to that page. Add `published: false` to park a section without deleting
+it — the homepage's speakers and news blocks are currently held that way.
+
+Keep the metadata block unbroken: the parser stops at the first line that is not
+`key: value`, so anything else (a stray heading, a blank line) turns the rest of
+the block into body text.
+
+**The homepage** is assembled the same way, from `content/home/*.md`. Each file
+owns one band of the page and carries its copy, so the hero headline, the intro,
+the ticket tiers and the important dates are all edited there rather than in a
+template. `hero.md` also holds the date line and the CTA link in its metadata.
 
 **Sponsors** live in `djangocon/content/sponsors.json`, grouped by tier. Copy an
-existing entry to add one. Empty tiers are hidden automatically. Set `filter` to
-`true` when a dark logo needs inverting to white.
+existing entry to add one. Empty tiers are hidden automatically. `art` tells the
+site how to keep a logo legible on both themes:
+
+| `art`            | for artwork that is                        | what happens                     |
+| ---------------- | ------------------------------------------ | -------------------------------- |
+| `dark`           | dark or black line art                     | inverted to white on dark        |
+| `light`          | white line art                             | darkened on light                |
+| `colour`         | full colour, legible on either ground      | left alone                       |
+| `colour-on-dark` | colour art with white lettering            | given a dark chip on light       |
 
 **The menu** lives in `djangocon/content/navigation.json`. Submenu URLs must match
 a folder under `content/` and end with a trailing slash. To hide an item without
 deleting it, move it into the `_disabled` block.
+
+## Design and theming
+
+The site ships a light and a dark theme; visitors switch with the toggle in the
+header, and the choice is remembered in `localStorage`. Without a stored choice
+the site follows the operating system's preference.
+
+All colours, type, spacing and motion are declared once in
+`djangocon/static/sass/_variables.scss`. Brand values (the reds, black, white)
+sit in `:root`; anything that differs between the themes is a *semantic* token —
+`--bg`, `--surface`, `--fg`, `--fg-muted`, `--border` — redefined in the
+`[data-theme='light']` block at the bottom of that file. Style new components
+against the semantic tokens and they work in both themes with no extra rules.
+
+Two details worth knowing before editing the theme:
+
+- The initial theme is applied by an inline script in `base.html`, before the
+  stylesheet paints. It has to stay inline and stay in `<head>`; moving it into
+  `project.js` (which is deferred) reintroduces a flash of the wrong theme.
+- The footer band is deliberately dark in *both* themes, matching the design, so
+  it uses the fixed brand colours rather than the semantic ones.
 
 ## Code of Conduct
 

@@ -1,1188 +1,405 @@
 @use 'variables' as *;
 
-// content page
-
-// testing content container padd
-.cfp-title {
-  font-size: 2.5rem;
-  font-family: var(--font-main);
-  color: var(--ink);
-  text-transform: uppercase !important;
-  font-weight: 700;
-}
-// end of testing
-
-.content-container {
-  -webkit-box-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  padding-bottom: 2.5rem;
-  padding-top: 1.5rem;
-
-  .content-title h1 {
-    color: var(--ink);
-    font-family: var(--font-main);
-    font-size: 2.5rem;
-    text-transform: uppercase !important;
-
-    &.parent-title {
-      color: #030507;
-      margin-bottom: 0;
-      opacity: 30%;
-    }
-  }
-
-  .simple-content {
-    color: var(--ink);
-    font: 1.125rem/1.5rem var(--font-main);
-    overflow-x: auto !important;
-    text-decoration: none;
-
-    p,
-    ul {
-      margin-bottom: 1.5rem;
-    }
-
-    a {
-      color: var(--link);
-      text-decoration: underline;
-
-      &:hover {
-        color: var(--link-hover);
-      }
-    }
-
-    // The page title is wrapped in a bare anchor (see modules/simple.html)
-    // used only as a scroll target, so it must not read as a link.
-    .content-title a,
-    .content-title a:hover {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .btn {
-      background-color: var(--golden);
-      border: 0.0625rem solid #030507;
-      color: #030507;
-    }
-  }
-
-  img {
-    width: 100%;
-  }
-
-  h2 {
-    margin-bottom: 1rem;
-  }
-}
-
-h1.title,
-h2.title,
-h3.title,
-h4.title,
-h5.title,
-h6.title {
-  font-weight: 700;
-}
-
-#pages {
-  // max-width: 50rem !important
-}
-
-body,
-html {
-  height: 100%;
-}
-
-.innerBody,
-body {
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
+// =============================================================================
+// CONTENT PAGES
+// =============================================================================
+// Everything that is not the homepage: the markdown pages under content/, which
+// render through modules/simple.html and modules/composed.html.
+//
+// These pages are written in markdown, so the styling has to work on whatever
+// elements the parser emits — headings, paragraphs, lists, tables, images and
+// the odd inline <div>. The rules below are element-based for that reason.
 
 .innerBody {
-  background-color: var(--paper);
-  -webkit-box-flex: 1;
-  -ms-flex: 1 0 auto;
-  flex: 1 0 auto;
-  margin-bottom: -24px !important;
+  display: block;
+  min-height: 40vh;
+}
+
+// -----------------------------------------------------------------------------
+// Page shell
+// -----------------------------------------------------------------------------
+
+.content-container {
+  padding-block: var(--space-2xl);
+
+  // Content pages used to alternate light/dark bands. The 2027 design is a
+  // single continuous ground, so the alternation is neutralised here rather
+  // than stripped out of pages/default.html — the classes are still emitted.
+  &.odd-pages,
+  &.even-pages,
+  &.dark-background,
+  &.light-background {
+    background: transparent;
+    color: inherit;
+  }
+
+  // Consecutive sections on one page should not each pay full padding.
+  & + .content-container {
+    padding-top: 0;
+  }
+
+  @media (max-width: $bp-md) {
+    padding-block: var(--space-xl);
+  }
+}
+
+// The centred reading column shared by simple.html and composed.html.
+#pages,
+.composed-page {
+  width: 100%;
+  max-width: 52rem;
+  margin-inline: auto;
+  padding-inline: var(--space-md);
+
+  @media (max-width: $bp-md) {
+    padding-inline: var(--space-sm);
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Page headings
+// -----------------------------------------------------------------------------
+
+.content-title {
+  margin-bottom: var(--space-lg);
 
   a {
-    text-decoration: underline;
+    text-decoration: none;
+    color: inherit;
   }
 }
 
-.text-blue {
-  color: var(--accent);
+.title,
+.cfp-title,
+.mainname,
+.section-title {
+  color: var(--fg);
+  font-family: var(--font-display);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-tight);
+  text-transform: uppercase;
 }
 
-.text-hidden {
-  color: transparent;
+.title-lg,
+.cfp-title,
+.mainname {
+  font-size: clamp(1.75rem, 5vw, var(--text-3xl));
+  margin-bottom: var(--space-sm);
 }
 
-.title-lg {
-  font: normal normal 700 2.375rem/2.75rem Montserrat;
+// The parent breadcrumb above a section title ("Information", "Talks", ...).
+.parent-title {
+  color: var(--red);
+  font-size: clamp(var(--text-base), 2.5vw, var(--text-lg));
+  letter-spacing: 0.06em;
+  margin-bottom: var(--space-2xs);
 }
 
-// Alternating band on content pages (see pages/default.html). The old theme
-// used a dark green here, which left the inherited near-black text unreadable.
-// A neutral grey with white text keeps the alternation while staying legible.
-.even-pages {
-  background: var(--text-muted);
-  color: var(--paper);
+.section-title {
+  color: var(--red);
+  font-size: clamp(1.1rem, 3vw, var(--text-xl));
+}
 
-  // .simple-content a would otherwise win on specificity, so the band's link
-  // colour is stated at the same depth.
-  a,
-  .simple-content a {
-    color: var(--link-on-dark);
-    text-decoration: underline;
+// -----------------------------------------------------------------------------
+// Markdown body
+// -----------------------------------------------------------------------------
 
-    &:hover {
-      color: var(--paper);
-    }
-  }
-
-  // .pages-links pins its colour with !important, so it must be matched here.
-  .pages-links {
-    color: var(--link-on-dark) !important;
-
-    &:hover {
-      color: var(--paper) !important;
-    }
-  }
+.simple-content,
+.composed-page .simple-content {
+  color: var(--fg);
+  font-size: var(--text-base);
+  line-height: var(--leading-loose);
 
   h1,
   h2,
   h3,
   h4,
   h5,
-  h6,
-  p,
-  li,
-  strong,
-  em,
-  td,
-  th,
-  .title,
-  .section-title,
-  .parent-title {
-    color: var(--paper);
-  }
-
-  // .content-title h1 sets an explicit black and outranks the bare tag
-  // selectors above, so it has to be overridden at matching specificity.
-  .content-title h1,
-  .content-title h1.parent-title {
-    color: var(--paper);
-  }
-}
-
-body,
-html {
-  overflow-x: hidden;
-}
-
-body {
-  font-family: var(--font-main);
-}
-
-a {
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
-  }
-}
-
-.margin-left,
-.margin-right {
-  display: none;
-}
-
-.important-dates a {
-  color: var(--ink);
-  text-decoration: underline;
-}
-
-table {
-  margin: 1rem 0;
-}
-
-td,
-th {
-  padding: 1rem;
-}
-
-table,
-td,
-th {
-  border: 1px solid var(--overlay-strong);
-  border-collapse: collapse;
-}
-
-img.sponsor {
-  height: 50px;
-  margin: 15px 30px 15px 0;
-  width: unset;
-
-  &.huge {
-    height: 70px;
-  }
-  &.large {
-    height: 60px;
-  }
-  &.small {
-    height: 40px;
-  }
-  &.tiny {
-    height: 25px;
-  }
-}
-
-.sponsor-category-divider {
-  height: 2px !important;
-  opacity: 1;
-  margin: 35px 0;
-
-  &.gold {
-    background-color: var(--golden);
-  }
-}
-
-img.hotel {
-  height: auto;
-  max-height: 100px;
-  max-width: 200px;
-  width: auto;
-}
-
-.overlay-text {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 1;
-}
-
-// First .scrolling_text / .text definitions; a second, current-design set
-// of the same selectors follows further down and wins by cascade order.
-.scrolling_text {
-  padding: 30px 0;
-  margin-top: 100px;
-  background-color: var(--accent);
-  width: 100%;
-  overflow: hidden;
-  display: flex;
-  white-space: nowrap;
-  text-transform: capitalize;
-
-  a {
-    color: #f2e7dc;
-  }
-}
-
-.text {
-  font-size: 80px;
-  font-weight: 200;
-  text-transform: uppercase;
-  color: #3a1240;
-
-  span {
-    margin: 0 40px;
-  }
-}
-
-@keyframes animate_text {
-  from {
-    transform: translate3d(0, 0, 0);
-  }
-
-  to {
-    transform: translate3d(-100%, 0, 0);
-  }
-}
-
-.text {
-  font-family: var(--font-main);
-  font-size: 25px;
-  font-weight: 300;
-  text-transform: uppercase;
-  color: #3a1240;
-  animation: animate_text 30s linear infinite; // The animation property
-}
-
-.custom-centered-content {
-  width: 100%;
-  padding-top: 50px;
-  font-family: var(--font-main);
-  font-size: 30px;
-  max-width: 20000px; // Adjust the width as needed
-  text-align: center; // Center text within the element
-  height: 2000px;
-  padding-bottom: 1000px;
-}
-
-.main_title {
-  color: var(--accent-dark);
-  position: relative;
-  padding-top: 100px;
-  left: 42%;
-}
-
-@media screen and (max-width: 1199px) {
-  .button1-container {
-    width: 400px;
-    height: 400px;
-    position: relative;
-    left: 60%;
-    top: 5%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .button2-container {
-    width: 400px;
-    height: 400px;
-    position: relative;
-    left: 45%;
-    top: 25%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-}
-
-@media screen and (max-width: 1000px) {
-  .button1-container {
-    width: 400px;
-    height: 400px;
-    position: relative;
-    left: 100%;
-    top: 5%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .button2-container {
-    width: 400px;
-    height: 400px;
-    position: relative;
-    left: 45%;
-    top: 25%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .main_title {
-    color: var(--accent-dark);
-    position: relative;
-    padding-top: 100px;
-    left: 30%;
-  }
-}
-
-@media screen and (max-width: 770px) {
-  .button1-container {
-    width: 400px;
-    height: 400px;
-    position: relative;
-    left: 65%;
-    top: 5%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .button2-container {
-    width: 400px;
-    height: 400px;
-    position: relative;
-    left: 0;
-    top: 25%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .main_title {
-    color: var(--accent-dark);
-    position: relative;
-    padding-top: 100px;
-    left: 20%;
-  }
-}
-
-@media screen and (max-width: 550px) {
-  .button1-container {
-    width: 400px;
-    height: 400px;
-    position: relative;
-    left: 87%;
-    top: 5%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-}
-
-h2 {
-  color: black;
-  text-align: center;
-  font-size: 2em;
-  margin: 20px 0;
-}
-
-.warpper {
-  margin-top: 100px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-}
-
-.tab {
-  font-size: x-large;
-  text-align: center;
-  width: 280px;
-  cursor: pointer;
-  padding: 10px 20px;
-  margin: 0 2px;
-  background-color: var(--paper);
-  display: inline-block;
-  color: #020101;
-}
-
-.tabs {
-  border-bottom: 3px solid var(--accent);
-}
-
-.panels {
-  font-size: x-large;
-  min-height: 200px;
-  overflow: hidden;
-  padding: 20px;
-  margin-right: 40px;
-  margin-left: 40px;
-  color: var(--accent);
-}
-
-.panel {
-  display: none;
-  animation: fadein 0.8s;
-}
-
-@keyframes fadein {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-.radio {
-  display: none;
-}
-
-#one:checked ~ .panels #one-panel,
-#two:checked ~ .panels #two-panel,
-#three:checked ~ .panels #three-panel,
-#four:checked ~ .panels #four-panel {
-  display: block;
-}
-
-#one:checked ~ .tabs #one-tab,
-#two:checked ~ .tabs #two-tab,
-#three:checked ~ .tabs #three-tab,
-#four:checked ~ .tabs #four-tab {
-  background: var(--accent);
-  color: white;
-}
-
-@media (max-width: 750px) {
-  .tab {
-    width: 120px;
-    font-size: 1rem;
-    padding: 10px 0;
-  }
-
-  .panels {
-    margin-left: 10px;
-    margin-right: 10px;
-    padding-left: 0;
-    padding-right: 0;
-    font-size: 1.2rem;
-
-    p {
-      text-align: center;
-    }
-  }
-}
-
-@media (max-width: 550px) {
-  .tab {
-    width: 80px;
-  }
-
-  .title-container .sponsors_image,
-  .dates_logo,
-  .tickets_image {
-    height: 30px !important;
-  }
-}
-
-@media (max-width: 400px) {
-  .title-container .sponsors_image,
-  .tickets_image {
-    height: 40px;
-  }
-
-  .sponsors_content .left-side h2 {
-    font-size: 2rem;
-  }
-
-  .tab {
-    width: auto;
-    padding-left: 8px;
-    padding-right: 8px;
-  }
-
-  .panels {
-    font-size: 1rem;
-  }
-}
-
-// CFP IS CLOSED ON HOMEPAE CSS
-.disabled {
-  background-color: #cccccc; // Gray out the button
-  border-color: var(--border-subtle);
-  color: #666666; // Optional: Change the text color to indicate it's disabled
-  pointer-events: none; // Prevents clicking on the button
-  cursor: not-allowed; // Changes cursor to indicate it can't be clicked
-}
-
-.btn-primary.disabled {
-  background-color: #cccccc !important; // Gray out the button
-  border-color: var(--border-subtle) !important;
-  color: #666666 !important; // Change the text color to indicate it's disabled
-  pointer-events: none; // Prevents clicking on the button
-  cursor: not-allowed; // Changes cursor to indicate it can't be clicked
-}
-
-// sponsor page style
-.sponsormain {
-  padding-bottom: 20px;
-  text-transform: uppercase;
-  font-weight: 600;
-  color: var(--accent);
-}
-
-// sponsor page resposiveness
-@media (min-width: 768px) and (max-width: 1024px) {
-  .sponsormain {
-    padding-bottom: 10px;
-    text-transform: uppercase;
-    font-weight: 600;
-    color: var(--accent);
-    text-align: center;
-  }
-
-  .sponsorspage_content {
-    margin-top: 10px;
-    padding-right: 120px;
-  }
-
-  .title-container_sponsor {
-    justify-content: flex-start;
-    display: block;
-  }
-}
-
-// media query for 520
-@media (min-width: 520px) and (max-width: 768) {
-  .sponsormain {
-    padding-bottom: 10px;
-    text-transform: uppercase;
-    font-weight: 600;
-    color: var(--accent);
-    text-align: center;
-  }
-
-  .sponsorspage_content {
-    margin-top: 10px;
-    padding-right: 120px;
-  }
-
-  .title-container_sponsor {
-    justify-content: flex-start;
-    display: block;
-  }
-}
-
-// TALK SCHEDULE CSS FOR CHART VIEW
-.image-container {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-
-  img {
-    width: 30%;
-    border-radius: var(--radius-md);
-    height: auto;
-  }
-}
-
-@media (max-width: 768px) {
-  .image-container {
-    flex-direction: column;
-    align-items: center;
-
-    img {
-      width: 90%;
-      padding-top: 10px;
-    }
-  }
-
-  .text-container {
-    text-align: justify;
-  }
-}
-
-// charts table css
-.table-flip {
-  font-family: Arial, sans-serif;
-  border-collapse: separate; // Change to separate for spacing
-  border-spacing: 10px; // Add spacing between cells
-  width: 100%;
-  margin-top: 50px;
-  border-radius: 10px; // Add border radius to table
-
-  th,
-  td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    border-radius: 10px; // Add border radius to cells
-  }
-
-  th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    background-color: #4caf50;
-    color: white;
-  }
-
-  tr:nth-child(even) {
-    background-color: var(--surface-sunken);
-  }
-
-  tr:hover {
-    background-color: #ddd;
-  }
-
-  td.text-center {
-    text-align: center;
-  }
-
-  td.flip.text-right {
-    text-align: right;
-  }
-}
-
-// charts backgorund and responsiveness
-#question-stats {
-  align-items: center;
-  background-color: var(--surface-sunken);
-  border-radius: 20px;
-}
-
-.table-responsive {
-  max-width: 100%;
-}
-// charts
-
-// social page css
-.glow-text {
-  font-size: 50px;
-  font-weight: bold;
-  color: white;
-  animation: glow-animation 1s infinite alternate;
-}
-
-@keyframes glow-animation {
-  0% {
-    text-shadow:
-      0 0 10px #863b35,
-      0 0 20px #ffaa00,
-      0 0 30px #ff0000,
-      0 0 40px #863b35;
-  }
-
-  50% {
-    text-shadow:
-      0 0 20px #863b35,
-      0 0 30px #ffaa00,
-      0 0 40px #ff0000,
-      0 0 50px #863b35,
-      0 0 60px #ffaa00;
-  }
-
-  100% {
-    text-shadow:
-      0 0 10px #863b35,
-      0 0 20px #ffaa00,
-      0 0 30px #ff0000,
-      0 0 40px #863b35;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .glow-text {
-    font-size: 40px;
-    font-weight: bold;
-    color: white;
-    animation: glow-animation 1s infinite alternate;
-  }
-}
-
-// slide info css
-.scrolling_text {
-  position: relative;
-  padding: 30px 0;
-  margin-top: 100px;
-  background-color: var(--ink);
-  width: 100%;
-  overflow: hidden;
-  display: flex;
-  white-space: nowrap;
-
-  // Gradient overlays for fade effect
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    width: 100px;
-    height: 100%;
-    z-index: 2;
-  }
-
-  &::before {
-    left: 0;
-    background: linear-gradient(to right, var(--ink), transparent);
-  }
-
-  &::after {
-    right: 0;
-    background: linear-gradient(to left, var(--ink), transparent);
-  }
-}
-
-.text {
-  font-family: var(--font-main);
-  font-size: 1.2rem;
-  font-weight: 300;
-  animation: scrollText 30s linear infinite;
-  padding: 0 50px;
-
-  span {
-    margin: 0 40px;
-    transition: all 0.3s ease;
-    position: relative;
-    display: inline-block;
-
-    &:hover {
-      transform: translateY(-2px);
-      text-shadow: 0 0 10px rgba(239, 237, 208, 0.5);
-    }
-
-    &:nth-child(1) {
-      animation: pulse 4s infinite;
-    }
-    &:nth-child(2) {
-      animation: pulse 4s infinite 1s;
-    }
-    &:nth-child(3) {
-      animation: pulse 4s infinite 2s;
-    }
-    &:nth-child(4) {
-      animation: pulse 4s infinite 3s;
-    }
-  }
-
-  a {
-    color: inherit;
-    text-decoration: none;
-    position: relative;
-    transition: all 0.3s ease;
-
-    &::before {
-      content: '';
-      position: absolute;
-      bottom: -2px;
-      left: 0;
-      width: 100%;
-      height: 1px;
-      background-color: currentColor;
-      transform: scaleX(0);
-      transition: transform 0.3s ease;
-      transform-origin: right;
-    }
-
-    &:hover::before {
-      transform: scaleX(1);
-      transform-origin: left;
-    }
-  }
-}
-
-// Pulsing highlight effect
-@keyframes pulse {
-  0% {
-    opacity: 1;
-  }
-
-  50% {
-    opacity: 0.7;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes scrollText {
-  from {
-    transform: translateX(100%);
-  }
-
-  to {
-    transform: translateX(-100%);
-  }
-}
-
-// CFP Page Link Styling
-.cfp-page a {
-  color: var(--ink);
-  text-decoration: none;
-  border-bottom: 2px solid transparent;
-  transition:
-    color 0.3s ease,
-    border-bottom 0.3s ease;
-
-  &:hover {
-    color: var(--ink);
-    border-bottom: 2px solid var(--ink);
-    background-color: rgba(0, 0, 0, 0.1); // Light background on hover
-    padding: 2px 4px; // Add padding for better readability
-    border-radius: 4px; // Rounded corners
-  }
-}
-
-// Popup
-.popup {
-  display: none; // Hidden by default
-  position: fixed; // Stay in place
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 300px;
-  background-color: var(--paper);
-  color: var(--ink);
-  border-radius: var(--radius-md);
-  text-align: center;
-  padding: 20px;
-  box-shadow: 0 4px 8px var(--overlay-medium);
-  z-index: 1000;
-
-  button {
-    display: block;
-    width: 80%;
-    margin: 10px auto;
-    padding: 10px;
-    background-color: var(--ink);
-    color: var(--paper);
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-
-    &:hover {
-      background-color: var(--surface-hover);
+  h6 {
+    color: var(--fg);
+    margin-top: var(--space-xl);
+    margin-bottom: var(--space-sm);
+
+    &:first-child {
+      margin-top: 0;
     }
   }
 
   h1 {
-    font-family: var(--font-main);
-    color: var(--ink);
+    font-size: clamp(1.6rem, 4.5vw, var(--text-2xl));
   }
 
-  .close-btn {
-    position: absolute;
-    top: 15px; // Adjusted to move away from the image
-    right: 15px; // Adjusted to move away from the image
-    background: var(--ink);
-    color: var(--paper);
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
-    border-radius: 50%; // Rounded button
-    width: 30px;
-    height: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.3s ease;
+  h2 {
+    font-size: clamp(1.4rem, 4vw, 1.75rem);
+  }
+
+  h3 {
+    font-size: clamp(1.2rem, 3.5vw, var(--text-xl));
+  }
+
+  h4,
+  h5,
+  h6 {
+    font-size: var(--text-md);
+  }
+
+  p {
+    margin-bottom: var(--space-md);
+  }
+
+  ul,
+  ol {
+    margin: 0 0 var(--space-md);
+    padding-left: var(--space-md);
+  }
+
+  li {
+    margin-bottom: var(--space-2xs);
+  }
+
+  a {
+    color: var(--red);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
 
     &:hover {
-      background-color: #cc0000;
+      color: var(--red-bright);
     }
   }
-}
 
-// Overlay
-.overlay {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 999;
-}
+  img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--radius-sm);
+  }
 
-// home news page (see .latest_news_content / .latest-news-page below)
-.latest_news_content {
-  p {
-    font-size: 25px;
-    font-weight: bold;
-    margin: 0 auto;
+  blockquote {
+    margin: var(--space-md) 0;
+    padding: var(--space-2xs) var(--space-md);
+    border-left: 3px solid var(--red);
+    color: var(--fg-muted);
+    font-style: italic;
+  }
 
-    a {
-      display: inline-block;
-      transition: all 0.3s ease;
-      color: var(--surface-hover);
-      padding: 10px;
-      border-radius: var(--radius-sm);
+  code {
+    padding: 0.15em 0.4em;
+    background: var(--surface);
+    border-radius: var(--radius-xs);
+    font-size: 0.9em;
+  }
 
-      &:hover {
-        transform: scale(1.02);
-        color: var(--ink);
-        background-color: rgba(0, 0, 0, 0.02);
-        box-shadow: 0 4px 15px var(--overlay-subtle);
-        cursor: pointer;
-      }
+  pre {
+    padding: var(--space-sm);
+    background: var(--surface);
+    border-radius: var(--radius-sm);
+    overflow-x: auto;
+
+    code {
+      padding: 0;
+      background: none;
     }
   }
-}
 
-.latest-news-page .news_logo {
-  max-width: 30%; // Set your desired max-width for larger screens
-  height: auto;
-}
-
-// The news module carried no styles of its own, so the heading fell back to
-// the global display font and the body copy inherited the bold <p> treatment.
-.latest-news-page {
-  .news-title {
-    font-family: var(--font-main);
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--ink);
-    margin-bottom: 1.5rem;
+  hr {
+    margin: var(--space-xl) 0;
+    border: 0;
+    border-top: 1px solid var(--border);
   }
 
-  .news-description {
-    font-family: var(--font-main);
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.6;
-    color: var(--ink);
-    margin-bottom: 1rem;
+  // Tables must scroll rather than force the page to.
+  table {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    border-collapse: collapse;
+    margin-bottom: var(--space-md);
   }
 
-  .news-subtitle {
-    font-family: var(--font-main);
-    font-size: 0.9375rem;
-    font-weight: 400;
-    color: var(--overlay-heavy);
+  th,
+  td {
+    padding: var(--space-2xs) var(--space-sm);
+    border: 1px solid var(--border);
+    text-align: left;
+  }
+
+  th {
+    background: var(--surface);
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    font-weight: var(--weight-medium);
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Composed layout — a section label beside the body copy.
+// -----------------------------------------------------------------------------
+
+.composed-page {
+  .row {
+    display: grid;
+    grid-template-columns: 14rem minmax(0, 1fr);
+    gap: var(--space-xl);
+    align-items: start;
+
+    @media (max-width: $bp-lg) {
+      grid-template-columns: 1fr;
+      gap: var(--space-sm);
+    }
+  }
+
+  .section-title {
     margin: 0;
   }
 }
 
-.submit_talk {
-  text-decoration: none;
+// Bootstrap column classes still appear in the composed markup; the grid above
+// owns the layout, so stop them from also claiming a width.
+.composed-page [class*='col-'] {
+  width: auto;
+  max-width: none;
+  flex: initial;
+  padding: 0;
 }
 
-@media (max-width: 767px) {
-  .container-button {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+// -----------------------------------------------------------------------------
+// Sponsors page
+// -----------------------------------------------------------------------------
 
-  .homebutton {
-    min-width: unset;
-    width: 100%;
-    margin-bottom: 10px;
-    justify-content: center;
-    text-align: center;
-    text-transform: capitalize;
-  }
-
-  .mainbutton .super {
-    margin-left: 10px;
-  }
-
-  .latest_news_content {
-    text-align: center;
-    text-transform: capitalize;
-    justify-content: center;
-
-    p {
-      font-size: 20px;
-    }
-  }
-
-  .latest-news-page .news_logo {
-    max-width: 80%;
-  }
+.sponsors {
+  padding-block: var(--space-2xl);
 }
 
-.homebutton {
-  background-color: #fbeee0;
-  border: 2px solid #422800;
-  border-radius: 30px;
-  box-shadow: #422800 4px 4px 0 0;
-  color: #422800;
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 18px;
-  padding: 0 18px;
-  line-height: 50px;
+.title-container_sponsor {
+  max-width: 52rem;
+  margin: 0 auto var(--space-2xl);
   text-align: center;
-  text-decoration: none;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
+}
+
+.sponsors-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.sponsors-categories {
+  margin: 0 0 var(--space-md);
+  color: var(--red);
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 2.4vw, 1.4rem);
+  font-weight: var(--weight-bold);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.sponsor-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(var(--space-lg), 5vw, var(--space-2xl));
+}
+
+// -----------------------------------------------------------------------------
+// Misc content components carried over from earlier editions.
+// -----------------------------------------------------------------------------
+
+.pages-links {
+  color: var(--red);
 
   &:hover {
-    background-color: var(--paper);
-  }
-
-  &:active {
-    box-shadow: #422800 2px 2px 0 0;
-    transform: translate(2px, 2px);
+    color: var(--red-bright);
   }
 }
 
-// responsive iframe
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
+.glow-text {
+  color: var(--red);
 }
 
-.cool-iframe {
-  position: relative;
+// Grant status checker (modules/grant_status.html).
+#result {
+  margin-top: var(--space-md);
+  padding: var(--space-md);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+}
+
+.form-control {
   width: 100%;
-  height: 0;
-  padding-bottom: 75%;
-  max-width: 960px;
-  margin: auto;
-  box-shadow: 0 4px 8px 0 var(--overlay-medium);
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  animation: fadeIn 2s; // Apply the fade-in animation
+  padding: var(--space-2xs) var(--space-xs);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xs);
+  color: var(--fg);
+  font-family: var(--font-main);
 
-  iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+  &::placeholder {
+    color: var(--fg-muted);
+  }
+
+  &:focus {
+    outline: 2px solid var(--red);
+    outline-offset: 1px;
   }
 }
 
-// The Modal (background)
-.modal {
-  display: none; // Hidden by default
-  position: fixed; // Stay in place
-  z-index: 1; // Sit on top
-  padding-top: 100px; // Location of the box
-  left: 0;
-  top: 0;
-  width: 100%; // Full width
-  height: 100%; // Full height
-  overflow: auto; // Enable scroll if needed
-  background-color: rgb(0, 0, 0); // Fallback color
-  background-color: rgba(0, 0, 0, 0.9); // Black w/ opacity
-}
+.status-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.7em 1.6em;
+  border: none;
+  border-radius: var(--radius-pill);
+  background: var(--red);
+  color: var(--white);
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: background-color var(--duration-fast) var(--ease-base);
 
-// Modal Content (Image)
-.modal-content {
-  margin: auto;
-  display: block;
-  width: 80%;
-  max-width: 80%;
-
-  // Add Animation
-  -webkit-animation-name: zoom;
-  -webkit-animation-duration: 0.6s;
-  animation-name: zoom;
-  animation-duration: 0.6s;
-}
-
-@-webkit-keyframes zoom {
-  from {
-    -webkit-transform: scale(0);
-  }
-
-  to {
-    -webkit-transform: scale(1);
+  &:hover {
+    background: var(--red-bright);
+    color: var(--white);
   }
 }
 
-@keyframes zoom {
-  from {
-    transform: scale(0);
-  }
+// -----------------------------------------------------------------------------
+// .hero-btn — the CTA class used inside content markdown (t-shirts, mentorship,
+// sponsorship brochure). Kept as an alias of the pill button so those pages
+// keep working without every .md file having to be rewritten.
+// -----------------------------------------------------------------------------
 
-  to {
-    transform: scale(1);
+.hero-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2xs);
+  padding: 0.7em 1.6em;
+  border: none;
+  border-radius: var(--radius-pill);
+  background: var(--red);
+  color: var(--white) !important;
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-weight: var(--weight-medium);
+  text-decoration: none !important;
+  cursor: pointer;
+  transition:
+    background-color var(--duration-fast) var(--ease-base),
+    transform var(--duration-fast) var(--ease-base);
+
+  &:hover {
+    background: var(--red-bright);
+    color: var(--white) !important;
+    transform: translateY(-2px);
   }
 }
 
-// Media query for mobile devices
-@media (max-width: 768px) {
-  .modal-content {
-    width: 90%; // Increase width for mobile
-    max-width: 90%; // Increase max-width for mobile
-  }
+// A markdown link wrapping a .hero-btn must not draw its own underline.
+a:has(> .hero-btn) {
+  text-decoration: none;
 }

@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 // =============================================================================
 // DESIGN TOKENS — the single place to change the site's look.
 // =============================================================================
@@ -6,67 +8,56 @@
 //
 //   $sass-variable   compile-time. Use in `@media` queries, in maps, and
 //                    anywhere a value must be known while Sass runs (colour
-//                    maths like `lighten()`, arithmetic, interpolation).
+//                    maths, arithmetic, interpolation).
 //   --css-variable   run-time. Use in ordinary declarations. These can be
-//                    overridden per-scope in the browser (a dark section, a
-//                    single component) without recompiling.
+//                    overridden per-scope in the browser — which is what makes
+//                    the light/dark theme switch work without recompiling.
 //
 // Rule of thumb: reach for `var(--token)` in rule bodies, `$token` in media
-// queries. The custom properties below are generated from the Sass values, so
-// changing the value in ONE place here updates both.
+// queries.
+//
+// THEMING: the palette is split in two. Brand colours (the reds, the fixed
+// black and white) never change between themes and live in `:root`. Everything
+// whose value *depends* on the theme is a semantic token — `--bg`, `--fg`,
+// `--surface` — redefined in the `[data-theme]` blocks at the bottom. Write
+// rules against the semantic tokens and they work in both themes for free.
 //
 // Sections: 1 Colour · 2 Typography · 3 Spacing · 4 Radius · 5 Shadow
-//           6 Motion · 7 Layout · 8 Breakpoints
+//           6 Motion · 7 Layout · 8 Breakpoints · 9 Theme blocks
 // =============================================================================
 
 // -----------------------------------------------------------------------------
 // 1. COLOUR
 // -----------------------------------------------------------------------------
-// The site runs a flat black-on-white theme. `$ink` and `$paper` are the two
-// anchors; everything else is an accent or a grey step between them.
+// Sampled from the 2027 design mockups.
 
-$ink: #000; // primary text, dark surfaces
-$paper: #fff; // page background, text on dark surfaces
+// Brand — identical in both themes.
+$red: #b72b35; // the brand red: headings, CTAs, ticket bodies
+$red-bright: #cf3540; // hover / lifted state
+$red-deep: #8f1f28; // pressed state
+$black: #000; // dark-theme page ground
+$off-black: #191919; // dark-theme raised surface (header, footer)
+$white: #fff;
+$off-white: #e6e5e7; // light-theme page ground
+$light-raised: #f6f6f6; // light-theme raised surface (ticket headers)
 
-// Greys, dark -> light. Named by role, not by shade, so a re-theme does not
-// leave you with a "grey-800" that is actually beige.
-$surface-raised: #1a1a1a; // a panel that must sit just above pure black
-$surface-hover: #333; // hover ground on dark surfaces
-$text-muted: #4a4a4a; // de-emphasised body text
-$text-subtle: #666; // captions, metadata
-$border-subtle: #ccc; // hairlines, dividers
-$surface-sunken: #f2f2f2; // a panel that must sit just below pure white
+// Neutral steps used by both themes for hairlines and muted text.
+$grey-700: #3a3a3a;
+$grey-500: #6b6b6b;
+$grey-300: #b5b5b5;
 
-// Accents. These carry the brand and are the values most likely to change.
-$accent: #863b35; // primary brand accent (dark brown/red)
-$accent-dark: #66322e; // its pressed/hover state
-$accent-light: #af6b66; // its tint, for large fills
-$golden: #fa0; // highlight / call-to-action
-$danger: #f00; // errors, required-field markers
-
-// Link accent. Deliberately not the browser default blue — a deeper,
-// desaturated slate-teal. `$link-on-dark` is the variant for dark bands, where
-// the base tone is too dark to hold contrast.
-$link: #1f5f78;
-$link-hover: #17485b;
-$link-on-dark: #7fc4dd;
-
-// Translucent overlays. Kept as tokens so shadow/scrim opacity stays uniform.
-$overlay-subtle: rgba(0, 0, 0, 0.1);
-$overlay-medium: rgba(0, 0, 0, 0.2);
-$overlay-strong: rgba(0, 0, 0, 0.3);
-$overlay-heavy: rgba(0, 0, 0, 0.6);
+$danger: $red;
 
 // -----------------------------------------------------------------------------
 // 2. TYPOGRAPHY
 // -----------------------------------------------------------------------------
+// The mockups pair a heavy condensed grotesque for display type with a
+// geometric rounded sans for body copy.
 
-$font-main: 'Lato', sans-serif; // body and UI
-$font-display: 'Lansdowne Demo', sans-serif; // headline/display face
-$font-alt: 'Manrope', sans-serif; // secondary accent face
+$font-display: 'Oswald', 'Arial Narrow', sans-serif; // headings, nav, buttons
+$font-main: 'Poppins', 'Helvetica Neue', sans-serif; // body copy and UI
 
-// Type scale. Chosen to cover the sizes already in use rather than imposing a
-// new ratio, so adopting these does not reflow the site.
+// Type scale.
 $text-xs: 0.75rem; // 12px
 $text-sm: 0.875rem; // 14px
 $text-base: 1rem; // 16px
@@ -79,18 +70,18 @@ $text-4xl: 3.5rem; // 56px
 $text-5xl: 5rem; // 80px
 
 $weight-normal: 400;
+$weight-medium: 500;
+$weight-semibold: 600;
 $weight-bold: 700;
-$weight-black: 900;
 
-$leading-tight: 1.2;
-$leading-normal: 1.5;
+$leading-tight: 1.1;
+$leading-snug: 1.3;
+$leading-normal: 1.6;
 $leading-loose: 1.8;
 
 // -----------------------------------------------------------------------------
-// 3. SPACING
+// 3. SPACING — 4px-based scale.
 // -----------------------------------------------------------------------------
-// A 4px-based scale. Use for margin, padding and gap so vertical rhythm stays
-// consistent instead of drifting between 13px, 15px and 17px.
 
 $space-3xs: 0.25rem; // 4px
 $space-2xs: 0.5rem; // 8px
@@ -101,6 +92,7 @@ $space-lg: 2rem; // 32px
 $space-xl: 3rem; // 48px
 $space-2xl: 4rem; // 64px
 $space-3xl: 6rem; // 96px
+$space-4xl: 8rem; // 128px
 
 // -----------------------------------------------------------------------------
 // 4. BORDER RADIUS
@@ -111,24 +103,24 @@ $radius-sm: 8px;
 $radius-md: 10px;
 $radius-lg: 16px;
 $radius-xl: 24px;
-$radius-pill: 50px; // fully rounded buttons/chips
-$radius-circle: 50%; // avatars, icon badges
+$radius-pill: 50px;
+$radius-circle: 50%;
 
 // -----------------------------------------------------------------------------
 // 5. SHADOW
 // -----------------------------------------------------------------------------
 
-$shadow-sm: 0 0 10px #{$overlay-subtle};
-$shadow-md: 0 4px 8px #{$overlay-medium};
-$shadow-lg: 0 6px 20px #{$overlay-strong};
+$shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.15);
+$shadow-md: 0 4px 16px rgba(0, 0, 0, 0.2);
+$shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.3);
 
 // -----------------------------------------------------------------------------
 // 6. MOTION
 // -----------------------------------------------------------------------------
 
-$duration-fast: 0.1s;
+$duration-fast: 0.15s;
 $duration-base: 0.3s;
-$duration-slow: 1s;
+$duration-slow: 0.6s;
 $ease-base: ease;
 $ease-in-out: ease-in-out;
 
@@ -137,13 +129,18 @@ $ease-in-out: ease-in-out;
 // -----------------------------------------------------------------------------
 
 $content-width: 71.5rem; // max width of the main content column
+$header-height: 5rem;
+
+// Aspect ratio of the Innsbruck mountain artwork (1920 x 441). Both the light
+// and the dark variant are rendered at this ratio so the range sits at the same
+// height and scale in either theme; keep the two source files matching it.
+$mountains-ratio: math.div(1920, 441);
 
 // -----------------------------------------------------------------------------
 // 8. BREAKPOINTS
 // -----------------------------------------------------------------------------
 // Sass-only: `@media` is resolved at compile time and cannot read a custom
 // property, so these are deliberately NOT mirrored into :root below.
-// Use as: `@media (max-width: $bp-md) { ... }`
 
 $bp-xs: 480px;
 $bp-sm: 600px;
@@ -152,41 +149,27 @@ $bp-lg: 992px;
 $bp-xl: 1200px;
 
 // =============================================================================
-// CUSTOM PROPERTY MIRROR
+// 9. CUSTOM PROPERTY MIRROR + THEME BLOCKS
 // =============================================================================
-// Generated from the Sass values above — do not hardcode literals here, or the
-// two layers drift apart and changing a token stops working.
 
 :root {
-  // Colour
-  --ink: #{$ink};
-  --paper: #{$paper};
-  --surface-raised: #{$surface-raised};
-  --surface-hover: #{$surface-hover};
-  --surface-sunken: #{$surface-sunken};
-  --text-muted: #{$text-muted};
-  --text-subtle: #{$text-subtle};
-  --border-subtle: #{$border-subtle};
-
-  --accent: #{$accent};
-  --accent-dark: #{$accent-dark};
-  --accent-light: #{$accent-light};
-  --golden: #{$golden};
+  // --- Brand colour (theme-independent) ---
+  --red: #{$red};
+  --red-bright: #{$red-bright};
+  --red-deep: #{$red-deep};
+  --black: #{$black};
+  --off-black: #{$off-black};
+  --white: #{$white};
+  --off-white: #{$off-white};
   --danger: #{$danger};
 
-  --link: #{$link};
-  --link-hover: #{$link-hover};
-  --link-on-dark: #{$link-on-dark};
-
-  --overlay-subtle: #{$overlay-subtle};
-  --overlay-medium: #{$overlay-medium};
-  --overlay-strong: #{$overlay-strong};
-  --overlay-heavy: #{$overlay-heavy};
+  --grey-700: #{$grey-700};
+  --grey-500: #{$grey-500};
+  --grey-300: #{$grey-300};
 
   // Typography
   --font-main: #{$font-main};
   --font-display: #{$font-display};
-  --font-alt: #{$font-alt};
 
   --text-xs: #{$text-xs};
   --text-sm: #{$text-sm};
@@ -200,10 +183,12 @@ $bp-xl: 1200px;
   --text-5xl: #{$text-5xl};
 
   --weight-normal: #{$weight-normal};
+  --weight-medium: #{$weight-medium};
+  --weight-semibold: #{$weight-semibold};
   --weight-bold: #{$weight-bold};
-  --weight-black: #{$weight-black};
 
   --leading-tight: #{$leading-tight};
+  --leading-snug: #{$leading-snug};
   --leading-normal: #{$leading-normal};
   --leading-loose: #{$leading-loose};
 
@@ -217,6 +202,7 @@ $bp-xl: 1200px;
   --space-xl: #{$space-xl};
   --space-2xl: #{$space-2xl};
   --space-3xl: #{$space-3xl};
+  --space-4xl: #{$space-4xl};
 
   // Radius
   --radius-xs: #{$radius-xs};
@@ -241,32 +227,58 @@ $bp-xl: 1200px;
 
   // Layout
   --content-width: #{$content-width};
+  --header-height: #{$header-height};
 
   // ---------------------------------------------------------------------------
-  // COMPATIBILITY ALIASES
+  // SEMANTIC TOKENS — dark is the default theme, so these carry the dark values.
+  // The [data-theme='light'] block below overrides them.
   // ---------------------------------------------------------------------------
-  // Legacy names still referenced across the partials. Five of these
-  // (--bg-color, --dark-brown, --golden, --primary-dark, --light-brown) were
-  // used but never defined anywhere, so they resolved to nothing and silently
-  // dropped the declarations that used them. Defining them here fixes those
-  // rules. Prefer the role-named tokens above in new code.
-  --bg-color: #{$paper};
-  --dark-brown: #{$accent};
-  --primary-dark: #{$ink};
-  --light-brown: #{$accent-light};
+  --bg: #{$black}; // page ground
+  --surface: #{$off-black}; // header, footer, raised panels
+  --surface-alt: #{$grey-700}; // a step above --surface
+  --fg: #{$white}; // primary text
+  --fg-muted: #{$grey-300}; // secondary text
+  --border: #{$grey-700}; // hairlines
 
-  // Names kept from the earlier green theme; values follow the current
-  // black-and-white palette.
-  --dark-green: #{$paper};
-  --light-cream: #{$ink};
-  --light-green: #{$ink};
-  --vibrant-green: #{$ink};
-  --gradient-start: #{$ink};
-  --gradient-end: #{$ink};
-  --accent-black: #{$ink};
-  --hover-grey: #{$surface-hover};
-  --main-font: #{$font-main};
-  --link-blue: #{$link};
-  --link-blue-hover: #{$link-hover};
-  --link-blue-light: #{$link-on-dark};
+  // The hero's two horizontal bands. In the dark design the headline sits on a
+  // lighter "sky" and everything from the mountain line down is pure black; the
+  // artwork itself carries that same transition.
+  --hero-sky: #{$off-black};
+  --hero-ground: #{$black};
+
+  // The ticket header strip is the inverse of the page in both designs: white
+  // on the dark theme, near-black on the light one.
+  --ticket-header-bg: #{$white};
+  --ticket-header-fg: #{$off-black};
+
+  // "Important dates" is the one section heading the dark design sets in the
+  // foreground colour rather than red; the light design keeps it red like the
+  // others.
+  --heading-alt: #{$white};
+
+  // Colour-scheme hint so form controls and scrollbars follow the theme.
+  color-scheme: dark;
+}
+
+[data-theme='light'] {
+  --bg: #{$off-white};
+  // The header shares the page ground in the light design; --surface-alt is
+  // the raised tone for panels that do need to lift off it.
+  --surface: #{$off-white};
+  --surface-alt: #{$white};
+  --fg: #{$off-black};
+  --fg-muted: #{$grey-500};
+  --border: #{$grey-300};
+
+  // The light design has no such split: both bands are the page ground, so only
+  // the silhouette itself reads.
+  --hero-sky: #{$off-white};
+  --hero-ground: #{$off-white};
+
+  --ticket-header-bg: #{$off-black};
+  --ticket-header-fg: #{$white};
+
+  --heading-alt: #{$red};
+
+  color-scheme: light;
 }
