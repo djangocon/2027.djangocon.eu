@@ -5,7 +5,7 @@ layout: home_about
 
 <br>
 
-This is the 17th edition of the Conference and it is organized by a team made up of Django practitioners from all levels. We welcome people from all over the world.
+This is the 19th edition of the Conference and it is organized by a team made up of Django practitioners from all levels. We welcome people from all over the world.
 
 Our conference seeks to educate and develop new skills, best practices and ideas for the benefit of attendees, developers, speakers and everyone in our global Django Community, not least those watching the talks online.
 
