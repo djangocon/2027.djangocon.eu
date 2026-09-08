@@ -2,39 +2,51 @@
 
 // content page
 
-// testing content container padd
-.cfp-title {
-  font-size: 2.5rem;
-  font-family: var(--font-main);
-  color: var(--ink);
-  text-transform: uppercase !important;
-  font-weight: 700;
-}
-// end of testing
-
 .content-container {
   -webkit-box-flex: 1;
   -ms-flex: 1;
   flex: 1;
-  padding-bottom: 2.5rem;
-  padding-top: 1.5rem;
+  padding-bottom: $space-xl;
+  padding-top: $space-xl;
+
+  // The .row scaffolding in modules/simple.html let .simple-content size itself
+  // against the viewport rather than the #pages container (measured ~1900px of
+  // running text on a 1320px container). Both the heading and the body are
+  // pinned to one reading column so a section reads as a single block of text.
+  .content-title,
+  .simple-content {
+    margin-inline: auto;
+    max-width: $reading-width;
+    width: 100%;
+  }
 
   .content-title .title {
     color: var(--ink);
     font-family: var(--font-main);
-    font-size: 2.5rem;
+    font-size: $text-3xl;
+    line-height: $leading-tight;
+    text-align: start;
     text-transform: uppercase !important;
 
+    // The brand rule under the page title; it is what marks the start of a
+    // section now that the headings are no longer centred.
+    border-bottom: 0.1875rem solid var(--accent);
+    padding-bottom: $space-xs;
+
     &.parent-title {
-      color: #030507;
+      border-bottom: 0;
+      color: var(--text-subtle);
       margin-bottom: 0;
-      opacity: 30%;
+      opacity: 1;
+      padding-bottom: 0;
     }
   }
 
   .simple-content {
     color: var(--ink);
-    font: 1.125rem/1.5rem var(--font-main);
+    font-family: var(--font-main);
+    font-size: $text-md;
+    line-height: $leading-loose;
     overflow-x: auto !important;
     text-decoration: none;
 
@@ -43,12 +55,67 @@
       margin-bottom: 1.5rem;
     }
 
+    // A bare `h2 { text-align: center }` further down this file centres every
+    // heading on the site, which inside running text breaks the reading line.
+    // In-content headings are left-aligned and put on a real scale instead.
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      color: inherit;
+      line-height: $leading-tight;
+      text-align: start;
+    }
+
+    h2,
+    .cfp-title {
+      font-size: $text-2xl;
+      margin: $space-xl 0 $space-sm;
+    }
+
+    h3 {
+      font-size: $text-xl;
+      margin: $space-lg 0 $space-xs;
+    }
+
+    h4,
+    h5,
+    h6 {
+      font-size: $text-lg;
+      margin: $space-md 0 $space-2xs;
+    }
+
+    // The first heading of a section is the section's own title; the scale
+    // above would push it away from the top edge of the band.
+    > :first-child {
+      margin-top: 0;
+    }
+
+    // Standfirst: the opening line of a section sits a step above the body, so
+    // a page reads title -> lead -> body instead of one flat block of text.
+    > p:first-child {
+      font-size: $text-lg;
+      line-height: $leading-normal;
+    }
+
     a {
       color: var(--link);
       text-decoration: underline;
 
       &:hover {
         color: var(--link-hover);
+      }
+    }
+
+    // A button dropped into content is a button. Without this the prose link
+    // rule above repaints it: dark-red underlined text on the red pill.
+    a.hero-btn {
+      color: #fff;
+      text-decoration: none;
+
+      &:hover {
+        color: #fff;
       }
     }
 
@@ -123,58 +190,14 @@ body {
   font: normal normal 700 2.375rem/2.75rem Montserrat;
 }
 
-// Alternating band on content pages (see pages/default.html). The old theme
-// used a dark green here, which left the inherited near-black text unreadable.
-// A neutral grey with white text keeps the alternation while staying legible.
+// Alternating band on content pages (see pages/default.html). This used to
+// paint --text-muted and then re-state a paper colour for every text element
+// and link inside it, which inverted in the dark theme (--text-muted is a light
+// grey there, so the band came out light with pale-blue links on it). A tint of
+// the page background reads as a band in both themes and lets every colour
+// inside simply inherit.
 .even-pages {
-  background: var(--text-muted);
-  color: var(--paper);
-
-  // .simple-content a would otherwise win on specificity, so the band's link
-  // colour is stated at the same depth.
-  a,
-  .simple-content a {
-    color: var(--link-on-dark);
-    text-decoration: underline;
-
-    &:hover {
-      color: var(--paper);
-    }
-  }
-
-  // .pages-links pins its colour with !important, so it must be matched here.
-  .pages-links {
-    color: var(--link-on-dark) !important;
-
-    &:hover {
-      color: var(--paper) !important;
-    }
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  p,
-  li,
-  strong,
-  em,
-  td,
-  th,
-  .title,
-  .section-title,
-  .parent-title {
-    color: var(--paper);
-  }
-
-  // .content-title .title sets an explicit black and outranks the bare tag
-  // selectors above, so it has to be overridden at matching specificity.
-  .content-title .title,
-  .content-title .title.parent-title {
-    color: var(--paper);
-  }
+  background: var(--surface-sunken);
 }
 
 // clip, not hidden: hidden forces the browser to compute overflow-y as
@@ -197,11 +220,6 @@ a {
   &:hover {
     text-decoration: underline;
   }
-}
-
-.margin-left,
-.margin-right {
-  display: none;
 }
 
 .important-dates a {
@@ -445,8 +463,10 @@ img.hotel {
   }
 }
 
+// Legacy global. Kept for the homepage sections that still lean on it, but it
+// must not reach the content pages -- .simple-content overrides it above.
 h2 {
-  color: black;
+  color: var(--ink);
   text-align: center;
   font-size: 2em;
   margin: 20px 0;
@@ -1183,5 +1203,149 @@ h2 {
   .modal-content {
     width: 90%; // Increase width for mobile
     max-width: 90%; // Increase max-width for mobile
+  }
+}
+
+// =============================================================================
+// CONTENT COMPONENTS
+// =============================================================================
+// Small pieces content editors can drop into any .md file. They exist so a
+// "coming soon" or a set of key facts looks the same on every page instead of
+// each page inventing its own.
+
+// Status pill for a page whose content is not ready yet.
+.coming-soon {
+  display: inline-block;
+  padding: $space-3xs $space-sm;
+  border: 1px solid var(--accent);
+  border-radius: $radius-pill;
+  color: var(--accent);
+  font-size: $text-sm;
+  font-weight: $weight-bold;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+// Key facts (venue / date / cost ...) as a small responsive grid.
+.fact-grid {
+  display: grid;
+  gap: $space-sm;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  margin: $space-lg 0;
+}
+
+.fact {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3xs;
+  padding: $space-sm;
+  border-left: 3px solid var(--accent);
+  background: var(--surface-sunken);
+  transition: transform $duration-fast $ease-base;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+}
+
+.fact-label {
+  color: var(--text-subtle);
+  font-size: $text-xs;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.fact-value {
+  font-size: $text-md;
+  font-weight: $weight-bold;
+  line-height: $leading-tight;
+}
+
+.fact-note {
+  color: var(--text-subtle);
+  font-size: $text-sm;
+  line-height: $leading-normal;
+}
+
+// Embedded map.
+.map-embed {
+  margin: $space-lg 0;
+
+  // An explicit height, not aspect-ratio: OpenStreetMap's embed measures the
+  // frame as it loads and letterboxes the map if the box has not resolved to a
+  // real size yet, which is exactly what an aspect-ratio box does.
+  iframe {
+    width: 100%;
+    height: 26rem;
+    border: 1px solid var(--border-subtle);
+    display: block;
+
+    @media (max-width: $bp-sm) {
+      height: 18rem;
+    }
+  }
+
+  figcaption {
+    color: var(--text-subtle);
+    font-size: $text-sm;
+    padding-top: $space-2xs;
+  }
+}
+
+// Two maps side by side. OpenStreetMap's embed takes a single `marker`, so one
+// map cannot pin both venues -- each venue gets its own pinned map instead.
+.venue-maps {
+  display: grid;
+  gap: $space-md;
+  grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+  margin: $space-lg 0;
+
+  .map-embed {
+    margin: 0;
+
+    iframe {
+      height: 17rem;
+    }
+  }
+
+  figcaption strong {
+    color: var(--ink);
+  }
+}
+
+// The status form matches the reading column so it lines up with the prose and
+// the heading above it.
+.grant-status form {
+  margin-inline: auto;
+  max-width: $reading-width;
+}
+
+// Sections fade up as they enter the viewport. project.js adds .is-visible via
+// IntersectionObserver; without JS the sections are simply already visible,
+// which is why the hidden state is opted into with a class rather than being
+// the default.
+.js-reveal {
+  opacity: 0;
+  transform: translateY(1rem);
+  transition:
+    opacity $duration-base $ease-in-out,
+    transform $duration-base $ease-in-out;
+
+  &.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js-reveal,
+  .js-reveal.is-visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .fact {
+    transition: none;
   }
 }

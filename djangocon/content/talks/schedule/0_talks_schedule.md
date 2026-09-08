@@ -4,4 +4,4 @@ layout: simple
 order: 0
 ---
 
-Coming soon...
+<p class="coming-soon">Coming soon</p>

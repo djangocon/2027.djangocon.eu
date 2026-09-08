@@ -65,7 +65,8 @@ $overlay-heavy: rgba(0, 0, 0, 0.6);
 
 $font-main: 'Lato', sans-serif; // body and UI
 $font-display: 'Anton', sans-serif; // section headings, ticket tier labels
-$font-hero: 'Anton SC', sans-serif; // hero headline + nav links only — confirmed
+$font-hero:
+  'Anton SC', sans-serif; // hero headline + nav links only — confirmed
 // against Figma nodes 5:11 (hero) and 5:50 (nav "Talks"); every other heading
 // (GRAB YOUR TICKET, SPONSORS, RUN BY THE COMMUNITY...) came back plain Anton.
 $font-numeric: 'Lexend Deca', sans-serif; // ticket price numbers only
@@ -143,6 +144,11 @@ $ease-in-out: ease-in-out;
 // -----------------------------------------------------------------------------
 
 $content-width: 71.5rem; // max width of the main content column
+
+// Max width of a column of running text (~72 characters at $text-md). Long-form
+// pages cap at this rather than $content-width, which is a layout width: prose
+// set that wide runs to ~200 characters a line.
+$reading-width: 46rem;
 
 // -----------------------------------------------------------------------------
 // 8. BREAKPOINTS
@@ -295,6 +301,11 @@ $bp-xl: 1200px;
   --text-muted: #b0b0b0;
   --text-subtle: #999;
   --border-subtle: #333;
+
+  // $link is a deep slate-teal tuned for paper; on black it drops to ~2.3:1,
+  // well under the 4.5:1 minimum. The dark theme uses the lighter variant.
+  --link: #{$link-on-dark};
+  --link-hover: #b3e0ef;
 
   --overlay-subtle: rgba(255, 255, 255, 0.1);
   --overlay-medium: rgba(255, 255, 255, 0.2);

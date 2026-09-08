@@ -1,40 +1,46 @@
 ---
 layout: simple
 order: 0
+title: Venue
 ---
-
-<h2 class="cfp-title" >Venue</h2>
 
 **DjangoCon Europe 2027** will be held in Innsbruck! The capital of Tyrol sits in the heart of the Austrian Alps, framed by the Nordkette mountain range and split by the River Inn. Its compact medieval Old Town, imperial history and lively student scene make it a city where you can walk from a conference talk to a cable car in minutes.
 
 As per DjangoCon tradition, we shall walk around, chat, laugh and explore the city together. If you are not the "walking-type", let the convenient public transportation network work its magic for you!
 
-<h2 style="font-size:25px" class="cfp-title"><u>CONFERENCE VENUE</u></h2>
+### Conference venue
 
-The exact venue for DjangoCon Europe 2027 will be announced soon — keep an eye on this page and on our <a href="/information/announcements/" class="pages-links">announcements</a>.
+DjangoCon Europe 2027 runs across two venues in central Innsbruck, about a 15-minute walk apart.
 
-<h2 class="cfp-title" style="font-size:30px">Getting to Innsbruck</h2>
+<div class="venue-maps">
+  <figure class="map-embed">
+    <iframe title="Map showing Congress Innsbruck, Rennweg 3"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=11.3888%2C47.2673%2C11.4014%2C47.2737&amp;layer=mapnik&amp;marker=47.27052%2C11.39512"
+            loading="lazy"
+            referrerpolicy="no-referrer"></iframe>
+    <figcaption>
+      <strong>Congress Innsbruck</strong><br />
+      Rennweg 3, 6020 Innsbruck<br />
+      <a href="https://www.openstreetmap.org/?mlat=47.27052&amp;mlon=11.39512#map=17/47.27052/11.39512" target="_blank" rel="noopener">Open in OpenStreetMap</a>
+    </figcaption>
+  </figure>
+  <figure class="map-embed">
+    <iframe title="Map showing Universität Innsbruck, Campus Innrain"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=11.3779%2C47.2599%2C11.3905%2C47.2663&amp;layer=mapnik&amp;marker=47.26307%2C11.38419"
+            loading="lazy"
+            referrerpolicy="no-referrer"></iframe>
+    <figcaption>
+      <strong>Universität Innsbruck</strong><br />
+      Campus Innrain, Innrain 52<br />
+      <a href="https://www.openstreetmap.org/?mlat=47.26307&amp;mlon=11.38419#map=17/47.26307/11.38419" target="_blank" rel="noopener">Open in OpenStreetMap</a>
+    </figcaption>
+  </figure>
+</div>
 
-#### By air
+### Getting between the venues
 
-<a href="https://www.innsbruck-airport.com/en" class="pages-links">Innsbruck Airport (INN)</a> is just 4&nbsp;km west of the city centre — bus line F takes you to the centre in about 15–20 minutes. It has year-round and seasonal connections to hubs such as Vienna, Frankfurt, London and Amsterdam.
+Both venues sit in the centre, on opposite sides of the Old Town. Walking between them along the River Inn takes about 15 minutes and is the simplest option. Trams and buses run the route in under 10 minutes if the weather is against you — see <a href="/information/innsbruck/" class="pages-links">getting around Innsbruck</a> for tickets and lines.
 
-If you can't find a convenient flight to Innsbruck, **Munich Airport (MUC)** is a popular alternative: direct trains and coaches connect it to Innsbruck in roughly 2.5–3 hours. Zurich, Salzburg and Verona are also workable gateways.
+### Getting to Innsbruck
 
-#### By train
-
-Innsbruck Hauptbahnhof is a major stop on the Austrian rail network. <a href="https://www.oebb.at/en/" class="pages-links">ÖBB</a> Railjet services connect Innsbruck directly with Vienna (~4h15), Munich (~1h50) and Zurich (~3h30), and the Brenner line runs south towards Verona and the rest of Italy. Night trains (<a href="https://www.nightjet.com/en/" class="pages-links">Nightjet</a>) reach Innsbruck from cities such as Amsterdam, Hamburg and Brussels — a comfortable, low-carbon way to arrive.
-
-#### By car
-
-Innsbruck lies on the A12 Inntal motorway, connected to the A13 Brenner route towards Italy and to Germany via the A93. Austrian motorways require a <a href="https://www.asfinag.at/toll/vignette/" class="pages-links">vignette</a> (buy it digitally before you cross the border). In February, winter tyres are legally required in wintry conditions.
-
-#### By coach
-
-Long-distance coaches (e.g. <a href="https://www.flixbus.com/" class="pages-links">FlixBus</a>) connect Innsbruck with Munich, Vienna, Zurich and many other European cities at budget-friendly prices.
-
-<h2 class="cfp-title" style="font-size:30px">Tourist Tips: Around Innsbruck</h2>
-
-- The <a href="https://www.innsbruck.info/en/experience/innsbruck-card.html" class="pages-links">Innsbruck Card</a> (24/48/72 hours) covers public transport, the Sightseer bus, major museums and one round trip on the Nordkette cable cars.
-- Don't miss the **Golden Roof** and the medieval Old Town, **Ambras Castle**, the **Bergisel ski jump**, and the **Nordkettenbahnen** — a funicular and cable-car ride from the city centre to over 2,200&nbsp;m.
-- February is peak ski season in Tyrol: if you want to add a day on the slopes (or just want a cheaper room), book your accommodation early.
+Innsbruck has its own airport, sits on the ÖBB rail network with direct Railjet and Nightjet services, and is reachable by coach and by motorway. Full directions — flights, trains, coaches, driving and airport transfers — are on the <a href="/information/innsbruck/" class="pages-links">Innsbruck page</a>.

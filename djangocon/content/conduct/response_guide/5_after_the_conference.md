@@ -1,6 +1,5 @@
 title: after the conference
 layout: simple
-class: bg-grey
 order: 5
 
 - Complete the anonymized transparency report within [X weeks — organizers to set].

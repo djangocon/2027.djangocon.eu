@@ -1,15 +1,9 @@
 title: about
 layout: home_about
+heading: Run by the community for the community
 
-<span id ="about_title">RUN BY THE COMMUNITY FOR THE COMMUNITY</span>
+DjangoCon Europe is organized by a team made up of Django practitioners from all levels. We welcome people from all over the world.
 
-<br>
+Our conference seeks to educate and develop new skills, best practices, and ideas for the benefit of attendees, developers, speakers, and everyone in our global Django Community, not least those watching the talks online.
 
-This is the 19th edition of the Conference and it is organized by a team made up of Django practitioners from all levels. We welcome people from all over the world.
-
-Our conference seeks to educate and develop new skills, best practices and ideas for the benefit of attendees, developers, speakers and everyone in our global Django Community, not least those watching the talks online.
-
-<br>
-
-<!--
-<p><iframe id="vid" width="100%" height="315"x src="https://www.youtube.com/embed/4zgNG4-VDOU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p> -->
+In 2027 it will take place in the beautiful city of Innsbruck. Don't miss the chance to join us for five days of talks, workshops, and sprints.

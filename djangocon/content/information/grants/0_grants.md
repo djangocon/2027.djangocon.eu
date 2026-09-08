@@ -1,11 +1,10 @@
+title: Grants
 layout: simple
 order: 0
 
-<h2 class="cfp-title" style="color: tomato">Opportunity grants applications are now closed!</h2>
+**Opportunity grant applications open on 30 November 2026.**
 
 **DjangoCon Europe 2027 offers grants so that those who might otherwise not be able to attend won't hesitate to participate.** Some expenses for the conference attendance (which could include travel, hotel, registration, etc) will be covered for opportunity grant recipients.
-
-<!-- <a href="https://docs.google.com/forms/d/e/1FAIpQLScKldrk0umXZUR2z5XB-xKU3cOk4Z4nCIYrutOxPH1Tv590_Q/viewform?usp=dialog" class="hero-btn" style="text-decoration:none; color: white;">Apply here</a> -->
 
 We actively encourage you to apply for an opportunity grant. While we wish we could give grants to everyone who applies, we do not have the funds to do that. Our goal is to maximize the impact our grant program has, within the limited funds we have.
 
@@ -31,6 +30,6 @@ Our program prioritises anyone who is part of an under-represented or marginaliz
 - people who have experienced trauma and its aftermath (PTSD, anxiety, etc)
 - people living with or recovering from substance abuse
 
-We aim to inform applicants of the results within a few days of the application window closing. Please be aware that you must apply before the deadline for a grant. **Opportunity grants applications are now closed**.
+We aim to inform applicants of the results within a few days of the application window closing. Please be aware that you must apply before the deadline for a grant. **Applications open on 30 November 2026**; the application form and the closing date will be published here.
 
 Speakers are automatically entitled to receive a ticket.
