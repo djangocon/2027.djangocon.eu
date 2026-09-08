@@ -1,5 +1,6 @@
 # define an alias for the specific python version used in this file.
-FROM python:3.13-slim-bookworm AS python
+# Matches the production host (Python 3.11); bump both together.
+FROM python:3.11-slim-bookworm AS python
 
 # Python build stage
 FROM python AS python-build-stage

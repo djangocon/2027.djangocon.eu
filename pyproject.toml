@@ -4,10 +4,13 @@ version = "0.1.0"
 description = "DjangoCon Europe 2027 website"
 readme = "README.md"
 license = { text = "MIT" }
-requires-python = "==3.13.*"
+requires-python = ">=3.11"
 classifiers = [
   "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
   "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
 ]
 
 # ==== djLint ====
@@ -26,7 +29,7 @@ js.indent_size = 2
 
 # ==== ruff ====
 [tool.ruff]
-target-version = "py313"
+target-version = "py311"  # production runs 3.11; keep the syntax floor there
 line-length = 119
 extend-exclude = [
   "node_modules",

@@ -32,7 +32,7 @@ The site has no database and no models: every page is rendered from the files in
 
 ### Without Docker
 
-Python 3.13 and Node 22 are required (see `pyproject.toml` / `package.json`).
+Python 3.11+ (production runs 3.11) and Node 22 are required (see `pyproject.toml` / `package.json`).
 
 ```bash
 python -m venv .venv && source .venv/bin/activate
