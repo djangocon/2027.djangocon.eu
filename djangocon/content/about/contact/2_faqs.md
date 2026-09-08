@@ -18,7 +18,7 @@ Grant applications open on 30 November 2026. The form will be published on the <
 
 **What do I do if I am refused a visa but still bought tickets**
 Sorry, hopefully that doesn't happen, but if it does send an email to our email here <a href="mailto:2027@djangocon.eu" class="pages-links">2027@djangocon.eu</a>
-and the team will get back you.
+and the team will get back to you.
 
 **Are there options for virtual participation?**
 Yes there are, but you would need to purchase a ticket before getting access to the platform , allowing you to stream live, you can
