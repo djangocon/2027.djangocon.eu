@@ -1884,29 +1884,59 @@ object[type='application/pdf'] {
   padding: 0 20px;
 }
 
-// Each tile is a link to that edition's site; the image is the whole link.
-.grid-item {
+// One card per edition (markup in content/home/past_edition.md): the photo
+// is the whole link, with a caption bar revealed on hover — and always shown
+// on touch screens, where there is no hover to reveal it.
+.edition {
   position: relative;
   display: block;
   overflow: hidden;
   aspect-ratio: 345 / 380;
+  text-decoration: none;
 
   img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: transform var(--motion-normal, 0.3s) ease;
+    transition: transform var(--duration-base) var(--ease-base);
+  }
+
+  span {
+    position: absolute;
+    inset-inline: 0;
+    bottom: 0;
+    padding: var(--space-lg) var(--space-xs) var(--space-2xs);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent);
+    color: #fff;
+    font-family: var(--font-display);
+    font-size: var(--text-sm);
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    opacity: 0;
+    transition: opacity var(--duration-base) var(--ease-base);
   }
 
   &:hover img,
   &:focus-visible img {
-    transform: scale(1.04);
+    transform: scale(1.05);
+  }
+
+  &:hover span,
+  &:focus-visible span {
+    opacity: 1;
   }
 
   &:focus-visible {
     outline: 2px solid var(--accent);
     outline-offset: 2px;
+  }
+
+  @media (hover: none) {
+    span {
+      opacity: 1;
+    }
   }
 }
 

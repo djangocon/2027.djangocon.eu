@@ -17102,30 +17102,56 @@ h2 {
   padding: 0 20px;
 }
 
-.grid-item {
+.edition {
   position: relative;
   display: block;
   overflow: hidden;
   aspect-ratio: 345/380;
+  text-decoration: none;
 }
-.grid-item img {
+.edition img {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
   display: block;
-  -webkit-transition: -webkit-transform var(--motion-normal, 0.3s) ease;
-  transition: -webkit-transform var(--motion-normal, 0.3s) ease;
-  transition: transform var(--motion-normal, 0.3s) ease;
-  transition: transform var(--motion-normal, 0.3s) ease, -webkit-transform var(--motion-normal, 0.3s) ease;
+  -webkit-transition: -webkit-transform var(--duration-base) var(--ease-base);
+  transition: -webkit-transform var(--duration-base) var(--ease-base);
+  transition: transform var(--duration-base) var(--ease-base);
+  transition: transform var(--duration-base) var(--ease-base), -webkit-transform var(--duration-base) var(--ease-base);
 }
-.grid-item:hover img, .grid-item:focus-visible img {
-  -webkit-transform: scale(1.04);
-          transform: scale(1.04);
+.edition span {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  padding: var(--space-lg) var(--space-xs) var(--space-2xs);
+  background: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.85)), to(transparent));
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent);
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  opacity: 0;
+  -webkit-transition: opacity var(--duration-base) var(--ease-base);
+  transition: opacity var(--duration-base) var(--ease-base);
 }
-.grid-item:focus-visible {
+.edition:hover img, .edition:focus-visible img {
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+}
+.edition:hover span, .edition:focus-visible span {
+  opacity: 1;
+}
+.edition:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
+}
+@media (hover: none) {
+  .edition span {
+    opacity: 1;
+  }
 }
 
 @media (max-width: 768px) {
