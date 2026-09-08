@@ -1,7 +1,7 @@
 layout: simple
 order: 0
 
-<h1 class="cfp-title">code of conduct</h1>
+<h2 class="cfp-title">code of conduct</h2>
 
 DjangoCon Europe is committed to providing a safe, inclusive, and respectful environment for everyone who takes part—in person at Congress Innsbruck and Universität Innsbruck, and online.
 

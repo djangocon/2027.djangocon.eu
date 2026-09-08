@@ -1,12 +1,10 @@
-{% comment %}
-Important dates. Rows come from content/home/dates.md; `.date-row` is styled in
-_homepage.scss into the two-column month / entries layout.
-{% endcomment %}
-<section class="home-dates section-shell">
-  <h2 class="section-heading section-heading--alt">
-    {{ content.meta.heading.0|default:"Important dates" }}
-  </h2>
-  <div class="dates-list">
+{% load markdown_extras %}
+
+{# Important dates. The months and milestones are written in #}
+{# content/home/dates.md; this only renders the heading and the body. #}
+<div class="dates-section">
+  <div class="dates-container">
+    <h2 class="dates-title">{{ content|meta:"heading"|default:"Important dates" }}</h2>
     {{ content.html|safe }}
   </div>
-</section>
+</div>

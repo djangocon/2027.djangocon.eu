@@ -1,87 +1,75 @@
 @use 'variables' as *;
 
-// =============================================================================
-// CREDITS PAGE (modules/credits.html)
-// =============================================================================
-
-.creditsmain {
-  width: 100%;
-  max-width: var(--content-width);
-  margin-inline: auto;
-  padding: var(--space-2xl) var(--space-md);
-
-  @media (max-width: $bp-md) {
-    padding-inline: var(--space-sm);
-  }
-
-  > p {
-    max-width: 46rem;
-    margin-bottom: var(--space-2xl);
-    color: var(--fg);
-    font-family: var(--font-main) !important;
-    font-size: var(--text-base) !important;
-    line-height: var(--leading-loose) !important;
-  }
-
-  // The template lays the teams out with Bootstrap rows/columns. Replace that
-  // with a grid that reflows on its own, so the columns do not collapse to
-  // full width the moment the viewport narrows.
-  .row {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
-    gap: var(--space-xl);
-    padding-top: 0 !important;
-    margin-bottom: var(--space-xl);
-  }
-
-  [class*='col-'] {
-    width: auto;
-    max-width: none;
-    flex: initial;
-    padding: 0;
-  }
-}
+// credits page css
 
 .creditlogo {
-  width: 3rem;
-  height: 3rem;
-  margin-bottom: var(--space-2xs);
-  object-fit: contain;
-  // The credit icons are dark line art; invert them on the dark theme so they
-  // do not disappear into the page.
-  filter: brightness(0) invert(1);
-}
-
-[data-theme='light'] .creditlogo {
-  filter: none;
+  position: relative;
+  right: 135px; // adjust as needed
+  width: 37px;
+  height: 40px;
+  margin-bottom: 20px;
 }
 
 .headtext {
-  margin-bottom: var(--space-sm);
-  color: var(--red);
-  font-family: var(--font-display);
-  font-size: var(--text-base);
-  font-weight: var(--weight-bold);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
+  color: var(--ink);
+  font-weight: bold;
+  font-size: 20px;
 }
 
-// Each contributor is an <h6> in the template — plain body text, not a heading.
-.creditsmain h6 {
-  margin: 0 0 var(--space-3xs);
-  color: var(--fg);
-  font-family: var(--font-main);
-  font-size: var(--text-sm);
-  font-weight: var(--weight-normal);
-  line-height: var(--leading-normal);
-  text-transform: none;
-  letter-spacing: 0;
+.mainname {
+  font-size: 40px;
+  font-weight: bold;
+  color: var(--ink);
 }
 
-// The template pins a per-team colour inline on the lead name. Those colours
-// are from the old palette and several fail contrast on both themes, so the
-// lead is marked with weight instead.
-.creditsmain h6[style] {
-  color: var(--fg) !important;
-  font-weight: var(--weight-semibold);
+@media (max-width: 768px) {
+  .col-sm-3 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .creditlogo {
+    position: relative;
+    right: 5px; // adjust as needed
+    width: 37px;
+    height: 40px;
+    margin-bottom: 20px;
+  }
+
+  .mainname {
+    font-size: 40px;
+    font-weight: bold;
+    color: var(--ink);
+    text-align: center;
+  }
+
+  .creditsmain {
+    text-align: center;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .col-sm-3 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+
+  .creditlogo {
+    position: relative;
+    right: 5px; // adjust as needed
+    width: 50px; // increased size
+    height: 50px; // increased size
+    margin-bottom: 20px;
+  }
+
+  .mainname {
+    font-size: 24px; // added font size
+    font-weight: bold;
+    color: var(--ink);
+    text-align: center;
+  }
+
+  .creditsmain {
+    text-align: center;
+  }
 }

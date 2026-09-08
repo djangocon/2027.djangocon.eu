@@ -1,9 +1,3 @@
 {% load markdown_extras %}
-{% comment %}
-Renders one parsed content file through the template its `layout:` names.
-The wrapper class lets a layout be targeted from CSS without the module
-template having to know where it was included from.
-{% endcomment %}
-<div class="module module--{{ content.meta.layout.0|default:'simple' }}">
-  {% include content|layout_template %}
-</div>
+
+<div class="{{ content|meta:"layout" }}-content my-4">{% include content|layout_template %}</div>

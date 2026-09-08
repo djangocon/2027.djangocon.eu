@@ -7,4 +7,4 @@ Childcare at DjangoCon Europe and tech conferences are essential factors that he
 If you are interested in childcare free of charge, please fill out [this form](https://forms.gle/p4iJq7ZM5Gi242uY9) by March 31.
 
 The Childcare Application Opening will be on March 1st. The closing date for will be March 31th, 23:59 UTC.
-We look forward to seeing you - and your kids - soon in Dublin!
+We look forward to seeing you - and your kids - soon in Innsbruck!

@@ -1,51 +1,60 @@
-<img src="djangocon/static/images/logo/logo_djceu27.png" height=100 />
+<picture>
+  <source media="(prefers-color-scheme: light)" srcset="djangocon/static/images/logo/logo_djceu27_light.svg">
+  <img src="djangocon/static/images/logo/logo_djceu27.svg" height="100" alt="DjangoCon Europe 2027 Innsbruck">
+</picture>
 
 🌍 [2027.djangocon.eu](https://2027.djangocon.eu/) \
 📍 Innsbruck, Austria \
-📅 Date TBD
+📅 17–21 February 2027
 
 [![built-with](https://img.shields.io/badge/built%20with-Cookiecutter%20Django-blue.svg)](https://github.com/pydanny/cookiecutter-django/)
 [![code-style](https://img.shields.io/badge/code%20style-ruff-261230.svg)](https://github.com/astral-sh/ruff)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)]()
 
-## Local Development
+## Local development
 
-### Using Docker
-
-```bash
-python setup_env.py
-docker compose build
-docker compose up
-```
-
-To access the running Django container, use `docker compose exec django /bin/bash`.
-
-The site has no database and no models: every page is rendered from the Markdown
-files in `djangocon/content/`. There is nothing to migrate.
-
-### Using venv
-
-! WARNING ! - Docker is recommended for local development, as the node container
-compiles SCSS automatically (edits made directly to the CSS files WILL be
-overwritten by the compiler). Using venv means installing node and npm yourself
-and running `npm run dev` to watch and compile SCSS.
-
-Requires Python 3.10 or newer (Django 5.2 LTS).
-
-_optional_ - Create a virtual environment
+Requirements: Docker and [just](https://just.systems) (`brew install just`).
 
 ```bash
-python -m venv env
-source env/bin/activate
+just build   # creates .envs/.django if missing and builds the images
+just up      # django on http://localhost:8000, browser-sync on http://localhost:3000
+just logs    # follow the logs (or `just logs node`)
+just down
 ```
 
-install requirements:
+`just` on its own lists every recipe. The node container watches `djangocon/static/sass`
+and recompiles `project.css` on change — edit the SCSS, never the CSS. Other useful
+recipes: `just manage <cmd>`, `just shell`, `just lint` (all pre-commit hooks),
+`just pytest`, `just assets` (one-off SCSS/JS build), `just collectstatic`.
+
+The site has no database and no models: every page is rendered from the files in
+`djangocon/content/`. There is nothing to migrate.
+
+### Without Docker
+
+Python 3.13 and Node 22 are required (see `pyproject.toml` / `package.json`).
 
 ```bash
-pip install -r requirements/local.txt   # or production.txt
+python -m venv .venv && source .venv/bin/activate
+pip install -r requirements/local.txt
+npm ci && npm run build          # or `npm run dev` to watch SCSS/JS
+python manage.py runserver
 ```
 
+### Code quality
 
+Python is linted and formatted by [ruff](https://docs.astral.sh/ruff/), templates by
+[djLint](https://djlint.com/), everything else by prettier — all wired through
+pre-commit (`pre-commit install` once, or `just lint` to run everything).
+
+## Deploying
+
+Production settings live in `config/settings/production.py` and are driven by
+environment variables: `DJANGO_SECRET_KEY` (required), `DJANGO_ALLOWED_HOSTS`
+(default `2027.djangocon.eu`), `SENTRY_DSN` (optional), `DJANGO_SECURE_HSTS_SECONDS`
+(default 60 — raise once HTTPS is proven). Static files are served by WhiteNoise
+from `staticfiles/` after `manage.py collectstatic`; run the app with gunicorn
+(`gunicorn config.wsgi`).
 
 ## Editing site content
 
@@ -63,53 +72,20 @@ order: 2
 `order` sets the position on the page, and `layout` picks a template from
 `djangocon/templates/modules/`. A layout name that doesn't exist falls back to
 `simple` rather than breaking the page. Adding a `.md` file to a folder adds a
-section to that page. Add `published: false` to park a section without deleting
-it — the homepage's speakers and news blocks are currently held that way.
+section to that page. Use `##`/`###` headings inside the body — the page title is
+the only `<h1>`. Add `published: false` to park a section without deleting it.
 
-Keep the metadata block unbroken: the parser stops at the first line that is not
-`key: value`, so anything else (a stray heading, a blank line) turns the rest of
-the block into body text.
-
-**The homepage** is assembled the same way, from `content/home/*.md`. Each file
-owns one band of the page and carries its copy, so the hero headline, the intro,
-the ticket tiers and the important dates are all edited there rather than in a
-template. `hero.md` also holds the date line and the CTA link in its metadata.
+Some layouts carry their own copy in the template rather than in the `.md`
+(`home_about`, `home_tickets`, `home_dates`, `past_edition`, `credits`); edit
+those under `djangocon/templates/modules/`.
 
 **Sponsors** live in `djangocon/content/sponsors.json`, grouped by tier. Copy an
-existing entry to add one. Empty tiers are hidden automatically. `art` tells the
-site how to keep a logo legible on both themes:
-
-| `art`            | for artwork that is                        | what happens                     |
-| ---------------- | ------------------------------------------ | -------------------------------- |
-| `dark`           | dark or black line art                     | inverted to white on dark        |
-| `light`          | white line art                             | darkened on light                |
-| `colour`         | full colour, legible on either ground      | left alone                       |
-| `colour-on-dark` | colour art with white lettering            | given a dark chip on light       |
+existing entry to add one. Empty tiers are hidden automatically. Set `filter` to
+`true` when a dark logo needs inverting to white.
 
 **The menu** lives in `djangocon/content/navigation.json`. Submenu URLs must match
 a folder under `content/` and end with a trailing slash. To hide an item without
 deleting it, move it into the `_disabled` block.
-
-## Design and theming
-
-The site ships a light and a dark theme; visitors switch with the toggle in the
-header, and the choice is remembered in `localStorage`. Without a stored choice
-the site follows the operating system's preference.
-
-All colours, type, spacing and motion are declared once in
-`djangocon/static/sass/_variables.scss`. Brand values (the reds, black, white)
-sit in `:root`; anything that differs between the themes is a *semantic* token —
-`--bg`, `--surface`, `--fg`, `--fg-muted`, `--border` — redefined in the
-`[data-theme='light']` block at the bottom of that file. Style new components
-against the semantic tokens and they work in both themes with no extra rules.
-
-Two details worth knowing before editing the theme:
-
-- The initial theme is applied by an inline script in `base.html`, before the
-  stylesheet paints. It has to stay inline and stay in `<head>`; moving it into
-  `project.js` (which is deferred) reintroduces a flash of the wrong theme.
-- The footer band is deliberately dark in *both* themes, matching the design, so
-  it uses the fixed brand colours rather than the semantic ones.
 
 ## Code of Conduct
 

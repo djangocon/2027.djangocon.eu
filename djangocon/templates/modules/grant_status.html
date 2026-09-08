@@ -1,130 +1,129 @@
-<style>
-    input,
-    button {
-        padding: 10px;
-        margin-top: 10px;
-    }
+{# Grant status lookup. Reads a Google Apps Script endpoint that fronts the #}
+{# grants spreadsheet; the URL is per-edition and lives in the .md metadata #}
+{# (`status_url:`) so content editors can swap it without touching code. #}
+{% load markdown_extras %}
 
-    #result {
-        margin-top: 20px;
-        padding: 20px;
-        border-radius: 5px;
-        border: 1px solid white;
-    }
-</style>
-
-<body>
-<div class="container">
-  <h1><strong>Check Your Grant Application Status💰✍</strong></h1>
-  <small
-  >Type your email and your unique code and wait for a response, Good Luck
-    😊</small
-  ><br/>
-  <div class="row">
+<div class="container grant-status">
+  <h2 class="title">
+    <strong>Check your grant application status 💰✍</strong>
+  </h2>
+  <p>
+    <small>Type your email and your unique code and wait for a response. Good luck 😊</small>
+  </p>
+  <form class="row g-3 align-items-center"
+        id="grantStatusForm"
+        data-status-url="{{ content|meta:'status_url' }}"
+        novalidate>
     <div class="col-md-4">
-      <div class="d-flex align-items-center w-100 h-100">
-        <div class="form-group w-100">
-          <input type="email"
-                 class="form-control mt-0"
-                 id="emailInput"
-                 placeholder="Enter your email"
-                 required
-          />
-        </div>
-      </div>
+      <label class="visually-hidden" for="grantEmail">Email</label>
+      <input type="email"
+             class="form-control mt-0"
+             id="grantEmail"
+             placeholder="Enter your email"
+             autocomplete="email"
+             required />
     </div>
     <div class="col-md-3">
-      <div class="d-flex align-items-center w-100 h-100">
-
-        <div class="form-group w-100">
-          <input type="text"
-                 class="form-control mt-0"
-                 id="codeInput"
-                 placeholder="Enter your code"
-                 size="10"
-                 required
-          />
-        </div>
-      </div>
+      <label class="visually-hidden" for="grantCode">Code</label>
+      <input type="text"
+             class="form-control mt-0"
+             id="grantCode"
+             placeholder="Enter your code"
+             autocomplete="off"
+             required />
     </div>
     <div class="col">
-      <button
-              id="statusButton"
-              onclick="checkStatus()"
-              class="status-btn"
-              style="text-decoration: none; color: white"
-      >
-        Check Status
-      </button>
-      {% comment %}
-        <a
-          href="https://pretix.evolutio.pt/evolutio/djceu2025/"
-          class="hero-btn"
-          style="text-decoration: none; color: white"
-          >Apply for Grant</a
-        > {% endcomment %}
+      <button type="submit" class="status-btn" id="grantStatusButton">Check status</button>
     </div>
-  </div>
-
-  <div id="loadingMessage" style="display: none">Loading...</div>
-  <div id="result"></div>
+  </form>
+  <p id="grantStatusLoading" class="mt-3" hidden>Loading...</p>
+  <div id="grantStatusResult" class="mt-3" role="status" aria-live="polite"></div>
 </div>
 <script>
-    function checkStatus() {
-        var email = document.getElementById('emailInput').value;
-        var code = document.getElementById('codeInput').value;
-        if (!email || !code) {
-            alert('Please enter an email address and a code.');
-            return;
+  (function() {
+    var form = document.getElementById('grantStatusForm');
+    if (!form) return;
+    var button = document.getElementById('grantStatusButton');
+    var loading = document.getElementById('grantStatusLoading');
+    var result = document.getElementById('grantStatusResult');
+
+    // Builds the result with DOM nodes, never innerHTML: the values come
+    // from a remote endpoint and must not be interpreted as markup.
+    function line(parts) {
+      var p = document.createElement('p');
+      parts.forEach(function(part) {
+        if (typeof part === 'string') {
+          p.appendChild(document.createTextNode(part));
+        } else {
+          var strong = document.createElement('strong');
+          strong.textContent = part.text;
+          if (part.color) strong.style.color = part.color;
+          p.appendChild(strong);
         }
-        var url =
-            'https://script.google.com/macros/s/AKfycbyOjmsg9naumW-iS-ScfDV69b4GKriiBIp5Z6yEOAzodFFD_13iVxKg52pAclPedmmb/exec';
-        document.getElementById('statusButton').disabled = true;
-        document.getElementById('loadingMessage').style.display = 'block';
-        fetch(
-            url +
-            '?email=' +
-            encodeURIComponent(email) +
-            '&code=' +
-            encodeURIComponent(code),
-        )
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then((data) => {
-                document.getElementById('loadingMessage').style.display = 'none';
-                if (data.status === 'Not Found') {
-                    document.getElementById('result').innerHTML =
-                        '<p>Email not in our database. Please check and enter the correct email address.</p>';
-                } else {
-                    document.getElementById('result').innerHTML =
-                        '<p>Hi👋 <strong>' +
-                        data.fullName +
-                        ',</strong></p>' +
-                        '<p>Your application status: <strong style="color:' +
-                        (data.status === 'Accepted' ? 'green' : 'red') +
-                        ';"> ' +
-                        data.status +
-                        '</strong></p>' +
-                        '<p>' +
-                        data.remarks +
-                        '</p>' +
-                        '<p>Voucher Code Redeem 🎟️: <strong>' +
-                        data.vouchers +
-                        '</strong></p>';
-                }
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-                document.getElementById('loadingMessage').style.display = 'none';
-                document.getElementById('result').innerHTML =
-                    '<p>An error occurred while trying to retrieve the status. Error message: ' +
-                    error.message +
-                    '</p>';
-            });
+      });
+      return p;
     }
+
+    function show(nodes) {
+      result.replaceChildren.apply(result, nodes);
+    }
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      var email = document.getElementById('grantEmail').value.trim();
+      var code = document.getElementById('grantCode').value.trim();
+      var url = form.dataset.statusUrl;
+
+      if (!email || !code) {
+        show([line(['Please enter an email address and a code.'])]);
+        return;
+      }
+      if (!url) {
+        show([line(['The status checker is not open yet. Please check back later.'])]);
+        return;
+      }
+
+      button.disabled = true;
+      loading.hidden = false;
+      show([]);
+
+      var params = new URLSearchParams({
+        email: email,
+        code: code
+      });
+      fetch(url + '?' + params.toString())
+        .then(function(response) {
+          if (!response.ok) throw new Error('Network response was not ok');
+          return response.json();
+        })
+        .then(function(data) {
+          if (data.status === 'Not Found') {
+            show([line(['Email not in our database. Please check and enter the correct email address.'])]);
+            return;
+          }
+          var accepted = data.status === 'Accepted';
+          show([
+            line(['Hi 👋 ', {
+              text: String(data.fullName || '') + ','
+            }]),
+            line(['Your application status: ', {
+              text: String(data.status || ''),
+              color: accepted ? 'green' : 'red'
+            }]),
+            line([String(data.remarks || '')]),
+            line(['Voucher code 🎟️: ', {
+              text: String(data.vouchers || '')
+            }]),
+          ]);
+        })
+        .catch(function(error) {
+          console.error('Grant status lookup failed:', error);
+          show([line(['An error occurred while trying to retrieve the status: ' + error.message])]);
+        })
+        .finally(function() {
+          button.disabled = false;
+          loading.hidden = true;
+        });
+    });
+  })();
 </script>
-</body>

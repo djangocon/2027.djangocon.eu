@@ -26,11 +26,18 @@ DEBUG = env.bool("DJANGO_DEBUG", False)
 # In Windows, this must be set to your system time zone.
 TIME_ZONE = "Europe/Vienna"
 # https://docs.djangoproject.com/en/dev/ref/settings/#language-code
-LANGUAGE_CODE = "en-us"
+LANGUAGE_CODE = "en"
+# The site is English-only and ships no translations.
 # https://docs.djangoproject.com/en/dev/ref/settings/#use-i18n
-USE_I18N = True
+USE_I18N = False
 # https://docs.djangoproject.com/en/dev/ref/settings/#use-tz
 USE_TZ = True
+
+# CONTENT
+# ------------------------------------------------------------------------------
+# The site has no database: every page is rendered from the Markdown and JSON
+# files in this directory. See djangocon/site/utils/content.py.
+CONTENT_DIR = APPS_DIR / "content"
 
 # URLS
 # ------------------------------------------------------------------------------
@@ -41,17 +48,13 @@ WSGI_APPLICATION = "config.wsgi.application"
 
 # APPS
 # ------------------------------------------------------------------------------
+# No models, no auth, no forms: only static files are needed from Django itself.
 DJANGO_APPS = [
-    "django.contrib.contenttypes",
     "django.contrib.staticfiles",
-    # "django.contrib.humanize", # Handy template tags
-    "django.forms",
 ]
 THIRD_PARTY_APPS = []
-
 LOCAL_APPS = [
-    # Your stuff: custom apps go here
-    "djangocon.site"
+    "djangocon.site",
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -62,7 +65,6 @@ INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
-    "django.middleware.locale.LocaleMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
@@ -97,41 +99,19 @@ TEMPLATES = [
             "context_processors": [
                 "django.template.context_processors.debug",
                 "django.template.context_processors.request",
-                "django.template.context_processors.i18n",
-                "django.template.context_processors.media",
                 "django.template.context_processors.static",
-                "django.template.context_processors.tz",
                 "djangocon.site.utils.context_processors.links",
             ],
         },
     }
 ]
 
-# https://docs.djangoproject.com/en/dev/ref/settings/#form-renderer
-FORM_RENDERER = "django.forms.renderers.TemplatesSetting"
-
 # SECURITY
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#x-frame-options
 X_FRAME_OPTIONS = "DENY"
-
-# EMAIL
-# ------------------------------------------------------------------------------
-# https://docs.djangoproject.com/en/dev/ref/settings/#email-backend
-EMAIL_BACKEND = env(
-    "DJANGO_EMAIL_BACKEND",
-    default="django.core.mail.backends.smtp.EmailBackend",
-)
-# https://docs.djangoproject.com/en/dev/ref/settings/#email-timeout
-EMAIL_TIMEOUT = 5
-
-# ADMIN
-# ------------------------------------------------------------------------------
-# https://docs.djangoproject.com/en/dev/ref/settings/#admins
-ADMINS = [("""Felipe Valverde""", "fgarcia@evolutio.pt")]
-# https://docs.djangoproject.com/en/dev/ref/settings/#managers
-MANAGERS = ADMINS
-# https://cookiecutter-django.readthedocs.io/en/latest/settings.html#other-environment-settings
+# The site has no forms or sessions, so CsrfViewMiddleware is deliberately absent.
+SILENCED_SYSTEM_CHECKS = ["security.W003"]
 
 # LOGGING
 # ------------------------------------------------------------------------------
@@ -151,6 +131,3 @@ LOGGING = {
     },
     "root": {"level": "INFO", "handlers": ["console"]},
 }
-
-# Your stuff...
-# ------------------------------------------------------------------------------

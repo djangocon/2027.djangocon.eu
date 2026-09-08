@@ -1,12 +1,9 @@
-{% comment %}
-Past editions strip. Cards come from content/home/past_edition.md; `.edition` is
-styled in _homepage.scss.
-{% endcomment %}
-<section class="past-editions section-shell">
-  <h2 class="section-heading">
-    {{ content.meta.heading.0|default:"Take a look at past editions" }}
-  </h2>
-  <div class="editions-row">
-    {{ content.html|safe }}
-  </div>
-</section>
+{% load markdown_extras %}
+
+{# Past editions strip. The cards are written in content/home/past_edition.md #}
+{# (one <a class="edition"> per edition, linking to its Flickr album); the #}
+{# styling for .edition lives in _homepage.scss. #}
+<div class="past-editions">
+  <h2 class="editions-title">{{ content|meta:"heading"|default:"Take a look at past editions" }}</h2>
+  <div class="editions-grid">{{ content.html|safe }}</div>
+</div>

@@ -4,44 +4,45 @@ order: 3
 heading: Important dates
 
 <!--
-Milestones, one `<div class="date-row">` per month.
+Milestones, one <div class="month"> per month, in chronological order.
+Keep the outer <div class="dates-grid">: Markdown passes a block that starts
+with <div> through untouched.
 
-  h3   the month (red display type on the left)
-  ul   the entries; wrap the day in <strong> so it picks up the bold treatment
+  h3           the month
+  .date-item   one milestone; the day goes in <span class="date">
 
-The 2027 schedule is not fixed yet, so the months below are placeholders.
-Replace them as dates are confirmed — remove a row entirely to drop a month.
+These are the planned 2027 dates; adjust as they are confirmed. Remove a
+month entirely to drop it.
 -->
 
-<div class="date-row">
-  <h3>To be announced</h3>
-  <ul>
-    <li><strong>TBA</strong> – Call for Participation deadline</li>
-    <li><strong>TBA</strong> – Grants applications opening</li>
-    <li><strong>TBA</strong> – Early bird ticket sales close</li>
-  </ul>
-</div>
-
-<div class="date-row">
-  <h3>To be announced</h3>
-  <ul>
-    <li><strong>TBA</strong> – Talks publication</li>
-    <li><strong>TBA</strong> – Schedule publication</li>
-  </ul>
-</div>
-
-<div class="date-row">
-  <h3>To be announced</h3>
-  <ul>
-    <li><strong>TBA</strong> – Childcare applications opening</li>
-    <li><strong>TBA</strong> – T-shirt sales deadline (for deliveries at the conference)</li>
-  </ul>
-</div>
-
-<div class="date-row">
-  <h3>February</h3>
-  <ul>
-    <li><strong>17,18th</strong> – Main conference</li>
-    <li><strong>19th</strong> – Workshops</li>
-  </ul>
+<div class="dates-grid">
+  <div class="month">
+    <h3>November 2026</h3>
+    <div class="date-items">
+      <div class="date-item"><span class="date">15th</span> Call for Participation deadline</div>
+      <div class="date-item"><span class="date">30th</span> Grants applications opening</div>
+      <div class="date-item"><span class="date">30th</span> Early bird ticket sales close</div>
+    </div>
+  </div>
+  <div class="month">
+    <h3>December 2026</h3>
+    <div class="date-items">
+      <div class="date-item"><span class="date">1st</span> Talks publication</div>
+      <div class="date-item"><span class="date">30th</span> Schedule publication</div>
+    </div>
+  </div>
+  <div class="month">
+    <h3>January 2027</h3>
+    <div class="date-items">
+      <div class="date-item"><span class="date">7th</span> Childcare applications opening</div>
+      <div class="date-item"><span class="date">15th</span> T-shirt sales deadline (for deliveries at the conference)</div>
+    </div>
+  </div>
+  <div class="month">
+    <h3>February 2027</h3>
+    <div class="date-items">
+      <div class="date-item"><span class="date">17th–19th</span> Main conference</div>
+      <div class="date-item"><span class="date">20th–21st</span> Sprints</div>
+    </div>
+  </div>
 </div>

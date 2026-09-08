@@ -1,13 +1,29 @@
-{% comment %}
-Two-column intro: the red display heading on the left, the body copy on the
-right. Both come from content/home/about.md — `heading:` metadata and the file
-body respectively.
-{% endcomment %}
-<section class="home-about section-shell">
-  <h2 class="home-about__heading">
-    {{ content.meta.heading.0|default:"Run by the community for the community" }}
-  </h2>
-  <div class="home-about__body">
-    {{ content.html|safe }}
+{% load static %}
+
+<div class="about-container">
+  <div class="left-box">
+    <h2 class="left-text">
+      RUN BY THE
+      <br />
+      COMMUNITY FOR
+      <br />
+      THE COMMUNITY
+    </h2>
   </div>
-</section>
+  <div class="divider"></div>
+  <div class="right-box">
+    <p>
+      DjangoCon Europe is organized by a team made up of Django practitioners
+      from all levels. We welcome people from all over the world.
+    </p>
+    <p>
+      Our conference seeks to educate and develop new skills, best practices,
+      and ideas for the benefit of attendees, developers, speakers, and everyone
+      in our global Django Community, not least those watching the talks online.
+    </p>
+    <p>
+      In 2027 it will take place in the beautiful city of Innsbruck. Don't miss
+      the chance to join us for five days of talks, workshops, and sprints.
+    </p>
+  </div>
+</div>

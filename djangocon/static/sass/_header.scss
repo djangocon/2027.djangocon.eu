@@ -1,437 +1,482 @@
 @use 'variables' as *;
 
-// =============================================================================
-// SITE HEADER — sticky bar with logo, nav, theme toggle and tickets CTA.
-// =============================================================================
+// header
 
-.site-header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: var(--surface);
-  transition:
-    background-color var(--duration-base) var(--ease-base),
-    box-shadow var(--duration-base) var(--ease-base);
+// .header-margin {
+//     padding-left: 0;
+//     width: 0
+// }
+//
+// .header-logo-container {
+//     width: auto
+// }
+//
+// .header-logo,
+// .header-logo-container {
+//     padding-left: 0;
+//     padding-right: 0
+// }
 
-  &.is-scrolled {
-    box-shadow: var(--shadow-sm);
-  }
+// .header {
+//     background: var(--bg-color);
+//     padding: 1rem 0
+// }
+
+// @media (max-width: 768px) {
+//     .header {
+//         padding: 1rem .5rem
+//     }
+// }
+//
+// .header a:hover {
+//     text-decoration: none
+// }
+//
+// .header .dropdown-item:hover {
+//     background-color: var(--light-brown)
+// }
+
+// .header .nav-sm {
+//     display: block;
+//     padding-left: 0;
+//     padding-right: 0
+// }
+
+// Anton SC (font-hero) is a small-caps face, so mixed-case labels ("Talks",
+// "Conduct"...) render as caps on their own — no text-transform needed.
+.header .nav-link {
+  color: var(--accent);
+  font: normal 400 16px/19px var(--font-hero);
 }
 
-.site-header__bar {
-  display: flex;
-  align-items: center;
-  // The logo sits hard left and everything else is grouped to the right, as in
-  // the design — the nav is not centred in the bar.
-  justify-content: flex-end;
-  gap: var(--space-lg);
-  width: 100%;
-  max-width: var(--content-width);
-  min-height: var(--header-height);
-  margin-inline: auto;
-  padding: var(--space-xs) var(--space-md);
-
-  @media (max-width: $bp-md) {
-    justify-content: space-between;
-    padding-inline: var(--space-sm);
-  }
+.nav-link:focus,
+.navbar-brand:focus,
+.sub-menu-link:focus {
+  outline-color: var(--ink);
 }
 
-// -----------------------------------------------------------------------------
-// Brand
-// -----------------------------------------------------------------------------
-// Both logo files are in the DOM; the theme decides which one is visible. Doing
-// it this way (rather than swapping `src` in JS) keeps the correct logo painted
-// on the very first frame.
-
-.site-header__brand {
-  display: flex;
-  align-items: center;
-  flex: 0 0 auto;
-  margin-right: auto; // holds the logo left; nav and actions group to the right
-  text-decoration: none;
+.header .nav-link-lg {
+  display: inline-block;
+  padding: 0 !important;
 }
 
-.site-header__logo {
-  display: block;
-  width: auto;
-  height: 2.75rem;
-
-  @media (max-width: $bp-md) {
-    height: 2.25rem;
-  }
-}
-
-.site-header__logo--light {
-  display: none;
-}
-
-[data-theme='light'] {
-  .site-header__logo--dark {
-    display: none;
-  }
-
-  .site-header__logo--light {
-    display: block;
-  }
-}
-
-// -----------------------------------------------------------------------------
-// Desktop navigation
-// -----------------------------------------------------------------------------
-
-.site-nav {
-  display: flex;
-  align-items: center;
-
-  @media (max-width: $bp-lg) {
-    display: none;
-  }
-}
-
-.site-nav__list {
-  display: flex;
-  align-items: center;
-  gap: clamp(var(--space-sm), 2vw, var(--space-lg));
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.site-nav__item {
-  position: relative;
-}
-
-.site-nav__link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4em;
-  padding: var(--space-2xs) 0;
+.header .btn-primary {
+  background: transparent;
   border: none;
-  background: none;
-  color: var(--fg);
-  font-family: var(--font-display);
-  font-size: var(--text-md);
-  // Heavy, small-caps labels — the design sets these much bolder than a normal
-  // nav, matching the weight of the display headings.
-  font-weight: var(--weight-bold);
-  font-variant: small-caps;
-  text-transform: lowercase; // so `small-caps` has lowercase to cap up
-  letter-spacing: 0.03em;
-  text-decoration: none;
-  white-space: nowrap;
-  cursor: pointer;
-  transition: color var(--duration-fast) var(--ease-base);
-
-  &:hover,
-  &:focus-visible {
-    color: var(--red);
-    text-decoration: none;
-  }
 }
 
-// The desktop nav draws no caret at all — the design shows the labels bare, and
-// Bootstrap's own `.dropdown-toggle` caret is not used anywhere in this header.
-// The mobile accordion keeps its own indicator (.mobile-nav__caret), where the
-// panel gives no other clue that an item expands.
+.header .subnav {
+  background: var(--accent);
+}
 
-.site-nav__dropdown {
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  z-index: 10;
-  min-width: 13rem;
-  margin: 0;
-  padding: var(--space-2xs);
-  list-style: none;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  box-shadow: var(--shadow-lg);
+.header .container-fluid {
+  padding: 0;
+}
 
-  // Hidden by default; revealed on hover or when JS marks the item open.
-  // `visibility` (not `display`) so the reveal can be animated.
-  opacity: 0;
-  visibility: hidden;
-  transform: translate(-50%, -0.4rem);
-  transition:
-    opacity var(--duration-fast) var(--ease-base),
-    transform var(--duration-fast) var(--ease-base),
-    visibility var(--duration-fast) var(--ease-base);
+.pl-5 {
+  padding-left: 2rem;
+}
 
-  li {
-    margin: 0;
-  }
+// .header .dropdown-menu {
+//     background: var(--dark-brown)
+// }
+
+// .header .dropdown-item {
+//     color: white
+// }
+
+.top-banner {
+  background-color: var(--golden);
 
   a {
-    display: block;
-    padding: var(--space-2xs) var(--space-xs);
-    border-radius: var(--radius-xs);
-    color: var(--fg);
-    font-family: var(--font-main);
-    font-size: var(--text-sm);
-    text-decoration: none;
-    white-space: nowrap;
-    transition:
-      background-color var(--duration-fast) var(--ease-base),
-      color var(--duration-fast) var(--ease-base);
-
-    &:hover,
-    &:focus-visible {
-      background: var(--red);
-      color: var(--white);
-    }
+    color: #003c80;
   }
 }
 
-.site-nav__item--has-menu:hover .site-nav__dropdown,
-.site-nav__item--has-menu:focus-within .site-nav__dropdown,
-.site-nav__item.is-open .site-nav__dropdown {
-  opacity: 1;
-  visibility: visible;
-  transform: translate(-50%, 0);
+.navbar-toggler {
+  margin-right: 0;
 }
 
-// -----------------------------------------------------------------------------
-// Header actions: theme toggle, tickets button, burger
-// -----------------------------------------------------------------------------
-
-.site-header__actions {
-  display: flex;
-  align-items: center;
-  gap: var(--space-sm);
-  flex: 0 0 auto;
-}
-
-.site-header__tickets {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4em;
-  padding: 0.5em 1.2em;
-  border-radius: var(--radius-pill);
-  background: var(--red);
-  color: var(--white);
-  font-family: var(--font-display);
-  font-size: var(--text-sm);
-  font-weight: var(--weight-medium);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  text-decoration: none;
-  white-space: nowrap;
-  transition:
-    background-color var(--duration-fast) var(--ease-base),
-    transform var(--duration-fast) var(--ease-base);
+.sub-menu-link {
+  color: var(--ink);
+  text-align: center;
 
   &:hover {
-    background: var(--red-bright);
-    color: var(--white);
+    color: var(--ink);
     text-decoration: none;
-    transform: translateY(-1px);
-  }
-
-  @media (max-width: $bp-lg) {
-    // The mobile panel carries its own tickets button.
-    display: none;
   }
 }
 
-.site-header__tickets-arrow {
-  font-size: 0.85em;
+.mobile-menu {
+  border: 1px solid var(--ink);
+  border-radius: var(--radius-md);
+  background: var(--paper);
 }
 
-// Theme toggle -----------------------------------------------------------------
+.sub-menu-toggler {
+  color: var(--ink);
 
+  &:hover {
+    background: var(--overlay-subtle);
+    color: var(--ink);
+  }
+
+  &:focus {
+    background: var(--surface-hover);
+    box-shadow: none;
+  }
+}
+
+.sub-menu-link-ul {
+  border: 1px solid var(--ink);
+  border-radius: var(--radius-md);
+}
+
+.sub-menu-link-toggler {
+  padding: 10px 0 10px 0;
+  cursor: pointer;
+
+  &:hover {
+    background: var(--overlay-subtle);
+    color: var(--ink);
+  }
+}
+
+// Open/close is Bootstrap's collapse (.collapse / .collapsing / .show);
+// nothing to animate by hand here.
+.sub-menu {
+  margin-top: 0.25rem;
+}
+
+// Theme toggle: shows the sun in light mode (click to go dark) and the moon
+// in dark mode (click to go light) — only one icon is ever visible.
 .theme-toggle {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 2.25rem;
-  height: 2.25rem;
+  width: 2.5rem;
+  height: 2.5rem;
   padding: 0;
-  border: 1px solid var(--border);
+  border: 1px solid var(--ink);
   border-radius: var(--radius-circle);
   background: transparent;
-  color: var(--fg);
+  color: var(--ink);
   cursor: pointer;
-  transition:
-    color var(--duration-fast) var(--ease-base),
-    border-color var(--duration-fast) var(--ease-base),
-    transform var(--duration-fast) var(--ease-base);
+  flex: 0 0 auto;
 
   &:hover {
-    color: var(--red);
-    border-color: var(--red);
-    transform: rotate(15deg);
+    background: var(--ink);
+    color: var(--paper);
   }
 }
 
-.theme-toggle__icon {
-  width: 1.1rem;
-  height: 1.1rem;
-}
-
-// Show the icon for the theme you would switch *to*.
-.theme-toggle__icon--moon {
+.theme-toggle-icon--moon {
   display: none;
 }
 
-[data-theme='light'] {
-  .theme-toggle__icon--sun {
+:root[data-theme='dark'] {
+  .theme-toggle-icon--sun {
     display: none;
   }
 
-  .theme-toggle__icon--moon {
+  .theme-toggle-icon--moon {
     display: block;
   }
 }
 
-// Burger ----------------------------------------------------------------------
-
-.site-header__burger {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  gap: 5px;
-  width: 2.25rem;
-  height: 2.25rem;
-  padding: 0;
-  border: none;
-  background: none;
-  cursor: pointer;
-
-  span {
-    display: block;
-    width: 1.4rem;
-    height: 2px;
-    margin-inline: auto;
-    background: var(--fg);
-    border-radius: 2px;
-    transition:
-      transform var(--duration-fast) var(--ease-base),
-      opacity var(--duration-fast) var(--ease-base);
-  }
-
-  &.is-open span:nth-child(1) {
-    transform: translateY(7px) rotate(45deg);
-  }
-
-  &.is-open span:nth-child(2) {
-    opacity: 0;
-  }
-
-  &.is-open span:nth-child(3) {
-    transform: translateY(-7px) rotate(-45deg);
-  }
-
-  @media (max-width: $bp-lg) {
-    display: flex;
-  }
-}
-
-// -----------------------------------------------------------------------------
-// Mobile navigation panel
-// -----------------------------------------------------------------------------
-
-.mobile-nav {
-  // Pinned to the viewport width rather than inheriting it, so a long menu
-  // gaining a vertical scrollbar cannot widen the page and introduce sideways
-  // scrolling while it is open.
+.theme-toggle--mobile {
   width: 100%;
-  max-width: 100%;
-  max-height: calc(100dvh - var(--header-height));
-  overflow-x: hidden;
-  overflow-y: auto;
-  overscroll-behavior: contain; // don't chain scrolling to the page behind
-  background: var(--surface);
-  border-top: 1px solid var(--border);
-
-  @media (min-width: ($bp-lg + 1px)) {
-    display: none;
-  }
+  height: auto;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+  margin-bottom: 0.75rem;
 }
 
-.mobile-nav__list {
-  margin: 0;
-  padding: var(--space-sm);
-  list-style: none;
-}
-
-.mobile-nav__item {
-  border-bottom: 1px solid var(--border);
-
-  &:last-child {
-    border-bottom: none;
-    padding-top: var(--space-sm);
-  }
-}
-
-.mobile-nav__link,
-.mobile-nav__toggle {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  padding: var(--space-sm) var(--space-2xs);
-  border: none;
-  background: none;
-  color: var(--fg);
-  font-family: var(--font-display);
-  font-size: var(--text-md);
-  font-weight: var(--weight-medium);
+// Navbar ticket button: the same red pill as the hero CTA, just compact.
+#navbar-hero-btn.hero-btn {
+  width: auto;
+  min-width: 0;
+  flex: 0 0 auto;
+  padding: 0.65rem 1.5rem;
+  font-family: var(--main-font, var(--font-main));
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
-  letter-spacing: 0.03em;
-  text-align: left;
-  text-decoration: none;
-  cursor: pointer;
+}
 
-  &:hover {
-    color: var(--red);
+@media (max-width: 1230px) {
+  #navbar-hero-btn {
+    display: none;
+  }
+}
+
+.mobile-navbar-btn {
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 1px 1px var(--accent);
+  }
+}
+
+#collapseNavigation {
+  .nav-link:focus {
+    outline: none;
+    box-shadow: 0 0 1px 1px var(--accent);
+  }
+}
+
+// --- Green-theme header (current design) ---
+
+.header {
+  background-color: var(--paper);
+  padding: 0.5rem 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.header-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+// Logo Styles
+.logo-container {
+  flex: 0 0 auto;
+
+  img {
+    height: 66px;
+    width: auto;
+  }
+}
+
+// Header logo (2027 wordmark) — the source PNG is 1007px wide, so it must be
+// constrained or it pushes the nav into a multi-row wrap.
+.navbar-brand .logo {
+  height: 66px;
+  width: auto;
+  display: block;
+}
+
+// Same light/dark image-pair pattern as the hero mountains: the SVG wordmark
+// is a fixed fill, so dark mode swaps in a variant with a light wordmark.
+.navbar-brand .logo--dark {
+  display: none;
+}
+
+:root[data-theme='dark'] {
+  .navbar-brand .logo--light {
+    display: none;
+  }
+
+  .navbar-brand .logo--dark {
+    display: block;
+  }
+}
+
+.container-fluid.header {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+// Top row of the header: logo left, nav + ticket right, on a single line.
+.header-bar {
+  max-width: 1800px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  gap: 2rem;
+}
+
+@media (max-width: 991px) {
+  .header-bar {
+    padding: 0.75rem 1rem;
+  }
+}
+
+// Navigation container
+.nav-menu-container {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 2rem;
+}
+
+.main-nav {
+  margin: 0 2rem 0 0;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 2.5rem;
+
+  > ul.nav {
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 1.25rem;
+  }
+
+  .nav-item {
+    white-space: nowrap;
+  }
+}
+
+.nav-link {
+  color: var(--ink) !important;
+  font-size: 1rem;
+  padding: 0.5rem 1rem !important;
+  text-decoration: none;
+  transition:
+    color 0.3s ease,
+    background-color 0.3s ease;
+
+  // Dark hover fill needs light text, otherwise the label disappears.
+  &:hover,
+  &:focus {
+    background-color: var(--ink);
+    color: var(--paper) !important;
     text-decoration: none;
   }
 }
 
-.mobile-nav__caret {
-  width: 0;
-  height: 0;
-  border-inline: 0.32em solid transparent;
-  border-top: 0.38em solid currentColor;
-  transition: transform var(--duration-fast) var(--ease-base);
+// Dropdown menu base styles (merged with the "Dropdown styling" and
+// "Ensure dropdown is above other elements" blocks that redefine this
+// selector further down in the original stylesheet)
+.dropdown-menu {
+  background-color: var(--paper);
+  border: 1px solid var(--overlay-medium);
+  border-radius: var(--radius-sm);
+  box-shadow: 0 4px 12px var(--overlay-medium);
+  margin-top: 8px; // overridden from 0.5rem by later "Dropdown styling" rule
+  min-width: 200px;
+  z-index: 1000;
+  position: absolute;
+  left: 0; // Align with parent
+  transform: translateX(-20%); // Center align with parent
+  padding: 8px 0;
 }
 
-.mobile-nav__toggle[aria-expanded='true'] .mobile-nav__caret {
+// Dropdown item styles (merged with the later "Dropdown items styling" block)
+.dropdown-item {
+  color: var(--ink) !important;
+  padding: 10px 20px;
+  white-space: nowrap;
+  font-size: 15px;
+  transition: all 0.3s ease;
+
+  &:hover,
+  &:focus {
+    background-color: var(--ink);
+    color: var(--paper) !important;
+    text-decoration: none;
+  }
+}
+
+// Mobile Styles
+@media (max-width: 991px) {
+  .header-container {
+    padding: 0 1rem;
+  }
+
+  .logo-container {
+    margin-left: 0; // Reset margin for mobile
+
+    img {
+      height: 45px; // Smaller logo for mobile
+    }
+  }
+
+  .mobile-navbar-btn {
+    color: var(--ink);
+  }
+
+  .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(0, 0, 0, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  }
+
+  .navbar-toggler:focus {
+    box-shadow: 0 0 0 0.15rem var(--ink);
+  }
+
+  .nav-sm {
+    flex-direction: column;
+    padding: 1rem 0;
+
+    .nav-link {
+      padding: 0.75rem 1rem;
+      text-align: center;
+    }
+  }
+
+  .dropdown-menu {
+    background-color: transparent;
+    text-align: center;
+  }
+
+  .nav-menu-container {
+    margin-right: 0; // Reset margin for mobile
+  }
+}
+
+// end of header design
+
+// Dropdown toggle arrow styling
+.dropdown-toggle::after {
+  transition: transform 0.3s ease;
+}
+
+.dropdown-toggle[aria-expanded='true']::after {
   transform: rotate(180deg);
 }
 
-.mobile-nav__submenu {
-  margin: 0 0 var(--space-2xs);
-  padding: 0 0 var(--space-2xs) var(--space-sm);
-  list-style: none;
+@keyframes dropdownFade {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
 
-  a {
-    display: block;
-    padding: var(--space-2xs) 0;
-    color: var(--fg-muted);
-    font-family: var(--font-main);
-    font-size: var(--text-sm);
-    text-decoration: none;
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Mobile dropdown adjustments
+@media (max-width: 991px) {
+  .dropdown-menu {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    padding-left: 20px;
+  }
+
+  .dropdown-item {
+    padding: 8px 16px;
 
     &:hover {
-      color: var(--red);
+      transform: translateX(8px);
     }
   }
 }
 
-.mobile-nav__tickets {
-  width: 100%;
+// Active dropdown item state
+.dropdown-item.active,
+.dropdown-item:active {
+  background-color: var(--ink);
+  color: var(--paper) !important;
 }
 
-// While the panel is open the page behind it must not scroll. Locking `html`
-// as well as `body` is what actually holds on iOS Safari, where `body` alone
-// leaves the document scrollable; `width: 100%` keeps the locked page from
-// reflowing wider when its scrollbar is removed.
-html.has-mobile-nav,
-body.has-mobile-nav {
-  width: 100%;
-  overflow: hidden;
-  overscroll-behavior: none;
+.dropdown-item:focus {
+  background-color: var(--ink);
+  color: var(--paper) !important;
+  outline-color: var(--ink);
+}
+
+// Dropdown menu positioning
+.nav-item.dropdown {
+  position: relative;
+  align-items: center;
+  display: flex;
 }

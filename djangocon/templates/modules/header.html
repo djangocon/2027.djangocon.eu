@@ -1,89 +1,151 @@
 {% load static %}
-<header class="site-header">
-  <div class="site-header__bar">
-    <!-- Logo. Both variants ship; CSS shows the one the active theme needs. -->
-    <a class="site-header__brand" href="{{ home }}">
-      <img src="{% static 'images/logo/djceu_27_logo_dark.svg' %}"
-           alt="DjangoCon Europe 2027 — Innsbruck"
-           class="site-header__logo site-header__logo--dark">
-      <img src="{% static 'images/logo/djceu_27_logo_light.svg' %}"
-           alt=""
-           aria-hidden="true"
-           class="site-header__logo site-header__logo--light">
-    </a>
 
-    <!-- Desktop navigation -->
-    <nav class="site-nav" aria-label="Main">
-      <ul class="site-nav__list">
+<div class="container-fluid header sticky-top">
+  <!-- Header Container -->
+  <div class="d-flex justify-content-between align-items-center header-bar">
+    <!-- Logo -->
+    <a class="navbar-brand" href="{{ home }}">
+      {# logo_djceu27.svg is the base (dark-theme) logo; _light is the variant for the light palette. #}
+      <img src="{% static 'images/logo/logo_djceu27.svg' %}"
+           alt="DjangoCon.eu Innsbruck 2027"
+           class="logo logo--dark" />
+      <img src="{% static 'images/logo/logo_djceu27_light.svg' %}"
+           alt="DjangoCon.eu Innsbruck 2027"
+           class="logo logo--light" />
+    </a>
+    <!-- Hamburger Menu Button -->
+    <button class="btn navbar-toggler d-lg-none"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#mobileNav"
+            aria-controls="mobileNav"
+            aria-expanded="false">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- Desktop Navigation -->
+    <nav class="nav d-none d-lg-flex main-nav">
+      <ul class="nav">
         {% for menu, menu_dict in site_menu.items %}
+          {% if not menu_dict.dropdown %}
+            <li class="nav-item">
+              <a class="nav-link" href="{{ menu_dict.href }}">{{ menu }}</a>
+            </li>
+          {% endif %}
           {% if menu_dict.dropdown %}
-            <li class="site-nav__item site-nav__item--has-menu">
-              <button type="button"
-                      class="site-nav__link site-nav__toggle"
-                      aria-expanded="false"
-                      aria-haspopup="true">
-                {{ menu }}
-              </button>
-              <ul class="site-nav__dropdown">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle"
+                 href="#"
+                 role="button"
+                 data-bs-toggle="dropdown"
+                 aria-expanded="false">{{ menu }}</a>
+              <ul class="dropdown-menu">
                 {% for submenu, submenu_href in menu_dict.submenu.items %}
-                  <li><a href="{{ submenu_href }}">{{ submenu }}</a></li>
+                  <li>
+                    <a class="dropdown-item" href="{{ submenu_href }}">{{ submenu }}</a>
+                  </li>
                 {% endfor %}
               </ul>
-            </li>
-          {% else %}
-            <li class="site-nav__item">
-              <a class="site-nav__link" href="{{ menu_dict.href }}">{{ menu }}</a>
             </li>
           {% endif %}
         {% endfor %}
       </ul>
-    </nav>
-
-    <div class="site-header__actions">
-      {% include "modules/theme_toggle.html" %}
-
-      <a href="https://pretix.evolutio.pt/evolutio/djceu2027/"
-         class="site-header__tickets"
-         target="_blank" rel="noopener">
-        Tickets <span class="site-header__tickets-arrow" aria-hidden="true">↗</span>
-      </a>
-
-      <!-- Mobile menu button -->
+      <!-- Theme Toggle -->
       <button type="button"
-              class="site-header__burger"
-              aria-expanded="false"
-              aria-controls="mobile-nav"
-              aria-label="Open menu">
-        <span></span><span></span><span></span>
+              id="theme-toggle"
+              class="theme-toggle"
+              aria-label="Toggle dark mode"
+              aria-pressed="false">
+        <svg class="theme-toggle-icon theme-toggle-icon--sun"
+             viewBox="0 0 24 24"
+             width="20"
+             height="20"
+             fill="none"
+             stroke="currentColor"
+             stroke-width="2"
+             stroke-linecap="round"
+             aria-hidden="true">
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+        </svg>
+        <svg class="theme-toggle-icon theme-toggle-icon--moon"
+             viewBox="0 0 24 24"
+             width="20"
+             height="20"
+             fill="none"
+             stroke="currentColor"
+             stroke-width="2"
+             stroke-linecap="round"
+             stroke-linejoin="round"
+             aria-hidden="true">
+          <path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z" />
+        </svg>
       </button>
-    </div>
+      <!-- Tickets Button -->
+      <a href="https://pretix.evolutio.pt/evolutio/djceu27/"
+         class="hero-btn"
+         id="navbar-hero-btn">Tickets</a>
+    </nav>
   </div>
-
-  <!-- Mobile navigation -->
-  <div class="mobile-nav" id="mobile-nav" hidden>
-    <ul class="mobile-nav__list">
+  <!-- Mobile Navigation -->
+  <div class="collapse" id="mobileNav">
+    <button type="button"
+            id="theme-toggle-mobile"
+            class="theme-toggle theme-toggle--mobile"
+            aria-label="Toggle dark mode"
+            aria-pressed="false">
+      <svg class="theme-toggle-icon theme-toggle-icon--sun"
+           viewBox="0 0 24 24"
+           width="20"
+           height="20"
+           fill="none"
+           stroke="currentColor"
+           stroke-width="2"
+           stroke-linecap="round"
+           aria-hidden="true">
+        <circle cx="12" cy="12" r="4" />
+        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+      </svg>
+      <svg class="theme-toggle-icon theme-toggle-icon--moon"
+           viewBox="0 0 24 24"
+           width="20"
+           height="20"
+           fill="none"
+           stroke="currentColor"
+           stroke-width="2"
+           stroke-linecap="round"
+           stroke-linejoin="round"
+           aria-hidden="true">
+        <path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z" />
+      </svg>
+      <span>Dark mode</span>
+    </button>
+    <ul class="list-unstyled p-3 mobile-menu" id="mobileMenu">
       {% for menu, menu_dict in site_menu.items %}
-        <li class="mobile-nav__item">
+        <li class="mobile-menu-item">
           {% if menu_dict.dropdown %}
-            <button type="button" class="mobile-nav__toggle" aria-expanded="false">
+            {# Bootstrap collapse; data-bs-parent closes the other open sub-menu (accordion). #}
+            <button class="btn w-100 d-flex justify-content-center align-items-center sub-menu-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#submenu-{{ forloop.counter }}"
+                    aria-expanded="false"
+                    aria-controls="submenu-{{ forloop.counter }}">
               <span>{{ menu }}</span>
-              <span class="mobile-nav__caret" aria-hidden="true"></span>
             </button>
-            <ul class="mobile-nav__submenu" hidden>
+            <ul class="list-unstyled sub-menu collapse sub-menu-link-ul"
+                id="submenu-{{ forloop.counter }}"
+                data-bs-parent="#mobileMenu">
               {% for submenu, submenu_href in menu_dict.submenu.items %}
-                <li><a href="{{ submenu_href }}">{{ submenu }}</a></li>
+                <li class="text-center sub-menu-link-toggler">
+                  <a href="{{ submenu_href }}" class="sub-menu-link w-100 d-block">{{ submenu }}</a>
+                </li>
               {% endfor %}
             </ul>
           {% else %}
-            <a class="mobile-nav__link" href="{{ menu_dict.href }}">{{ menu }}</a>
+            <a href="{{ menu_dict.href }}" class="mobile-menu-link">{{ menu }}</a>
           {% endif %}
         </li>
       {% endfor %}
-      <li class="mobile-nav__item">
-        <a href="https://pretix.evolutio.pt/evolutio/djceu2027/"
-           class="btn-pill mobile-nav__tickets"
-           target="_blank" rel="noopener">Tickets</a>
-      </li>
     </ul>
   </div>
-</header>
+</div>

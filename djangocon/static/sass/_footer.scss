@@ -1,138 +1,181 @@
 @use 'variables' as *;
 
-// =============================================================================
-// SITE FOOTER
-// =============================================================================
-// The footer band is dark in both themes (it is in the light mockup too), so it
-// uses the fixed brand colours rather than the semantic --surface/--fg tokens.
+//footer
 
-.site-footer {
-  margin-top: var(--space-4xl);
-  background: var(--off-black);
-  color: var(--white);
-
-  @media (max-width: $bp-md) {
-    margin-top: var(--space-3xl);
-  }
-}
-
-// The social row and the credits line share one uninterrupted band — the design
-// draws no rule between them — so the bottom padding here is deliberately
-// smaller than the top: the credits block supplies the rest.
-.site-footer__top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-lg);
-  padding-top: var(--space-2xl);
-  padding-bottom: var(--space-lg);
-
-  @media (max-width: $bp-md) {
-    flex-direction: column;
-    gap: var(--space-lg);
-    padding-top: var(--space-xl);
-    padding-bottom: var(--space-md);
-  }
-}
-
-.site-footer__title {
-  margin: 0;
-  color: var(--red);
-  font-family: var(--font-display);
-  font-size: clamp(1.1rem, 3vw, var(--text-xl));
-  font-weight: var(--weight-bold);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-
-// -----------------------------------------------------------------------------
-// Social icons — dark glyph in a white circle.
-// -----------------------------------------------------------------------------
-
-.site-footer__social {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-md);
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.social-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.75rem;
-  height: 2.75rem;
-  border-radius: var(--radius-circle);
-  background: var(--white);
-  text-decoration: none;
-  transition:
-    background-color var(--duration-fast) var(--ease-base),
-    transform var(--duration-fast) var(--ease-base);
-
-  &:hover,
-  &:focus-visible {
-    background: var(--red);
-    transform: translateY(-2px);
-  }
-
-  @media (max-width: $bp-md) {
-    width: 2.5rem;
-    height: 2.5rem;
-  }
-}
-
-// The glyph is the SVG used as a mask and filled with currentColor, so the same
-// asset works on the white circle and on the red hover state — no second file.
-.social-icon__glyph {
-  display: block;
-  width: 1.25rem;
-  height: 1.25rem;
-  background-color: var(--off-black);
-  mask-image: var(--icon);
-  mask-repeat: no-repeat;
-  mask-position: center;
-  mask-size: contain;
-  -webkit-mask-image: var(--icon);
-  -webkit-mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-  -webkit-mask-size: contain;
-  transition: background-color var(--duration-fast) var(--ease-base);
-}
-
-.social-icon:hover .social-icon__glyph,
-.social-icon:focus-visible .social-icon__glyph {
-  background-color: var(--white);
-}
-
-// -----------------------------------------------------------------------------
-// Credits line
-// -----------------------------------------------------------------------------
-
-.site-footer__credits {
-  padding: 0 var(--space-sm) var(--space-lg);
+footer {
+  background-color: var(--paper);
+  color: var(--ink);
   text-align: center;
+  padding: 30px 20px;
+  font-size: 0.9rem;
+  margin-top: 50px;
+}
 
-  p {
-    margin: 0;
-    color: var(--grey-300);
-    font-size: var(--text-xs);
-    line-height: var(--leading-normal);
-  }
+.footer-link {
+  color: var(--paper) !important;
+  font-size: 1rem;
+  text-decoration: none;
+}
 
-  a {
-    color: var(--grey-300);
-    text-decoration: underline;
+.footer {
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
 
-    &:hover {
-      color: var(--white);
+// --- Green-theme .custom-footer (current design) ---
+
+@media (max-width: 576px) {
+  .custom-footer {
+    .footer-social-media-link .nav-link {
+      padding: 0.5rem 2.5%;
+      width: available;
+    }
+
+    .footer-site-map {
+      margin-left: 1rem;
+      margin-right: 1rem;
+
+      .footer-title {
+        padding-top: 2rem;
+      }
     }
   }
 }
 
-.site-footer__heart {
-  color: var(--red);
+@media (max-width: 992px) {
+  .custom-footer .footer-links {
+    -ms-flex-item-align: center;
+    -ms-flex-line-pack: center;
+    -webkit-box-pack: center !important;
+    -ms-flex-pack: center !important;
+    align-content: center;
+    align-self: center;
+    justify-content: center !important;
+    text-align: center;
+  }
+}
+
+.footer-heart {
+  color: var(--accent);
+}
+
+.custom-footer-h1 {
+  margin: 0;
+  color: var(--accent) !important;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 32px;
+}
+
+// Always black-on-white, in both themes — confirmed against both Figma
+// mockups, so this deliberately uses literal colours instead of
+// --ink/--paper (which flip with the theme toggle).
+.custom-footer {
+  background-color: #000;
+  color: #fff;
+
+  .footer-title {
+    padding-top: 1.25rem;
+    color: #fff;
+    text-align: center;
+    font-weight: 900;
+  }
+
+  .footer-social-media-link {
+    padding: 0.25rem;
+    display: contents;
+    width: auto;
+  }
+
+  .footer-end {
+    background: #000;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+
+    p {
+      margin: 0.125rem;
+      padding: 0;
+
+      @media (min-width: 768px) {
+        width: auto;
+      }
+    }
+
+    a {
+      color: #fff;
+      font-weight: 700;
+      text-decoration: underline;
+      text-decoration-color: #fff;
+    }
+  }
+
+  .djangocon-list {
+    ul {
+      margin: 0;
+      padding: 0;
+    }
+
+    li {
+      list-style: none;
+      text-align: center;
+
+      a {
+        text-decoration: none;
+        color: #fff;
+      }
+    }
+  }
+
+  .footer-links {
+    padding-bottom: 1.1875rem;
+
+    li .nav-link {
+      padding-bottom: 0.0652rem;
+      padding-top: 0.0652rem;
+    }
+  }
+
+  .footer-site-map {
+    padding-bottom: 3rem;
+    padding-top: 3.1875rem;
+  }
+}
+
+// The source SVGs draw a filled disc with the brand glyph knocked out as
+// transparency, so the circle's background is what shows through the glyph.
+// The artwork is filled black and the circle is light: the disc reads as the
+// light shape and the glyph reads dark, which is maximum contrast against the
+// black footer. (Inverting the CSS alone would not work — a light disc on a
+// light circle would disappear, so the SVG fills are black to match.)
+//
+// The circle itself is fixed: only the glyph inside it scales on hover, so the
+// badge outline stays put. The circle is sized generously against the 33px
+// artwork to leave clear space between the glyph and the border, which also
+// gives the hover scale somewhere to grow into without touching the edge.
+.footer-social-media-link .footer-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.25rem;
+  height: 4.25rem;
+  border-radius: var(--radius-circle);
+  background-color: #fff;
+  transition: background-color var(--duration-base) var(--ease-base);
+
+  // Dim the disc slightly on hover so the badge still reacts, while the glyph
+  // scale carries the main feedback.
+  &:hover {
+    background-color: #ccc;
+  }
+}
+
+.footer-social-media-link img {
+  display: block;
+  width: 1.9rem;
+  height: 1.9rem;
+  transition: transform var(--duration-base) var(--ease-base);
+}
+
+.footer-social-media-link .footer-link:hover img {
+  transform: scale(1.15);
 }

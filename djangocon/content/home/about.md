@@ -1,10 +1,15 @@
-title: About
+title: about
 layout: home_about
-order: 1
-heading: Run by the community for the community
 
-This is the 18th edition of the Conference and it is organized by a team made up of Django practitioners from all levels. We welcome people from all over the world.
+<span id ="about_title">RUN BY THE COMMUNITY FOR THE COMMUNITY</span>
+
+<br>
+
+This is the 19th edition of the Conference and it is organized by a team made up of Django practitioners from all levels. We welcome people from all over the world.
 
 Our conference seeks to educate and develop new skills, best practices and ideas for the benefit of attendees, developers, speakers and everyone in our global Django Community, not least those watching the talks online.
 
-This year it will take place in the beautiful city of Innsbruck. Don't miss the chance to join us for five days of talks, workshops and sprints.
+<br>
+
+<!--
+<p><iframe id="vid" width="100%" height="315"x src="https://www.youtube.com/embed/4zgNG4-VDOU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p> -->

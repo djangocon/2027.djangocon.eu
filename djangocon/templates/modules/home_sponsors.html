@@ -1,28 +1,25 @@
 {% load static %}
-{% comment %}
-Sponsors by tier. Tiers and logos come from content/sponsors.json (see
-get_sponsors); empty tiers are already dropped there.
-{% endcomment %}
-<section class="home-sponsors section-shell">
-  <h2 class="section-heading">
-    {{ content.meta.heading.0|default:"Sponsors" }}
-  </h2>
 
-  {% for category, sponsors_list in sponsors.items %}
-    <div class="sponsor-tier">
-      <h3 class="sponsor-tier__name">{{ category }}</h3>
-      <div class="sponsor-tier__logos">
-        {% for sponsor in sponsors_list %}
-          <a href="{{ sponsor.url }}" target="_blank" rel="noopener"
-             class="sponsor-logo sponsor-logo--{{ sponsor.art|default:'colour' }}">
-            <img src="{% static sponsor.logo %}" alt="{{ sponsor.name }}" loading="lazy">
-          </a>
-        {% endfor %}
-      </div>
+<!-- HTML -->
+<div class="sponsors-section">
+  <div class="sponsors-container">
+    <div class="sponsors-header">
+      <h2 class="sponsors-title">SPONSORS</h2>
     </div>
-  {% endfor %}
-
-  <div class="home-sponsors__cta">
-    <a href="/sponsors/sponsors/" class="btn-pill">View all sponsors</a>
+    <div class="sponsors-grid-1">
+      {% for category, sponsors_list in sponsors.items %}
+        <p class="sponsors-categories">{{ category }}</p>
+        <div class="sponsor-row">
+          {% for sponsor in sponsors_list %}
+            <a href="{{ sponsor.url }}" target="_blank" class="sponsor-logo">
+              <img src="{% static sponsor.logo %}"
+                   alt="{{ sponsor.name }}"
+                   class="{{ sponsor.size_class|default:'logo-normal' }}"
+                   {% if sponsor.filter %}style="filter: brightness(0) invert(1)"{% endif %} />
+            </a>
+          {% endfor %}
+        </div>
+      {% endfor %}
+    </div>
   </div>
-</section>
+</div>
