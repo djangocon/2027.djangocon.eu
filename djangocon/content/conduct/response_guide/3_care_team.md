@@ -1,6 +1,5 @@
 title: for the CARE team
 layout: simple
-class: bg-grey
 order: 3
 
 The Code of Conduct Active Response Ensurers (CARE) handle reports from receipt through resolution and follow-up.

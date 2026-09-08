@@ -18,11 +18,9 @@
         "Visa": "/information/visa_guide/",
         "Grants": "/information/grants/",
         "Sprints": "/information/sprints/",
-        "Mentorship Program": "/information/mentorship/",
         "Hospitality": "/information/hospitality/",
         "Party": "/information/social_events/",
-        "T-Shirts": "/information/tshirts/",
-        "Announcements": "/information/announcements/"
+        "T-Shirts": "/information/tshirts/"
       }
     },
     "Sponsors/Jobs": {
@@ -51,8 +49,6 @@
   },
   "_disabled": {
     "_comment": "Pages with content that are intentionally not linked in the nav yet. Move an entry back into site_menu above to publish it.",
-    "Speakers": "/talks/speakers/",
-    "Django Girls": "/information/django_girls/",
     "Tickets": "https://pretix.evolutio.pt/evolutio/djceu27/"
   },
   "social_media": {

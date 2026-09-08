@@ -1,6 +1,5 @@
 title: venue and local context
 layout: simple
-class: bg-grey
 order: 1
 
 DjangoCon Europe 2027 runs across <b>Congress Innsbruck</b> (Rennweg 3, 6020 Innsbruck) and <b>Universität Innsbruck</b>, Campus Innrain. Organizers should confirm on-site medical and security staff contacts with both venues ahead of the event and post them at registration.

@@ -3,12 +3,23 @@ from django.shortcuts import render
 from django.views.decorators.http import require_safe
 
 from djangocon.site.utils.content import content_dir
+from djangocon.site.utils.content import get_navigation
 from djangocon.site.utils.content import get_sponsors
 from djangocon.site.utils.content import page_files
-from djangocon.site.utils.content import render_markdown_file
 
 
-def _title(slug: str) -> str:
+def _title(path: str, slug: str) -> str:
+    """The page's name, taken from its menu label.
+
+    Title-casing the URL slug produced "Cfp", "Tshirts" and "Code Of Conduct",
+    and could not know that /information/social_events/ is called "Party". The
+    navigation is where a page's name is actually decided, so read it there and
+    fall back to the slug only for pages that are not in the menu.
+    """
+    for item in get_navigation().get("site_menu", {}).values():
+        for label, href in item.get("submenu", {}).items():
+            if href == path:
+                return label
     return slug.replace("_", " ").title()
 
 
@@ -20,9 +31,9 @@ def home(request):
 
 @require_safe
 def sponsors(request):
-    sponsors_page = content_dir() / "sponsors" / "sponsors" / "sponsors.md"
-    ctx = {"menu": "Sponsors", "content": render_markdown_file(sponsors_page), "sponsors": get_sponsors()}
-    return render(request, "modules/sponsor_page.html", ctx)
+    """Same page pipeline as every other content page, plus the sponsor list."""
+    files = page_files(content_dir() / "sponsors" / "sponsors")
+    return render(request, "pages/default.html", {"menu": "Sponsors", "files": files, "sponsors": get_sponsors()})
 
 
 @require_safe
@@ -32,4 +43,4 @@ def page(request, menu, submenu=None):
     files = page_files(directory)
     if not files:
         raise Http404
-    return render(request, "pages/default.html", {"menu": _title(submenu or menu), "files": files})
+    return render(request, "pages/default.html", {"menu": _title(request.path, submenu or menu), "files": files})

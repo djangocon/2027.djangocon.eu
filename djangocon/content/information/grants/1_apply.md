@@ -12,11 +12,7 @@ Lastly, we know that some of you reading this will need clarification on whether
 
 With our limited funds, we can't promise you will receive a grant, but if you're not sure, **we encourage you to apply**. If you're uncomfortable with other people knowing you received a grant, you don't have to tell them—our policy is to never publicly identify grant applicants or recipients without their explicit permission.
 
-<!-- <a target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLScKldrk0umXZUR2z5XB-xKU3cOk4Z4nCIYrutOxPH1Tv590_Q/viewform?usp=dialog" class="hero-btn" style="text-decoration:none; color: white;">Apply here</a> -->
+**Opportunity grant applications open on 30 November 2026.** The application
+form will be linked here as soon as applications open.
 
-<h5 style="color: tomato; font-weight: 600;">Opportunity grants applications are now closed!</h5>
-<p>Thank you to everyone who applied for grants to attend DjangoCon EU 2027!</p>
-<be>
 If you have questions, you can write to <a href="mailto:2027@djangocon.eu" class="pages-links">2027@djangocon.eu</a>.
-
-<!-- <a href="" class="hero-btn"style="text-decoration:none;color:white">Apply for Grant</a> -->
