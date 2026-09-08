@@ -17104,6 +17104,7 @@ h2 {
 
 .grid-item {
   position: relative;
+  display: block;
   overflow: hidden;
   aspect-ratio: 345/380;
 }
@@ -17113,6 +17114,18 @@ h2 {
   -o-object-fit: cover;
      object-fit: cover;
   display: block;
+  -webkit-transition: -webkit-transform var(--motion-normal, 0.3s) ease;
+  transition: -webkit-transform var(--motion-normal, 0.3s) ease;
+  transition: transform var(--motion-normal, 0.3s) ease;
+  transition: transform var(--motion-normal, 0.3s) ease, -webkit-transform var(--motion-normal, 0.3s) ease;
+}
+.grid-item:hover img, .grid-item:focus-visible img {
+  -webkit-transform: scale(1.04);
+          transform: scale(1.04);
+}
+.grid-item:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 
 @media (max-width: 768px) {

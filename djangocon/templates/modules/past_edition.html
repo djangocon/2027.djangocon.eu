@@ -1,24 +1,36 @@
 {% load static %}
 
-<!-- HTML -->
+{# Past editions, oldest first. Each photo links to that year's site. #}
 <div class="past-editions">
   <h2 class="editions-title">TAKE A LOOK AT PAST EDITIONS</h2>
   <div class="editions-grid">
-    <div class="grid-item">
-      <img src="{% static 'images/past/djc1.png' %}"
+    <a class="grid-item"
+       href="https://2023.djangocon.eu/"
+       target="_blank"
+       rel="noopener">
+      <img src="{% static 'images/past/2023_edinburgh.png' %}"
            alt="DjangoCon Europe 2023 Edinburgh group photo" />
-    </div>
-    <div class="grid-item">
-      <img src="{% static 'images/past/vigo.png' %}"
-           alt="DjangoCon Europe 2024 Vigo group photo at the harbor" />
-    </div>
-    <div class="grid-item">
-      <img src="{% static 'images/past/dublin.png' %}"
+    </a>
+    <a class="grid-item"
+       href="https://2024.djangocon.eu/"
+       target="_blank"
+       rel="noopener">
+      <img src="{% static 'images/past/2024_vigo.png' %}"
+           alt="DjangoCon Europe 2024 Vigo group photo at the harbour" />
+    </a>
+    <a class="grid-item"
+       href="https://2025.djangocon.eu/"
+       target="_blank"
+       rel="noopener">
+      <img src="{% static 'images/past/2025_dublin.png' %}"
            alt="DjangoCon Europe 2025 Dublin audience" />
-    </div>
-    <div class="grid-item">
-      <img src="{% static 'images/past/hall.png' %}"
-           alt="DjangoCon Europe group photo in the conference hall" />
-    </div>
+    </a>
+    <a class="grid-item"
+       href="https://2026.djangocon.eu/"
+       target="_blank"
+       rel="noopener">
+      <img src="{% static 'images/past/2026_athens.png' %}"
+           alt="DjangoCon Europe 2026 Athens group photo in the conference hall" />
+    </a>
   </div>
 </div>
