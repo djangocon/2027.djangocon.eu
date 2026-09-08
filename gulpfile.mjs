@@ -17,6 +17,7 @@ import rename from 'gulp-rename';
 import gulpSass from 'gulp-sass';
 import * as dartSass from 'sass';
 import gulUglifyES from 'gulp-uglify-es';
+import { Transform } from 'node:stream';
 
 const browserSync = browserSyncLib.create();
 const reload = browserSync.reload;
@@ -86,15 +87,36 @@ function scripts() {
     .pipe(dest(paths.js));
 }
 
-// Vendor Javascript minification
+// Vendor Javascript minification.
+//
+// No source maps on purpose: `*.min.js.map` is gitignored, so a
+// `//# sourceMappingURL=` comment would point at a file that never reaches
+// production, and WhiteNoise's manifest storage refuses to collectstatic
+// when a JS file references a missing map. Bootstrap's own comment is
+// stripped for the same reason.
+function stripSourceMapComments() {
+  return new Transform({
+    objectMode: true,
+    transform(file, _encoding, callback) {
+      if (file.isBuffer()) {
+        file.contents = Buffer.from(
+          file.contents.toString().replace(/^\/\/# sourceMappingURL=.*$/gm, ''),
+        );
+      }
+      callback(null, file);
+    },
+  });
+}
+
 function vendorScripts() {
-  return src(paths.vendorsJs, { sourcemaps: true })
+  return src(paths.vendorsJs)
     .pipe(concat('vendors.js'))
+    .pipe(stripSourceMapComments())
     .pipe(dest(paths.js))
     .pipe(plumber()) // Checks for errors
     .pipe(uglify()) // Minifies the js
     .pipe(rename({ suffix: '.min' }))
-    .pipe(dest(paths.js, { sourcemaps: '.' }));
+    .pipe(dest(paths.js));
 }
 
 // Browser sync server for live reload
