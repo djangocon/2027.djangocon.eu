@@ -1771,6 +1771,7 @@ object[type='application/pdf'] {
   color: var(--accent);
   font-weight: 400;
   font-size: 56px;
+  text-transform: uppercase; // headings come from content metadata in sentence case
   margin-bottom: 2.5rem;
   text-align: center;
 }
@@ -1867,6 +1868,7 @@ object[type='application/pdf'] {
   color: var(--accent);
   font-weight: 400;
   font-size: 56px;
+  text-transform: uppercase; // headings come from content metadata in sentence case
   margin-bottom: 2.5rem;
   max-width: 1400px;
   margin-left: auto;

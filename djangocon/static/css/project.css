@@ -16994,6 +16994,7 @@ h2 {
   color: var(--accent);
   font-weight: 400;
   font-size: 56px;
+  text-transform: uppercase;
   margin-bottom: 2.5rem;
   text-align: center;
 }
@@ -17087,6 +17088,7 @@ h2 {
   color: var(--accent);
   font-weight: 400;
   font-size: 56px;
+  text-transform: uppercase;
   margin-bottom: 2.5rem;
   max-width: 1400px;
   margin-left: auto;
