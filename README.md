@@ -73,7 +73,7 @@ order: 2
 `djangocon/templates/modules/`. A layout name that doesn't exist falls back to
 `simple` rather than breaking the page. Adding a `.md` file to a folder adds a
 section to that page. Use `##`/`###` headings inside the body — the page title is
-the only `<h1>`.
+the only `<h1>`. Add `published: false` to park a section without deleting it.
 
 Some layouts carry their own copy in the template rather than in the `.md`
 (`home_about`, `home_tickets`, `home_dates`, `past_edition`, `credits`); edit

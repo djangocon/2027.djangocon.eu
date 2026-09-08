@@ -35,8 +35,17 @@ def render_markdown_file(path: Path) -> dict:
     return result
 
 
+def is_published(path: Path) -> bool:
+    """False only when a file opts out with ``published: false`` in its metadata.
+
+    Lets a section be parked without deleting it.
+    """
+    value = render_markdown_file(path)["meta"].get("published", [None])[0]
+    return str(value).strip().lower() not in {"false", "no", "0"}
+
+
 def page_files(directory: Path) -> dict[str, Path]:
-    """Content files in ``directory`` keyed by stem, ordered by ``order:`` metadata then name."""
+    """Published content files in ``directory`` keyed by stem, ordered by ``order:`` then name."""
     if not directory.is_dir():
         return {}
 
@@ -47,7 +56,8 @@ def page_files(directory: Path) -> dict[str, Path]:
         except (TypeError, ValueError):
             return (1, 0.0, path.name)
 
-    return {path.stem: path for path in sorted(directory.glob("*.md"), key=sort_key)}
+    files = (path for path in directory.glob("*.md") if is_published(path))
+    return {path.stem: path for path in sorted(files, key=sort_key)}
 
 
 def _load_json(name: str) -> dict:
