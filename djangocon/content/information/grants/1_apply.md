@@ -10,7 +10,7 @@ Lastly, we know that some of you reading this will need clarification on whether
 - Don't want to take money away from someone else? It's OK, everyone says that!
 - Don't feel like you deserve this? That's also OK: you do.
 
-With our limited funds, we can't promise you will receive a grant, but if you're not sure, **we encourage you to apply**. If you're uncomfortable with other people knowing you received a grant, you don't have to tell them—our policy is to never publicly identify grant applicants or recipients without their explicit permission.
+With our limited funds, we can't promise you will receive a grant, but if you're not sure, **we encourage you to apply**. If you're uncomfortable with other people knowing you received a grant, you don't have to tell them — our policy is to never publicly identify grant applicants or recipients without their explicit permission.
 
 **Opportunity grant applications open on 30 November 2026.** The application
 form will be linked here as soon as applications open.
