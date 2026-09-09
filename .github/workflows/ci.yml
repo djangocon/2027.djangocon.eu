@@ -23,10 +23,10 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: '3.11'
       - uses: actions/setup-node@v4
         with:
-          node-version: "22"
+          node-version: '22'
       - uses: pre-commit/action@v3.0.1
 
   django:
@@ -34,14 +34,14 @@ jobs:
     runs-on: ubuntu-latest
     env:
       DJANGO_SETTINGS_MODULE: config.settings.production
-      DJANGO_READ_DOT_ENV_FILE: "False"
+      DJANGO_READ_DOT_ENV_FILE: 'False'
       DJANGO_SECRET_KEY: ci-only-not-a-secret
       DJANGO_ALLOWED_HOSTS: 2027.djangocon.eu
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.11" # what production runs — keep in sync with pyproject.toml
+          python-version: '3.11' # what production runs — keep in sync with pyproject.toml
           cache: pip
           cache-dependency-path: requirements/*.txt
       - run: pip install -r requirements/production.txt
@@ -73,8 +73,8 @@ jobs:
                   urls.add(node)
           walk(nav)
 
-          client = Client(HTTP_HOST="2027.djangocon.eu", secure=True)
-          bad = [(u, client.get(u).status_code) for u in sorted(urls)]
+          client = Client(HTTP_HOST="2027.djangocon.eu")
+          bad = [(u, client.get(u, secure=True).status_code) for u in sorted(urls)]
           bad = [(u, s) for u, s in bad if s != 200]
           print(f"checked {len(urls)} pages")
           if bad:
@@ -89,7 +89,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: "22"
+          node-version: '22'
           cache: npm
       - run: npm ci
       - run: npm run build

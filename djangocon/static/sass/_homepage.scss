@@ -1561,12 +1561,10 @@ object[type='application/pdf'] {
   font-weight: 400;
   text-transform: uppercase;
   border-radius: var(--radius-sm) var(--radius-sm) 0 0;
-  -webkit-mask:
-    radial-gradient(circle 20px at 0 100%, transparent 20px, #000 0),
+  -webkit-mask: radial-gradient(circle 20px at 0 100%, transparent 20px, #000 0),
     radial-gradient(circle 20px at 100% 100%, transparent 20px, #000 0);
   -webkit-mask-composite: source-in;
-  mask:
-    radial-gradient(circle 20px at 0 100%, transparent 20px, #000 0),
+  mask: radial-gradient(circle 20px at 0 100%, transparent 20px, #000 0),
     radial-gradient(circle 20px at 100% 100%, transparent 20px, #000 0);
   mask-composite: intersect;
 

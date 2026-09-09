@@ -65,8 +65,7 @@ $overlay-heavy: rgba(0, 0, 0, 0.6);
 
 $font-main: 'Lato', sans-serif; // body and UI
 $font-display: 'Anton', sans-serif; // section headings, ticket tier labels
-$font-hero:
-  'Anton SC', sans-serif; // hero headline + nav links only — confirmed
+$font-hero: 'Anton SC', sans-serif; // hero headline + nav links only — confirmed
 // against Figma nodes 5:11 (hero) and 5:50 (nav "Talks"); every other heading
 // (GRAB YOUR TICKET, SPONSORS, RUN BY THE COMMUNITY...) came back plain Anton.
 $font-numeric: 'Lexend Deca', sans-serif; // ticket price numbers only
