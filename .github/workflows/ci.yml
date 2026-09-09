@@ -1,0 +1,99 @@
+# CI only. Deployment is pull-based: the production host polls this repo
+# every few minutes and deploys `main` once every check here is green.
+# There are no deploy secrets or host credentials in this repository.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    name: pre-commit (ruff, djlint, prettier)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - uses: pre-commit/action@v3.0.1
+
+  django:
+    name: check + collectstatic (production settings, Python 3.11)
+    runs-on: ubuntu-latest
+    env:
+      DJANGO_SETTINGS_MODULE: config.settings.production
+      DJANGO_READ_DOT_ENV_FILE: "False"
+      DJANGO_SECRET_KEY: ci-only-not-a-secret
+      DJANGO_ALLOWED_HOSTS: 2027.djangocon.eu
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11" # what production runs — keep in sync with pyproject.toml
+          cache: pip
+          cache-dependency-path: requirements/*.txt
+      - run: pip install -r requirements/production.txt
+      - name: Django system checks (deploy profile)
+        run: python manage.py check --deploy
+      - name: collectstatic (catches broken static references)
+        run: python manage.py collectstatic --no-input
+      - name: Smoke-test every page in the navigation
+        run: |
+          python - <<'EOF'
+          import json, os, sys
+          import django
+          django.setup()
+          from django.test import Client
+
+          nav = json.load(open("djangocon/content/navigation.json"))
+          urls = {"/"}
+          def walk(node):
+              # Collect every internal URL ("/section/page/") anywhere in the tree,
+              # skipping the parked "_disabled" block and comments.
+              if isinstance(node, dict):
+                  for key, value in node.items():
+                      if not key.startswith("_"):
+                          walk(value)
+              elif isinstance(node, list):
+                  for value in node:
+                      walk(value)
+              elif isinstance(node, str) and node.startswith("/"):
+                  urls.add(node)
+          walk(nav)
+
+          client = Client(HTTP_HOST="2027.djangocon.eu", secure=True)
+          bad = [(u, client.get(u).status_code) for u in sorted(urls)]
+          bad = [(u, s) for u, s in bad if s != 200]
+          print(f"checked {len(urls)} pages")
+          if bad:
+              print("non-200 responses:", bad)
+              sys.exit(1)
+          EOF
+
+  assets:
+    name: compiled CSS/JS are in sync with the sources
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - name: Fail if the committed build output differs from a fresh build
+        # The production host has no Node: it serves whatever CSS/JS is
+        # committed. Forgetting to rebuild after an SCSS change ships stale styles.
+        run: git diff --exit-code --stat -- djangocon/static/css djangocon/static/js
