@@ -1,10 +1,6 @@
 title: reviewing
 layout: simple
-class: bg-grey
 order: 1
-
-<!-- TODO: complete review team -->
-<!-- Our review team comprises 6 people from the organizer team and one from outside. We are a mix of organizers, some core developers and DSF (Django Software Foundation) members, and some Django Girls members/organizers. -->
 
 Reviewers will be asked to review a set of submissions and submit a review (both a few words and a rough rating). After the review period is over, we will go through the talks by category and select the talks based on the accumulated reviews. If we can't decide between two or three talks, we'll check back with the reviewers and ask them for their opinions.
 

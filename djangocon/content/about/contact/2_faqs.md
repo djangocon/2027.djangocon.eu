@@ -4,44 +4,31 @@ order: 2
 
 These are some frequently asked questions, kindly contact us for further assistance if you can't find the answers to your questions here.
 
-**Do I need a visa to Innsbruck Austria?**
-This will depend on the country you will be coming from. Some countries don't need a visa to enter Austria, but others do. You can find out if you need a visa to enter Austria using this link. If your country is part of the list provided in the link below, then you need a visa to visit Austria. If you don't find your country, then you don't need a visa. Check it <a href="https://www.bmeia.gv.at/en/travel-stay/entry-and-residence-in-austria/entry-and-visa/" class="pages-links">here</a>.
+**Do I need a visa to enter Austria?**
+It depends on the country you are travelling from. EU, EEA and Swiss citizens do not; many other nationalities can visit visa-free for up to 90 days, and the rest need a short-stay Schengen visa. Check your nationality on the <a href="https://www.bmeia.gv.at/en/travel-stay/entrance-and-residence-in-austria/visa" class="pages-links">Austrian Ministry for European and International Affairs</a> page, and see our <a href="/information/visa_guide/" class="pages-links">visa guide</a> for the full process.
 
 **What are the ticket prices for DjangoCon Europe?**
-For everything concerning ticket kindly check it here <a href="https://pretix.evolutio.pt/evolutio/djceu2025/" class="pages-links">Tickets</a>
+For everything concerning tickets, check <a href="https://pretix.evolutio.pt/evolutio/djceu27/" class="pages-links">the ticket shop</a>.
 
-**Do you provide Invitation to aid visa application?**
-Coming soon...
-
-<!-- The organizers of DjangoCon offer invitation letters to assist with your travel arrangements. Click [here](https://2027.djangocon.eu/information/hospitality/) to request one -->
+**Do you provide an invitation letter for my visa application?**
+Yes. Email <a href="mailto:diversity@djangocon.eu" class="pages-links">diversity@djangocon.eu</a> to request one — see the <a href="/information/visa_guide/" class="pages-links">visa guide</a> for what it does and does not cover.
 
 **How do I apply for grant for DjangoCon EU 2027**
-Coming soon...
+Grant applications open on 30 November 2026. The form will be published on the <a href="/information/grants/" class="pages-links">grants page</a>.
 
 **What do I do if I am refused a visa but still bought tickets**
 Sorry, hopefully that doesn't happen, but if it does send an email to our email here <a href="mailto:2027@djangocon.eu" class="pages-links">2027@djangocon.eu</a>
-and the team will get back you.
+and the team will get back to you.
 
 **Are there options for virtual participation?**
 Yes there are, but you would need to purchase a ticket before getting access to the platform , allowing you to stream live, you can
-get the virtual ticket here <a href="https://pretix.evolutio.pt/evolutio/djceu2025/" class="pages-links">Virtual Tickets</a>
+get the virtual ticket here <a href="https://pretix.evolutio.pt/evolutio/djceu27/" class="pages-links">Virtual Tickets</a>
 
 **Where is the exact venue for the event**
-The conference takes place in Innsbruck, Austria. The exact venue will be announced soon — to learn more, visit this <a href="../../information/venue" class="pages-links">page</a>.
+The conference takes place at Congress Innsbruck (Rennweg 3) and Universität Innsbruck, Campus Innrain — see the <a href="/information/venue/" class="pages-links">venue page</a> for maps and directions.
 
 **How do I get to Innsbruck?**
-Kindly check this <a href="../../../information/innsbruck" class="pages-links">page</a>, it should answer all your questions.
+Kindly check this <a href="/information/innsbruck/" class="pages-links">page</a>, it should answer all your questions.
 
 **Will there be breakfast, lunch and dinner?**
 Lunch and Coffee breaks are included. Dinners are not included
-
-<!-- **Can the organizers assist with visa applications for international attendees?**
-**Would all session be recorded, also the once under the workshop**
-
-**My company doesn't allow traveling by plane anymore**
-Vigo has two railway stations: URZAIZ where departs the AVE (Spain's high-speed train), and GUIXAR, located in Areal St., both of them right in the city centre. [Know More](https://2027.djangocon.eu/information/vigo/)
-**What are the accommodation and travel options near the conference venue?**
-
-**Are there any specific COVID-19 guidelines for attendees?**
-
-**Will there be networking opportunities and social events at the conference?** -->

@@ -1,13 +1,35 @@
+{% load markdown_extras %}
 {% load static %}
 
-{# djlint:off H021 — hardcoded 2025 roster with per-team lead colours; to be replaced by the 2027 team. #}
+{# The 2027 roster. Only the core team is confirmed so far; the other teams #}
+{# collapse into a single "To be announced" line. The 2025 per-team grid is #}
+{# kept in the comment block below as a starting point for building teams out. #}
+<div class="container creditsmain" id="pages">
+  {% include "modules/page_title.html" with title=content|meta:"title" %}
+  <div class="simple-content">
+    {{ content.html|safe }}
+    <h2>Core team</h2>
+    <ul>
+      <li>Afonso Santos</li>
+      <li>Anže Pečar</li>
+      <li>Bia Rodrigues</li>
+      <li>David Vaz</li>
+      <li>Felipe Valverde</li>
+      <li>Frederico Rodrigues</li>
+      <li>Jacob Rief</li>
+      <li>Luís Vaz</li>
+      <li>Miguel Magalhães</li>
+    </ul>
+    <p>The remaining teams are still being assembled — to be announced.</p>
+  </div>
+</div>
+
+{% comment %}
+2025 per-team grid, kept for reference. Restore the columns (with the team
+logos from images/credit_logo/ and the lead's name in the team colour) as each
+2027 team is confirmed.
+
 <div class="container creditsmain">
-  <h2 class="mainname">CREDITS</h2>
-  <p style="font: 1.125rem/1.5rem var(--main-font)">
-    This list of individuals is still growing. Nonetheless, these are our
-    sincerest alphabetical thanks to everyone who have made contributions to
-    this conference thus far:
-  </p>
   <div class="row pt-3">
     <div class="col-sm-3">
       <img src="{% static 'images/credit_logo/coc.svg' %}"
@@ -54,7 +76,6 @@
       <h6>Vishal Vatsa</h6>
     </div>
   </div>
-  <!-- SECOND ROW  -->
   <div class="row pt-5">
     <div class="col-sm-3">
       <img src="{% static 'images/credit_logo/programme.svg' %}"
@@ -111,3 +132,4 @@
     </div>
   </div>
 </div>
+{% endcomment %}

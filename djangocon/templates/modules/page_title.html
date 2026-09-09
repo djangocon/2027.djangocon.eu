@@ -1,0 +1,9 @@
+{# The page/section heading. Every content layout includes this one partial so #}
+{# a title looks and sits identically whichever layout renders it -- the #}
+{# layouts used to each hand-roll their own heading and none of them matched. #}
+{% if title %}
+  <div class="content-title" id="{{ title|slugify }}">
+    {% if parent %}<h2 class="parent-title title title-lg">{{ parent }}</h2>{% endif %}
+    <h2 class="title title-lg">{{ title }}</h2>
+  </div>
+{% endif %}

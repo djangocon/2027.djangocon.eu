@@ -3,13 +3,11 @@
 {# (`status_url:`) so content editors can swap it without touching code. #}
 {% load markdown_extras %}
 
-<div class="container grant-status">
-  <h2 class="title">
-    <strong>Check your grant application status 💰✍</strong>
-  </h2>
-  <p>
-    <small>Type your email and your unique code and wait for a response. Good luck 😊</small>
-  </p>
+<div class="container grant-status" id="pages">
+  {% include "modules/page_title.html" with title=content|meta:"title" %}
+  <div class="simple-content">
+    <p>Type your email and your unique code and wait for a response. Good luck 😊</p>
+  </div>
   <form class="row g-3 align-items-center"
         id="grantStatusForm"
         data-status-url="{{ content|meta:'status_url' }}"

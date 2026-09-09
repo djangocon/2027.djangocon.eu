@@ -1,12 +1,12 @@
 """Loaders for the site content: Markdown pages and the JSON data files.
 
-Everything is read from ``settings.CONTENT_DIR``. The JSON files are read once
-per process (they only change on deploy). Markdown files are re-parsed when
-their mtime changes, so the dev server picks up edits without a restart.
+Everything is read from ``settings.CONTENT_DIR``. Both the Markdown files and
+the JSON data files are re-read when their mtime changes, so an edit shows up
+without a restart -- ``runserver`` only reloads on ``.py`` changes, so caching
+the JSON for the process lifetime left a stale menu pointing at deleted pages.
 """
 
 import json
-from functools import lru_cache
 from pathlib import Path
 
 import markdown as md
@@ -14,8 +14,9 @@ from django.conf import settings
 
 _MARKDOWN_EXTENSIONS = ["extra", "nl2br", "sane_lists", "meta", "toc"]
 
-# path -> (mtime, {"html", "meta"}). Bounded by the number of content files.
+# path -> (mtime, parsed). Both are bounded by the number of content files.
 _markdown_cache: dict[Path, tuple[float, dict]] = {}
+_json_cache: dict[Path, tuple[float, dict]] = {}
 
 
 def content_dir() -> Path:
@@ -61,19 +62,26 @@ def page_files(directory: Path) -> dict[str, Path]:
 
 
 def _load_json(name: str) -> dict:
-    with (content_dir() / name).open(encoding="utf-8") as f:
+    """Parse a content .json file, re-reading only when it changes."""
+    path = content_dir() / name
+    mtime = path.stat().st_mtime
+    cached = _json_cache.get(path)
+    if cached is not None and cached[0] == mtime:
+        return cached[1]
+
+    with path.open(encoding="utf-8") as f:
         data = json.load(f)
     # Keys starting with "_" are editor notes, not content.
-    return {k: v for k, v in data.items() if not k.startswith("_")}
+    result = {k: v for k, v in data.items() if not k.startswith("_")}
+    _json_cache[path] = (mtime, result)
+    return result
 
 
-@lru_cache(maxsize=1)
 def get_sponsors() -> dict:
     """Sponsors by tier, with empty tiers dropped so the template can loop blindly."""
     return {tier: entries for tier, entries in _load_json("sponsors.json").items() if entries}
 
 
-@lru_cache(maxsize=1)
 def get_navigation() -> dict:
     """Menu structure and social links."""
     return _load_json("navigation.json")

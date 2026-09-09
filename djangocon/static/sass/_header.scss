@@ -107,34 +107,79 @@
   }
 }
 
+// Mobile menu: a flat panel of full-width rows separated by hairlines. The
+// boxed, rounded treatment it had made every level look like a nested card.
 .mobile-menu {
-  border: 1px solid var(--ink);
-  border-radius: var(--radius-md);
   background: var(--paper);
+  border-top: 1px solid var(--border-subtle);
+  margin-bottom: 0;
+  padding: 0 !important;
+}
+
+.mobile-menu-item + .mobile-menu-item {
+  border-top: 1px solid var(--border-subtle);
+}
+
+.mobile-menu-link,
+.sub-menu-toggler {
+  display: block;
+  padding: 0.9rem 1.25rem;
+  width: 100%;
+  border-radius: 0;
+  color: var(--ink);
+  font-family: var(--font-hero);
+  font-size: 1.05rem;
+  text-align: center;
 }
 
 .sub-menu-toggler {
   color: var(--ink);
+  gap: 0.5rem;
+
+  // Caret: the only affordance that a row opens a sub-menu.
+  &::after {
+    content: '';
+    width: 0.45rem;
+    height: 0.45rem;
+    border-right: 2px solid currentcolor;
+    border-bottom: 2px solid currentcolor;
+    transform: rotate(45deg) translate(-0.1rem, -0.1rem);
+    transition: transform $duration-fast $ease-base;
+  }
+
+  &[aria-expanded='true'] {
+    color: var(--accent);
+
+    &::after {
+      transform: rotate(-135deg);
+    }
+  }
 
   &:hover {
     background: var(--overlay-subtle);
-    color: var(--ink);
+    color: var(--accent);
   }
 
   &:focus {
-    background: var(--surface-hover);
+    background: var(--overlay-subtle);
     box-shadow: none;
   }
 }
 
+// Children are indented off an accent rule rather than given their own panel,
+// so the level is read from position, not from a box.
 .sub-menu-link-ul {
-  border: 1px solid var(--ink);
-  border-radius: var(--radius-md);
+  border-left: 3px solid var(--accent);
+  margin: 0 0 0.5rem 1.25rem;
 }
 
 .sub-menu-link-toggler {
-  padding: 10px 0 10px 0;
+  padding: 0.7rem 0;
   cursor: pointer;
+
+  & + & {
+    border-top: 1px solid var(--border-subtle);
+  }
 
   &:hover {
     background: var(--overlay-subtle);
@@ -184,13 +229,21 @@
   }
 }
 
+// In the mobile panel the toggle is just another row, not a bordered pill.
 .theme-toggle--mobile {
   width: 100%;
   height: auto;
   gap: 0.5rem;
-  padding: 0.75rem 1rem;
-  border-radius: var(--radius-md);
-  margin-bottom: 0.75rem;
+  padding: 0.9rem 1.25rem;
+  border: 0;
+  border-radius: 0;
+  margin-bottom: 0;
+  justify-content: center;
+
+  &:hover {
+    background: var(--overlay-subtle);
+    color: var(--ink);
+  }
 }
 
 // Navbar ticket button: the same red pill as the hero CTA, just compact.
@@ -392,8 +445,26 @@
     color: var(--ink);
   }
 
+  // Drawn with currentcolor rather than an SVG data URI: both Bootstrap's
+  // default icon and the override that replaced it baked the stroke colour
+  // into the image (this one as solid black), so the icon was invisible
+  // against the dark theme's black header. Bars follow --ink in both themes.
   .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(0, 0, 0, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    background-image: none;
+    color: var(--ink);
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: calc(50% - 1px) 15% auto;
+      height: 2px;
+      border-radius: 1px;
+      background: currentcolor;
+      box-shadow:
+        0 -0.4rem currentcolor,
+        0 0.4rem currentcolor;
+    }
   }
 
   .navbar-toggler:focus {
