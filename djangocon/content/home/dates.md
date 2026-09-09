@@ -27,15 +27,15 @@ month entirely to drop it.
   <div class="month">
     <h3>December 2026</h3>
     <div class="date-items">
-      <div class="date-item"><span class="date">1st</span> Talks publication</div>
-      <div class="date-item"><span class="date">30th</span> Schedule publication</div>
+      <div class="date-item"><span class="date">1st</span> First featured talks announced</div>
+      <div class="date-item"><span class="date">17th</span> First schedule release</div>
     </div>
   </div>
   <div class="month">
     <h3>January 2027</h3>
     <div class="date-items">
-      <div class="date-item"><span class="date">7th</span> Childcare applications opening</div>
-      <div class="date-item"><span class="date">15th</span> T-shirt sales deadline (for deliveries at the conference)</div>
+      <div class="date-item"><span class="date">4th</span> Childcare applications open</div>
+      <div class="date-item"><span class="date">17th</span> T-shirt sales close (for delivery at the conference)</div>
     </div>
   </div>
   <div class="month">
