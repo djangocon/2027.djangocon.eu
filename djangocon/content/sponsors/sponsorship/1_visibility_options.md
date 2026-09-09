@@ -2,7 +2,7 @@ title: Visibility Options
 layout: simple
 order: 1
 
-We have made a large sponsorship menu to invite all to contribute and to give you the opportunity to customise your support.
+We have made a large sponsorship menu to invite all to contribute and to give you the opportunity to customize your support.
 
 Please see the detailed description and options in the sponsorships brochure.
 
