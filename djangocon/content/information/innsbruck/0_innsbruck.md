@@ -19,7 +19,6 @@ Innsbruck sits in the Inn valley in western Austria, on one of Europe's main nor
 directly to Innsbruck, arrive by train from all directions (including night trains), or drive in on the A12 and A13
 motorways.
 
-
 #### By air
 
 The city is served by [Innsbruck Airport (INN)](https://www.innsbruck-airport.com/en), only 4&nbsp;km from the center.
@@ -51,12 +50,10 @@ If you plan to come from Vienna airport, the ticket price is around €70 oneway
 plan ahead, you may find discounted tickets at the [Oebb.at website](https://shop.oebbtickets.at/). Please add an extra
 €3 for the seat reservation, as trains in Austria are often quite full.
 
-
 #### By coach
 
 [Flixbus](https://www.flixbus.com/) and other long-distance coaches connect Innsbruck with Munich, Verona and many
 other European cities, often at lower prices than train.
-
 
 #### By car
 
@@ -74,7 +71,6 @@ Kufstein and to Italy via Brennero. Remember:
   It's quite expensive, with €2.20 per hour. Parking garages are available throughout the city and some hotels offer
   their own parking lots.
 
-
 #### Commuting inside the city
 
 Innsbruck has a very good public transport network, including buses and trams. The [IVB](https://www.ivb.at/en/)
@@ -85,7 +81,6 @@ An alternative to public transport is renting a bicyle. There are many pickup an
 first 30 minutes are €1.30. You can find more information on the website
 [Nextbike / Stadtrad](https://www.stadtrad-innsbruck.at/en/). If this is an option for you, install the Nextbike app on
 your phone.
-
 
 ### What to see
 
