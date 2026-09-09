@@ -14209,7 +14209,7 @@ footer {
 .content-container .content-title,
 .content-container .simple-content {
   margin-inline: auto;
-  max-width: 46rem;
+  max-width: 68rem;
   width: 100%;
 }
 .content-container .content-title .title {
@@ -15512,7 +15512,7 @@ h2 {
 
 .grant-status form {
   margin-inline: auto;
-  max-width: 46rem;
+  max-width: 68rem;
 }
 
 .js-reveal {
