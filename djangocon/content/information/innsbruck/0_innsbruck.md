@@ -15,25 +15,17 @@ Welcome to **Innsbruck**, the capital of the Alps. Squeezed between the Nordkett
 
 ### Travel to Innsbruck
 
-Innsbruck sits in the Inn valley in western Austria, on one of Europe's main north–south Alpine crossings. You can fly
-directly to Innsbruck, arrive by train from all directions (including night trains), or drive in on the A12 and A13
-motorways.
+Innsbruck sits in the Inn valley in western Austria, on one of Europe's main north–south Alpine crossings. You can fly directly to Innsbruck, arrive by train from all directions (including night trains), or drive in on the A12 and A13 motorways.
 
 #### By air
 
 The city is served by [Innsbruck Airport (INN)](https://www.innsbruck-airport.com/en), only 4&nbsp;km from the center.
-It offers year-round connections (e.g. Vienna, Frankfurt, London) plus many seasonal winter routes — February is high
-season for Alpine travel, so there are more direct flights than usual, but book early.
+It offers year-round connections (e.g. Vienna, Frankfurt, London) plus many seasonal winter routes — February is high season for Alpine travel, so there are more direct flights than usual, but book early.
 
 If Innsbruck itself doesn't work for your route, nearby alternatives are:
 
-- **Munich (MUC)** — ~2.5–3h by train or coach. There are no direct train connections to Innsbruck, so you always have
-  to change in Munich East, from there some trains are direct to Innsbruck, others you have to change again in Rosenheim
-  and/or Kufstein. Therefore, consider a coach, for instance [Flixbus](https://shop.flixbus.de/search?departureCity=40dc4639-8646-11e6-9066-549f350fcb0c&arrivalCity=40dd9a2a-8646-11e6-9066-549f350fcb0c&route=M%C3%BCnchen+Flughafen-Innsbruck&rideDate=08.02.2027&adult=1&_locale=de&departureCountryCode=DE&arrivalCountryCode=AT).
-  If you fly with Lufthansa, they offer their own connection coach directly to Innsbruck airport.
-- **Vienna (VIE)** — ~4h50 by train. Even though Vienna seems far away, there is a direct train once an hour from the
-  airport to Innsbruck main station. This often is more convenient than the train or coach route from Munich with
-  multiple changes.
+- **Munich (MUC)** — ~2.5–3h by train or coach. There are no direct train connections to Innsbruck, so you always have to change in Munich East, from there some trains are direct to Innsbruck, others you have to change again in Rosenheim and/or Kufstein. Therefore, consider a coach, for instance [Flixbus](https://shop.flixbus.de/search?departureCity=40dc4639-8646-11e6-9066-549f350fcb0c&arrivalCity=40dd9a2a-8646-11e6-9066-549f350fcb0c&route=M%C3%BCnchen+Flughafen-Innsbruck&rideDate=08.02.2027&adult=1&_locale=de&departureCountryCode=DE&arrivalCountryCode=AT). If you fly with Lufthansa, they offer their own connection coach directly to Innsbruck airport.
+- **Vienna (VIE)** — ~4h50 by train. Even though Vienna seems far away, there is a direct train once an hour from the airport to Innsbruck main station. This often is more convenient than the train or coach route from Munich with multiple changes.
 - **Salzburg (SZG)** — ~3h by coach and train. You need to change at Salzburg main station.
 - **Zurich (ZRH)** — ~4h by train. You need to change at Zurich main station.
 - **Verona (VRN)** — ~4h30 by coach and train. You need to change at the Verona Porta Nuova main station.
@@ -45,10 +37,7 @@ Bus line **F** runs every 15 minutes between the airport and the city centre / m
 #### By train
 
 Innsbruck Hauptbahnhof is a hub of the [ÖBB railway network](https://www.oebb.at/en/):
-
-If you plan to come from Vienna airport, the ticket price is around €70 oneway if you buy it at the counter. If you
-plan ahead, you may find discounted tickets at the [Oebb.at website](https://shop.oebbtickets.at/). Please add an extra
-€3 for the seat reservation, as trains in Austria are often quite full.
+If you plan to come from Vienna airport, the ticket price is around €70 oneway if you buy it at the counter. If you plan ahead, you may find discounted tickets at the [Oebb.at website](https://shop.oebbtickets.at/). Please add an extra €3 for the seat reservation, as trains in Austria are often quite full.
 
 #### By coach
 
@@ -57,30 +46,19 @@ other European cities, often at lower prices than train.
 
 #### By car
 
-Innsbruck lies on the intersection of the **A12 Inntal** and the **A13 Brenner** motorway, linked to Germany via the
-Kufstein and to Italy via Brennero. Remember:
+Innsbruck lies on the intersection of the **A12 Inntal** and the **A13 Brenner** motorway, linked to Germany via the Kufstein and to Italy via Brennero.
+Remember:
 
-- Austrian motorways require a [Vignette](https://shop.asfinag.at/en/toll-products/digital-vignette/annual-vignette-car/).
-  Buy the digital one online before you travel. If you go for the 2-month vignette or annual vignette, please note that
-  they are only valid from the 18th day when purchased as a private consumer. **If you declare yourself a business
-  customer, these vignettes are valid immediately**.
-- The A13 Brenner route carries an additional toll payable in the middle of the road. No vignette is required if you
-  leave the motorway **not later than Innsbruck Süd**.
+- Austrian motorways require a [Vignette](https://shop.asfinag.at/en/toll-products/digital-vignette/annual-vignette-car/). Buy the digital one online before you travel. If you go for the 2-month vignette or annual vignette, please note that they are only valid from the 18th day when purchased as a private consumer. **If you declare yourself a business customer, these vignettes are valid immediately**.
+- The A13 Brenner route carries an additional toll payable in the middle of the road. No vignette is required if you leave the motorway **not later than Innsbruck Süd**.
 - In February, winter tyres are mandatory in wintry road conditions.
-- Unless you have a private parking space, in Innsbruck you **can only park on the street** for a limited amount of time.
-  It's quite expensive, with €2.20 per hour. Parking garages are available throughout the city and some hotels offer
-  their own parking lots.
+- Unless you have a private parking space, in Innsbruck you **can only park on the street** for a limited amount of time. It's quite expensive, with €2.20 per hour. Parking garages are available throughout the city and some hotels offer their own parking lots.
 
 #### Commuting inside the city
 
-Innsbruck has a very good public transport network, including buses and trams. The [IVB](https://www.ivb.at/en/)
-website has a route planner and ticket information. A single ticket costs €3.30, a 24-hour ticket €7.30, and a weekly
-ticket is €28.40.
+Innsbruck has a very good public transport network, including buses and trams. The [IVB](https://www.ivb.at/en/) website has a route planner and ticket information. A single ticket costs €3.30, a 24-hour ticket €7.30, and a weekly ticket is €28.40.
 
-An alternative to public transport is renting a bicyle. There are many pickup and drop-off points for these bikes. The
-first 30 minutes are €1.30. You can find more information on the website
-[Nextbike / Stadtrad](https://www.stadtrad-innsbruck.at/en/). If this is an option for you, install the Nextbike app on
-your phone.
+An alternative to public transport is renting a bicyle. There are many pickup and drop-off points for these bikes. The first 30 minutes are €1.30. You can find more information on the website [Nextbike / Stadtrad](https://www.stadtrad-innsbruck.at/en/). If this is an option for you, install the Nextbike app on your phone.
 
 ### What to see
 
