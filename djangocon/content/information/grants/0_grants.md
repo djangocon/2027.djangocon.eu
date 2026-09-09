@@ -14,7 +14,7 @@ We try to do this in a number of ways:
 - Additionally, the selection process attempts to promote a more diverse DjangoCon Europe. While encouraging diversity takes many forms, we're happy to use the opportunity grant program as a very direct method of supporting diversity within the Python community. In particular, our grant program prioritizes those who belong to under-represented or marginalized groups in our industry, as attending our event is likely to be more difficult and financially onerous for them.
 - When prioritizing grant applications, we try to get a feel for how much impact this grant will have on the applicant and the wider community and country, compared to others. In this, we consider things like involvement in a local community, social impact of the applicant's activities, and how accessible other conferences are to them.
 
-Our program prioritises anyone who is part of an under-represented or marginalized group. They include, but are not limited to:
+Our program prioritizes anyone who is part of an under-represented or marginalized group. They include, but are not limited to:
 
 - women and other gender minorities of all expressions and identities; e.g. trans, agender and non-binary people
 - people of colour
@@ -27,7 +27,7 @@ Our program prioritises anyone who is part of an under-represented or marginaliz
 - people experiencing poverty
 - homeless and home/food-insecure people
 - caregivers of children or other dependents
-- people who have experienced trauma and its aftermath (PTSD, anxiety, etc)
+- people who have experienced trauma and its aftermath (PTSD, anxiety, etc.)
 - people living with or recovering from substance abuse
 
 We aim to inform applicants of the results within a few days of the application window closing. Please be aware that you must apply before the deadline for a grant. **Applications open on 30 November 2026**; the application form and the closing date will be published here.

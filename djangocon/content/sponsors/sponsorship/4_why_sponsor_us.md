@@ -33,4 +33,4 @@ Stand out, meet potential collaborators and find new partners. Most packages inc
 
 ---
 
-**We would love to hear your needs and are happy to customise a package to fit your business, brand and organisation. Contact <a href="mailto:sponsors@djangocon.eu" class="pages-links">sponsors@djangocon.eu</a> and we'll get back to you within 24 hours!**
+**We would love to hear your needs and are happy to customize a package to fit your business, brand and organization. Contact <a href="mailto:sponsors@djangocon.eu" class="pages-links">sponsors@djangocon.eu</a> and we'll get back to you within 24 hours!**

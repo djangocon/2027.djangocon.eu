@@ -2,7 +2,7 @@ layout: simple
 order: 0
 title: Code of Conduct
 
-DjangoCon Europe is committed to providing a safe, inclusive, and respectful environment for everyone who takes part—in person at Congress Innsbruck and Universität Innsbruck, and online.
+DjangoCon Europe is committed to providing a safe, inclusive, and respectful environment for everyone who takes part — in person at Congress Innsbruck and Universität Innsbruck, and online.
 
 This Code of Conduct applies to all participants: attendees, speakers, sponsors, organizers, volunteers, and staff, without exception and without regard to role or seniority.
 
@@ -19,7 +19,7 @@ Our goals with having this Code of Conduct are:
 
 ### Expected behavior
 
-We ask each attendant to keep the community in mind and do their best to foster a positive environment:
+We ask each attendee to keep the community in mind and do their best to foster a positive environment:
 
 - Be kind and considerate to others.
 - Behave professionally, in sessions, at meals, at sponsor booths, and at evening/social events.
@@ -29,7 +29,7 @@ We ask each attendant to keep the community in mind and do their best to foster 
 
 ### Prohibited conduct
 
-DjangoCon Europe has zero tolerance for harassment based on race, ethnicity, culture, national origin, colour, immigration status, social and economic class, educational level, sex, sexual orientation, gender identity and expression, age, size, family status, political belief, religion, and mental or physical ability. This list is illustrative, not exhaustive—conduct that harasses or excludes on any comparable basis is covered.
+DjangoCon Europe has zero tolerance for harassment based on race, ethnicity, culture, national origin, colour, immigration status, social and economic class, educational level, sex, sexual orientation, gender identity and expression, age, size, family status, political belief, religion, and mental or physical ability. This list is illustrative, not exhaustive — conduct that harasses or excludes on any comparable basis is covered.
 
 Unacceptable behavior includes, without limitation:
 
@@ -85,7 +85,7 @@ If you are being harassed, notice someone else being harassed, or have any other
 
 ### Guidelines for reporting incidents
 
-When you report, it helps—but is never required—to include:
+When you report, it helps — though it is never required — to include:
 
 - Your contact information, if you're comfortable sharing it.
 - The names of those involved, if known.
@@ -96,7 +96,7 @@ When you report, it helps—but is never required—to include:
 
 We would much rather receive a few extra reports where we decide, after review, to take no action, than miss a report that needed one.
 
-Reporting will never be held against you, and this Code of Conduct explicitly prohibits retaliation—see below.
+Reporting will never be held against you, and this Code of Conduct explicitly prohibits retaliation — see below.
 
 ### Non-retaliation
 
