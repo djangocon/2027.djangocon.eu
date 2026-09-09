@@ -144,10 +144,10 @@ $ease-in-out: ease-in-out;
 
 $content-width: 71.5rem; // max width of the main content column
 
-// Max width of a column of running text (~72 characters at $text-md). Long-form
+// Max width of a column of running text (~105 characters at $text-md). Long-form
 // pages cap at this rather than $content-width, which is a layout width: prose
 // set that wide runs to ~200 characters a line.
-$reading-width: 46rem;
+$reading-width: 68rem;
 
 // -----------------------------------------------------------------------------
 // 8. BREAKPOINTS
