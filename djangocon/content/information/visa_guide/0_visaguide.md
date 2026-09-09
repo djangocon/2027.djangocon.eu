@@ -28,7 +28,7 @@ If you already hold a valid Schengen visa, or a residence permit from another Sc
 <div class="fact-grid">
   <div class="fact"><span class="fact-label">Apply from</span><span class="fact-value">6 months before</span><span class="fact-note">And no later than 15 days before</span></div>
   <div class="fact"><span class="fact-label">Processing</span><span class="fact-value">15 days</span><span class="fact-note">Up to 45 in some cases</span></div>
-  <div class="fact"><span class="fact-label">Fee</span><span class="fact-value">€90</span><span class="fact-note">Reductions and waivers apply</span></div>
+  <div class="fact"><span class="fact-label">Fee</span><span class="fact-value">€90</span><span class="fact-note">As of 2026; reductions and waivers apply</span></div>
 </div>
 
 We suggest applying **8–10 weeks before the conference**. February is peak travel season in the Alps, so leave more room than you think you need.
