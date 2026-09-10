@@ -13,22 +13,20 @@ For everything concerning tickets, check <a href="https://pretix.evolutio.pt/evo
 **Do you provide an invitation letter for my visa application?**
 Yes. Email <a href="mailto:diversity@djangocon.eu" class="pages-links">diversity@djangocon.eu</a> to request one — see the <a href="/information/visa_guide/" class="pages-links">visa guide</a> for what it does and does not cover.
 
-**How do I apply for grant for DjangoCon EU 2027**
+**How do I apply for a grant for DjangoCon EU 2027?**
 Grant applications open on 30 November 2026. The form will be published on the <a href="/information/grants/" class="pages-links">grants page</a>.
 
-**What do I do if I am refused a visa but still bought tickets**
-Sorry, hopefully that doesn't happen, but if it does send an email to our email here <a href="mailto:2027@djangocon.eu" class="pages-links">2027@djangocon.eu</a>
-and the team will get back to you.
+**What do I do if I am refused a visa but still bought tickets?**
+Sorry, hopefully that doesn't happen. But if it does, email our staff here <a href="mailto:2027@djangocon.eu" class="pages-links">2027@djangocon.eu</a> and the team will get back to you.
 
 **Are there options for virtual participation?**
-Yes there are, but you would need to purchase a ticket before getting access to the platform , allowing you to stream live, you can
-get the virtual ticket here <a href="https://pretix.evolutio.pt/evolutio/djceu27/" class="pages-links">Virtual Tickets</a>
+Yes there are, but you would need to purchase a ticket before getting access to the platform, allowing you to stream live. You can get the virtual ticket <a href="https://pretix.evolutio.pt/evolutio/djceu27/" class="pages-links">here</a>.
 
-**Where is the exact venue for the event**
+**Where is the exact venue for the event?**
 The conference takes place at Congress Innsbruck (Rennweg 3) and Universität Innsbruck, Campus Innrain — see the <a href="/information/venue/" class="pages-links">venue page</a> for maps and directions.
 
 **How do I get to Innsbruck?**
-Kindly check this <a href="/information/innsbruck/" class="pages-links">page</a>, it should answer all your questions.
+Kindly check this <a href="/information/innsbruck/" class="pages-links">page</a>. It should answer all your questions.
 
 **Will there be breakfast, lunch and dinner?**
-Lunch and Coffee breaks are included. Dinners are not included
+Lunch and Coffee breaks are included. Dinners are not included.

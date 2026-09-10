@@ -22,4 +22,4 @@ DjangoCon Europe has three conference days reserved for talks (followed by two d
 
 - 2 talks focusing on languages or frameworks that are **not Django**.
 
-If your talk idea does not match any of these categories or matches more than one – don't worry! This is not a strict list that every submission needs to fit in, and it is just meant as a guide for attendees, submitters, and reviewers alike.
+If your talk idea does not match any of these categories or matches more than one — don't worry! This is not a strict list that every submission needs to fit in, and it is just meant as a guide for attendees, submitters, and reviewers alike.
