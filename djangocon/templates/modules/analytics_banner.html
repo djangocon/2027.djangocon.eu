@@ -1,0 +1,53 @@
+{% comment %}
+  The cookie consent banner. Markup lives in <body>; the tag logic it drives
+  is set up in <head> by modules/analytics_head.html, which exposes
+  window.djcConsent.
+{% endcomment %}
+<div id="cookie-banner"
+     class="cookie-banner"
+     role="dialog"
+     aria-modal="false"
+     aria-labelledby="cookie-banner-title"
+     hidden>
+  <div class="cookie-banner-inner">
+    <div>
+      <p id="cookie-banner-title" class="cookie-banner-title">Cookies</p>
+      <p class="cookie-banner-text">
+        We'd like to use Google Analytics to see which pages people find useful. No analytics cookies are set unless you accept. See our <a href="{% url 'subpage' menu='conduct' submenu='privacy_guide' %}">privacy guide</a>.
+      </p>
+    </div>
+    <div class="cookie-banner-actions">
+      <button type="button" id="cookie-decline" class="cookie-btn cookie-btn-ghost">Decline</button>
+      <button type="button" id="cookie-accept" class="cookie-btn cookie-btn-solid">Accept</button>
+    </div>
+  </div>
+</div>
+<script>
+  (function() {
+    var consent = window.djcConsent;
+    var banner = document.getElementById('cookie-banner');
+    if (!consent || !banner) return;
+
+    // Only an undecided visitor is asked; "accepted" was already acted on in
+    // <head>, and "declined" stays declined.
+    if (consent.stored !== 'accepted' && consent.stored !== 'declined') {
+      banner.hidden = false;
+    }
+
+    var decide = function(value) {
+      consent.decide(value);
+      banner.hidden = true;
+    };
+
+    var accept = document.getElementById('cookie-accept');
+    var decline = document.getElementById('cookie-decline');
+    if (accept)
+      accept.addEventListener('click', function() {
+        decide('accepted');
+      });
+    if (decline)
+      decline.addEventListener('click', function() {
+        decide('declined');
+      });
+  })();
+</script>

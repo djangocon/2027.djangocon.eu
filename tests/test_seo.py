@@ -87,6 +87,26 @@ class TestAnalytics:
         html = client.get("/").content.decode()
         assert 'src="https://www.googletagmanager.com' not in html
 
+    def test_tag_setup_is_in_the_head(self, client: Client, settings):
+        """Google's gtag.js install guide puts the tag in <head>."""
+        settings.GA4_MEASUREMENT_ID = "G-TESTID1234"
+        html = client.get("/").content.decode()
+        head = html[: html.index("</head>")]
+        assert "window.djcConsent" in head
+        # escapejs encodes the hyphen, which JS decodes back to "G-TESTID1234".
+        assert "G\\u002DTESTID1234" in head
+
+    def test_banner_markup_is_in_the_body(self, client: Client, settings):
+        """A <div> cannot live in <head>, so the UI half goes after it."""
+        settings.GA4_MEASUREMENT_ID = "G-TESTID1234"
+        html = client.get("/").content.decode()
+        assert html.index('id="cookie-banner"') > html.index("</head>")
+
+    def test_no_noscript_fallback(self, client: Client, settings):
+        """That is a GTM pattern; GA4 measures only in JS, so it would be dead markup."""
+        settings.GA4_MEASUREMENT_ID = "G-TESTID1234"
+        assert "<noscript" not in client.get("/").content.decode()
+
     def test_banner_links_to_the_privacy_guide(self, client: Client, settings):
         settings.GA4_MEASUREMENT_ID = "G-TESTID1234"
         html = client.get("/").content.decode()

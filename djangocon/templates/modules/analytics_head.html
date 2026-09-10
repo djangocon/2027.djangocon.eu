@@ -1,0 +1,80 @@
+{% comment %}
+  Google Analytics 4, behind consent. Goes in <head>, per Google's gtag.js
+  install guide ("immediately after the opening <head> tag"), so that a
+  returning visitor who has already accepted starts measuring as early as
+  possible instead of waiting for the end of <body>.
+
+  There is deliberately no <noscript> fallback: that belongs to Google Tag
+  Manager, whose noscript iframe still fires tags without JS. GA4's gtag.js
+  measures purely in JavaScript, so a <noscript> block could not report
+  anything and would be dead markup.
+
+  The privacy guide tells visitors they can control non-essential cookies from
+  a banner on first visit, and GDPR/ePrivacy require consent before analytics
+  cookies are set. So gtag.js is not requested at all until the visitor
+  accepts: no request reaches Google and no cookie is written on a first load
+  or after a refusal. The banner itself is in modules/analytics_banner.html.
+
+  The choice is kept in localStorage rather than a cookie -- it never needs to
+  reach the server, and a cookie asking for consent to cookies is a poor look.
+{% endcomment %}
+<script>
+  window.djcConsent = (function() {
+    var KEY = 'cookie-consent';
+    var MEASUREMENT_ID = '{{ ga4_measurement_id|escapejs }}';
+
+    var read = function() {
+      try {
+        return localStorage.getItem(KEY);
+      } catch (e) {
+        // Private mode or storage blocked: treat as undecided, so the banner
+        // reappears each visit rather than tracking silently.
+        return null;
+      }
+    };
+
+    var write = function(value) {
+      try {
+        localStorage.setItem(KEY, value);
+      } catch (e) {}
+    };
+
+    var load = function() {
+      if (!MEASUREMENT_ID || window.__ga4Loaded) return;
+      window.__ga4Loaded = true;
+
+      window.dataLayer = window.dataLayer || [];
+      // Named on window because gtag.js looks it up there; called through the
+      // local alias so the calls do not rely on an implicit global.
+      var gtag = function() {
+        window.dataLayer.push(arguments);
+      };
+      window.gtag = gtag;
+      gtag('js', new Date());
+      // Traffic source, session duration and page-to-page navigation all come
+      // from GA4's own page_view and session handling; no custom events needed.
+      gtag('config', MEASUREMENT_ID, {
+        anonymize_ip: true
+      });
+
+      var s = document.createElement('script');
+      s.async = true;
+      s.src =
+        'https://www.googletagmanager.com/gtag/js?id=' +
+        encodeURIComponent(MEASUREMENT_ID);
+      document.head.appendChild(s);
+    };
+
+    // A previous "accept" is honoured here, before the banner script runs.
+    var stored = read();
+    if (stored === 'accepted') load();
+
+    return {
+      stored: stored,
+      decide: function(value) {
+        write(value);
+        if (value === 'accepted') load();
+      }
+    };
+  })();
+</script>
