@@ -52,9 +52,24 @@ pre-commit (`pre-commit install` once, or `just lint` to run everything).
 Production settings live in `config/settings/production.py` and are driven by
 environment variables: `DJANGO_SECRET_KEY` (required), `DJANGO_ALLOWED_HOSTS`
 (default `2027.djangocon.eu`), `SENTRY_DSN` (optional), `DJANGO_SECURE_HSTS_SECONDS`
-(default 60 — raise once HTTPS is proven). Static files are served by WhiteNoise
-from `staticfiles/` after `manage.py collectstatic`; run the app with gunicorn
-(`gunicorn config.wsgi`).
+(default 60 — raise once HTTPS is proven), `DJANGO_GA4_MEASUREMENT_ID` (default
+`G-C4K64NWHSN`; set it empty to turn analytics off). Static files are served by
+WhiteNoise from `staticfiles/` after `manage.py collectstatic`; run the app with
+gunicorn (`gunicorn config.wsgi`).
+
+## SEO and analytics
+
+`/robots.txt` and `/sitemap.xml` are both generated, not checked in. The sitemap
+walks `djangocon/content/` and lists every folder that renders a page, so adding
+a page adds a sitemap entry with no extra step — see `djangocon/site/sitemaps.py`.
+
+Google Analytics 4 is **off unless `DJANGO_GA4_MEASUREMENT_ID` is set**, so local
+development and CI never send hits. Where it is configured, `gtag.js` is still not
+loaded until the visitor accepts analytics cookies in the banner: nothing is
+requested from Google and no cookie is written before that. The choice is kept in
+`localStorage` under `cookie-consent`. This is what the
+[privacy guide](djangocon/content/conduct/privacy_guide/cookies.md) promises, so
+keep the two in step if you change the behaviour.
 
 ## Editing site content
 

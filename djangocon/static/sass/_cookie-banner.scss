@@ -1,0 +1,100 @@
+@use 'variables' as *;
+
+// Cookie consent banner. Fixed to the bottom rather than a full-screen modal:
+// the site is readable while the choice is pending, and nothing is tracked
+// until the visitor accepts, so there is no reason to block the page.
+
+.cookie-banner {
+  position: fixed;
+  inset: auto 0 0 0;
+  z-index: 1080; // above Bootstrap's fixed navbar (1030), below its modal (1055+)
+  background-color: var(--paper);
+  color: var(--ink);
+  border-top: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-lg);
+  padding: var(--space-sm) var(--space-md);
+}
+
+.cookie-banner-inner {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+}
+
+.cookie-banner-title {
+  font-family: var(--font-display);
+  font-size: var(--text-md);
+  margin: 0 0 var(--space-3xs);
+}
+
+.cookie-banner-text {
+  font-size: var(--text-sm);
+  line-height: var(--leading-normal);
+  margin: 0;
+  max-width: 60ch;
+
+  a {
+    color: var(--link);
+
+    &:hover,
+    &:focus {
+      color: var(--link-hover);
+    }
+  }
+}
+
+.cookie-banner-actions {
+  display: flex;
+  gap: var(--space-2xs);
+  flex-shrink: 0;
+}
+
+.cookie-btn {
+  font-family: var(--font-main);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  padding: var(--space-2xs) var(--space-md);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition:
+    background-color var(--duration-fast) var(--ease-base),
+    color var(--duration-fast) var(--ease-base);
+}
+
+.cookie-btn-solid {
+  background-color: var(--accent);
+  border: 1px solid var(--accent);
+  color: #fff; // white on $accent regardless of theme — the accent does not flip
+
+  &:hover,
+  &:focus {
+    background-color: var(--accent-dark);
+    border-color: var(--accent-dark);
+  }
+}
+
+.cookie-btn-ghost {
+  background-color: transparent;
+  border: 1px solid var(--border-subtle);
+  color: var(--ink);
+
+  &:hover,
+  &:focus {
+    background-color: var(--overlay-subtle);
+  }
+}
+
+@media (max-width: $bp-sm) {
+  .cookie-banner-inner {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .cookie-banner-actions {
+    justify-content: flex-end;
+  }
+}

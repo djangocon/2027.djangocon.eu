@@ -83,5 +83,9 @@
     {% block inline_javascript %}
     {% endblock inline_javascript %}
     {% include "modules/footer.html" %}
+    {# Analytics is opt-in and only rendered when a measurement ID is configured. #}
+    {% if ga4_measurement_id %}
+      {% include "modules/analytics.html" %}
+    {% endif %}
   </body>
 </html>

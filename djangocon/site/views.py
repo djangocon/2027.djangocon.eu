@@ -1,5 +1,6 @@
 from django.http import Http404
 from django.shortcuts import render
+from django.urls import reverse
 from django.views.decorators.http import require_safe
 
 from djangocon.site.utils.content import content_dir
@@ -44,3 +45,16 @@ def page(request, menu, submenu=None):
     if not files:
         raise Http404
     return render(request, "pages/default.html", {"menu": _title(request.path, submenu or menu), "files": files})
+
+
+@require_safe
+def robots_txt(request):
+    """/robots.txt, pointing crawlers at the sitemap.
+
+    The sitemap URL has to be absolute -- a relative one is ignored -- and is
+    built from the request so it stays right on any host the site is served
+    from, rather than hardcoding the production domain into a file that also
+    gets served in development.
+    """
+    sitemap_url = request.build_absolute_uri(reverse("django.contrib.sitemaps.views.sitemap"))
+    return render(request, "robots.txt", {"sitemap_url": sitemap_url}, content_type="text/plain")
