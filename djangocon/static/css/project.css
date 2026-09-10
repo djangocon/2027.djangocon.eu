@@ -17201,8 +17201,13 @@ h2 {
 }
 
 .important-dates-link {
+  color: inherit;
   text-decoration: underline;
   text-decoration-color: var(--ink);
+}
+.important-dates-link:hover {
+  color: var(--accent);
+  text-decoration-color: var(--accent);
 }
 
 @media (max-width: 768px) {
