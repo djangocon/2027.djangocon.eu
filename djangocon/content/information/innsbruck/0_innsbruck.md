@@ -2,7 +2,7 @@ title: Innsbruck
 layout: simple
 order: 0
 
-Welcome to **Innsbruck**, the capital of the Alps. Squeezed between the Nordkette mountain range and the Patscherkofel, centred on the River Inn and crowned by the famous Golden Roof, the city mixes 800 years of Habsburg history with a young, outdoorsy student vibe. Walk its compact Old Town and you'll pass imperial palaces, pastel-coloured riverside houses, cosy coffee houses and, at the end of almost every street, a mountain.
+Welcome to **Innsbruck**, the capital of the Alps. Squeezed between the Nordkette mountain range and the Patscherkofel, centred on the River Inn and crowned by the famous Golden Roof, the city mixes 800 years of Habsburg history with a young, outdoorsy student vibe. Walk its compact Old Town, and you'll pass imperial palaces, pastel-coloured riverside houses, cosy coffee houses and, at the end of almost every street, a mountain.
 
 <div class="fact-grid">
   <div class="fact"><span class="fact-label">Country</span><span class="fact-value">Austria</span><span class="fact-note">Tyrol, in the west</span></div>
@@ -62,7 +62,7 @@ An alternative to public transport is renting a bicyle. There are many pickup an
 
 ### What to see
 
-- The **Golden Roof** and the medieval Old Town, a few minutes' walk from Congress Innsbruck.
+- The **Golden Roof** and the medieval Old Town, a short walk from the conference venue.
 - The **Nordkettenbahnen** — funicular and cable cars from the city centre to over 2,200&nbsp;m in about 30 minutes.
 - **Ambras Castle**, the Renaissance palace and collection on the hill above the city.
 - The **Bergisel ski jump**, with a viewing platform over the whole valley.

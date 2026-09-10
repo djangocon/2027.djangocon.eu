@@ -23,7 +23,7 @@ Sorry, hopefully that doesn't happen. But if it does, email our staff here <a hr
 Yes there are, but you would need to purchase a ticket before getting access to the platform, allowing you to stream live. You can get the virtual ticket <a href="https://pretix.evolutio.pt/evolutio/djceu27/" class="pages-links">here</a>.
 
 **Where is the exact venue for the event?**
-The conference takes place at Congress Innsbruck (Rennweg 3) and Universität Innsbruck, Campus Innrain — see the <a href="/information/venue/" class="pages-links">venue page</a> for maps and directions.
+The conference takes place at SoWi University Innsbruck (Universitätsstrasse 15, 6020 Innsbruck) — see the <a href="/information/venue/" class="pages-links">venue page</a> for maps and directions.
 
 **How do I get to Innsbruck?**
 Kindly check this <a href="/information/innsbruck/" class="pages-links">page</a>. It should answer all your questions.

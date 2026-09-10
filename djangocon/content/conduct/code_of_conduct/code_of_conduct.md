@@ -2,7 +2,7 @@ layout: simple
 order: 0
 title: Code of Conduct
 
-DjangoCon Europe is committed to providing a safe, inclusive, and respectful environment for everyone who takes part — in person at Congress Innsbruck and Universität Innsbruck, and online.
+DjangoCon Europe is committed to providing a safe, inclusive, and respectful environment for everyone who takes part — in person at SoWi University Innsbruck, and online.
 
 This Code of Conduct applies to all participants: attendees, speakers, sponsors, organizers, volunteers, and staff, without exception and without regard to role or seniority.
 
@@ -48,7 +48,7 @@ Unacceptable behavior includes, without limitation:
 
 This Code of Conduct applies:
 
-- At Congress Innsbruck and Universität Innsbruck for the duration of the conference.
+- At SoWi University Innsbruck for the duration of the conference.
 - At all official DjangoCon Europe social events and sprints, on- or off-site, including anywhere alcohol is served.
 - On official online platforms: <a href="https://join.slack.com/t/djangoconeurope/shared_invite/zt-340erqj3r-s5ekP4aYz95jv14GZMPCAg" class="pages-links" target="\_blank">Slack</a>, mailing lists, and the conference app.
 - To social media posts using official conference hashtags.
@@ -78,7 +78,7 @@ Compliance with a request from an organizer or CARE team member is expected imme
 
 If you are being harassed, notice someone else being harassed, or have any other concerns, contact the CARE team immediately:
 
-- **In person**: look for a CARE badge/lanyard at the registration desk and at all official social events, at both the Congress Innsbruck and Universität Innsbruck venues.
+- **In person**: look for a CARE badge/lanyard at the registration desk and at all official social events, and at the SoWi University Innsbruck venue.
 - **By email**: <a href="mailto:conduct@djangocon.eu" class="pages-links">conduct@djangocon.eu</a>
 - **By Slack**: direct message any member of the <a href="https://join.slack.com/t/djangoconeurope/shared_invite/zt-340erqj3r-s5ekP4aYz95jv14GZMPCAg" target="\_blank" class="pages-links">#care-team</a> channel.
 - **Anonymously**: via the anonymous report form linked from the conference website and app. See the <a href="/conduct/response_guide/" class="pages-links">response guidelines</a> for what this covers and its limits.

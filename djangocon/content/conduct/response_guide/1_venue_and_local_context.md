@@ -2,7 +2,7 @@ title: venue and local context
 layout: simple
 order: 1
 
-DjangoCon Europe 2027 runs across <b>Congress Innsbruck</b> (Rennweg 3, 6020 Innsbruck) and <b>Universität Innsbruck</b>, Campus Innrain. Organizers should confirm on-site medical and security staff contacts with both venues ahead of the event and post them at registration.
+DjangoCon Europe 2027 is held at <b>SoWi University Innsbruck</b> (Universitätsstrasse 15, 6020 Innsbruck). Organizers should confirm on-site medical and security staff contacts with the venue ahead of the event and post them at registration.
 
 ### Emergency numbers in Austria
 
@@ -13,8 +13,8 @@ DjangoCon Europe 2027 runs across <b>Congress Innsbruck</b> (Rennweg 3, 6020 Inn
 
 ### Nearest hospital
 
-Landeskrankenhaus – Universitätskliniken Innsbruck, Anichstraße 35, 6020 Innsbruck (<a href="https://www.tirol-kliniken.at/" class="pages-links" target="\_blank">tirol kliniken</a>), a short distance from both venues.
+Landeskrankenhaus – Universitätskliniken Innsbruck, Anichstraße 35, 6020 Innsbruck (<a href="https://www.tirol-kliniken.at/" class="pages-links" target="\_blank">tirol kliniken</a>), a short distance from the venue.
 
 ### Language
 
-Austria is a German-speaking country. English is widely spoken at both venues, but CARE should have at least one German-speaking member reachable during the conference for interactions with local police, medical staff, or venue security.
+Austria is a German-speaking country. English is widely spoken at the venue, but CARE should have at least one German-speaking member reachable during the conference for interactions with local police, medical staff, or venue security.

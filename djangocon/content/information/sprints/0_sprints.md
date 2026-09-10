@@ -8,7 +8,7 @@ On **Saturday 20 and Sunday 21 February 2027**, you have the opportunity to do e
 
 ### Where
 
-The conference runs across Congress Innsbruck and Universität Innsbruck — see the [venue page](/information/venue/) for addresses and maps. We will confirm here which of the two hosts the sprints.
+The sprints are held in the same conference room as the rest of the conference, at SoWi University Innsbruck (Universitätsstrasse 15) — see the [venue page](/information/venue/) for the address and map.
 
 ### Time
 
