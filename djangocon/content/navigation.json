@@ -53,6 +53,7 @@
   },
   "social_media": {
     "twitter": "https://twitter.com/DjangoConEurope/",
+    "fosstodon": "https://fosstodon.org/@djangoconeurope",
     "slack": "https://join.slack.com/t/djangoconeurope/shared_invite/zt-340erqj3r-s5ekP4aYz95jv14GZMPCAg",
     "youtube": "https://youtube.com/user/djangoconeurope/",
     "linkedin": "https://linkedin.com/company/djangocon-europe/",
