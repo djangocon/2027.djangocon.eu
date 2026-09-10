@@ -1,0 +1,85 @@
+{% comment %}
+  Google Analytics 4, behind consent. Goes near the top of the document head,
+  per Google's gtag.js install guide ("immediately after the opening head
+  tag"), so that a returning visitor who has already accepted starts measuring
+  as early as possible instead of waiting for the end of the body.
+
+  There is deliberately no noscript fallback: that belongs to Google Tag
+  Manager, whose noscript iframe still fires tags without JS. GA4's gtag.js
+  measures purely in JavaScript, so a noscript block could not report anything
+  and would be dead markup.
+
+  The privacy guide tells visitors they can control non-essential cookies from
+  a banner on first visit, and GDPR/ePrivacy require consent before analytics
+  cookies are set. So gtag.js is not requested at all until the visitor
+  accepts: no request reaches Google and no cookie is written on a first load
+  or after a refusal. The banner itself is in modules/analytics_banner.html.
+
+  The choice is kept in localStorage rather than a cookie -- it never needs to
+  reach the server, and a cookie asking for consent to cookies is a poor look.
+
+  Notes on the script below, kept here rather than inline because inline
+  comments are served to the browser and show up in view-source:
+
+  * read() swallows a localStorage failure (private mode, storage blocked) and
+    returns null, i.e. undecided: the banner reappears next visit rather than
+    the site tracking silently.
+  * gtag is assigned to window because gtag.js looks it up there, and called
+    through the local alias so the calls do not rely on an implicit global.
+  * Traffic source, session duration and page-to-page navigation all come from
+    GA4's own page_view and session handling; no custom events are needed.
+  * A previous "accept" is honoured on load, before the banner script runs.
+{% endcomment %}
+<script>
+  window.djcConsent = (function() {
+    var KEY = 'cookie-consent';
+    var MEASUREMENT_ID = '{{ ga4_measurement_id|escapejs }}';
+
+    var read = function() {
+      try {
+        return localStorage.getItem(KEY);
+      } catch (e) {
+        return null;
+      }
+    };
+
+    var write = function(value) {
+      try {
+        localStorage.setItem(KEY, value);
+      } catch (e) {}
+    };
+
+    var load = function() {
+      if (!MEASUREMENT_ID || window.__ga4Loaded) return;
+      window.__ga4Loaded = true;
+
+      window.dataLayer = window.dataLayer || [];
+      var gtag = function() {
+        window.dataLayer.push(arguments);
+      };
+      window.gtag = gtag;
+      gtag('js', new Date());
+      gtag('config', MEASUREMENT_ID, {
+        anonymize_ip: true
+      });
+
+      var s = document.createElement('script');
+      s.async = true;
+      s.src =
+        'https://www.googletagmanager.com/gtag/js?id=' +
+        encodeURIComponent(MEASUREMENT_ID);
+      document.head.appendChild(s);
+    };
+
+    var stored = read();
+    if (stored === 'accepted') load();
+
+    return {
+      stored: stored,
+      decide: function(value) {
+        write(value);
+        if (value === 'accepted') load();
+      }
+    };
+  })();
+</script>

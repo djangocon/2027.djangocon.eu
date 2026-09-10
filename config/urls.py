@@ -1,13 +1,20 @@
 from django.conf import settings
+from django.contrib.sitemaps.views import sitemap
 from django.urls import include
 from django.urls import path
 from django.views import defaults as default_views
 from django.views.generic import RedirectView
 
 from djangocon.site import views
+from djangocon.site.sitemaps import SITEMAPS
 
 urlpatterns = [
     path("", views.home, name="home"),
+    # SEO. Both live at the root because that is the only place crawlers look
+    # for them: robots.txt is only read at /robots.txt, and a sitemap outside
+    # the root can only cover URLs below its own path.
+    path("robots.txt", views.robots_txt, name="robots_txt"),
+    path("sitemap.xml", sitemap, {"sitemaps": SITEMAPS}, name="django.contrib.sitemaps.views.sitemap"),
     # Legacy URL for the home page (linked from older material); one canonical URL is better for SEO.
     path("home/", RedirectView.as_view(url="/", permanent=True)),
     path("sponsors/sponsors/", views.sponsors, name="sponsors"),

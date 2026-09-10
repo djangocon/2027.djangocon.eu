@@ -33,6 +33,12 @@ SECURE_HSTS_PRELOAD = env.bool("DJANGO_SECURE_HSTS_PRELOAD", default=True)
 # https://docs.djangoproject.com/en/dev/ref/middleware/#x-content-type-options-nosniff
 SECURE_CONTENT_TYPE_NOSNIFF = env.bool("DJANGO_SECURE_CONTENT_TYPE_NOSNIFF", default=True)
 
+# ANALYTICS
+# ------------------------------------------------------------------------------
+# The DjangoCon Europe 2027 GA4 property. Overridable by env so a staging
+# deploy can point somewhere else (or set it empty to switch analytics off).
+GA4_MEASUREMENT_ID = env("DJANGO_GA4_MEASUREMENT_ID", default="G-C4K64NWHSN")
+
 # STATIC
 # ------------------------
 STORAGES = {

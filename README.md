@@ -52,9 +52,39 @@ pre-commit (`pre-commit install` once, or `just lint` to run everything).
 Production settings live in `config/settings/production.py` and are driven by
 environment variables: `DJANGO_SECRET_KEY` (required), `DJANGO_ALLOWED_HOSTS`
 (default `2027.djangocon.eu`), `SENTRY_DSN` (optional), `DJANGO_SECURE_HSTS_SECONDS`
-(default 60 — raise once HTTPS is proven). Static files are served by WhiteNoise
-from `staticfiles/` after `manage.py collectstatic`; run the app with gunicorn
-(`gunicorn config.wsgi`).
+(default 60 — raise once HTTPS is proven), `DJANGO_GA4_MEASUREMENT_ID` (default
+`G-C4K64NWHSN`; set it empty to turn analytics off). Static files are served by
+WhiteNoise from `staticfiles/` after `manage.py collectstatic`; run the app with
+gunicorn (`gunicorn config.wsgi`).
+
+## SEO and analytics
+
+`/robots.txt` and `/sitemap.xml` are both generated, not checked in. The sitemap
+walks `djangocon/content/` and lists every folder that renders a page, so adding
+a page adds a sitemap entry with no extra step — see `djangocon/site/sitemaps.py`.
+
+Google Analytics 4 is **off unless `DJANGO_GA4_MEASUREMENT_ID` is set**, so local
+development and CI never send hits — including in Docker, where `.envs/.django`
+does not set it. To see the banner locally, run with the variable set:
+
+```bash
+docker compose run --rm -e DJANGO_GA4_MEASUREMENT_ID=G-C4K64NWHSN -p 8000:8000 \
+  django python manage.py runserver 0.0.0.0:8000
+```
+
+Where it is configured, `gtag.js` is still not loaded until the visitor accepts
+analytics cookies: nothing is requested from Google and no cookie is written
+before that. The choice is kept in `localStorage` under `cookie-consent`. This is
+what the [privacy guide](djangocon/content/conduct/privacy_guide/cookies.md)
+promises, so keep the two in step if you change the behaviour.
+
+The tag is split in two, following Google's gtag.js install guide:
+`modules/analytics_head.html` sets up the consent gate in `<head>` (so a returning
+visitor who already accepted starts measuring immediately) and
+`modules/analytics_banner.html` carries the banner markup at the end of `<body>`.
+There is no `<noscript>` fallback: that belongs to Google Tag Manager, whose
+noscript iframe still fires tags without JavaScript. GA4 measures purely in JS, so
+a `<noscript>` block could not report anything.
 
 ## Editing site content
 

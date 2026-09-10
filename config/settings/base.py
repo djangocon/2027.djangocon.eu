@@ -39,6 +39,14 @@ USE_TZ = True
 # files in this directory. See djangocon/site/utils/content.py.
 CONTENT_DIR = APPS_DIR / "content"
 
+# ANALYTICS
+# ------------------------------------------------------------------------------
+# Google Analytics 4 measurement ID. Empty by default so local development and
+# CI send no hits and do not pollute the property; production sets it (see
+# config/settings/production.py). The tag is only loaded after the visitor
+# accepts analytics cookies -- see templates/modules/analytics.html.
+GA4_MEASUREMENT_ID = env("DJANGO_GA4_MEASUREMENT_ID", default="")
+
 # URLS
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#root-urlconf
@@ -49,8 +57,11 @@ WSGI_APPLICATION = "config.wsgi.application"
 # APPS
 # ------------------------------------------------------------------------------
 # No models, no auth, no forms: only static files are needed from Django itself.
+# sitemaps is the exception -- it needs no database here because the sitemap is
+# built from the content files rather than from a queryset.
 DJANGO_APPS = [
     "django.contrib.staticfiles",
+    "django.contrib.sitemaps",
 ]
 THIRD_PARTY_APPS = []
 LOCAL_APPS = [
@@ -101,6 +112,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.template.context_processors.static",
                 "djangocon.site.utils.context_processors.links",
+                "djangocon.site.utils.context_processors.analytics",
             ],
         },
     }
