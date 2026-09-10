@@ -11,7 +11,6 @@ lively student scene make it a city where you can walk from a conference talk to
 As per DjangoCon tradition, we shall walk around, chat, laugh and explore the city together. If you are not the
 "walking-type", let the convenient public transportation network work its magic for you!
 
-
 ### Conference venue
 
 DjangoCon Europe 2027 runs across one venue in central Innsbruck. Sprints will be held in the same conference room.
@@ -30,5 +29,3 @@ DjangoCon Europe 2027 runs across one venue in central Innsbruck. Sprints will b
     </figcaption>
   </figure>
 </div>
-
-
