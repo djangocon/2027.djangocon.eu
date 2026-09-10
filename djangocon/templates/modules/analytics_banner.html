@@ -1,7 +1,11 @@
 {% comment %}
-  The cookie consent banner. Markup lives in <body>; the tag logic it drives
-  is set up in <head> by modules/analytics_head.html, which exposes
-  window.djcConsent.
+  The cookie consent banner. Markup lives at the end of the body; the tag logic
+  it drives is set up in the document head by modules/analytics_head.html,
+  which exposes window.djcConsent.
+
+  Only an undecided visitor is asked: "accepted" was already acted on in the
+  head, and "declined" stays declined. Script comments are kept out of the
+  block below because inline comments are served to the browser.
 {% endcomment %}
 <div id="cookie-banner"
      class="cookie-banner"
@@ -28,8 +32,6 @@
     var banner = document.getElementById('cookie-banner');
     if (!consent || !banner) return;
 
-    // Only an undecided visitor is asked; "accepted" was already acted on in
-    // <head>, and "declined" stays declined.
     if (consent.stored !== 'accepted' && consent.stored !== 'declined') {
       banner.hidden = false;
     }

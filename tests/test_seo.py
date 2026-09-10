@@ -102,6 +102,18 @@ class TestAnalytics:
         html = client.get("/").content.decode()
         assert html.index('id="cookie-banner"') > html.index("</head>")
 
+    def test_inline_scripts_carry_no_comments(self, client: Client, settings):
+        """Explanatory comments belong in the template, not in what the browser is served.
+
+        {% comment %} blocks are stripped server-side; a // comment inside the
+        <script> is not, and shows up in view-source.
+        """
+        settings.GA4_MEASUREMENT_ID = "G-TESTID1234"
+        html = client.get("/").content.decode()
+        for block in re.findall(r"<script(?![^>]*\bsrc=)[^>]*>(.*?)</script>", html, re.S):
+            for line in block.splitlines():
+                assert not line.strip().startswith(("//", "/*")), f"comment served to browser: {line.strip()}"
+
     def test_no_noscript_fallback(self, client: Client, settings):
         """That is a GTM pattern; GA4 measures only in JS, so it would be dead markup."""
         settings.GA4_MEASUREMENT_ID = "G-TESTID1234"
