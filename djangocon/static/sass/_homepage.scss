@@ -1770,8 +1770,14 @@ object[type='application/pdf'] {
 }
 
 .important-dates-link {
+  color: inherit; // read as the milestone text, not as a Bootstrap-blue link
   text-decoration: underline;
   text-decoration-color: var(--ink);
+
+  &:hover {
+    color: var(--accent);
+    text-decoration-color: var(--accent);
+  }
 }
 
 @media (max-width: 768px) {
