@@ -81,7 +81,7 @@ If you are being harassed, notice someone else being harassed, or have any other
 - **In person**: look for a CARE badge/lanyard at the registration desk and at all official social events, and at the SoWi University Innsbruck venue.
 - **By email**: <a href="mailto:conduct@djangocon.eu" class="pages-links">conduct@djangocon.eu</a>
 - **By Slack**: direct message any member of the <a href="https://join.slack.com/t/djangoconeurope/shared_invite/zt-340erqj3r-s5ekP4aYz95jv14GZMPCAg" target="\_blank" class="pages-links">#care-team</a> channel.
-- **Anonymously**: via the anonymous report form linked from the conference website and app. See the <a href="/conduct/response_guide/" class="pages-links">response guidelines</a> for what this covers and its limits.
+- **Anonymously**: via the <a href="https://forms.gle/v6De4jLPm1XZ64SN9" target="_blank" class="pages-links">anonymous report form</a>. See the <a href="/conduct/response_guide/" class="pages-links">response guidelines</a> for what this covers and its limits.
 
 ### Guidelines for reporting incidents
 

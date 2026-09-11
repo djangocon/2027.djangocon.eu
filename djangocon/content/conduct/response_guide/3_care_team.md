@@ -9,6 +9,19 @@ The Code of Conduct Active Response Ensurers (CARE) handle reports from receipt 
 - Acknowledge receipt promptly and compassionately. Do not imply a conclusion about whether a violation occurred, or what the outcome will be, at this stage.
 - Log the report in the shared CARE incident record. Access is restricted to CARE members; see the <a href="/conduct/privacy_guide/" class="pages-links">privacy guide</a> for retention.
 
+### Anonymous reports
+
+Reports may arrive in person, by email to <a href="mailto:conduct@djangocon.eu" class="pages-links">conduct@djangocon.eu</a>, via the #care-team Slack channel, or through the <a href="https://forms.gle/v6De4jLPm1XZ64SN9" target="_blank" class="pages-links">anonymous report form</a>.
+
+An anonymous report is logged, reviewed, and taken as seriously as any other. What it cannot do is follow the same path, and reporters should know this in advance:
+
+- CARE cannot ask follow-up questions, so the report is worked on only what was submitted.
+- CARE cannot tell the reporter what was decided or done, and cannot check in on their wellbeing afterward.
+- Resolutions that depend on a reporter's account being testable, or on their consent — a no-contact requirement between two named parties, for example — may not be available on an anonymous report alone.
+- An anonymous report can still prompt CARE to increase presence in a space, give a general reminder about expected behavior, or corroborate a later named report about the same person.
+
+Where a reporter is willing to be contacted but does not want their name shared with the person reported, that is not an anonymous report — take it through the normal process and handle the confidentiality within it. That path preserves every resolution option, so offer it when someone is hesitant but reachable.
+
 ### Working the case
 
 - CARE decides and acts collectively wherever possible. If immediate action is needed and the full team isn't reachable, one member may act, but should consult at least one other CARE member as soon as practical afterward.
