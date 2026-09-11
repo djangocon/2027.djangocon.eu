@@ -9,5 +9,12 @@ def links(request):
 
 
 def analytics(request):
-    """Expose the GA4 measurement ID so base.html can decide whether to load the tag."""
-    return {"ga4_measurement_id": settings.GA4_MEASUREMENT_ID}
+    """Expose the GA4 settings so base.html can decide whether to load the tag.
+
+    The Pretix host travels with the measurement ID because the only thing that
+    reads it is the ticket-link click tracker inside the same tag module.
+    """
+    return {
+        "ga4_measurement_id": settings.GA4_MEASUREMENT_ID,
+        "pretix_host": settings.PRETIX_HOST,
+    }

@@ -27,13 +27,39 @@
   * gtag is assigned to window because gtag.js looks it up there, and called
     through the local alias so the calls do not rely on an implicit global.
   * Traffic source, session duration and page-to-page navigation all come from
-    GA4's own page_view and session handling; no custom events are needed.
+    GA4's own page_view and session handling, so none of those are measured by
+    hand; the one custom event is the ticket-link click described below.
   * A previous "accept" is honoured on load, before the banner script runs.
+
+  Ticket-link clicks are measured as a select_ticket_link event. Notes on that
+  half, again kept out of the served markup:
+
+  * The event is custom rather than GA4's begin_checkout because leaving for
+    the shop is not a checkout step: the purchase happens on Pretix and we
+    never learn whether it completed. Feeding it into the ecommerce funnel
+    would invent a funnel we cannot close. Mark it as a key event in the GA4
+    UI if it should count as a conversion.
+  * It is a delegated listener on the document rather than a handler per link,
+    because ticket links appear in the header, the home hero, the ticket
+    cards, navigation.json and the Markdown content. Matching on the shop host
+    means a link added in content later is measured with no extra work.
+  * closest('a') is what makes that work for a click landing on an element
+    inside the link, and the host comparison covers any path on the shop.
+  * Traffic source is deliberately not attached: GA4 resolves source, medium
+    and campaign for the session itself, so the event inherits the attribution
+    of the visit it belongs to. Only what GA4 cannot know is passed -- which
+    page the click came from and where it went.
+  * transport_type 'beacon' matters here: the click navigates away, and a
+    normal request would be cancelled in flight. sendBeacon hands the hit to
+    the browser, which delivers it after the page is gone.
+  * Nothing is measured without consent, matching the promise in the privacy
+    guide: no gtag means the listener returns before doing anything.
 {% endcomment %}
 <script>
   window.djcConsent = (function() {
     var KEY = 'cookie-consent';
     var MEASUREMENT_ID = '{{ ga4_measurement_id|escapejs }}';
+    var PRETIX_HOST = '{{ pretix_host|escapejs }}';
 
     var read = function() {
       try {
@@ -70,6 +96,29 @@
         encodeURIComponent(MEASUREMENT_ID);
       document.head.appendChild(s);
     };
+
+    var isTicketLink = function(link) {
+      if (!PRETIX_HOST || !link) return false;
+      try {
+        return new URL(link.href, window.location.href).host === PRETIX_HOST;
+      } catch (e) {
+        return false;
+      }
+    };
+
+    document.addEventListener('click', function(event) {
+      if (!window.gtag) return;
+      var target = event.target;
+      var link = target && target.closest ? target.closest('a') : null;
+      if (!isTicketLink(link)) return;
+
+      window.gtag('event', 'select_ticket_link', {
+        link_url: link.href,
+        link_text: (link.textContent || '').trim().slice(0, 100),
+        source_page: window.location.pathname,
+        transport_type: 'beacon'
+      });
+    });
 
     var stored = read();
     if (stored === 'accepted') load();

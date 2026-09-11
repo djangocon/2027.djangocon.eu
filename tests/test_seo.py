@@ -127,6 +127,44 @@ class TestAnalytics:
         assert "/conduct/privacy_guide/" in html
 
 
+class TestTicketLinkTracking:
+    """Clicks through to the Pretix shop, measured as select_ticket_link."""
+
+    def test_tracker_is_set_up_when_configured(self, client: Client, settings):
+        settings.GA4_MEASUREMENT_ID = "G-TESTID1234"
+        html = client.get("/").content.decode()
+        assert "select_ticket_link" in html
+
+    def test_absent_when_no_measurement_id_is_configured(self, client: Client, settings):
+        """No tag means nothing to report to, so the listener must not ship either."""
+        settings.GA4_MEASUREMENT_ID = ""
+        assert "select_ticket_link" not in client.get("/").content.decode()
+
+    def test_matches_the_configured_shop_host(self, client: Client, settings):
+        settings.GA4_MEASUREMENT_ID = "G-TESTID1234"
+        settings.PRETIX_HOST = "pretix.example.org"
+        html = client.get("/").content.decode()
+        assert "var PRETIX_HOST = 'pretix.example.org'" in html
+
+    def test_sends_the_hit_by_beacon(self, client: Client, settings):
+        """A plain request would be cancelled when the click navigates away."""
+        settings.GA4_MEASUREMENT_ID = "G-TESTID1234"
+        assert "'beacon'" in client.get("/").content.decode()
+
+    def test_does_not_use_the_ecommerce_funnel_events(self, client: Client, settings):
+        """The purchase happens on Pretix, so we cannot honestly report a checkout."""
+        settings.GA4_MEASUREMENT_ID = "G-TESTID1234"
+        html = client.get("/").content.decode()
+        assert "begin_checkout" not in html
+        assert "purchase" not in html
+
+    def test_the_home_page_actually_links_to_that_host(self, client: Client, settings):
+        """The tracker matches on the host, so a drifted link would go unmeasured."""
+        settings.GA4_MEASUREMENT_ID = "G-TESTID1234"
+        html = client.get("/").content.decode()
+        assert f"https://{settings.PRETIX_HOST}/" in html
+
+
 class TestServedMarkup:
     def test_no_html_comments_on_any_page(self, client: Client):
         """Notes for whoever edits the content belong in the template, not in the page.
