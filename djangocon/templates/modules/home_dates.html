@@ -1,7 +1,27 @@
 {% load markdown_extras %}
 
-{# Important dates. The months and milestones are written in #}
-{# content/home/dates.md; this only renders the heading and the body. #}
+{% comment %}
+  Important dates. The months and milestones are written in
+  content/home/dates.md; this only renders the heading and the body.
+
+  That file holds one <div class="month"> per month, in chronological order,
+  inside an outer <div class="dates-grid">. Keep the outer div: Markdown
+  passes a block that starts with <div> through untouched.
+
+    h3           the month
+    .date-item   one milestone; the day goes in <span class="date">
+
+  Where a milestone has a page that explains it, wrap the label (not the day)
+  in a link carrying class="important-dates-link". That class keeps the link
+  in the body text colour instead of Bootstrap blue.
+
+  The dates in that file are the planned 2027 ones; adjust as they are
+  confirmed. Remove a month entirely to drop it.
+
+  This rationale lives here rather than in the .md file because an HTML
+  comment there is passed straight through by Markdown and served to the
+  browser, where it shows up in view-source.
+{% endcomment %}
 <div class="dates-section">
   <div class="dates-container">
     <h2 class="dates-title">{{ content|meta:"heading"|default:"Important dates" }}</h2>

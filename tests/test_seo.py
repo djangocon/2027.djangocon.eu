@@ -1,9 +1,11 @@
-"""robots.txt, sitemap.xml and the consent-gated analytics tag."""
+"""robots.txt, sitemap.xml, the consent-gated analytics tag, and the served markup."""
 
 import re
 from http import HTTPStatus
 
 from django.test import Client
+
+from djangocon.site.sitemaps import ContentSitemap
 
 
 def _locs(body: str) -> list[str]:
@@ -123,3 +125,16 @@ class TestAnalytics:
         settings.GA4_MEASUREMENT_ID = "G-TESTID1234"
         html = client.get("/").content.decode()
         assert "/conduct/privacy_guide/" in html
+
+
+class TestServedMarkup:
+    def test_no_html_comments_on_any_page(self, client: Client):
+        """Notes for whoever edits the content belong in the template, not in the page.
+
+        A {% comment %} block is stripped when Django renders, but an HTML
+        comment in a content .md file is passed straight through by Markdown
+        and served to the browser, where it shows up in view-source.
+        """
+        for path in ContentSitemap().items():
+            html = client.get(path).content.decode()
+            assert "<!--" not in html, f"HTML comment served on {path}"

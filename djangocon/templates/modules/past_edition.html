@@ -1,8 +1,23 @@
 {% load markdown_extras %}
 
-{# Past editions strip. The cards are written in content/home/past_edition.md #}
-{# (one <a class="edition"> per edition, linking to its Flickr album); the #}
-{# styling for .edition lives in _homepage.scss. #}
+{% comment %}
+  Past editions strip. The cards are written in content/home/past_edition.md,
+  oldest first, one <a class="edition"> per edition; the styling for .edition
+  lives in _homepage.scss.
+
+  Keep each card's wrapping <div> in that file: Markdown passes a block that
+  starts with <div> through untouched, whereas a bare <a> would be wrapped in
+  <p> and get <br> tags inside.
+
+    href  the Flickr album for that edition (or the edition's site while the
+          album does not exist yet)
+    img   a photo under djangocon/static/images/past/, named <year>_<city>.png
+    span  the caption revealed on hover (always visible on touch screens)
+
+  This rationale lives here rather than in the .md file because an HTML
+  comment there is passed straight through by Markdown and served to the
+  browser, where it shows up in view-source.
+{% endcomment %}
 <div class="past-editions">
   <h2 class="editions-title">{{ content|meta:"heading"|default:"Take a look at past editions" }}</h2>
   <div class="editions-grid">{{ content.html|safe }}</div>

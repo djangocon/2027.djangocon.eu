@@ -3,17 +3,6 @@ layout: past_edition
 order: 4
 heading: Take a look at past editions
 
-<!--
-Past editions, oldest first. One card per edition. Keep the wrapping <div>:
-Markdown passes a block that starts with <div> through untouched, whereas a
-bare <a> would be wrapped in <p> and get <br> tags inside.
-
-  href  the Flickr album for that edition (or the edition's site while the
-        album does not exist yet)
-  img   a photo under djangocon/static/images/past/, named <year>_<city>.png
-  span  the caption revealed on hover (always visible on touch screens)
--->
-
 <div>
 <a class="edition" href="https://www.flickr.com/photos/djangocon/albums/72177720308904800/" target="_blank" rel="noopener">
   <img src="/static/images/past/2023_edinburgh.png" alt="DjangoCon Europe 2023 Edinburgh group photo">

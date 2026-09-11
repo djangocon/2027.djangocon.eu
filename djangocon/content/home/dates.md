@@ -3,22 +3,6 @@ layout: home_dates
 order: 3
 heading: Important dates
 
-<!--
-Milestones, one <div class="month"> per month, in chronological order.
-Keep the outer <div class="dates-grid">: Markdown passes a block that starts
-with <div> through untouched.
-
-  h3           the month
-  .date-item   one milestone; the day goes in <span class="date">
-
-Where a milestone has a page that explains it, wrap the label (not the day)
-in a link carrying class="important-dates-link". That class keeps the link in
-the body text colour instead of Bootstrap blue.
-
-These are the planned 2027 dates; adjust as they are confirmed. Remove a
-month entirely to drop it.
--->
-
 <div class="dates-grid">
   <div class="month">
     <h3>November 2026</h3>
