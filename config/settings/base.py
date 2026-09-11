@@ -46,6 +46,12 @@ CONTENT_DIR = APPS_DIR / "content"
 # config/settings/production.py). The tag is only loaded after the visitor
 # accepts analytics cookies -- see templates/modules/analytics.html.
 GA4_MEASUREMENT_ID = env("DJANGO_GA4_MEASUREMENT_ID", default="")
+# Host of the Pretix ticket shop. The ticket links themselves are written out
+# in full in the templates and in content/navigation.json; this is only the
+# host the click tracker matches on, so that a link added later is measured
+# without having to be tagged. Overridable by env so a staging shop still
+# reports. See templates/modules/analytics_head.html.
+PRETIX_HOST = env("DJANGO_PRETIX_HOST", default="pretix.evolutio.pt")
 
 # URLS
 # ------------------------------------------------------------------------------
