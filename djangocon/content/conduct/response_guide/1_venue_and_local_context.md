@@ -13,7 +13,7 @@ DjangoCon Europe 2027 is held at <b>SoWi University Innsbruck</b> (Universitäts
 
 ### Nearest hospital
 
-Landeskrankenhaus – Universitätskliniken Innsbruck, Anichstraße 35, 6020 Innsbruck (<a href="https://www.tirol-kliniken.at/" class="pages-links" target="\_blank">tirol kliniken</a>), a short distance from the venue.
+Landeskrankenhaus – Universitätskliniken Innsbruck, Anichstraße 35, 6020 Innsbruck (<a href="https://www.tirol-kliniken.at/" class="pages-links" target="_blank">tirol kliniken</a>), a short distance from the venue.
 
 ### Language
 

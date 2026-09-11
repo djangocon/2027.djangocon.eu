@@ -50,7 +50,7 @@ This Code of Conduct applies:
 
 - At SoWi University Innsbruck for the duration of the conference.
 - At all official DjangoCon Europe social events and sprints, on- or off-site, including anywhere alcohol is served.
-- On official online platforms: <a href="https://join.slack.com/t/djangoconeurope/shared_invite/zt-340erqj3r-s5ekP4aYz95jv14GZMPCAg" class="pages-links" target="\_blank">Slack</a>, mailing lists, and the conference app.
+- On official online platforms: <a href="https://join.slack.com/t/djangoconeurope/shared_invite/zt-340erqj3r-s5ekP4aYz95jv14GZMPCAg" class="pages-links" target="_blank">Slack</a>, mailing lists, and the conference app.
 - To social media posts using official conference hashtags.
 - In one-to-one interactions between participants that arise from the conference, even outside these spaces, where the conduct affects another participant's ability to take part safely.
 
@@ -80,8 +80,8 @@ If you are being harassed, notice someone else being harassed, or have any other
 
 - **In person**: look for a CARE badge/lanyard at the registration desk and at all official social events, and at the SoWi University Innsbruck venue.
 - **By email**: <a href="mailto:conduct@djangocon.eu" class="pages-links">conduct@djangocon.eu</a>
-- **By Slack**: direct message any member of the <a href="https://join.slack.com/t/djangoconeurope/shared_invite/zt-340erqj3r-s5ekP4aYz95jv14GZMPCAg" target="\_blank" class="pages-links">#care-team</a> channel.
-- **Anonymously**: via the anonymous report form linked from the conference website and app. See the <a href="/conduct/response_guide/" class="pages-links">response guidelines</a> for what this covers and its limits.
+- **By Slack**: direct message any member of the <a href="https://join.slack.com/t/djangoconeurope/shared_invite/zt-340erqj3r-s5ekP4aYz95jv14GZMPCAg" target="_blank" class="pages-links">#care-team</a> channel.
+- **Anonymously**: via the <a href="https://forms.gle/v6De4jLPm1XZ64SN9" target="_blank" class="pages-links">anonymous report form</a>. See the <a href="/conduct/response_guide/" class="pages-links">response guidelines</a> for what this covers and its limits.
 
 ### Guidelines for reporting incidents
 
@@ -116,6 +116,6 @@ In situations involving immediate danger, physical violence, or where Austrian l
 
 ### Acknowledgement
 
-This Code of Conduct draws on the <a href="https://www.djangoproject.com/conduct/" class="pages-links" target="\_blank">Django Software Foundation Code of Conduct</a>, the <a href="https://www.contributor-covenant.org/" class="pages-links" target="\_blank">Contributor Covenant</a>, and prior DjangoCon Europe editions, and is refined for DjangoCon Europe 2027 in Innsbruck.
+This Code of Conduct draws on the <a href="https://www.djangoproject.com/conduct/" class="pages-links" target="_blank">Django Software Foundation Code of Conduct</a>, the <a href="https://www.contributor-covenant.org/" class="pages-links" target="_blank">Contributor Covenant</a>, and prior DjangoCon Europe editions, and is refined for DjangoCon Europe 2027 in Innsbruck.
 
 We value your attendance and look forward to seeing you at DjangoCon Europe.
