@@ -13,4 +13,4 @@ There is always a party at DjangoCon Europe, and 2027 is no exception. One eveni
   <div class="fact"><span class="fact-label">Cost</span><span class="fact-value">Free, one drink token included</span></div>
 </div>
 
-We will announce the venue and the date here once they are confirmed — follow [@DjangoConEurope](https://twitter.com/djangoconeurope) or join us on [Slack](https://join.slack.com/t/djangoconeurope/shared_invite/zt-340erqj3r-s5ekP4aYz95jv14GZMPCAg) to hear it first.
+We will announce the venue and the date here once they are confirmed — follow [@DjangoConEurope](https://twitter.com/djangoconeurope) or join us on [Discord](https://discord.gg/qx82Qpa7Wj) to hear it first.

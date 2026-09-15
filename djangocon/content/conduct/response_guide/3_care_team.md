@@ -11,7 +11,7 @@ The Code of Conduct Active Response Ensurers (CARE) handle reports from receipt 
 
 ### Anonymous reports
 
-Reports may arrive in person, by email to <a href="mailto:conduct@djangocon.eu" class="pages-links">conduct@djangocon.eu</a>, via the #care-team Slack channel, or through the <a href="https://forms.gle/v6De4jLPm1XZ64SN9" target="_blank" class="pages-links">anonymous report form</a>.
+Reports may arrive in person, by email to <a href="mailto:conduct@djangocon.eu" class="pages-links">conduct@djangocon.eu</a>, by direct message to a CARE member on Discord, or through the <a href="https://forms.gle/v6De4jLPm1XZ64SN9" target="_blank" class="pages-links">anonymous report form</a>.
 
 An anonymous report is logged, reviewed, and taken as seriously as any other. What it cannot do is follow the same path, and reporters should know this in advance:
 

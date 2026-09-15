@@ -57,7 +57,7 @@ Still open (needs a decision or a designer, not code): self-hosting the Google F
 - No production compose / Dockerfile target (the `BUILD_ENVIRONMENT` arg is there, nothing uses it), no CI. The `.devcontainer` binds `~/.ssh` and `/tmp` into the container — unusual for a static site; consider dropping.
 - `base.html`: no Open Graph / Twitter card tags (there is an OG image in `static/fonts`), obsolete `x-ua-compatible` meta, fonts still fetched from Google Fonts (`@import` in `_base.scss`) — the only third‑party request left, and it contradicts both the "no CDN" comment and the privacy guide. Self‑host Anton/Anton SC/Lato (the only families actually used — Lexend Deca, Manrope, Modak appear only in the `@import`).
 - `header.html` has an inline script for the mobile sub‑menus that duplicates what Bootstrap collapse already does with `data-bs-toggle`; it also toggles the `.collapse` class by hand, fighting Bootstrap's own state.
-- Two Slack invite links in use (`zt-340erqj3r…` everywhere, `zt-1gjg5lqkz…` in `cfp/0_cfp.md`). Keep one, ideally as a value in `navigation.json` and referenced from content.
+- The chat invite link is hard-coded in every page that mentions it. It now lives in `navigation.json` under `social_media.discord`; content should reference that value rather than repeating the URL.
 
 ---
 

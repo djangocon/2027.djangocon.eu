@@ -46,7 +46,7 @@ This Code of Conduct applies to all conference related spaces. That includes, bu
 - The conference venue(s)
 - The conference hotel(s)
 - Any conference related social activities
-- Slack channels, tweets with the conference hashtag, and other online media
+- Discord channels, tweets with the conference hashtag, and other online media
 - The Code of Conduct does not exclusively apply to events on the conference agenda. For example, if after a scheduled social event you go to a bar with a group of fellow participants, and someone harasses you there, we would still treat that as a CoC violation.
 
 ## What can happen if the CoC is violated?
@@ -79,7 +79,7 @@ In your report please include, when possible:
 - Your contact info (so we can get in touch with you)
 - Names (real, nicknames, or pseudonyms) of any individuals involved. If there were other witnesses besides you, please try to include them as well.
 - When and where the incident occurred. Please be as specific as possible.
-- Your account of what occurred. If there is a written record (e.g. tweets or slack messages) please include screenshots, or otherwise a link.
+- Your account of what occurred. If there is a written record (e.g. tweets or Discord messages) please include screenshots, or otherwise a link.
 - Any extra context you believe existed for the incident.
 - If you believe this incident is ongoing.
 - Any other information you believe we should have.
