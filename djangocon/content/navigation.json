@@ -43,6 +43,7 @@
       "dropdown": true,
       "submenu": {
         "Contact": "/about/contact/",
+        "Volunteers": "/about/volunteers/",
         "Credits": "/about/credits/"
       }
     }
