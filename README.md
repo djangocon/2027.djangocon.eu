@@ -114,6 +114,23 @@ Some layouts carry their own copy in the template rather than in the `.md`
 (`home_about`, `home_tickets`, `home_dates`, `past_edition`, `credits`); edit
 those under `djangocon/templates/modules/`.
 
+**Images** go under `djangocon/static/images/` and are referenced as
+`/static/images/...` (the path is rewritten to the cached, fingerprinted URL
+when the page renders). Keep each file under 300 KB, or the test suite fails.
+For photos that usually means:
+
+- save as WebP (or JPEG), never PNG;
+- size it for where it is shown, at twice the displayed width at most. A photo
+  shown in a 400px column needs to be 800px wide, not 4000px. Offer a smaller
+  copy through `srcset` when it also shows on phones (see
+  `content/home/past_edition.md` for an example);
+- give the `<img>` its `width`, `height` and, when it is not at the top of the
+  page, `loading="lazy"`.
+
+[Squoosh](https://squoosh.app/) does the resizing and conversion in the
+browser, or `cwebp -q 78 -resize 800 0 in.png -o out.webp` from the command
+line.
+
 **Sponsors** live in `djangocon/content/sponsors.json`, grouped by tier. Copy an
 existing entry to add one. Empty tiers are hidden automatically. Set `filter` to
 `true` when a dark logo needs inverting to white.

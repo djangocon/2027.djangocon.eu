@@ -7,6 +7,7 @@ from pathlib import Path
 from django.contrib.staticfiles import finders
 from django.test import Client
 
+from djangocon.site.sitemaps import ContentSitemap
 from djangocon.site.utils import content
 
 
@@ -137,3 +138,32 @@ class TestConditionalGet:
         response = client.get("/information/venue/", headers={"if-none-match": etag})
         assert response.status_code == HTTPStatus.NOT_MODIFIED
         assert response.content == b""
+
+
+class TestMediaWeight:
+    """No page may pull in a heavy image: this is what let 9.8 MB of PNGs ship."""
+
+    MAX_BYTES = 300 * 1024
+    MEDIA = re.compile(r"\.(?:png|jpe?g|gif|webp|avif|svg|mp4|webm)$")
+
+    def _referenced(self, client: Client) -> set[str]:
+        paths = set()
+        for page in [*ContentSitemap().items(), "/no-such-page/"]:
+            html = client.get(page).content.decode()
+            urls = re.findall(r'(?:src|href|content)="(?:https://2027\.djangocon\.eu)?/static/([^"?#]+)"', html)
+            for srcset in re.findall(r'srcset="([^"]+)"', html):
+                urls += re.findall(r"/static/(\S+)", srcset)
+            paths.update(url for url in urls if self.MEDIA.search(url))
+        return paths
+
+    def test_every_referenced_image_is_light(self, client: Client):
+        referenced = self._referenced(client)
+        assert referenced
+        heavy = {}
+        for url in referenced:
+            found = finders.find(url)
+            assert found, f"missing static file {url}"
+            size = Path(found).stat().st_size
+            if size > self.MAX_BYTES:
+                heavy[url] = f"{size // 1024} KB"
+        assert not heavy, f"over {self.MAX_BYTES // 1024} KB, see README 'Images': {heavy}"
