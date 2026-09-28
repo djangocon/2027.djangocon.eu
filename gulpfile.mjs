@@ -9,15 +9,14 @@ import pjson from './package.json' with { type: 'json' };
 // Plugins
 import autoprefixer from 'autoprefixer';
 import browserSyncLib from 'browser-sync';
-import concat from 'gulp-concat';
 import cssnano from 'cssnano';
+import * as esbuild from 'esbuild';
 import plumber from 'gulp-plumber';
 import postcss from 'gulp-postcss';
 import rename from 'gulp-rename';
 import gulpSass from 'gulp-sass';
 import * as dartSass from 'sass';
 import gulUglifyES from 'gulp-uglify-es';
-import { Transform } from 'node:stream';
 
 const browserSync = browserSyncLib.create();
 const reload = browserSync.reload;
@@ -30,11 +29,6 @@ function pathsConfig() {
   const vendorsRoot = 'node_modules';
 
   return {
-    vendorsJs: [
-      // bootstrap.bundle already contains Popper, so Popper is not listed
-      // separately — including both would register two instances.
-      `${vendorsRoot}/bootstrap/dist/js/bootstrap.bundle.js`,
-    ],
     vendorsRoot,
     app: appName,
     templates: `${appName}/templates`,
@@ -87,36 +81,43 @@ function scripts() {
     .pipe(dest(paths.js));
 }
 
-// Vendor Javascript minification.
+// Vendor Javascript: only the Bootstrap plugins the templates use.
+//
+// The full bootstrap.bundle shipped every plugin (modal, carousel, tooltip,
+// scrollspy, ...) for a site that only toggles the mobile menu (Collapse)
+// and opens the desktop dropdown (Dropdown). esbuild bundles those two from
+// Bootstrap's ES module sources, together with Popper, which Dropdown needs.
+// Each plugin registers its own data-bs-* handlers on import, so the
+// templates need no JavaScript of their own. Add a plugin here, and to
+// window.bootstrap, before using its data attributes in a template.
 //
 // No source maps on purpose: `*.min.js.map` is gitignored, so a
 // `//# sourceMappingURL=` comment would point at a file that never reaches
 // production, and WhiteNoise's manifest storage refuses to collectstatic
-// when a JS file references a missing map. Bootstrap's own comment is
-// stripped for the same reason.
-function stripSourceMapComments() {
-  return new Transform({
-    objectMode: true,
-    transform(file, _encoding, callback) {
-      if (file.isBuffer()) {
-        file.contents = Buffer.from(
-          file.contents.toString().replace(/^\/\/# sourceMappingURL=.*$/gm, ''),
-        );
-      }
-      callback(null, file);
-    },
-  });
-}
+// when a JS file references a missing map.
+const vendorEntry = `
+import Collapse from 'bootstrap/js/src/collapse.js';
+import Dropdown from 'bootstrap/js/src/dropdown.js';
+window.bootstrap = { Collapse, Dropdown };
+`;
 
 function vendorScripts() {
-  return src(paths.vendorsJs)
-    .pipe(concat('vendors.js'))
-    .pipe(stripSourceMapComments())
-    .pipe(dest(paths.js))
-    .pipe(plumber()) // Checks for errors
-    .pipe(uglify()) // Minifies the js
-    .pipe(rename({ suffix: '.min' }))
-    .pipe(dest(paths.js));
+  const options = {
+    stdin: { contents: vendorEntry, resolveDir: '.', loader: 'js' },
+    bundle: true,
+    format: 'iife',
+    target: 'es2019',
+    legalComments: 'eof',
+    logLevel: 'warning',
+  };
+  return Promise.all([
+    esbuild.build({ ...options, outfile: `${paths.js}/vendors.js` }),
+    esbuild.build({
+      ...options,
+      minify: true,
+      outfile: `${paths.js}/vendors.min.js`,
+    }),
+  ]);
 }
 
 // Browser sync server for live reload
