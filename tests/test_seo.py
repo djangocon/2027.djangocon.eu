@@ -249,3 +249,17 @@ class TestMetaDescription:
     def test_error_pages_fall_back_to_the_site_description(self, client: Client):
         html = client.get("/no-such-page/").content.decode()
         assert "The official Django conference in Europe" in html
+
+
+class TestTitle:
+    def _title(self, client: Client, path: str) -> str:
+        html = client.get(path).content.decode()
+        return " ".join(re.search(r"<title>(.*?)</title>", html, re.S).group(1).split())
+
+    def test_home_names_the_place_and_dates(self, client: Client):
+        title = self._title(client, "/")
+        assert "Innsbruck" in title
+        assert "February" in title
+
+    def test_pages_lead_with_their_own_name(self, client: Client):
+        assert self._title(client, "/information/venue/") == "Venue - DjangoCon Europe 2027"

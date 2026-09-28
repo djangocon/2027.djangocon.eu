@@ -11,10 +11,14 @@
     {% if ga4_measurement_id %}
       {% include "modules/analytics_head.html" %}
     {% endif %}
+    {# The home title carries the place and dates: that is what people search for. #}
     <title>
       {% block title %}
-        {% if menu != "Home" %}{{ menu }} -{% endif %}
-        DjangoCon Europe 2027
+        {% if menu == "Home" %}
+          DjangoCon Europe 2027 - Innsbruck, 17-21 February
+        {% else %}
+          {{ menu }} - DjangoCon Europe 2027
+        {% endif %}
       {% endblock title %}
     </title>
     {# Content pages pass their own description (see page_description); the #}
@@ -31,6 +35,7 @@
     <meta property="og:site_name" content="DjangoCon Europe 2027" />
     <meta property="og:title"
           content="{% if menu != "Home" %}{{ menu }} - {% endif %}DjangoCon Europe 2027" />
+    <meta property="og:locale" content="en_GB" />
     <meta property="og:description"
           content="{{ description|default:site_description }}" />
     <meta property="og:url"
