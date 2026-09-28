@@ -71,6 +71,19 @@
           sizes="180x180"
           href="{% static 'images/favicons/apple-touch-icon.png' %}" />
     <link rel="manifest" href="{% static 'images/favicons/site.webmanifest' %}" />
+    {# The two faces every page sets above the fold: Anton SC (nav links, hero) #}
+    {# and Lato (body). Preloading starts them with the stylesheet instead of #}
+    {# after it; crossorigin is required for font preloads even on our origin. #}
+    <link rel="preload"
+          href="{% static 'fonts/anton-sc-400-latin.woff2' %}"
+          as="font"
+          type="font/woff2"
+          crossorigin />
+    <link rel="preload"
+          href="{% static 'fonts/lato-400-latin.woff2' %}"
+          as="font"
+          type="font/woff2"
+          crossorigin />
     {% block css %}
       {# Bootstrap is compiled into project.css — no CDN, one version. The .min #}
       {# builds are what gets served; the plain files are kept for reading diffs. #}

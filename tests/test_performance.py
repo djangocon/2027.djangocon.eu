@@ -1,6 +1,7 @@
 """What the served pages cost to load: asset bundles, images, caching."""
 
 import re
+from pathlib import Path
 
 from django.contrib.staticfiles import finders
 from django.test import Client
@@ -79,3 +80,27 @@ class TestPastEditions:
             assert 'height="' in tag
             assert "srcset=" in tag
             assert ".png" not in tag
+
+
+class TestFonts:
+    def test_no_third_party_font_requests(self):
+        """Google Fonts would send every visitor's IP to Google before any consent."""
+        css = Path(finders.find("css/project.min.css")).read_text(encoding="utf-8")
+        assert "fonts.googleapis.com" not in css
+        assert "fonts.gstatic.com" not in css
+
+    def test_every_font_face_file_exists(self):
+        css = Path(finders.find("css/project.min.css")).read_text(encoding="utf-8")
+        files = re.findall(r"url\(\.\./fonts/([^)]+)\)", css)
+        assert files
+        for name in files:
+            assert finders.find(f"fonts/{name}"), f"missing font file {name}"
+
+    def test_preloaded_fonts_are_declared_in_the_css(self, client: Client):
+        """A preload nothing uses is a wasted download (and a console warning)."""
+        css = Path(finders.find("css/project.min.css")).read_text(encoding="utf-8")
+        html = client.get("/").content.decode()
+        preloads = re.findall(r'<link rel="preload"\s+href="/static/fonts/([^"]+)"', html)
+        assert preloads
+        for name in preloads:
+            assert f"../fonts/{name}" in css
