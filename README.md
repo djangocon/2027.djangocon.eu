@@ -105,6 +105,11 @@ order: 2
 section to that page. Use `##`/`###` headings inside the body — the page title is
 the only `<h1>`. Add `published: false` to park a section without deleting it.
 
+The text search engines show under the page title comes from the page's first
+paragraph that is at least 50 characters long. To write it yourself, add
+`description:` (160 characters at most) to the metadata of the page's first
+file.
+
 Some layouts carry their own copy in the template rather than in the `.md`
 (`home_about`, `home_tickets`, `home_dates`, `past_edition`, `credits`); edit
 those under `djangocon/templates/modules/`.

@@ -2,10 +2,19 @@ from django.conf import settings
 
 from djangocon.site.utils.content import get_navigation
 
+SITE_DESCRIPTION = (
+    "The official Django conference in Europe - run by the community for the community. "
+    "Innsbruck, Austria, 17-21 February 2027."
+)
+
 
 def links(request):
-    """Expose the nav and social links from content/navigation.json to every template."""
-    return get_navigation()
+    """Expose the nav and social links from content/navigation.json to every template.
+
+    The site-wide description rides along: it is the fallback for pages that do
+    not pass their own, and error pages render without a view's context.
+    """
+    return {**get_navigation(), "site_description": SITE_DESCRIPTION}
 
 
 def analytics(request):

@@ -9,6 +9,8 @@ from django.test import Client
 from PIL import Image
 
 from djangocon.site.sitemaps import ContentSitemap
+from djangocon.site.utils.content import DESCRIPTION_LENGTH
+from djangocon.site.utils.content import MIN_DESCRIPTION_LENGTH
 
 
 def _locs(body: str) -> list[str]:
@@ -218,3 +220,32 @@ class TestStructuredData:
 
     def test_only_on_the_home_page(self, client: Client):
         assert self._graph(client, "/information/venue/") == []
+
+
+class TestMetaDescription:
+    def _description(self, client: Client, path: str) -> str:
+        html = client.get(path).content.decode()
+        return re.search(r'<meta name="description"\s+content="([^"]*)"', html).group(1)
+
+    def test_every_page_has_its_own(self, client: Client):
+        """Identical descriptions make search engines treat pages as near-duplicates."""
+        paths = ContentSitemap().items()
+        descriptions = [self._description(client, path) for path in paths]
+        duplicates = {d for d in descriptions if descriptions.count(d) > 1}
+        assert not duplicates, f"shared meta description: {duplicates}"
+
+    def test_fits_a_search_snippet(self, client: Client):
+        for path in ContentSitemap().items():
+            assert MIN_DESCRIPTION_LENGTH <= len(self._description(client, path)) <= DESCRIPTION_LENGTH, path
+
+    def test_explicit_metadata_wins(self, client: Client):
+        assert self._description(client, "/talks/cfp/").startswith("Submit a talk or workshop")
+
+    def test_social_card_uses_the_same_text(self, client: Client):
+        html = client.get("/information/venue/").content.decode()
+        og = re.search(r'og:description"\s+content="([^"]*)"', html).group(1)
+        assert og == self._description(client, "/information/venue/")
+
+    def test_error_pages_fall_back_to_the_site_description(self, client: Client):
+        html = client.get("/no-such-page/").content.decode()
+        assert "The official Django conference in Europe" in html

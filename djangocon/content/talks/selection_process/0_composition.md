@@ -1,5 +1,6 @@
 layout: simple
 order: 0
+description: How DjangoCon Europe 2027 talks are chosen: the mix of keynotes, project, community and Django talks, and how reviewers rate each submission.
 title: Composition
 
 First, a warning: all of the following numbers are approximate and may change – we don't know the future, and we may have to adjust to changed circumstances in several ways.

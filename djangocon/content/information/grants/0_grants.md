@@ -1,6 +1,7 @@
 title: Grants
 layout: simple
 order: 0
+description: Opportunity grants cover travel, hotel or ticket costs for people who could not otherwise attend DjangoCon Europe 2027. Applications open 30 November 2026.
 
 **Opportunity grant applications open on 30 November 2026.**
 

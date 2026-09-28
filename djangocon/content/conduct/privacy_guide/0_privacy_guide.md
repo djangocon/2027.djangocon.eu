@@ -2,6 +2,7 @@
 title: privacy guide
 layout: simple
 order: 0
+description: How the DjangoCon Europe 2027 organisers collect, use and protect the personal data of attendees, speakers, sponsors and volunteers under the GDPR.
 ---
 
 Evolutio — the DjangoCon Europe 2027 organizers — is responsible for the website <a href="/" class="pages-links">2027.djangocon.eu</a>, DjangoCon Europe 2027 official website. The privacy and security of the personal data of our attendees, speakers, sponsors, and volunteers – participants – are very important to us. DjangoCon Europe 2027 organizers are committed to observing the principles of data protection to the best of their ability, in compliance with the (EU) Regulation 2016/679 of the European Parliament and Council of 27th of April 2016, concerning the protection of natural persons with regard to the processing of personal data and the free movement of such data, which revokes Directive 95/46/EC (General Data Protection Regulation), and other additional legislation.

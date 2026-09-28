@@ -6,6 +6,7 @@ without a restart -- ``runserver`` only reloads on ``.py`` changes, so caching
 the JSON for the process lifetime left a stale menu pointing at deleted pages.
 """
 
+import html
 import json
 import re
 from pathlib import Path
@@ -13,6 +14,7 @@ from pathlib import Path
 import markdown as md
 from django.conf import settings
 from django.templatetags.static import static
+from django.utils.html import strip_tags
 
 _MARKDOWN_EXTENSIONS = ["extra", "nl2br", "sane_lists", "meta", "toc"]
 
@@ -84,6 +86,40 @@ def page_files(directory: Path) -> dict[str, Path]:
 
     files = (path for path in directory.glob("*.md") if is_published(path))
     return {path.stem: path for path in sorted(files, key=sort_key)}
+
+
+_PARAGRAPH = re.compile(r"<p>(.*?)</p>", re.S)
+# Search results show roughly this much before cutting the snippet off.
+DESCRIPTION_LENGTH = 160
+# Shorter openings ("Coming soon", a one-line date) say nothing about the page.
+MIN_DESCRIPTION_LENGTH = 50
+
+
+def page_description(files: dict[str, Path]) -> str:
+    """The page's meta description, or "" to fall back to the site-wide one.
+
+    A ``description:`` in the first section's metadata wins. Otherwise the
+    first paragraph with something to say stands in, cut on a word boundary,
+    so every page gets its own snippet without an editor having to write one.
+    """
+    if not files:
+        return ""
+    parsed = [render_markdown_file(path) for path in files.values()]
+    explicit = parsed[0]["meta"].get("description", [""])[0].strip()
+    if explicit:
+        return explicit
+    for content in parsed:
+        for paragraph in _PARAGRAPH.findall(content["html"]):
+            text = " ".join(html.unescape(strip_tags(paragraph)).split())
+            if len(text) >= MIN_DESCRIPTION_LENGTH:
+                return _truncate(text)
+    return ""
+
+
+def _truncate(text: str) -> str:
+    if len(text) <= DESCRIPTION_LENGTH:
+        return text
+    return text[: DESCRIPTION_LENGTH - 1].rsplit(" ", 1)[0].rstrip(",;:-\u2013\u2014") + "\u2026"
 
 
 def _load_json(name: str) -> dict:
