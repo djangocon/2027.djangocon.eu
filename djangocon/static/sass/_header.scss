@@ -2,46 +2,6 @@
 
 // header
 
-// .header-margin {
-//     padding-left: 0;
-//     width: 0
-// }
-//
-// .header-logo-container {
-//     width: auto
-// }
-//
-// .header-logo,
-// .header-logo-container {
-//     padding-left: 0;
-//     padding-right: 0
-// }
-
-// .header {
-//     background: var(--bg-color);
-//     padding: 1rem 0
-// }
-
-// @media (max-width: 768px) {
-//     .header {
-//         padding: 1rem .5rem
-//     }
-// }
-//
-// .header a:hover {
-//     text-decoration: none
-// }
-//
-// .header .dropdown-item:hover {
-//     background-color: var(--light-brown)
-// }
-
-// .header .nav-sm {
-//     display: block;
-//     padding-left: 0;
-//     padding-right: 0
-// }
-
 // Anton SC (font-hero) is a small-caps face, so mixed-case labels ("Talks",
 // "Conduct"...) render as caps on their own — no text-transform needed.
 .header .nav-link {
@@ -55,42 +15,8 @@
   outline-color: var(--ink);
 }
 
-.header .nav-link-lg {
-  display: inline-block;
-  padding: 0 !important;
-}
-
-.header .btn-primary {
-  background: transparent;
-  border: none;
-}
-
-.header .subnav {
-  background: var(--accent);
-}
-
 .header .container-fluid {
   padding: 0;
-}
-
-.pl-5 {
-  padding-left: 2rem;
-}
-
-// .header .dropdown-menu {
-//     background: var(--dark-brown)
-// }
-
-// .header .dropdown-item {
-//     color: white
-// }
-
-.top-banner {
-  background-color: var(--golden);
-
-  a {
-    color: #003c80;
-  }
 }
 
 .navbar-toggler {
@@ -265,20 +191,6 @@
   }
 }
 
-.mobile-navbar-btn {
-  &:focus {
-    outline: none;
-    box-shadow: 0 0 1px 1px var(--accent);
-  }
-}
-
-#collapseNavigation {
-  .nav-link:focus {
-    outline: none;
-    box-shadow: 0 0 1px 1px var(--accent);
-  }
-}
-
 // --- Green-theme header (current design) ---
 
 .header {
@@ -286,25 +198,6 @@
   padding: 0.5rem 0;
   width: 100%;
   z-index: 1000;
-}
-
-.header-container {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-// Logo Styles
-.logo-container {
-  flex: 0 0 auto;
-
-  img {
-    height: 66px;
-    width: auto;
-  }
 }
 
 // Header logo (2027 wordmark) — the source PNG is 1007px wide, so it must be
@@ -348,15 +241,6 @@
   .header-bar {
     padding: 0.75rem 1rem;
   }
-}
-
-// Navigation container
-.nav-menu-container {
-  flex: 1;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 2rem;
 }
 
 .main-nav {
@@ -500,18 +384,6 @@
 
 .dropdown-toggle[aria-expanded='true']::after {
   transform: rotate(180deg);
-}
-
-@keyframes dropdownFade {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 // Mobile dropdown adjustments

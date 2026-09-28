@@ -1,5 +1,6 @@
 layout: simple
 order: 0
+description: Submit a talk or workshop for DjangoCon Europe 2027 in Innsbruck, Austria. The call for participation closes on 15 November 2026. All skill levels welcome.
 title: Call for Participation
 
 This page contains all information regarding the proposal process for DjangoCon Europe — we will update it regularly as new information becomes available.

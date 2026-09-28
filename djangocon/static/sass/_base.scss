@@ -1,20 +1,5 @@
 @use 'variables' as *;
 
-// Single webfont request for the families _variables.scss actually uses:
-// Anton / Anton SC (display), Lato (body), Lexend Deca (prices), Manrope (buttons).
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Anton+SC&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,400;1,700&family=Lexend+Deca:wght@400;700;900&family=Manrope:wght@400..800&display=swap');
-
-////////////////////////////////
-//Alert palette//
-////////////////////////////////
-// Bootstrap's alert colours. These are semantic status colours specific to
-// alerts and are intentionally not part of the shared design tokens.
-
-$mint-green: #d6e9c6;
-$pink: #f2dede;
-$dark-pink: #eed3d7;
-$alert-red: #b94a48;
-
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -50,25 +35,6 @@ body {
   color: var(--ink);
   margin: 0;
   padding: 0;
-}
-
-////////////////////////////////
-//Alerts//
-////////////////////////////////
-
-// bootstrap alert CSS, translated to the django-standard levels of
-// debug, info, success, warning, error
-
-.alert-debug {
-  background-color: var(--paper);
-  border-color: $mint-green;
-  color: var(--ink);
-}
-
-.alert-error {
-  background-color: $pink;
-  border-color: $dark-pink;
-  color: $alert-red;
 }
 
 .status-btn {

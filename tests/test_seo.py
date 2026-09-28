@@ -1,11 +1,19 @@
 """robots.txt, sitemap.xml, the consent-gated analytics tag, and the served markup."""
 
+import json
 import re
 from http import HTTPStatus
 
+import pytest
+from django.contrib.staticfiles import finders
 from django.test import Client
+from PIL import Image
 
+from djangocon.site import sitemaps
 from djangocon.site.sitemaps import ContentSitemap
+from djangocon.site.utils.content import DESCRIPTION_LENGTH
+from djangocon.site.utils.content import MIN_DESCRIPTION_LENGTH
+from djangocon.site.utils.content import content_dir
 
 
 def _locs(body: str) -> list[str]:
@@ -176,3 +184,127 @@ class TestServedMarkup:
         for path in ContentSitemap().items():
             html = client.get(path).content.decode()
             assert "<!--" not in html, f"HTML comment served on {path}"
+
+
+class TestSocialCard:
+    def test_image_declares_its_size(self, client: Client):
+        html = client.get("/").content.decode()
+        width = int(re.search(r'og:image:width" content="(\d+)"', html).group(1))
+        height = int(re.search(r'og:image:height" content="(\d+)"', html).group(1))
+        with Image.open(finders.find("images/other/opengraph.jpg")) as image:
+            assert image.size == (width, height)
+
+
+class TestStructuredData:
+    """schema.org JSON-LD: what makes the conference eligible for event results."""
+
+    def _graph(self, client: Client, path: str = "/") -> list[dict]:
+        html = client.get(path).content.decode()
+        blocks = re.findall(r'<script type="application/ld\+json">(.*?)</script>', html, re.S)
+        return [node for block in blocks for node in json.loads(block)["@graph"]]
+
+    def test_home_page_describes_the_event(self, client: Client):
+        event = next(node for node in self._graph(client) if node["@type"] == "Event")
+        assert event["startDate"] == "2027-02-17"
+        assert event["endDate"] == "2027-02-21"
+        assert event["location"][0]["address"]["addressLocality"] == "Innsbruck"
+        assert event["offers"]["url"].startswith("https://pretix.")
+
+    def test_is_valid_json_with_the_social_profiles(self, client: Client):
+        organization = next(node for node in self._graph(client) if node["@type"] == "Organization")
+        assert "https://github.com/djangocon/2027.djangocon.eu/" in organization["sameAs"]
+
+    def test_lowest_price_matches_the_ticket_cards(self, client: Client):
+        """Google drops event markup that disagrees with the visible page."""
+        html = client.get("/").content.decode()
+        prices = [int(p) for p in re.findall(r'<div class="price">(\d+)€</div>', html)]
+        event = next(node for node in self._graph(client) if node["@type"] == "Event")
+        assert int(event["offers"]["lowPrice"]) == min(prices)
+
+    def test_only_on_the_home_page(self, client: Client):
+        assert self._graph(client, "/information/venue/") == []
+
+
+class TestMetaDescription:
+    def _description(self, client: Client, path: str) -> str:
+        html = client.get(path).content.decode()
+        return re.search(r'<meta name="description"\s+content="([^"]*)"', html).group(1)
+
+    def test_every_page_has_its_own(self, client: Client):
+        """Identical descriptions make search engines treat pages as near-duplicates."""
+        paths = ContentSitemap().items()
+        descriptions = [self._description(client, path) for path in paths]
+        duplicates = {d for d in descriptions if descriptions.count(d) > 1}
+        assert not duplicates, f"shared meta description: {duplicates}"
+
+    def test_fits_a_search_snippet(self, client: Client):
+        for path in ContentSitemap().items():
+            assert MIN_DESCRIPTION_LENGTH <= len(self._description(client, path)) <= DESCRIPTION_LENGTH, path
+
+    def test_explicit_metadata_wins(self, client: Client):
+        assert self._description(client, "/talks/cfp/").startswith("Submit a talk or workshop")
+
+    def test_social_card_uses_the_same_text(self, client: Client):
+        html = client.get("/information/venue/").content.decode()
+        og = re.search(r'og:description"\s+content="([^"]*)"', html).group(1)
+        assert og == self._description(client, "/information/venue/")
+
+    def test_error_pages_fall_back_to_the_site_description(self, client: Client):
+        html = client.get("/no-such-page/").content.decode()
+        assert "The official Django conference in Europe" in html
+
+
+class TestTitle:
+    def _title(self, client: Client, path: str) -> str:
+        html = client.get(path).content.decode()
+        return " ".join(re.search(r"<title>(.*?)</title>", html, re.S).group(1).split())
+
+    def test_home_names_the_place_and_dates(self, client: Client):
+        title = self._title(client, "/")
+        assert "Innsbruck" in title
+        assert "February" in title
+
+    def test_pages_lead_with_their_own_name(self, client: Client):
+        assert self._title(client, "/information/venue/") == "Venue - DjangoCon Europe 2027"
+
+
+class TestSitemapLastmod:
+    """lastmod must follow content changes, not deploys."""
+
+    def test_uses_the_last_commit_when_git_is_available(self):
+        path = content_dir() / "talks" / "cfp" / "0_cfp.md"
+        sitemaps._committed_at.cache_clear()
+        committed = sitemaps._committed_at((path,))
+        if committed is None:
+            pytest.skip("no git history available here")
+        assert sitemaps.last_changed([path]) == committed
+
+    def test_falls_back_to_the_file_time_without_git(self, monkeypatch):
+        path = content_dir() / "talks" / "cfp" / "0_cfp.md"
+        monkeypatch.setattr(sitemaps, "_GIT", None)
+        sitemaps._committed_at.cache_clear()
+        try:
+            assert sitemaps.last_changed([path]) == path.stat().st_mtime
+        finally:
+            sitemaps._committed_at.cache_clear()
+
+
+class TestNotFoundPage:
+    def test_is_a_real_404(self, client: Client):
+        assert client.get("/no-such-page/").status_code == HTTPStatus.NOT_FOUND
+        assert client.get("/no/such/deep/page/").status_code == HTTPStatus.NOT_FOUND
+
+    def test_has_exactly_one_h1_and_no_exception_name(self, client: Client):
+        html = client.get("/no/such/deep/page/").content.decode()
+        assert html.count("<h1") == 1
+        assert "Resolver404" not in html
+        assert "Http404" not in html
+
+    def test_points_somewhere_useful(self, client: Client):
+        html = client.get("/no-such-page/").content.decode()
+        assert 'href="/"' in html
+        assert 'href="/talks/cfp/"' in html
+
+    def test_social_title_has_no_dangling_separator(self, client: Client):
+        html = client.get("/no-such-page/").content.decode()
+        assert re.search(r'og:title"\s+content="DjangoCon Europe 2027"', html)

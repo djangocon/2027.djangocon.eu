@@ -6,6 +6,7 @@ from django.views.decorators.http import require_safe
 from djangocon.site.utils.content import content_dir
 from djangocon.site.utils.content import get_navigation
 from djangocon.site.utils.content import get_sponsors
+from djangocon.site.utils.content import page_description
 from djangocon.site.utils.content import page_files
 
 
@@ -34,7 +35,11 @@ def home(request):
 def sponsors(request):
     """Same page pipeline as every other content page, plus the sponsor list."""
     files = page_files(content_dir() / "sponsors" / "sponsors")
-    return render(request, "pages/default.html", {"menu": "Sponsors", "files": files, "sponsors": get_sponsors()})
+    return render(
+        request,
+        "pages/default.html",
+        {"menu": "Sponsors", "files": files, "sponsors": get_sponsors(), "description": page_description(files)},
+    )
 
 
 @require_safe
@@ -44,7 +49,11 @@ def page(request, menu, submenu=None):
     files = page_files(directory)
     if not files:
         raise Http404
-    return render(request, "pages/default.html", {"menu": _title(request.path, submenu or menu), "files": files})
+    return render(
+        request,
+        "pages/default.html",
+        {"menu": _title(request.path, submenu or menu), "files": files, "description": page_description(files)},
+    )
 
 
 @require_safe

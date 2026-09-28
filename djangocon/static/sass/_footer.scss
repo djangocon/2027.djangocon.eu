@@ -42,19 +42,6 @@ footer {
   }
 }
 
-@media (max-width: 992px) {
-  .custom-footer .footer-links {
-    -ms-flex-item-align: center;
-    -ms-flex-line-pack: center;
-    -webkit-box-pack: center !important;
-    -ms-flex-pack: center !important;
-    align-content: center;
-    align-self: center;
-    justify-content: center !important;
-    text-align: center;
-  }
-}
-
 .footer-heart {
   color: var(--accent);
 }

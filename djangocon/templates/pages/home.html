@@ -1,8 +1,13 @@
 {% extends "base.html" %}
 
 {% load markdown_extras %}
+{% load seo %}
 {% load static %}
 
+{% block structured_data %}
+  {# schema.org Event for search results; see templatetags/seo.py. #}
+  {% home_json_ld %}
+{% endblock structured_data %}
 {% block content %}
   {# HOME-INTRO #}
   <div class="hero-section">
@@ -15,7 +20,17 @@
     </div>
     <div class="hero-mountain">
       {# One silhouette for both themes: white-on-transparent as drawn, inverted by CSS in light mode. #}
+      {# It is the largest thing above the fold (the LCP element), so it is fetched at high #}
+      {# priority, and phones pick a narrower copy. The -1200/-1920 files are the original #}
+      {# downscaled and mapped back onto its 16-colour palette; WebP came out larger. #}
       <img src="{% static 'images/other/mountain_innsbruck.png' %}"
+           srcset="{% static 'images/other/mountain_innsbruck-1200.png' %} 1200w,
+                   {% static 'images/other/mountain_innsbruck-1920.png' %} 1920w,
+                   {% static 'images/other/mountain_innsbruck.png' %} 3408w"
+           sizes="100vw"
+           width="3408"
+           height="841"
+           fetchpriority="high"
            alt=""
            class="hero-mountain-img" />
     </div>

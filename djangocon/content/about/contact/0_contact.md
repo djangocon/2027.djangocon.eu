@@ -1,6 +1,7 @@
 title: contact
 layout: simple
 order: 0
+description: Get in touch with the DjangoCon Europe 2027 team about general questions, sponsorship, talks and content, or Code of Conduct reports.
 
 You are most welcome to get in touch if you have questions.
 

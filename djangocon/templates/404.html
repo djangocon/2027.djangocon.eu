@@ -6,18 +6,42 @@
   Page not found - DjangoCon Europe 2027
 {% endblock title %}
 {% block content %}
-  <div class="container-fluid content-container bg-grey">
+  {# The response status is already 404, which is what keeps this out of search #}
+  {# results; a noindex tag would add nothing. The links are where people most #}
+  {# often meant to go. The animation is a muted looping video rather than the #}
+  {# GIF it was made from: 76 KB instead of 978 KB. #}
+  <div class="container-fluid content-container">
     <div class="simple-content">
       <div class="container">
-        <h2>
-          404 :
-          {% if exception %}
-            {{ exception }}
-          {% else %}
-            page not found
-          {% endif %}
-        </h2>
-        <img src="{% static 'images/other/404.gif' %}" class="w-100" alt="" />
+        <h1>Page not found</h1>
+        <p>We could not find that page. It may have moved, or the link may be mistyped.</p>
+        <ul>
+          <li>
+            <a href="{% url 'home' %}" class="pages-links">Home page</a>
+          </li>
+          <li>
+            <a href="{% url 'subpage' menu='talks' submenu='cfp' %}"
+               class="pages-links">Call for Participation</a>
+          </li>
+          <li>
+            <a href="{% url 'subpage' menu='information' submenu='venue' %}"
+               class="pages-links">Venue</a>
+          </li>
+          <li>
+            <a href="https://pretix.evolutio.pt/evolutio/djceu27/"
+               class="pages-links">Tickets</a>
+          </li>
+        </ul>
+        <video src="{% static 'images/other/404.mp4' %}"
+               class="w-100"
+               width="426"
+               height="212"
+               autoplay
+               muted
+               loop
+               playsinline
+               aria-hidden="true">
+        </video>
       </div>
     </div>
   </div>

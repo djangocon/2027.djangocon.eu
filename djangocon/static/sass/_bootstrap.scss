@@ -1,4 +1,64 @@
 // Bootstrap, compiled from node_modules so the site serves a single version
-// of it with no CDN request. Narrow this @forward list to the components the
-// templates actually use if the CSS bundle needs trimming.
-@forward 'bootstrap/scss/bootstrap';
+// of it with no CDN request.
+//
+// Only the parts the templates use are compiled in, in the order Bootstrap's
+// "optional imports" docs give. The full build was ~230 KB of CSS for a site
+// that uses the grid, a handful of utilities, the navbar toggler, one
+// dropdown and a collapse. Before adding a component back, check its classes
+// are really in a template or a content file.
+//
+// Left out on purpose: accordion, alert, badge, breadcrumb, button-group,
+// card, carousel, close, list-group, modal, offcanvas, pagination,
+// placeholders, popover, progress, spinners, tables (content tables are
+// styled in _content.scss), toasts, tooltip.
+
+// Configuration
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/variables';
+@import 'bootstrap/scss/variables-dark';
+@import 'bootstrap/scss/maps';
+@import 'bootstrap/scss/mixins';
+@import 'bootstrap/scss/utilities';
+
+// The utilities API writes every class of every utility at every breakpoint,
+// which was most of what remained. Keep only the utilities the markup uses;
+// tests/test_performance.py fails if a template or content file uses a
+// utility class this leaves out, so add its key here when that happens.
+$utilities: map-get-multiple(
+  $utilities,
+  (
+    'display',
+    'flex-direction',
+    'flex-wrap',
+    'justify-content',
+    'align-items',
+    'align-self',
+    'gap',
+    'margin-top',
+    'padding',
+    'padding-y',
+    'padding-top',
+    'text-align',
+    'width'
+  )
+);
+
+// Layout and content
+@import 'bootstrap/scss/root';
+@import 'bootstrap/scss/reboot';
+@import 'bootstrap/scss/type'; // .list-unstyled
+@import 'bootstrap/scss/images';
+@import 'bootstrap/scss/containers';
+@import 'bootstrap/scss/grid';
+@import 'bootstrap/scss/helpers'; // .visually-hidden, .sticky-top
+
+// Components
+@import 'bootstrap/scss/forms'; // .form-control on the grant status page
+@import 'bootstrap/scss/buttons'; // .btn on the menu togglers
+@import 'bootstrap/scss/transitions'; // .collapse / .collapsing
+@import 'bootstrap/scss/dropdown';
+@import 'bootstrap/scss/nav';
+@import 'bootstrap/scss/navbar'; // .navbar-toggler(-icon), .navbar-brand
+
+// Utilities (d-*, flex, spacing, text-center, w-100, ...)
+@import 'bootstrap/scss/utilities/api';

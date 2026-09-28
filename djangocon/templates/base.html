@@ -11,14 +11,20 @@
     {% if ga4_measurement_id %}
       {% include "modules/analytics_head.html" %}
     {% endif %}
+    {# The home title carries the place and dates: that is what people search for. #}
     <title>
       {% block title %}
-        {% if menu != "Home" %}{{ menu }} -{% endif %}
-        DjangoCon Europe 2027
+        {% if menu == "Home" %}
+          DjangoCon Europe 2027 - Innsbruck, 17-21 February
+        {% else %}
+          {{ menu }} - DjangoCon Europe 2027
+        {% endif %}
       {% endblock title %}
     </title>
+    {# Content pages pass their own description (see page_description); the #}
+    {# home page and error pages use the site-wide sentence. #}
     <meta name="description"
-          content="The official Django conference in Europe - run by the community for the community. Innsbruck, Austria, 17-21 February 2027." />
+          content="{{ description|default:site_description }}" />
     <link rel="canonical" href="https://2027.djangocon.eu{{ request.path }}" />
     {# Proves ownership of the domain to Google Search Console, which is where #}
     {# the sitemap is submitted. Must stay in the head for verification to pass. #}
@@ -28,15 +34,25 @@
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="DjangoCon Europe 2027" />
     <meta property="og:title"
-          content="{% if menu != "Home" %}{{ menu }} - {% endif %}DjangoCon Europe 2027" />
+          content="{% if menu and menu != "Home" %}{{ menu }} - {% endif %}DjangoCon Europe 2027" />
+    <meta property="og:locale" content="en_GB" />
     <meta property="og:description"
-          content="The official Django conference in Europe - run by the community for the community. Innsbruck, Austria, 17-21 February 2027." />
+          content="{{ description|default:site_description }}" />
     <meta property="og:url"
           content="https://2027.djangocon.eu{{ request.path }}" />
     <meta property="og:image"
-          content="https://2027.djangocon.eu{% static 'images/other/opengraph.png' %}" />
+          content="https://2027.djangocon.eu{% static 'images/other/opengraph.jpg' %}" />
+    {# Declaring the size lets crawlers render the card on first share, without #}
+    {# downloading the image first. Keep in step with the file (1200x630). #}
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt"
+          content="DjangoCon Europe 2027 Innsbruck logo over the mountains of Innsbruck" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@DjangoConEurope" />
+    {% block structured_data %}
+    {% endblock structured_data %}
     <link rel="icon"
           href="{% static 'images/favicons/favicon.ico' %}"
           sizes="32x32" />
@@ -55,9 +71,23 @@
           sizes="180x180"
           href="{% static 'images/favicons/apple-touch-icon.png' %}" />
     <link rel="manifest" href="{% static 'images/favicons/site.webmanifest' %}" />
+    {# The two faces every page sets above the fold: Anton SC (nav links, hero) #}
+    {# and Lato (body). Preloading starts them with the stylesheet instead of #}
+    {# after it; crossorigin is required for font preloads even on our origin. #}
+    <link rel="preload"
+          href="{% static 'fonts/anton-sc-400-latin.woff2' %}"
+          as="font"
+          type="font/woff2"
+          crossorigin />
+    <link rel="preload"
+          href="{% static 'fonts/lato-400-latin.woff2' %}"
+          as="font"
+          type="font/woff2"
+          crossorigin />
     {% block css %}
-      {# Bootstrap is compiled into project.css — no CDN, one version. #}
-      <link href="{% static 'css/project.css' %}" rel="stylesheet" />
+      {# Bootstrap is compiled into project.css — no CDN, one version. The .min #}
+      {# builds are what gets served; the plain files are kept for reading diffs. #}
+      <link href="{% static 'css/project.min.css' %}" rel="stylesheet" />
     {% endblock css %}
     {# Sets the theme before first paint so there's no light->dark flash; #}
     {# project.js only needs to handle the toggle click from here on. #}
@@ -75,14 +105,15 @@
     </script>
     {% block javascript %}
       {# vendors.js is Bootstrap's bundle (includes Popper). #}
-      <script defer src="{% static 'js/vendors.js' %}"></script>
-      <script defer src="{% static 'js/project.js' %}"></script>
+      <script defer src="{% static 'js/vendors.min.js' %}"></script>
+      <script defer src="{% static 'js/project.min.js' %}"></script>
     {% endblock javascript %}
   </head>
   <body>
     {# Every page gets exactly one h1; section titles are h2s. The home page's #}
-    {# hero carries a visible one, so only the other pages need this. #}
-    {% if menu != "Home" %}<h1 class="visually-hidden">{{ menu }}</h1>{% endif %}
+    {# hero carries a visible one, so only the other pages need this. Error #}
+    {# pages have no menu and carry their own. #}
+    {% if menu and menu != "Home" %}<h1 class="visually-hidden">{{ menu }}</h1>{% endif %}
     {% include "modules/header.html" %}
     <div class="innerBody">
       {% block content %}

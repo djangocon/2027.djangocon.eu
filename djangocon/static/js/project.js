@@ -18,7 +18,11 @@ document.addEventListener('DOMContentLoaded', function () {
           ? 'light'
           : 'dark';
       document.documentElement.setAttribute('data-theme', next);
-      localStorage.setItem('theme', next);
+      // Storage can be blocked (private mode, site data off); the toggle must
+      // still work for this page, the choice just won't be remembered.
+      try {
+        localStorage.setItem('theme', next);
+      } catch (e) {}
       sync();
     });
   });
