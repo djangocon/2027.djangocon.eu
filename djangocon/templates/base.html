@@ -56,8 +56,9 @@
           href="{% static 'images/favicons/apple-touch-icon.png' %}" />
     <link rel="manifest" href="{% static 'images/favicons/site.webmanifest' %}" />
     {% block css %}
-      {# Bootstrap is compiled into project.css — no CDN, one version. #}
-      <link href="{% static 'css/project.css' %}" rel="stylesheet" />
+      {# Bootstrap is compiled into project.css — no CDN, one version. The .min #}
+      {# builds are what gets served; the plain files are kept for reading diffs. #}
+      <link href="{% static 'css/project.min.css' %}" rel="stylesheet" />
     {% endblock css %}
     {# Sets the theme before first paint so there's no light->dark flash; #}
     {# project.js only needs to handle the toggle click from here on. #}
@@ -75,8 +76,8 @@
     </script>
     {% block javascript %}
       {# vendors.js is Bootstrap's bundle (includes Popper). #}
-      <script defer src="{% static 'js/vendors.js' %}"></script>
-      <script defer src="{% static 'js/project.js' %}"></script>
+      <script defer src="{% static 'js/vendors.min.js' %}"></script>
+      <script defer src="{% static 'js/project.min.js' %}"></script>
     {% endblock javascript %}
   </head>
   <body>
