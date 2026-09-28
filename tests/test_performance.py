@@ -1,6 +1,7 @@
 """What the served pages cost to load: asset bundles, images, caching."""
 
 import re
+from http import HTTPStatus
 from pathlib import Path
 
 from django.contrib.staticfiles import finders
@@ -125,3 +126,14 @@ class TestFonts:
         assert preloads
         for name in preloads:
             assert f"../fonts/{name}" in css
+
+
+class TestConditionalGet:
+    def test_pages_carry_an_etag(self, client: Client):
+        assert client.get("/information/venue/").has_header("ETag")
+
+    def test_unchanged_page_revalidates_with_304(self, client: Client):
+        etag = client.get("/information/venue/")["ETag"]
+        response = client.get("/information/venue/", headers={"if-none-match": etag})
+        assert response.status_code == HTTPStatus.NOT_MODIFIED
+        assert response.content == b""
