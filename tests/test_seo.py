@@ -3,7 +3,9 @@
 import re
 from http import HTTPStatus
 
+from django.contrib.staticfiles import finders
 from django.test import Client
+from PIL import Image
 
 from djangocon.site.sitemaps import ContentSitemap
 
@@ -176,3 +178,12 @@ class TestServedMarkup:
         for path in ContentSitemap().items():
             html = client.get(path).content.decode()
             assert "<!--" not in html, f"HTML comment served on {path}"
+
+
+class TestSocialCard:
+    def test_image_declares_its_size(self, client: Client):
+        html = client.get("/").content.decode()
+        width = int(re.search(r'og:image:width" content="(\d+)"', html).group(1))
+        height = int(re.search(r'og:image:height" content="(\d+)"', html).group(1))
+        with Image.open(finders.find("images/other/opengraph.jpg")) as image:
+            assert image.size == (width, height)

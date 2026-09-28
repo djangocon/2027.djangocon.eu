@@ -8,6 +8,7 @@ watchfiles==1.1.0  # https://github.com/samuelcolvin/watchfiles
 pytest==8.4.1  # https://github.com/pytest-dev/pytest
 pytest-django==4.11.1  # https://github.com/pytest-dev/pytest-django
 pytest-sugar==1.0.0  # https://github.com/Frozenball/pytest-sugar
+Pillow==11.3.0  # image checks in the tests  # https://github.com/python-pillow/Pillow
 
 # Code quality
 # ------------------------------------------------------------------------------
