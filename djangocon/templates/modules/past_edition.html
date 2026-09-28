@@ -11,7 +11,10 @@
 
     href  the Flickr album for that edition (or the edition's site while the
           album does not exist yet)
-    img   a photo under djangocon/static/images/past/, named <year>_<city>.png
+    img   a photo under djangocon/static/images/past/, as <year>_<city>-400.webp
+          and -800.webp, cropped to the tile's 345:380. The other attributes
+          (srcset, sizes, width/height, loading="lazy") are copied from an
+          existing card; the strip is below the fold, so lazy is right.
     span  the caption revealed on hover (always visible on touch screens)
 
   This rationale lives here rather than in the .md file because an HTML

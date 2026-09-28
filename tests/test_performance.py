@@ -64,3 +64,18 @@ class TestHeroImage:
 
     def test_offers_narrower_copies(self, client: Client):
         assert "1200w" in self._hero(client)
+
+
+class TestPastEditions:
+    """The photo strip sits below the fold on the home page."""
+
+    def test_photos_are_lazy_sized_and_responsive(self, client: Client):
+        html = client.get("/").content.decode()
+        tags = re.findall(r'<a class="edition".*?(<img.*?>)', html, re.S)
+        assert tags
+        for tag in tags:
+            assert 'loading="lazy"' in tag
+            assert 'width="' in tag
+            assert 'height="' in tag
+            assert "srcset=" in tag
+            assert ".png" not in tag
