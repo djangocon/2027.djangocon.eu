@@ -1,5 +1,6 @@
 """robots.txt, sitemap.xml, the consent-gated analytics tag, and the served markup."""
 
+import json
 import re
 from http import HTTPStatus
 
@@ -187,3 +188,33 @@ class TestSocialCard:
         height = int(re.search(r'og:image:height" content="(\d+)"', html).group(1))
         with Image.open(finders.find("images/other/opengraph.jpg")) as image:
             assert image.size == (width, height)
+
+
+class TestStructuredData:
+    """schema.org JSON-LD: what makes the conference eligible for event results."""
+
+    def _graph(self, client: Client, path: str = "/") -> list[dict]:
+        html = client.get(path).content.decode()
+        blocks = re.findall(r'<script type="application/ld\+json">(.*?)</script>', html, re.S)
+        return [node for block in blocks for node in json.loads(block)["@graph"]]
+
+    def test_home_page_describes_the_event(self, client: Client):
+        event = next(node for node in self._graph(client) if node["@type"] == "Event")
+        assert event["startDate"] == "2027-02-17"
+        assert event["endDate"] == "2027-02-21"
+        assert event["location"][0]["address"]["addressLocality"] == "Innsbruck"
+        assert event["offers"]["url"].startswith("https://pretix.")
+
+    def test_is_valid_json_with_the_social_profiles(self, client: Client):
+        organization = next(node for node in self._graph(client) if node["@type"] == "Organization")
+        assert "https://github.com/djangocon/2027.djangocon.eu/" in organization["sameAs"]
+
+    def test_lowest_price_matches_the_ticket_cards(self, client: Client):
+        """Google drops event markup that disagrees with the visible page."""
+        html = client.get("/").content.decode()
+        prices = [int(p) for p in re.findall(r'<div class="price">(\d+)€</div>', html)]
+        event = next(node for node in self._graph(client) if node["@type"] == "Event")
+        assert int(event["offers"]["lowPrice"]) == min(prices)
+
+    def test_only_on_the_home_page(self, client: Client):
+        assert self._graph(client, "/information/venue/") == []
