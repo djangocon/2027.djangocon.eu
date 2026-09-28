@@ -34,7 +34,7 @@
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="DjangoCon Europe 2027" />
     <meta property="og:title"
-          content="{% if menu != "Home" %}{{ menu }} - {% endif %}DjangoCon Europe 2027" />
+          content="{% if menu and menu != "Home" %}{{ menu }} - {% endif %}DjangoCon Europe 2027" />
     <meta property="og:locale" content="en_GB" />
     <meta property="og:description"
           content="{{ description|default:site_description }}" />
@@ -111,8 +111,9 @@
   </head>
   <body>
     {# Every page gets exactly one h1; section titles are h2s. The home page's #}
-    {# hero carries a visible one, so only the other pages need this. #}
-    {% if menu != "Home" %}<h1 class="visually-hidden">{{ menu }}</h1>{% endif %}
+    {# hero carries a visible one, so only the other pages need this. Error #}
+    {# pages have no menu and carry their own. #}
+    {% if menu and menu != "Home" %}<h1 class="visually-hidden">{{ menu }}</h1>{% endif %}
     {% include "modules/header.html" %}
     <div class="innerBody">
       {% block content %}

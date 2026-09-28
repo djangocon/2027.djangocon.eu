@@ -287,3 +287,24 @@ class TestSitemapLastmod:
             assert sitemaps.last_changed([path]) == path.stat().st_mtime
         finally:
             sitemaps._committed_at.cache_clear()
+
+
+class TestNotFoundPage:
+    def test_is_a_real_404(self, client: Client):
+        assert client.get("/no-such-page/").status_code == HTTPStatus.NOT_FOUND
+        assert client.get("/no/such/deep/page/").status_code == HTTPStatus.NOT_FOUND
+
+    def test_has_exactly_one_h1_and_no_exception_name(self, client: Client):
+        html = client.get("/no/such/deep/page/").content.decode()
+        assert html.count("<h1") == 1
+        assert "Resolver404" not in html
+        assert "Http404" not in html
+
+    def test_points_somewhere_useful(self, client: Client):
+        html = client.get("/no-such-page/").content.decode()
+        assert 'href="/"' in html
+        assert 'href="/talks/cfp/"' in html
+
+    def test_social_title_has_no_dangling_separator(self, client: Client):
+        html = client.get("/no-such-page/").content.decode()
+        assert re.search(r'og:title"\s+content="DjangoCon Europe 2027"', html)
