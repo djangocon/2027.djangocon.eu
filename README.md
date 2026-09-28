@@ -52,9 +52,13 @@ pre-commit (`pre-commit install` once, or `just lint` to run everything).
 Production settings live in `config/settings/production.py` and are driven by
 environment variables: `DJANGO_SECRET_KEY` (required), `DJANGO_ALLOWED_HOSTS`
 (default `2027.djangocon.eu`), `SENTRY_DSN` (optional), `DJANGO_SECURE_HSTS_SECONDS`
-(default 60 — raise once HTTPS is proven), `DJANGO_GA4_MEASUREMENT_ID` (default
-`G-C4K64NWHSN`; set it empty to turn analytics off). Static files are served by
-WhiteNoise from `staticfiles/` after `manage.py collectstatic`; run the app with
+(default one year), `DJANGO_GA4_MEASUREMENT_ID` (default
+`G-C4K64NWHSN`; set it empty to turn analytics off). Static files are collected
+into `staticfiles/` by `manage.py collectstatic`, with fingerprinted names and
+pre-compressed `.gz` copies. WhiteNoise serves them with a one-year cache when
+requests reach Django; a front server that serves `/static/` itself has to set
+that cache header (fingerprinted names only) and serve the `.gz` copies
+(`gzip_static on` in nginx) on its own. Run the app with
 gunicorn (`gunicorn config.wsgi`).
 
 ## SEO and analytics
