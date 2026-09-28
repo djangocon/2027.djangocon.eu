@@ -178,14 +178,6 @@ body {
   }
 }
 
-.text-blue {
-  color: var(--accent);
-}
-
-.text-hidden {
-  color: transparent;
-}
-
 .title-lg {
   font: normal normal 700 2.375rem/2.75rem Montserrat;
 }
@@ -220,11 +212,6 @@ a {
   &:hover {
     text-decoration: underline;
   }
-}
-
-.important-dates a {
-  color: var(--ink);
-  text-decoration: underline;
 }
 
 table {
@@ -262,34 +249,11 @@ img.sponsor {
   }
 }
 
-.sponsor-category-divider {
-  height: 2px !important;
-  opacity: 1;
-  margin: 35px 0;
-
-  &.gold {
-    background-color: var(--golden);
-  }
-}
-
 img.hotel {
   height: auto;
   max-height: 100px;
   max-width: 200px;
   width: auto;
-}
-
-.overlay-text {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 1;
 }
 
 // First .scrolling_text / .text definitions; a second, current-design set
@@ -339,130 +303,6 @@ img.hotel {
   animation: animate_text 30s linear infinite; // The animation property
 }
 
-.custom-centered-content {
-  width: 100%;
-  padding-top: 50px;
-  font-family: var(--font-main);
-  font-size: 30px;
-  max-width: 20000px; // Adjust the width as needed
-  text-align: center; // Center text within the element
-  height: 2000px;
-  padding-bottom: 1000px;
-}
-
-.main_title {
-  color: var(--accent-dark);
-  position: relative;
-  padding-top: 100px;
-  left: 42%;
-}
-
-@media screen and (max-width: 1199px) {
-  .button1-container {
-    width: 400px;
-    height: 400px;
-    position: relative;
-    left: 60%;
-    top: 5%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .button2-container {
-    width: 400px;
-    height: 400px;
-    position: relative;
-    left: 45%;
-    top: 25%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-}
-
-@media screen and (max-width: 1000px) {
-  .button1-container {
-    width: 400px;
-    height: 400px;
-    position: relative;
-    left: 100%;
-    top: 5%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .button2-container {
-    width: 400px;
-    height: 400px;
-    position: relative;
-    left: 45%;
-    top: 25%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .main_title {
-    color: var(--accent-dark);
-    position: relative;
-    padding-top: 100px;
-    left: 30%;
-  }
-}
-
-@media screen and (max-width: 770px) {
-  .button1-container {
-    width: 400px;
-    height: 400px;
-    position: relative;
-    left: 65%;
-    top: 5%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .button2-container {
-    width: 400px;
-    height: 400px;
-    position: relative;
-    left: 0;
-    top: 25%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .main_title {
-    color: var(--accent-dark);
-    position: relative;
-    padding-top: 100px;
-    left: 20%;
-  }
-}
-
-@media screen and (max-width: 550px) {
-  .button1-container {
-    width: 400px;
-    height: 400px;
-    position: relative;
-    left: 87%;
-    top: 5%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-}
-
 // Legacy global. Kept for the homepage sections that still lean on it, but it
 // must not reach the content pages -- .simple-content overrides it above.
 h2 {
@@ -470,30 +310,6 @@ h2 {
   text-align: center;
   font-size: 2em;
   margin: 20px 0;
-}
-
-.warpper {
-  margin-top: 100px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-}
-
-.tab {
-  font-size: x-large;
-  text-align: center;
-  width: 280px;
-  cursor: pointer;
-  padding: 10px 20px;
-  margin: 0 2px;
-  background-color: var(--paper);
-  display: inline-block;
-  color: #020101;
-}
-
-.tabs {
-  border-bottom: 3px solid var(--accent);
 }
 
 .panels {
@@ -506,47 +322,7 @@ h2 {
   color: var(--accent);
 }
 
-.panel {
-  display: none;
-  animation: fadein 0.8s;
-}
-
-@keyframes fadein {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-.radio {
-  display: none;
-}
-
-#one:checked ~ .panels #one-panel,
-#two:checked ~ .panels #two-panel,
-#three:checked ~ .panels #three-panel,
-#four:checked ~ .panels #four-panel {
-  display: block;
-}
-
-#one:checked ~ .tabs #one-tab,
-#two:checked ~ .tabs #two-tab,
-#three:checked ~ .tabs #three-tab,
-#four:checked ~ .tabs #four-tab {
-  background: var(--accent);
-  color: white;
-}
-
 @media (max-width: 750px) {
-  .tab {
-    width: 120px;
-    font-size: 1rem;
-    padding: 10px 0;
-  }
-
   .panels {
     margin-left: 10px;
     margin-right: 10px;
@@ -560,34 +336,7 @@ h2 {
   }
 }
 
-@media (max-width: 550px) {
-  .tab {
-    width: 80px;
-  }
-
-  .title-container .sponsors_image,
-  .dates_logo,
-  .tickets_image {
-    height: 30px !important;
-  }
-}
-
 @media (max-width: 400px) {
-  .title-container .sponsors_image,
-  .tickets_image {
-    height: 40px;
-  }
-
-  .sponsors_content .left-side h2 {
-    font-size: 2rem;
-  }
-
-  .tab {
-    width: auto;
-    padding-left: 8px;
-    padding-right: 8px;
-  }
-
   .panels {
     font-size: 1rem;
   }
@@ -600,22 +349,6 @@ h2 {
   color: #666666; // Optional: Change the text color to indicate it's disabled
   pointer-events: none; // Prevents clicking on the button
   cursor: not-allowed; // Changes cursor to indicate it can't be clicked
-}
-
-.btn-primary.disabled {
-  background-color: #cccccc !important; // Gray out the button
-  border-color: var(--border-subtle) !important;
-  color: #666666 !important; // Change the text color to indicate it's disabled
-  pointer-events: none; // Prevents clicking on the button
-  cursor: not-allowed; // Changes cursor to indicate it can't be clicked
-}
-
-// sponsor page style
-.sponsormain {
-  padding-bottom: 20px;
-  text-transform: uppercase;
-  font-weight: 600;
-  color: var(--accent);
 }
 
 // sponsor page resposiveness
@@ -660,164 +393,7 @@ h2 {
   }
 }
 
-// TALK SCHEDULE CSS FOR CHART VIEW
-.image-container {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-
-  img {
-    width: 30%;
-    border-radius: var(--radius-md);
-    height: auto;
-  }
-}
-
-@media (max-width: 768px) {
-  .image-container {
-    flex-direction: column;
-    align-items: center;
-
-    img {
-      width: 90%;
-      padding-top: 10px;
-    }
-  }
-
-  .text-container {
-    text-align: justify;
-  }
-}
-
-// charts table css
-.table-flip {
-  font-family: Arial, sans-serif;
-  border-collapse: separate; // Change to separate for spacing
-  border-spacing: 10px; // Add spacing between cells
-  width: 100%;
-  margin-top: 50px;
-  border-radius: 10px; // Add border radius to table
-
-  th,
-  td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    border-radius: 10px; // Add border radius to cells
-  }
-
-  th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    background-color: #4caf50;
-    color: white;
-  }
-
-  tr:nth-child(even) {
-    background-color: var(--surface-sunken);
-  }
-
-  tr:hover {
-    background-color: #ddd;
-  }
-
-  td.text-center {
-    text-align: center;
-  }
-
-  td.flip.text-right {
-    text-align: right;
-  }
-}
-
-// charts backgorund and responsiveness
-#question-stats {
-  align-items: center;
-  background-color: var(--surface-sunken);
-  border-radius: 20px;
-}
-
-.table-responsive {
-  max-width: 100%;
-}
 // charts
-
-// social page css
-.glow-text {
-  font-size: 50px;
-  font-weight: bold;
-  color: white;
-  animation: glow-animation 1s infinite alternate;
-}
-
-@keyframes glow-animation {
-  0% {
-    text-shadow:
-      0 0 10px #863b35,
-      0 0 20px #ffaa00,
-      0 0 30px #ff0000,
-      0 0 40px #863b35;
-  }
-
-  50% {
-    text-shadow:
-      0 0 20px #863b35,
-      0 0 30px #ffaa00,
-      0 0 40px #ff0000,
-      0 0 50px #863b35,
-      0 0 60px #ffaa00;
-  }
-
-  100% {
-    text-shadow:
-      0 0 10px #863b35,
-      0 0 20px #ffaa00,
-      0 0 30px #ff0000,
-      0 0 40px #863b35;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .glow-text {
-    font-size: 40px;
-    font-weight: bold;
-    color: white;
-    animation: glow-animation 1s infinite alternate;
-  }
-}
-
-// slide info css
-.scrolling_text {
-  position: relative;
-  padding: 30px 0;
-  margin-top: 100px;
-  background-color: var(--ink);
-  width: 100%;
-  overflow: hidden;
-  display: flex;
-  white-space: nowrap;
-
-  // Gradient overlays for fade effect
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    width: 100px;
-    height: 100%;
-    z-index: 2;
-  }
-
-  &::before {
-    left: 0;
-    background: linear-gradient(to right, var(--ink), transparent);
-  }
-
-  &::after {
-    right: 0;
-    background: linear-gradient(to left, var(--ink), transparent);
-  }
-}
 
 .text {
   font-family: var(--font-main);
@@ -902,253 +478,6 @@ h2 {
   }
 }
 
-// CFP Page Link Styling
-.cfp-page a {
-  color: var(--ink);
-  text-decoration: none;
-  border-bottom: 2px solid transparent;
-  transition:
-    color 0.3s ease,
-    border-bottom 0.3s ease;
-
-  &:hover {
-    color: var(--ink);
-    border-bottom: 2px solid var(--ink);
-    background-color: rgba(0, 0, 0, 0.1); // Light background on hover
-    padding: 2px 4px; // Add padding for better readability
-    border-radius: 4px; // Rounded corners
-  }
-}
-
-// Popup
-.popup {
-  display: none; // Hidden by default
-  position: fixed; // Stay in place
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 300px;
-  background-color: var(--paper);
-  color: var(--ink);
-  border-radius: var(--radius-md);
-  text-align: center;
-  padding: 20px;
-  box-shadow: 0 4px 8px var(--overlay-medium);
-  z-index: 1000;
-
-  button {
-    display: block;
-    width: 80%;
-    margin: 10px auto;
-    padding: 10px;
-    background-color: var(--ink);
-    color: var(--paper);
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-
-    &:hover {
-      background-color: var(--surface-hover);
-    }
-  }
-
-  h1 {
-    font-family: var(--font-main);
-    color: var(--ink);
-  }
-
-  .close-btn {
-    position: absolute;
-    top: 15px; // Adjusted to move away from the image
-    right: 15px; // Adjusted to move away from the image
-    background: var(--ink);
-    color: var(--paper);
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
-    border-radius: 50%; // Rounded button
-    width: 30px;
-    height: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.3s ease;
-
-    &:hover {
-      background-color: #cc0000;
-    }
-  }
-}
-
-// Overlay
-.overlay {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 999;
-}
-
-// home news page (see .latest_news_content / .latest-news-page below)
-.latest_news_content {
-  p {
-    font-size: 25px;
-    font-weight: bold;
-    margin: 0 auto;
-
-    a {
-      display: inline-block;
-      transition: all 0.3s ease;
-      color: var(--surface-hover);
-      padding: 10px;
-      border-radius: var(--radius-sm);
-
-      &:hover {
-        transform: scale(1.02);
-        color: var(--ink);
-        background-color: rgba(0, 0, 0, 0.02);
-        box-shadow: 0 4px 15px var(--overlay-subtle);
-        cursor: pointer;
-      }
-    }
-  }
-}
-
-.latest-news-page .news_logo {
-  max-width: 30%; // Set your desired max-width for larger screens
-  height: auto;
-}
-
-// The news module carried no styles of its own, so the heading fell back to
-// the global display font and the body copy inherited the bold <p> treatment.
-.latest-news-page {
-  .news-title {
-    font-family: var(--font-main);
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--ink);
-    margin-bottom: 1.5rem;
-  }
-
-  .news-description {
-    font-family: var(--font-main);
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.6;
-    color: var(--ink);
-    margin-bottom: 1rem;
-  }
-
-  .news-subtitle {
-    font-family: var(--font-main);
-    font-size: 0.9375rem;
-    font-weight: 400;
-    color: var(--overlay-heavy);
-    margin: 0;
-  }
-}
-
-.submit_talk {
-  text-decoration: none;
-}
-
-@media (max-width: 767px) {
-  .container-button {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .homebutton {
-    min-width: unset;
-    width: 100%;
-    margin-bottom: 10px;
-    justify-content: center;
-    text-align: center;
-    text-transform: capitalize;
-  }
-
-  .mainbutton .super {
-    margin-left: 10px;
-  }
-
-  .latest_news_content {
-    text-align: center;
-    text-transform: capitalize;
-    justify-content: center;
-
-    p {
-      font-size: 20px;
-    }
-  }
-
-  .latest-news-page .news_logo {
-    max-width: 80%;
-  }
-}
-
-.homebutton {
-  background-color: #fbeee0;
-  border: 2px solid #422800;
-  border-radius: 30px;
-  box-shadow: #422800 4px 4px 0 0;
-  color: #422800;
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 18px;
-  padding: 0 18px;
-  line-height: 50px;
-  text-align: center;
-  text-decoration: none;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-
-  &:hover {
-    background-color: var(--paper);
-  }
-
-  &:active {
-    box-shadow: #422800 2px 2px 0 0;
-    transform: translate(2px, 2px);
-  }
-}
-
-// responsive iframe
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-
-.cool-iframe {
-  position: relative;
-  width: 100%;
-  height: 0;
-  padding-bottom: 75%;
-  max-width: 960px;
-  margin: auto;
-  box-shadow: 0 4px 8px 0 var(--overlay-medium);
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  animation: fadeIn 2s; // Apply the fade-in animation
-
-  iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
-}
-
 // The Modal (background)
 .modal {
   display: none; // Hidden by default
@@ -1164,20 +493,6 @@ h2 {
   background-color: rgba(0, 0, 0, 0.9); // Black w/ opacity
 }
 
-// Modal Content (Image)
-.modal-content {
-  margin: auto;
-  display: block;
-  width: 80%;
-  max-width: 80%;
-
-  // Add Animation
-  -webkit-animation-name: zoom;
-  -webkit-animation-duration: 0.6s;
-  animation-name: zoom;
-  animation-duration: 0.6s;
-}
-
 @-webkit-keyframes zoom {
   from {
     -webkit-transform: scale(0);
@@ -1185,16 +500,6 @@ h2 {
 
   to {
     -webkit-transform: scale(1);
-  }
-}
-
-@keyframes zoom {
-  from {
-    transform: scale(0);
-  }
-
-  to {
-    transform: scale(1);
   }
 }
 
