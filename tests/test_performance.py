@@ -43,3 +43,24 @@ class TestContentStaticUrls:
         for path in content.content_dir().rglob("*.md"):
             for ref in re.findall(r"/static/([^\s\"'(),?#]+)", path.read_text(encoding="utf-8")):
                 assert finders.find(ref), f"{path.name} references missing static file {ref}"
+
+
+class TestHeroImage:
+    """The mountain silhouette is the home page's LCP element."""
+
+    def _hero(self, client: Client) -> str:
+        html = client.get("/").content.decode()
+        return re.search(r"<img[^>]*hero-mountain-img[^>]*>", html, re.S).group(0)
+
+    def test_fetched_at_high_priority(self, client: Client):
+        tag = self._hero(client)
+        assert 'fetchpriority="high"' in tag
+        assert "loading=" not in tag, "the LCP image must never be lazy-loaded"
+
+    def test_reserves_its_space(self, client: Client):
+        tag = self._hero(client)
+        assert 'width="' in tag
+        assert 'height="' in tag
+
+    def test_offers_narrower_copies(self, client: Client):
+        assert "1200w" in self._hero(client)
