@@ -6,11 +6,55 @@ pages themselves are rendered from, so adding a page adds a sitemap entry
 with no extra step and the sitemap cannot drift out of date.
 """
 
+import shutil
+import subprocess
+from functools import cache
+from pathlib import Path
+
+from django.conf import settings
 from django.contrib.sitemaps import Sitemap
 from django.utils import timezone
 
 from djangocon.site.utils.content import content_dir
 from djangocon.site.utils.content import page_files
+
+_GIT = shutil.which("git")
+
+
+@cache
+def _committed_at(paths: tuple[Path, ...]) -> float | None:
+    """Unix time of the last commit touching ``paths``, or None without git.
+
+    Cached for the process: a deploy restarts it, and that is the only time
+    committed history changes under a running site.
+    """
+    if _GIT is None:
+        return None
+    try:
+        result = subprocess.run(  # noqa: S603 -- fixed argv, paths come from our own content tree
+            [_GIT, "log", "-1", "--format=%ct", "--", *map(str, paths)],
+            cwd=settings.BASE_DIR,
+            capture_output=True,
+            text=True,
+            timeout=5,
+            check=True,
+        )
+    except (OSError, subprocess.SubprocessError):
+        return None
+    return float(result.stdout) if result.stdout.strip() else None
+
+
+def last_changed(paths: list[Path]) -> float:
+    """When the content behind a page last changed, as a Unix time.
+
+    The last commit is the honest answer: a fresh checkout or a container
+    build stamps every file with the deploy time, and a lastmod that jumps
+    for every URL on every deploy teaches search engines to ignore it. The
+    file mtime stands in where there is no git, or for files git has never
+    seen.
+    """
+    return _committed_at(tuple(sorted(paths))) or max(path.stat().st_mtime for path in paths)
+
 
 # "/<menu>/" -- a leading and a trailing slash. Deeper URLs have more.
 _TOP_LEVEL_SLASHES = 2
@@ -55,17 +99,12 @@ class ContentSitemap(Sitemap):
         return 0.8 if item.count("/") == _TOP_LEVEL_SLASHES else 0.6
 
     def lastmod(self, item: str):
-        """Newest mtime among the files that make up the page.
-
-        Content is files on disk, so their mtime is the only honest answer to
-        "when did this page last change". A deploy that rewrites every file
-        will bump them all, which is harmless.
-        """
+        """When the files that make up the page last changed (see ``last_changed``)."""
         directory = content_dir() / "home" if item == "/" else content_dir().joinpath(*item.strip("/").split("/"))
         files = page_files(directory)
         if not files:
             return None
-        newest = max(path.stat().st_mtime for path in files.values())
+        newest = last_changed(list(files.values()))
         return timezone.datetime.fromtimestamp(newest, tz=timezone.get_current_timezone())
 
 

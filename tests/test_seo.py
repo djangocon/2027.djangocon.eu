@@ -4,13 +4,16 @@ import json
 import re
 from http import HTTPStatus
 
+import pytest
 from django.contrib.staticfiles import finders
 from django.test import Client
 from PIL import Image
 
+from djangocon.site import sitemaps
 from djangocon.site.sitemaps import ContentSitemap
 from djangocon.site.utils.content import DESCRIPTION_LENGTH
 from djangocon.site.utils.content import MIN_DESCRIPTION_LENGTH
+from djangocon.site.utils.content import content_dir
 
 
 def _locs(body: str) -> list[str]:
@@ -263,3 +266,24 @@ class TestTitle:
 
     def test_pages_lead_with_their_own_name(self, client: Client):
         assert self._title(client, "/information/venue/") == "Venue - DjangoCon Europe 2027"
+
+
+class TestSitemapLastmod:
+    """lastmod must follow content changes, not deploys."""
+
+    def test_uses_the_last_commit_when_git_is_available(self):
+        path = content_dir() / "talks" / "cfp" / "0_cfp.md"
+        sitemaps._committed_at.cache_clear()
+        committed = sitemaps._committed_at((path,))
+        if committed is None:
+            pytest.skip("no git history available here")
+        assert sitemaps.last_changed([path]) == committed
+
+    def test_falls_back_to_the_file_time_without_git(self, monkeypatch):
+        path = content_dir() / "talks" / "cfp" / "0_cfp.md"
+        monkeypatch.setattr(sitemaps, "_GIT", None)
+        sitemaps._committed_at.cache_clear()
+        try:
+            assert sitemaps.last_changed([path]) == path.stat().st_mtime
+        finally:
+            sitemaps._committed_at.cache_clear()
