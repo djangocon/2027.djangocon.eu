@@ -18,6 +18,27 @@ class TestAssetBundles:
                 assert ".min." in href, f"unminified asset served: {href}"
 
 
+class TestTrimmedBootstrap:
+    """_bootstrap.scss compiles only the utilities the markup uses."""
+
+    UTILITY = re.compile(
+        r"(?:d|flex|justify-content|align-(?:items|self|content)|gap|row-gap|column-gap|order"
+        r"|[mp][tbsexy]?|text|w|h|mw|mh|vw|vh|fw|fs|fst|lh|position|top|bottom|start|end"
+        r"|bg|border|rounded|shadow|opacity|overflow|float|z|user-select|pe)-[a-z0-9-]+"
+    )
+
+    def test_every_utility_class_used_is_compiled(self):
+        css = Path(finders.find("css/project.min.css")).read_text(encoding="utf-8")
+        sources = [*Path("djangocon/templates").rglob("*.html"), *content.content_dir().rglob("*.md")]
+        missing = set()
+        for path in sources:
+            for attr in re.findall(r'class="([^"]*)"', path.read_text(encoding="utf-8")):
+                for token in attr.split():
+                    if self.UTILITY.fullmatch(token) and not re.search(rf"\.{re.escape(token)}[^a-zA-Z0-9_-]", css):
+                        missing.add(f"{token} ({path.name})")
+        assert not missing, f"add the utility to $utilities in _bootstrap.scss: {sorted(missing)}"
+
+
 class TestContentStaticUrls:
     """Hand-written /static/ URLs in content files go through the storage."""
 
