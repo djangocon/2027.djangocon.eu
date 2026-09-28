@@ -7,12 +7,18 @@ the JSON for the process lifetime left a stale menu pointing at deleted pages.
 """
 
 import json
+import re
 from pathlib import Path
 
 import markdown as md
 from django.conf import settings
+from django.templatetags.static import static
 
 _MARKDOWN_EXTENSIONS = ["extra", "nl2br", "sane_lists", "meta", "toc"]
+
+# A "/static/..." URL written by hand in a content file: in an attribute
+# (src="/static/..."), a srcset list, or a Markdown link.
+_STATIC_URL = re.compile(r"""(?<=["'\s,(])/static/([^\s"'(),?#]+)""")
 
 # path -> (mtime, parsed). Both are bounded by the number of content files.
 _markdown_cache: dict[Path, tuple[float, dict]] = {}
@@ -23,6 +29,24 @@ def content_dir() -> Path:
     return Path(settings.CONTENT_DIR)
 
 
+def _static_url(match: re.Match) -> str:
+    """The storage's URL for a static file -- the hashed name in production.
+
+    Only hashed names get WhiteNoise's year-long immutable cache header; a
+    plain "/static/x.png" is revalidated every minute. A path missing from the
+    manifest is left as written rather than turning the page into a 500.
+    """
+    try:
+        return static(match.group(1))
+    except ValueError:
+        return match.group(0)
+
+
+def resolve_static_urls(html: str) -> str:
+    """Swap hand-written ``/static/...`` URLs for what ``{% static %}`` would output."""
+    return _STATIC_URL.sub(_static_url, html)
+
+
 def render_markdown_file(path: Path) -> dict:
     """Parse a content .md file into ``{"html", "meta"}``, re-parsing only when it changes."""
     mtime = path.stat().st_mtime
@@ -31,7 +55,8 @@ def render_markdown_file(path: Path) -> dict:
         return cached[1]
 
     parser = md.Markdown(extensions=_MARKDOWN_EXTENSIONS)
-    result = {"html": parser.convert(path.read_text(encoding="utf-8")), "meta": parser.Meta}
+    html = resolve_static_urls(parser.convert(path.read_text(encoding="utf-8")))
+    result = {"html": html, "meta": parser.Meta}
     _markdown_cache[path] = (mtime, result)
     return result
 
