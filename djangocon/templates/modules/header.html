@@ -13,15 +13,6 @@
            alt="DjangoCon.eu Innsbruck 2027"
            class="logo logo--light" />
     </a>
-    {# Hamburger Menu Button #}
-    <button class="btn navbar-toggler d-lg-none"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#mobileNav"
-            aria-controls="mobileNav"
-            aria-expanded="false">
-      <span class="navbar-toggler-icon"></span>
-    </button>
     {# Desktop Navigation #}
     <nav class="nav d-none d-lg-flex main-nav">
       <ul class="nav">
@@ -49,6 +40,15 @@
           {% endif %}
         {% endfor %}
       </ul>
+    </nav>
+    {# Actions stay in the bar at every width; only the links above collapse into the menu. #}
+    <div class="header-actions">
+      {# Discord: the community's main channel, so it gets a permanent spot next to the tickets. #}
+      <a href="{{ social_media.discord }}"
+         class="discord-btn"
+         target="_blank"
+         rel="noopener"
+         aria-label="Join us on Discord">{% include "modules/icon_discord.html" %}</a>
       {# Theme Toggle #}
       <button type="button"
               id="theme-toggle"
@@ -84,41 +84,20 @@
       <a href="https://pretix.evolutio.pt/evolutio/djceu27/"
          class="hero-btn"
          id="navbar-hero-btn">Tickets</a>
-    </nav>
+      {# Hamburger Menu Button #}
+      <button class="btn navbar-toggler d-lg-none"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#mobileNav"
+              aria-controls="mobileNav"
+              aria-expanded="false"
+              aria-label="Open menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
   </div>
   {# Mobile Navigation #}
   <div class="collapse" id="mobileNav">
-    <button type="button"
-            id="theme-toggle-mobile"
-            class="theme-toggle theme-toggle--mobile"
-            aria-label="Toggle dark mode"
-            aria-pressed="false">
-      <svg class="theme-toggle-icon theme-toggle-icon--sun"
-           viewBox="0 0 24 24"
-           width="20"
-           height="20"
-           fill="none"
-           stroke="currentColor"
-           stroke-width="2"
-           stroke-linecap="round"
-           aria-hidden="true">
-        <circle cx="12" cy="12" r="4" />
-        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
-      </svg>
-      <svg class="theme-toggle-icon theme-toggle-icon--moon"
-           viewBox="0 0 24 24"
-           width="20"
-           height="20"
-           fill="none"
-           stroke="currentColor"
-           stroke-width="2"
-           stroke-linecap="round"
-           stroke-linejoin="round"
-           aria-hidden="true">
-        <path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z" />
-      </svg>
-      <span>Dark mode</span>
-    </button>
     <ul class="list-unstyled p-3 mobile-menu" id="mobileMenu">
       {% for menu, menu_dict in site_menu.items %}
         <li class="mobile-menu-item">
