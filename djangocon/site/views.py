@@ -1,4 +1,5 @@
 from django.http import Http404
+from django.shortcuts import redirect
 from django.shortcuts import render
 from django.urls import reverse
 from django.views.decorators.http import require_safe
@@ -54,6 +55,17 @@ def page(request, menu, submenu=None):
         "pages/default.html",
         {"menu": _title(request.path, submenu or menu), "files": files, "description": page_description(files)},
     )
+
+
+@require_safe
+def discord(request):
+    """/discord/, a short link to the Discord invite for slides, posters and badges.
+
+    Temporary (302) on purpose: invites get replaced, and a permanent redirect
+    would stay cached in browsers pointing at the old one. The target is read
+    from navigation.json, so changing the invite there updates this too.
+    """
+    return redirect(get_navigation()["social_media"]["discord"])
 
 
 @require_safe

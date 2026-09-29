@@ -18,6 +18,8 @@ urlpatterns = [
     # Legacy URL for the home page (linked from older material); one canonical URL is better for SEO.
     path("home/", RedirectView.as_view(url="/", permanent=True)),
     path("sponsors/sponsors/", views.sponsors, name="sponsors"),
+    # Short link to the Discord invite; must come before the <slug:menu>/ catch-all.
+    path("discord/", views.discord, name="discord"),
     path("<slug:menu>/", views.page, name="page"),
     path("<slug:menu>/<slug:submenu>/", views.page, name="subpage"),
 ]
