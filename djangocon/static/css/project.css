@@ -9017,6 +9017,9 @@ h2 {
   -o-object-fit: contain;
      object-fit: contain;
 }
+.sponsor-logo img.logo-large {
+  max-height: 80px;
+}
 
 @media (max-width: 990px) {
   .sponsor-row {
@@ -9042,6 +9045,9 @@ h2 {
   }
   .sponsor-logo img {
     max-height: 30px;
+  }
+  .sponsor-logo img.logo-large {
+    max-height: 60px;
   }
 }
 .logo-normal {
