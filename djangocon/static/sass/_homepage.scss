@@ -893,6 +893,11 @@ object[type='application/pdf'] {
     max-height: 50px;
     object-fit: contain;
   }
+
+  // boxy logos (close to square) need more height to read at the same weight
+  img.logo-large {
+    max-height: 80px;
+  }
 }
 
 @media (max-width: 990px) {
@@ -916,6 +921,10 @@ object[type='application/pdf'] {
 
   .sponsor-logo img {
     max-height: 30px;
+  }
+
+  .sponsor-logo img.logo-large {
+    max-height: 60px;
   }
 }
 
