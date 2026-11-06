@@ -20,11 +20,11 @@
       "filter": false
     },
     {
-        "name": "Innsbruck Region",
-        "url": "http://www.innsbruck.info/",
-        "logo": "images/sponsors/innsbruck_region_logo.png",
-        "size_class": "logo-small",
-        "filter": false
+      "name": "Innsbruck Region",
+      "url": "http://www.innsbruck.info/",
+      "logo": "images/sponsors/innsbruck_region_logo.png",
+      "size_class": "logo-small",
+      "filter": false
     }
   ]
 }
