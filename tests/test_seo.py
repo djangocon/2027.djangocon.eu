@@ -242,7 +242,8 @@ class TestMetaDescription:
             assert MIN_DESCRIPTION_LENGTH <= len(self._description(client, path)) <= DESCRIPTION_LENGTH, path
 
     def test_explicit_metadata_wins(self, client: Client):
-        assert self._description(client, "/talks/cfp/").startswith("The DjangoCon Europe 2027 call for participation closed")
+        description = self._description(client, "/talks/cfp/")
+        assert description.startswith("The DjangoCon Europe 2027 call for participation closed")
 
     def test_social_card_uses_the_same_text(self, client: Client):
         html = client.get("/information/venue/").content.decode()
