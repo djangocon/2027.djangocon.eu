@@ -682,6 +682,30 @@ object[type='application/pdf'] {
   }
 }
 
+// A milestone that has already happened: muted, so the upcoming ones lead.
+.date-item.is-past,
+.date-item.is-past .date,
+.date-item.is-past .important-dates-link {
+  color: var(--text-muted);
+  text-decoration-color: var(--text-muted);
+}
+
+// Status pill next to a milestone ("Closed"), same shape as .coming-soon.
+.date-status {
+  display: inline-block;
+  margin-left: $space-3xs;
+  padding: 0 $space-2xs;
+  border: 1px solid var(--accent);
+  border-radius: var(--radius-pill);
+  color: var(--accent);
+  font-size: $text-xs;
+  font-weight: $weight-bold;
+  letter-spacing: 0.08em;
+  line-height: 1.6;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+
 .important-dates-link {
   color: inherit; // read as the milestone text, not as a Bootstrap-blue link
   text-decoration: underline;

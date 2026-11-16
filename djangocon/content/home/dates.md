@@ -7,7 +7,7 @@ heading: Important dates
   <div class="month">
     <h3>November 2026</h3>
     <div class="date-items">
-      <div class="date-item"><span class="date">15th</span> <a class="important-dates-link" href="/talks/cfp/">Call for Participation deadline</a> (closed)</div>
+      <div class="date-item is-past"><span class="date">15th</span> <a class="important-dates-link" href="/talks/cfp/">Call for Participation deadline</a> <span class="date-status">Closed</span></div>
       <div class="date-item"><span class="date">30th</span> <a class="important-dates-link" href="/information/grants/">Grants applications opening</a></div>
       <div class="date-item"><span class="date">30th</span> <a class="important-dates-link" href="https://pretix.evolutio.pt/evolutio/djceu27/" target="_blank" rel="noopener">Early bird ticket sales close</a></div>
     </div>

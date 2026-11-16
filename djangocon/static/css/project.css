@@ -8799,6 +8799,28 @@ h2 {
   content: " – ";
 }
 
+.date-item.is-past,
+.date-item.is-past .date,
+.date-item.is-past .important-dates-link {
+  color: var(--text-muted);
+  text-decoration-color: var(--text-muted);
+}
+
+.date-status {
+  display: inline-block;
+  margin-left: 0.25rem;
+  padding: 0 0.5rem;
+  border: 1px solid var(--accent);
+  border-radius: var(--radius-pill);
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1.6;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+
 .important-dates-link {
   color: inherit;
   text-decoration: underline;
