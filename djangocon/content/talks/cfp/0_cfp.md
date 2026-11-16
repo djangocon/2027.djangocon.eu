@@ -1,27 +1,21 @@
 layout: simple
 order: 0
-description: Submit a talk or workshop for DjangoCon Europe 2027 in Innsbruck, Austria. The call for participation closes on 15 November 2026. All skill levels welcome.
+description: The DjangoCon Europe 2027 call for participation closed on 15 November 2026. Thank you to everyone who submitted a talk or workshop.
 title: Call for Participation
 
 This page contains all information regarding the proposal process for DjangoCon Europe — we will update it regularly as new information becomes available.
 
-Submit your talk or workshop for **DjangoCon Europe 2027**, in beautiful **Innsbruck, Austria** — the call for participation closes on **15 November 2026 at 23:59 CET/Vienna**.
+**The call for participation for DjangoCon Europe 2027 is now closed.** Submissions closed on **15 November 2026 at 23:59 CET/Vienna**.
 
-We're looking for talks on technical and non-technical topics accessible to all skill levels and submissions from new and seasoned speakers.
+Thank you to everyone who submitted a talk or workshop! The content committee is now reviewing every proposal, and we will get in touch with all submitters once the review is done.
 
-<a class="hero-btn" href="https://pretalx.evolutio.pt/djangocon-europe-2027/" target="_blank" rel="noopener">Submit your proposal</a>
+<a class="hero-btn disabled" aria-disabled="true">Submissions closed</a>
 
-If you're asking, "Can I do this?" The answer is yes. If you have a topic that interests you, then it interests us.
+Missed the deadline? You can still take the stage with a [lightning talk](#lightning-talks): sign-ups happen during the conference.
 
-If you've got half an idea or are still deciding in any way and want to chat, you can jump on the DjangoCon Europe Discord and find us there.
-
-Please don't be shy; we want to hear from you!
+If you have any questions, please do not hesitate to contact us at <a href="mailto:content@djangocon.eu" class="pages-links">content@djangocon.eu</a>, or find us on <a target="_blank" href="https://discord.gg/qx82Qpa7Wj" class="pages-links">Discord</a>. Don't forget to follow us on X <a href="https://twitter.com/djangoconeurope" class="pages-links">@DjangoCon Europe</a> for the latest up-to-date information!
 
 We'll see you in Innsbruck!
-
-If you have any questions, please do not hesitate to contact us at <a href="mailto:content@djangocon.eu" class="pages-links">content@djangocon.eu</a>. Don't forget to follow us on X <a href="https://twitter.com/djangoconeurope" class="pages-links">@DjangoCon Europe</a> for the latest up-to-date information!
-
-If you think you have something great to discuss, <a href="https://pretalx.evolutio.pt/djangocon-europe-2027/" class="pages-links" target="_blank" rel="noopener">submit your idea</a>! If you are unsure, talk it over with somebody, or go to <a target="_blank" href="https://discord.gg/qx82Qpa7Wj" class="pages-links">Discord</a> to find previous speakers and participants to discuss your idea with. **When in doubt, submit your talk 😉!**
 
 CfP powered by:
 
