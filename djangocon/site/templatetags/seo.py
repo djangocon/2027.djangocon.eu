@@ -69,7 +69,7 @@ def home_graph() -> list[dict]:
             "offers": {
                 "@type": "AggregateOffer",
                 "url": TICKETS_URL,
-                "lowPrice": "59",
+                "lowPrice": "79",
                 "priceCurrency": "EUR",
                 "availability": "https://schema.org/InStock",
             },
