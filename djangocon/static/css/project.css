@@ -7954,6 +7954,9 @@ h2 {
   margin-bottom: 2rem;
   display: block;
 }
+:root[data-theme=dark] .hero-date {
+  color: var(--accent-light);
+}
 
 .hero-mountain-img {
   width: 100%;
@@ -8417,6 +8420,10 @@ h2 {
   text-transform: uppercase;
   vertical-align: middle;
 }
+:root[data-theme=dark] .date-status {
+  border-color: var(--accent-light);
+  color: var(--accent-light);
+}
 
 .important-dates-link {
   color: inherit;
@@ -8632,9 +8639,11 @@ h2 {
           justify-content: center;
 }
 .sponsor-logo img {
+  height: auto;
   max-height: 50px;
   -o-object-fit: contain;
      object-fit: contain;
+  width: auto;
 }
 .sponsor-logo img.logo-large {
   max-height: 80px;

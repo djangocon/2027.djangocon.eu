@@ -14,6 +14,8 @@
               <img src="{% static sponsor.logo %}"
                    alt="{{ sponsor.name }}"
                    class="{{ sponsor.size_class|default:'logo-normal' }}"
+                   {% if sponsor.width %}width="{{ sponsor.width }}" height="{{ sponsor.height }}"{% endif %}
+                   loading="lazy"
                    {% if sponsor.filter %}style="filter: brightness(0) invert(1)"{% endif %} />
             </a>
           {% endfor %}
