@@ -30,15 +30,6 @@ footer {
       padding: 0.5rem 2.5%;
       width: available;
     }
-
-    .footer-site-map {
-      margin-left: 1rem;
-      margin-right: 1rem;
-
-      .footer-title {
-        padding-top: 2rem;
-      }
-    }
   }
 }
 
@@ -60,13 +51,6 @@ footer {
 .custom-footer {
   background-color: #000;
   color: #fff;
-
-  .footer-title {
-    padding-top: 1.25rem;
-    color: #fff;
-    text-align: center;
-    font-weight: 900;
-  }
 
   .footer-social-media-link {
     padding: 0.25rem;
@@ -94,37 +78,6 @@ footer {
       text-decoration: underline;
       text-decoration-color: #fff;
     }
-  }
-
-  .djangocon-list {
-    ul {
-      margin: 0;
-      padding: 0;
-    }
-
-    li {
-      list-style: none;
-      text-align: center;
-
-      a {
-        text-decoration: none;
-        color: #fff;
-      }
-    }
-  }
-
-  .footer-links {
-    padding-bottom: 1.1875rem;
-
-    li .nav-link {
-      padding-bottom: 0.0652rem;
-      padding-top: 0.0652rem;
-    }
-  }
-
-  .footer-site-map {
-    padding-bottom: 3rem;
-    padding-top: 3.1875rem;
   }
 }
 
