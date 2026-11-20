@@ -13,7 +13,7 @@ default:
 
 # Create .envs/.django if missing, then build the images.
 build *args:
-    @python setup_env.py
+    @python3 setup_env.py
     @echo "Building images..."
     @docker compose build {{ args }}
 
