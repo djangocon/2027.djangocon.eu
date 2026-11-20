@@ -144,6 +144,12 @@
   color: var(--accent);
   margin-bottom: 2rem;
   display: block;
+
+  // The accent holds 4.9:1 on the light page but only 3.4:1 on black, under
+  // the 4.5:1 that text this size needs; its lighter tint reaches 5.3:1.
+  :root[data-theme='dark'] & {
+    color: var(--accent-light);
+  }
 }
 
 // The mountain art is a single silhouette PNG drawn for the dark theme
@@ -618,6 +624,12 @@
   line-height: 1.6;
   text-transform: uppercase;
   vertical-align: middle;
+
+  // Same reason as .hero-date: the accent is too dark for small text on black.
+  :root[data-theme='dark'] & {
+    border-color: var(--accent-light);
+    color: var(--accent-light);
+  }
 }
 
 .important-dates-link {
@@ -827,9 +839,13 @@
   align-items: center;
   justify-content: center;
 
+  // The width/height attributes only reserve the aspect ratio; the box itself
+  // is set by the max-height caps below.
   img {
+    height: auto;
     max-height: 50px;
     object-fit: contain;
+    width: auto;
   }
 
   // boxy logos (close to square) need more height to read at the same weight

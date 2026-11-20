@@ -51,7 +51,7 @@ pre-commit (`pre-commit install` once, or `just lint` to run everything).
 
 Production settings live in `config/settings/production.py` and are driven by
 environment variables: `DJANGO_SECRET_KEY` (required), `DJANGO_ALLOWED_HOSTS`
-(default `2027.djangocon.eu`), `SENTRY_DSN` (optional), `DJANGO_SECURE_HSTS_SECONDS`
+(default `2027.djangocon.eu`), `DJANGO_SECURE_HSTS_SECONDS`
 (default one year), `DJANGO_GA4_MEASUREMENT_ID` (default
 `G-C4K64NWHSN`; set it empty to turn analytics off). Static files are collected
 into `staticfiles/` by `manage.py collectstatic`, with fingerprinted names and

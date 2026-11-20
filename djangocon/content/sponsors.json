@@ -1,12 +1,14 @@
 {
-  "_comment": "Sponsor logos by tier, in the order the Figma template shows them. Add a sponsor by copying an entry into the right tier. 'logo' is a path under djangocon/static/. Set 'filter' to true when the logo is dark and needs inverting to white on the dark band. 'size_class' is logo-small, logo-normal or logo-large (taller, for boxy logos). Empty tiers are hidden automatically.",
+  "_comment": "Sponsor logos by tier, in the order the Figma template shows them. Add a sponsor by copying an entry into the right tier. 'logo' is a path under djangocon/static/: an SVG, or a WebP about 160px tall (twice the largest size it is shown at). 'width' and 'height' are the logo file's own pixel size, so the page can reserve its space before it loads. Set 'filter' to true when the logo is dark and needs inverting to white on the dark band. 'size_class' is logo-small, logo-normal or logo-large (taller, for boxy logos). Empty tiers are hidden automatically.",
   "Platinum": [],
   "Gold": [],
   "Media Partner": [
     {
       "name": "GermanTechJobs",
       "url": "https://germantechjobs.de/",
-      "logo": "images/sponsors/gtj-rectangle.png",
+      "logo": "images/sponsors/gtj-rectangle.webp",
+      "width": 288,
+      "height": 160,
       "size_class": "logo-large",
       "filter": false
     }
@@ -16,13 +18,17 @@
       "name": "Django Software Foundation",
       "url": "https://www.djangoproject.com/foundation/",
       "logo": "images/sponsors/dsf_logo_dark.svg",
+      "width": 504,
+      "height": 216,
       "size_class": "logo-small",
       "filter": false
     },
     {
       "name": "Innsbruck Region",
       "url": "http://www.innsbruck.info/",
-      "logo": "images/sponsors/innsbruck_region_logo.png",
+      "logo": "images/sponsors/innsbruck_region_logo.webp",
+      "width": 201,
+      "height": 120,
       "size_class": "logo-small",
       "filter": false
     }

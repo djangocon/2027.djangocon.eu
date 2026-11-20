@@ -19,4 +19,4 @@ We'll see you in Innsbruck!
 
 CfP powered by:
 
-<a target="_blank" rel="noopener" href="https://pretalx.com/p/about/"><img src="/static/images/other/pretalx.svg" alt="Pretalx logo" style="width: 150px;"></a>
+<a target="_blank" rel="noopener" href="https://pretalx.com/p/about/"><img src="/static/images/other/pretalx.svg" alt="Pretalx logo" width="150" height="82" loading="lazy"></a>
