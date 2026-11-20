@@ -7748,6 +7748,38 @@ h2 {
   color: var(--ink);
 }
 
+.venue-photos {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 2rem 0;
+}
+.venue-photos figure {
+  margin: 0;
+}
+.venue-photos img {
+  aspect-ratio: 16/9;
+  border-radius: 8px;
+  display: block;
+  height: auto;
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+}
+.venue-photos figcaption {
+  color: var(--text-subtle);
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+}
+.venue-photos .venue-photo-lead {
+  grid-column: 1/-1;
+}
+@media (max-width: 600px) {
+  .venue-photos {
+    grid-template-columns: 1fr;
+  }
+}
+
 .grant-status form {
   margin-inline: auto;
   max-width: 68rem;

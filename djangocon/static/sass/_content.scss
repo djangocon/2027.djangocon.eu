@@ -345,6 +345,45 @@ h2 {
   }
 }
 
+// Venue photos: the lead photo spans the column, the rest pair up below it and
+// stack on phones. On the venue page they sit below the map, not above it:
+// pushed far below the fold, the embed initialises before it is on screen and
+// only fills the default 300px iframe width with tiles. Every photo is cropped to 16:9 so the rows line up whatever
+// shape the originals are.
+.venue-photos {
+  display: grid;
+  gap: $space-md;
+  grid-template-columns: repeat(2, 1fr);
+  margin: $space-lg 0;
+
+  figure {
+    margin: 0;
+  }
+
+  img {
+    aspect-ratio: 16 / 9;
+    border-radius: $radius-sm;
+    display: block;
+    height: auto;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  figcaption {
+    color: var(--text-subtle);
+    font-size: $text-sm;
+    margin-top: $space-2xs;
+  }
+
+  .venue-photo-lead {
+    grid-column: 1 / -1;
+  }
+
+  @media (max-width: $bp-sm) {
+    grid-template-columns: 1fr;
+  }
+}
+
 // The status form matches the reading column so it lines up with the prose and
 // the heading above it.
 .grant-status form {

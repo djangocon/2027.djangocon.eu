@@ -26,3 +26,46 @@ DjangoCon Europe 2027 runs across one venue in central Innsbruck. Sprints will b
     </figcaption>
   </figure>
 </div>
+
+<div class="venue-photos">
+  <figure class="venue-photo-lead">
+    <img src="/static/images/venue/sowi_building-1600.webp"
+         srcset="/static/images/venue/sowi_building-800.webp 800w, /static/images/venue/sowi_building-1600.webp 1600w"
+         sizes="(max-width: 1120px) 100vw, 68rem"
+         width="1600" height="1062" loading="lazy" decoding="async"
+         alt="The long glass-fronted SoWi building of the University of Innsbruck, with the Nordkette mountains rising behind it">
+    <figcaption>SoWi University Innsbruck, at the foot of the Nordkette</figcaption>
+  </figure>
+  <figure>
+    <img src="/static/images/venue/sowi_entrance-800.webp"
+         srcset="/static/images/venue/sowi_entrance-800.webp 800w, /static/images/venue/sowi_entrance-1600.webp 1600w"
+         sizes="(max-width: 600px) 100vw, (max-width: 1120px) 50vw, 34rem"
+         width="1600" height="1200" loading="lazy" decoding="async"
+         alt="The SoWi main entrance across a lawn, with bicycles parked along the wall and a mountain peak behind">
+    <figcaption>The main entrance</figcaption>
+  </figure>
+  <figure>
+    <img src="/static/images/venue/sowi_hall_balcony-800.webp"
+         srcset="/static/images/venue/sowi_hall_balcony-800.webp 800w, /static/images/venue/sowi_hall_balcony-1600.webp 1600w"
+         sizes="(max-width: 600px) 100vw, (max-width: 1120px) 50vw, 34rem"
+         width="1600" height="900" loading="lazy" decoding="async"
+         alt="The SoWi conference hall seen from the balcony: rows of tables facing two projection screens, with a glass wall along one side">
+    <figcaption>The conference hall, from the balcony</figcaption>
+  </figure>
+  <figure>
+    <img src="/static/images/venue/sowi_hall_front-800.webp"
+         srcset="/static/images/venue/sowi_hall_front-800.webp 800w, /static/images/venue/sowi_hall_front-1600.webp 1600w"
+         sizes="(max-width: 600px) 100vw, (max-width: 1120px) 50vw, 34rem"
+         width="1600" height="900" loading="lazy" decoding="async"
+         alt="Rows of tables and chairs facing the stage and screens, under a wooden slatted ceiling">
+    <figcaption>Seating towards the stage</figcaption>
+  </figure>
+  <figure>
+    <img src="/static/images/venue/sowi_foyer-800.webp"
+         srcset="/static/images/venue/sowi_foyer-800.webp 800w, /static/images/venue/sowi_foyer-1600.webp 1600w"
+         sizes="(max-width: 600px) 100vw, (max-width: 1120px) 50vw, 34rem"
+         width="1600" height="900" loading="lazy" decoding="async"
+         alt="The SoWi foyer with round tables by a tall glass front looking out to the mountains">
+    <figcaption>The foyer, with a view of the Nordkette</figcaption>
+  </figure>
+</div>
