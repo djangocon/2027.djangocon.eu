@@ -3,4 +3,3 @@
 -r base.txt
 
 gunicorn==23.0.0  # https://github.com/benoitc/gunicorn
-sentry-sdk==2.34.1  # https://github.com/getsentry/sentry-python

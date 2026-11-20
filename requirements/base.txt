@@ -2,7 +2,7 @@ whitenoise==6.9.0  # https://github.com/evansd/whitenoise
 
 # Django
 # ------------------------------------------------------------------------------
-django==5.2.6  # LTS, supported until April 2028  # https://www.djangoproject.com/
+django==5.2.19  # LTS, supported until April 2028; Django 6 needs Python 3.12, production runs 3.11  # https://www.djangoproject.com/
 django-environ==0.12.0  # https://github.com/joke2k/django-environ
 
 Markdown==3.8.2  # https://github.com/Python-Markdown/markdown
