@@ -21,86 +21,9 @@
   text-align: center;
 }
 
-@keyframes pulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.4);
-  }
-
-  70% {
-    box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
-  }
-
-  100% {
-    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-  }
-}
-
-.social_media {
-  justify-content: right !important;
-  align-self: center !important;
-  margin-top: 40px;
-}
-
-.button {
-  text-decoration: none !important;
-}
-
-#tickets {
-  margin-top: 0;
-  width: 20%;
-  background-color: #acc821;
-}
-
-#talk {
-  width: 20%;
-  margin-top: 250px;
-  background-color: #acc821;
-}
-
 @media (max-width: 1065px) {
-  .panels {
-    margin: 0;
-    padding-left: 0;
-    padding-right: 0;
-  }
-
-  .container,
-  .container-md,
-  .container-sm {
+  .container {
     max-width: 720px;
-  }
-}
-
-.section-title {
-  margin: 0;
-  font: normal normal bold 2.375rem/2.75rem var(--font-main);
-  color: var(--accent);
-  text-align: start;
-}
-
-.layout-composed h2 {
-  color: var(--accent);
-  margin: 50px 0 20px;
-}
-
-// Composed pages alternate via get_bg_type (markdown_extras.py). --bg-color and
-// --bg-color-dark are never defined, so these resolved to no background at all;
-// pinned to the same white/grey pair the .even-pages band now uses.
-.light-background {
-  background-color: var(--paper);
-}
-
-// Band on composed pages (see pages/default.html + get_bg_type). Same story as
-// .even-pages in _content.scss: painting --text-muted and re-stating a paper
-// colour for every element inside inverted in the dark theme. A tint of the
-// page background works in both, and everything inside inherits.
-.dark-background {
-  background-color: var(--surface-sunken);
-}
-
-object[type='application/pdf'] {
-  @media (max-width: 768px) {
-    display: none;
   }
 }
 
@@ -412,15 +335,6 @@ object[type='application/pdf'] {
   }
 }
 // end home about css
-
-// .section-title is defined twice in this file; this later definition wins
-// by cascade order wherever the two set the same property.
-.section-title {
-  font-size: 32px;
-  font-weight: 600;
-  color: var(--ink);
-  margin: 0;
-}
 
 // Main section styles (current-design pricing section; the earlier,
 // simpler .pricing-section/.pricing-card definitions above win only for

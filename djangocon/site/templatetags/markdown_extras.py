@@ -29,8 +29,3 @@ def layout_template(content):
 def meta(content, key):
     """First value of a metadata key, or an empty string (``content|meta:"title"``)."""
     return content["meta"].get(key, [""])[0]
-
-
-@register.filter
-def get_bg_type(counter):
-    return "dark-background" if counter % 2 == 0 else "light-background"

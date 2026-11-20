@@ -1,118 +1,79 @@
 {% load markdown_extras %}
-{% load static %}
 
-{# The 2027 roster. Only the core team is confirmed so far; the other teams #}
-{# collapse into a single "To be announced" line. The 2025 per-team grid is #}
-{# kept in the comment block below as a starting point for building teams out. #}
+{# The 2027 roster: one card per confirmed team, lead first. Teams not yet #}
+{# confirmed collapse into a single "To be announced" line. To add a team, #}
+{# copy a card and pick its icon from the credits-icon--* modifiers in #}
+{# sass/_credits.scss (coc, core, diverse, girls, local, programme, speaker, #}
+{# sponsors). The 2025 roster is in the comment at the end of this file. #}
 <div class="container creditsmain" id="pages">
   {% include "modules/page_title.html" with title=content|meta:"title" %}
+  <div class="simple-content">{{ content.html|safe }}</div>
+  <div class="credits-teams">
+    <section class="credits-team">
+      <span class="credits-icon credits-icon--core" aria-hidden="true"></span>
+      <h2>Core</h2>
+      <ul>
+        <li>Afonso Santos</li>
+        <li>Anže Pečar</li>
+        <li>Bia Rodrigues</li>
+        <li>David Vaz</li>
+        <li>Felipe Valverde</li>
+        <li>Frederico Rodrigues</li>
+        <li>Jacob Rief</li>
+        <li>Luís Vaz</li>
+        <li>Miguel Magalhães</li>
+      </ul>
+    </section>
+    <section class="credits-team">
+      <span class="credits-icon credits-icon--sponsors" aria-hidden="true"></span>
+      <h2>Sponsors</h2>
+      <ul>
+        <li class="credits-lead">
+          Luís Vaz <span class="credits-lead-tag">Lead</span>
+        </li>
+        <li>Ronny Vedrilla</li>
+      </ul>
+    </section>
+    <section class="credits-team">
+      <span class="credits-icon credits-icon--diverse" aria-hidden="true"></span>
+      <h2>Diversity &amp; Inclusion</h2>
+      <ul>
+        <li class="credits-lead">
+          Sarah Abderemane <span class="credits-lead-tag">Lead</span>
+        </li>
+      </ul>
+    </section>
+    <section class="credits-team">
+      <span class="credits-icon credits-icon--girls" aria-hidden="true"></span>
+      <h2>Django Girls</h2>
+      <ul>
+        <li class="credits-lead">
+          Tyna Doležalová <span class="credits-lead-tag">Lead</span>
+        </li>
+      </ul>
+    </section>
+  </div>
   <div class="simple-content">
-    {{ content.html|safe }}
-    <h2>Core team</h2>
-    <ul>
-      <li>Afonso Santos</li>
-      <li>Anže Pečar</li>
-      <li>Bia Rodrigues</li>
-      <li>David Vaz</li>
-      <li>Felipe Valverde</li>
-      <li>Frederico Rodrigues</li>
-      <li>Jacob Rief</li>
-      <li>Luís Vaz</li>
-      <li>Miguel Magalhães</li>
-    </ul>
     <p>The remaining teams are still being assembled — to be announced.</p>
   </div>
 </div>
 {% comment %}
-2025 per-team grid, kept for reference. Restore the columns (with the team
-logos from images/credit_logo/ and the lead's name in the team colour) as each
-2027 team is confirmed.
+2025 roster, kept for reference (lead first, then the team; icon in brackets).
 
-<div class="container creditsmain">
-  <div class="row pt-3">
-    <div class="col-sm-3">
-      <img src="{% static 'images/credit_logo/coc.svg' %}" class="creditlogo" alt="EPS Logo" />
-      <h4 class="headtext">CODE OF CONDUCTS</h4>
-      <h6 style="color: #bda712; font-weight: bold;">Vicky Twomey-Lee</h6>
-      <h6>Sunday Iyanu Ajayi</h6>
-      <h6>Thibaud Colas</h6>
-    </div>
-    <div class="col-sm-3">
-      <img src="{% static 'images/credit_logo/speaker.svg' %}" class="creditlogo" alt="EPS Logo" />
-      <h4 class="headtext">COMMUNICATIONS</h4>
-      <h6 style="color: #36bc5b; font-weight: bold">Bia Rodrigues</h6>
-      <h6>Julius Boakye</h6>
-      <h6>Steve Yonkeu</h6>
-      <h6>Viola Bergere</h6>
-      <h6>Charles Bartels Squire</h6>
-    </div>
-    <div class="col-sm-3">
-      <img src="{% static 'images/credit_logo/diverse.svg' %}" class="creditlogo" alt="EPS Logo" />
-      <h4 class="headtext">DIVERSITY & INCLUSION</h4>
-      <h6 style="color: #005e83; font-weight: bold;">Kelvin Adigwu</h6>
-      <h6>Julius Boakye</h6>
-      <h6>Robson Kanhalelo</h6>
-      <h6>Sarah Abderemane</h6>
-      <h6>Eliana Rosselli</h6>
-    </div>
-    <div class="col-sm-3">
-      <img src="{% static 'images/credit_logo/girls.svg' %}" class="creditlogo" alt="EPS Logo" />
-      <h4 class="headtext">DJANGO GIRLS</h4>
-      <h6 style="color: #af0161; font-weight: bold;">Vicky Twomey-Lee</h6>
-      <h6>Andrea Fagan</h6>
-      <h6>Evans Langat</h6>
-      <h6>Lais Carvalho</h6>
-      <h6>Marjia Siddik</h6>
-      <h6>Michael Twomey</h6>
-      <h6>Vishal Vatsa</h6>
-    </div>
-  </div>
-  <div class="row pt-5">
-    <div class="col-sm-3">
-      <img src="{% static 'images/credit_logo/programme.svg' %}" class="creditlogo" alt="EPS Logo" />
-      <h4 class="headtext">PROGRAMME</h4>
-      <h6 style="color: #36bc5b; font-weight: bold">Mariusz Felisiak</h6>
-      <h6>Daniele Procida</h6>
-      <h6>Michael Loukeris</h6>
-      <h6>Hassan Bahati</h6>
-      <h6>Kátia Nakamura</h6>
-      <h6>Nana Adjoa Anim</h6>
-      <h6>Steve Yonkeu</h6>
-      <h6>Çağıl Sönmez</h6>
-      <h6>Robson Kanhalelo</h6>
-      <h6>Kelvin Adigwu</h6>
-    </div>
-    <div class="col-sm-3">
-      <img src="{% static 'images/credit_logo/sponsors.svg' %}" class="creditlogo" alt="EPS Logo" />
-      <h4 class="headtext">SPONSORS</h4>
-      <h6 style="color: #36bc5b; font-weight: bold">Luis Vaz</h6>
-      <h6>Mebarek Saf</h6>
-    </div>
-    <div class="col-sm-3">
-      <img src="{% static 'images/credit_logo/local.svg' %}" class="creditlogo" alt="EPS Logo" />
-      <h4 class="headtext">LOCAL</h4>
-      <h6 style="color: #36bc5b; font-weight: bold">Miguel Magalhaes</h6>
-      <h6>Afonso Santos</h6>
-      <h6>Daniel Darko</h6>
-      <h6>Daniel Rios</h6>
-      <h6>David Vaz</h6>
-      <h6>Frederico Rodrigues</h6>
-      <h6>Lais Carvalho</h6>
-      <h6>Luís Vaz</h6>
-      <h6>Panagiotis Kyrillos</h6>
-      <h6>Viola</h6>
-      <h6>Vicky Twomey-Lee</h6>
-      <h6>Yoni Lavi</h6>
-    </div>
-    <div class="col-sm-3">
-      <img src="{% static 'images/credit_logo/core.svg' %}" class="creditlogo" alt="EPS Logo" />
-      <h4 class="headtext">CORE</h4>
-      <h6 style="color: #36bc5b; font-weight: bold">David Vaz</h6>
-      <h6 style="color: #36bc5b; font-weight: bold">Frederico Rodrigues</h6>
-      <h6 style="color: #36bc5b; font-weight: bold">Miguel Magalhães</h6>
-      <h6>Felipe Valverde</h6>
-      <h6>Gonçalo Sousa</h6>
-    </div>
-  </div>
-</div>
+Code of Conduct [coc]: Vicky Twomey-Lee; Sunday Iyanu Ajayi, Thibaud Colas
+Communications [speaker]: Bia Rodrigues; Julius Boakye, Steve Yonkeu,
+  Viola Bergere, Charles Bartels Squire
+Diversity & Inclusion [diverse]: Kelvin Adigwu; Julius Boakye,
+  Robson Kanhalelo, Sarah Abderemane, Eliana Rosselli
+Django Girls [girls]: Vicky Twomey-Lee; Andrea Fagan, Evans Langat,
+  Lais Carvalho, Marjia Siddik, Michael Twomey, Vishal Vatsa
+Programme [programme]: Mariusz Felisiak; Daniele Procida, Michael Loukeris,
+  Hassan Bahati, Kátia Nakamura, Nana Adjoa Anim, Steve Yonkeu, Çağıl Sönmez,
+  Robson Kanhalelo, Kelvin Adigwu
+Sponsors [sponsors]: Luis Vaz; Mebarek Saf
+Local [local]: Miguel Magalhães; Afonso Santos, Daniel Darko, Daniel Rios,
+  David Vaz, Frederico Rodrigues, Lais Carvalho, Luís Vaz,
+  Panagiotis Kyrillos, Viola, Vicky Twomey-Lee, Yoni Lavi
+Core [core]: David Vaz, Frederico Rodrigues, Miguel Magalhães (leads);
+  Felipe Valverde, Gonçalo Sousa
 {% endcomment %}

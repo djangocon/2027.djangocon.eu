@@ -362,22 +362,6 @@
 
 // Mobile Styles
 @media (max-width: 991px) {
-  .header-container {
-    padding: 0 1rem;
-  }
-
-  .logo-container {
-    margin-left: 0; // Reset margin for mobile
-
-    img {
-      height: 45px; // Smaller logo for mobile
-    }
-  }
-
-  .mobile-navbar-btn {
-    color: var(--ink);
-  }
-
   // Drawn with currentcolor rather than an SVG data URI: both Bootstrap's
   // default icon and the override that replaced it baked the stroke colour
   // into the image (this one as solid black), so the icon was invisible
@@ -404,23 +388,9 @@
     box-shadow: 0 0 0 0.15rem var(--ink);
   }
 
-  .nav-sm {
-    flex-direction: column;
-    padding: 1rem 0;
-
-    .nav-link {
-      padding: 0.75rem 1rem;
-      text-align: center;
-    }
-  }
-
   .dropdown-menu {
     background-color: transparent;
     text-align: center;
-  }
-
-  .nav-menu-container {
-    margin-right: 0; // Reset margin for mobile
   }
 }
 
